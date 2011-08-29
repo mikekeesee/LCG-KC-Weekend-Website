@@ -13,6 +13,7 @@ jQuery(document).ready(function() {
 			{name:'num_in_party', index:'num_in_party', width:110},
 			{name:'housed_by', index:'housed_by', width:150},
 			{name:'done_housing', index:'done_housing', width:150}],
+		pager: '#reg-registration-pager',
 		rowNum: 1000,
 		sortname: 'last_name, first_name',
 		sortorder: 'asc',

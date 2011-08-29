@@ -12,7 +12,7 @@ jQuery(document).ready(function() {
 			{name:'housing_type',index:'housing_type', width:200},
 			{name:'num_in_party',index:'num_in_party', width:60}
 			],
-		rowNum:10,
+		rowNum:1000,
 		rowList:[10,20,30],
 		width: 954,
 		height: 230,
