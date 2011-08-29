@@ -66,46 +66,33 @@
 
 	<title>Kansas City Regional Family Weekend - Activities</title>
 
-	<link rel="stylesheet" href="page.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
 </head>
 
 <body onload="OnLoad();">
-
-<div id="container">
 
 	<!-- Add the header to each page -->
 	<? include ('header.php'); ?>
 
 	<!-- Start of Main Content Area -->
 
-	<div id="maincontent_container">
-	<div id="maincontent">
+	<div class="main-content">
 
 		<h2>Activities</h2>
 
-		<br/>
+		<p>You have successfully signed up!</p>
 
-		<h3>You have successfully signed up!</h3>
-		<br/>
 		<p>You have been added to the activity selected.</p>
 
 		<p><a href="activity-add-activity.php">Sign-up someone else for an activity</a></p>
 
 		<p><a href="activity-main.php">Back to the Activities Main Page</a></p>
 
-		<br /><br /><br /><br />
-
 	</div>
-	</div>
-
-	<div class="clearthis">&nbsp;</div>
-
 	<!-- End of Main Content Area -->
 
-	<!-- Add the header to each page -->
+	<!-- Add the footer to each page -->
 	<? include ('footer.php'); ?>
-
-</div>
 
 </body>
 </html>

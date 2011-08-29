@@ -8,11 +8,7 @@
 
 	<title>Kansas City Regional Family Weekend - Basketball</title>
 
-	<link rel="stylesheet" href="page.css" type="text/css" media="screen" />
-	<link rel="stylesheet" type="text/css" media="screen" href="js/css/start/jquery-ui-1.7.2.custom.css" />
-
-	<script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
-	<script type="text/javascript" src="js/jquery-ui-1.7.2.custom.min.js"></script>
+	<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
 
 	<? include "jqgrid-header.php" ?>
 	
@@ -27,19 +23,12 @@
 
 <body>
 
-<div id="container">
-
 	<!-- Add the header to each page -->
 	<? include ('header.php'); ?>
 
 	<!-- Start of Main Content Area -->
 
-	<div id="maincontent_container">
-	<div id="maincontent">
-
-
-		<? include "activity-buttons.php"; ?>
-
+	<div class="main-content">
 
 		<h2>Basketball</h2>
 
@@ -121,16 +110,9 @@
 			</div>
 
 			<div id="teams">
-				<p><h3 style="color:red">Team registration is now closed. Please contact Peder Moluf at
-				<a href="mailto:moluf_pt@yahoo.com">moluf_pt@yahoo.com</a> to request changes to team information, including team
-				names, captains, jersey colors, roster changes, etc.</h3></p>
-
-				<br />
-
-				<div class="list-view">
-					<script type="text/javascript" src="js/grid-activity-bball-teams.js"></script>
-					<table id="activity-person-list"></table>
-				</div>
+				<iframe src="activity-bball-team.php" width="725" height="675" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" >
+			  		<p>Your browser does not support iframes.</p>
+				</iframe>
 			</div>
 
 

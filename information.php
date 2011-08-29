@@ -8,12 +8,10 @@
 
 	<title>Kansas City Regional Family Weekend - Information</title>
 
-	<link rel="stylesheet" href="page.css" type="text/css" media="screen" />
-	<link rel="stylesheet" type="text/css" media="screen" href="js/css/start/jquery-ui-1.7.2.custom.css" />
+	<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
 
-	<script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
-	<script type="text/javascript" src="js/jquery-ui-1.7.2.custom.min.js"></script>
-
+	<? include "jqgrid-header.php" ?>
+	
 	<script type="text/javascript">
 		$(function(){
 			// Tabs
@@ -25,17 +23,13 @@
 
 <body>
 
-<div id="container">
-
 	<!-- Add the header to each page -->
 	<? include ('header.php'); ?>
 
 	<!-- Start of Main Content Area -->
+	<div id="main-content">
 
-	<div id="maincontent_container">
-	<div id="maincontent">
-
-		<h2 class="standout">Information</h2>
+		<h2>Information</h2>
 
 		<p>Welcome to the information page. We will try to keep this page current and easy to browse for
 		those of you wanting all the latest and greatest information on the Kansas City Regional Family Weekend.</p>
@@ -151,16 +145,11 @@
 		</div>
 
 	</div>
-	</div>
-	<div class="clearthis">&nbsp;</div>
-
 	<!-- End of Main Content Area -->
 
 
 	<!-- Add the header to each page -->
 	<? include ('footer.php'); ?>
-
-</div>
 
 </body>
 </html>

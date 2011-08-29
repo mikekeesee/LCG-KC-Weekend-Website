@@ -8,15 +8,13 @@
 
 	<title>Kansas City Regional Family Weekend - Volleyball</title>
 
-	<link rel="stylesheet" href="page.css" type="text/css" media="screen" />
-	<link rel="stylesheet" type="text/css" media="screen" href="js/css/start/jquery-ui-1.7.2.custom.css" />
-
-	<script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
-	<script type="text/javascript" src="js/jquery-ui-1.7.2.custom.min.js"></script>
-
+	<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
+	
+	<? include "jqgrid-header.php" ?>
+	
 	<script type="text/javascript">
 		$(function(){
-			// Tabs
+			// Initiate the JQuery tabs
 			$('#tabs').tabs();
 		});
 	</script>
@@ -25,37 +23,17 @@
 
 <body>
 
-<div id="container">
-
 	<!-- Add the header to each page -->
 	<? include ('header.php'); ?>
 
 	<!-- Start of Main Content Area -->
-
-	<div id="maincontent_container">
-	<div id="maincontent">
-
-		<? include "activity-buttons.php"; ?>
+	<div class="main-content">
 
 		<h2>Volleyball</h2>
 
 		<p>Welcome to the volleyball page. You can check out the  game rules, schedule or the teams that are
 		already signed up. Sign up your team under the Teams tab. <b style="color:red">Teams must be finalized by Dec. 20th!</b></p>
 
-		<p>All basketball-related questions may be directed to Doug Burson at
-		<a href="mailto:dougb@downingandstrickland.com">dougb@downingandstrickland.com</a>
-		or Ann Thomas at <a href="mailto:thomasam98@yahoo.com">thomasam98@yahoo.com</a>.</p>
-
-		<p><b>Important: Minimum age for sports is 13. Those with bad backs or other similar injuries should not
-		participate. Due to the inherent risk of such activities, all participants must sign a liability waiver. Those
-		under 18 will need a parent or legal guardian&#39;s signature before they can participate.</b></p>
-		<hr />
-
-		<!-- <p class="standout"><b>Team registration is now closed. Please email <a href="mailto:thomasam98@yahoo.com">Ann Thomas</a>
-		for additional team changes, including team players, names, colors, etc.</b></p> -->
-
-		<hr />
-		<br/>
 		<div id="tabs">
 			<ul>
 				<li><a href="#general">General</a></li>
@@ -67,27 +45,33 @@
 			<div id="general">
 				<h3>General Information</h3>
 
-					<p>The Kansas City Weekend provides a rare opportunity for Church members from around the country to get
-					together and play organized sports. Our overall goals for sports this year are to promote teamwork,
-					sportsmanship, camaraderie, playing within the rules of the game, strategy and, most
-					importantly, fun.</p>
+				<p>The Kansas City Weekend provides a rare opportunity for Church members from around the country to get
+				together and play organized sports. Our overall goals for sports this year are to promote teamwork,
+				sportsmanship, camaraderie, playing within the rules of the game, strategy and, most
+				importantly, fun.</p>
 
-					<p>With these in mind, the following items have been determined:
+				<p>With these in mind, the following items have been determined:
 
-					<ul class="bullets">
-						<li class="bullets"><b>Sports Bible Study at 9:20 Sunday morning:</b> Attendance is <u>mandatory</u> to play.
-						<li class="bullets"><b>Schedule of Games:</b> Teams will follow a set schedule to allow each team to play at least <u>3
-						games</u>. We will do our best to create a schedule that makes the most even match-ups possible.</li>
-						<li class="bullets">Games schedules are still being determined and will be subject to change based on
-						the number of teams that sign up.</li>
-						<li class="bullets"><b>Rosters:</b> Teams need a minimum of 4 people per team (8 max.). All team members must register
-						to play.</li>
-						<li class="bullets"><b>12:30 Break:</b> All sports will halt for family games, then resume at 2 p.m.</li>
-					</ul>
+				<ul>
+					<li><b>Sports Bible Study at 9:20 Sunday morning:</b> Attendance is <u>mandatory</u> to play.
+					<li><b>Schedule of Games:</b> Teams will follow a set schedule to allow each team to play at least <u>3
+					games</u>. We will do our best to create a schedule that makes the most even match-ups possible.</li>
+					<li>Games schedules are still being determined and will be subject to change based on
+					the number of teams that sign up.</li>
+					<li><b>Rosters:</b> Teams need a minimum of 4 people per team (8 max.). All team members must register
+					to play.</li>
+					<li><b>12:30 Break:</b> All sports will halt for family games, then resume at 2 p.m.</li>
+				</ul>
 
-					<b>Please register your team by December 20</b>.</p>
-						<!-- <p>If you have any questions regarding the volleyball tournament, contact Doug Burson at 816-588-6204 or email
-						<a href="mailto:thomasam98@yahoo.com">Ann Thomas</a>.</p> -->
+				<p>All volleyball-related questions may be directed to Doug Burson at
+				<a href="mailto:dougb@downingandstrickland.com">dougb@downingandstrickland.com</a>
+				or Ann Thomas at <a href="mailto:thomasam98@yahoo.com">thomasam98@yahoo.com</a>.</p>
+
+				<p><b>Important: Minimum age for sports is 13. Those with bad backs or other similar injuries should not
+				participate. Due to the inherent risk of such activities, all participants must sign a liability waiver. Those
+				under 18 will need a parent or legal guardian&#39;s signature before they can participate.</b></p>
+
+				<b>Please register your team by December 20</b>.</p>
 			</div>
 
 			<div id="rules">
@@ -95,7 +79,6 @@
 
 				<p>We&#39;re highlighting just a few rules and procedures for the team volleyball games. Standard volleyball rules apply.</p>
 
-				<div class="bulleted-list">
 				<ul>
 					<li><b>COIN TOSS:</b> To start each match, the referee will toss a coin to determine who serves first.
 					The team captain who wins the first toss will get to choose either to serve first or which side to
@@ -104,7 +87,7 @@
 
 					<li><b>SERVING:</b> You can serve anywhere behind the line.</li>
 
-					<ul style="list-style:circle;padding-left:20px;">
+					<ul>
 						<li><u>Foot Fault:</u> If your foot touches the line while you serve, that is an automatic
 						loss of serve.</li>
 
@@ -147,20 +130,12 @@
 
 					<li><b>MISCELLANEOUS:</b> During play, it is illegal for any part of a player&#39;s body to touch the net.
 
-				</oul>
-				</div>
+				</ul>
 
 			</div>
 
 			<div id="teams">
-				<p><h3 style="color:red">Team registration is now closed. Please contact Doug Burson at
-				<a href="mailto:dougb@downingandstrickland.com">dougb@downingandstrickland.com</a>
-				or Ann Thomas at <a href="mailto:thomasam98@yahoo.com">thomasam98@yahoo.com</a> to request changes to team information,
-				including team names, captains, jersey colors, roster changes, etc.</h3></p>
-
-				<br />
-
-				<iframe src="grid-activity-vball-teams.php" width="725" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" >
+				<iframe src="activity-vball-team.php" width="725" height="675" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" >
 			  		<p>Your browser does not support iframes.</p>
 				</iframe>
 			</div>
@@ -179,16 +154,11 @@
 		</div>
 
 	</div>
-	</div>
-	<div class="clearthis">&nbsp;</div>
-
 	<!-- End of Main Content Area -->
 
 
-	<!-- Add the header to each page -->
+	<!-- Add the footer to each page -->
 	<? include ('footer.php'); ?>
-
-</div>
 
 </body>
 </html>

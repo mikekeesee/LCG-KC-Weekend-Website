@@ -8,9 +8,9 @@
 	<meta name="organization" content="Living Church of God - Kansas City" />
 	<meta name="description" content="LCG Kansas City Regional Family Weekend (KC Weekend)" />
 
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
+	<? include "jqgrid-header.php" ?>
 	<script src="js/nivo-slider/jquery.nivo.slider.pack.js" type="text/javascript"></script>
-
+	
 	<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="js/nivo-slider/nivo-slider.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="js/nivo-slider/themes/default/default.css" type="text/css" media="screen" />
@@ -88,7 +88,7 @@
 		<!-- Start of Saturday -->
 		<div class="daily-schedule">
 
-			<h3>Saturday, Jan. 1</h2>
+			<h3>Saturday, Jan. 1</h3>
 
 			<ul>
 				<li><b>1 p.m.</b> - <a href="information.php">Church Services</a></li>
@@ -102,8 +102,7 @@
 
 		</div>
 		<!-- End of Saturday -->
-
-
+			
 		<!-- Start of Sunday -->
 		<div class="daily-schedule">
 
