@@ -5,20 +5,7 @@
 	<h1><a href="index.php"><img src="images/kc-skyline.png" />KansasCity<b>Family</b>Weekend
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></h1>
 
-	<script>
-		function mainmenu(){
-			$(".navbar ul").css({display: "none"}); // Opera Fix
-			$(" .navbar li").hover(function(){
-				$(this).find('ul:first').css({visibility: "visible",display: "none"}).show(400);
-				},function(){
-				$(this).find('ul:first').css({visibility: "hidden"});
-				});
-		}
-
-		 $(document).ready(function(){
-			mainmenu();
-		});	
-	</script>
+	<script src="js/header-actions.js" type="text/javascript"></script>
 
 	<div>
 		<ul class="navbar">

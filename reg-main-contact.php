@@ -17,120 +17,19 @@
 	<title>Kansas City Regional Family Weekend: Registration</title>
 
 	<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
-	<link rel="stylesheet" type="text/css" media="screen" href="css/jquery-ui-1.8.16.custom.css" />
-
-	<script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
-	<script type="text/javascript">
-	function OnLoad() {
-		document.getElementById("txtFirstName").focus();
-		$("#jqToggle").hide("");
-	}
-
-	function CheckHousing() {
-		var cboHousing = document.getElementById("cboHousingType");
-		if (cboHousing.options[cboHousing.selectedIndex].value == '10') {
-			$("#jqToggle").show("drop");
-		} else {
-			$("#jqToggle").hide("puff");
-
-		}
-	}
-
-	function IsNumeric(sText) {
-	   var ValidChars = "0123456789.";
-	   var IsNumber = true;
-	   var Char;
-
-
-	   for (i = 0; i < sText.length && IsNumber == true; i++) {
-		  Char = sText.charAt(i);
-		  if (ValidChars.indexOf(Char) == -1) {
-			 IsNumber = false;
-		  }
-	   }
-
-	   return IsNumber;
-	}
-
-
-	function VerifyAndSubmit() {
-		// Check the fields to see if any are empty
-		if (document.getElementById("txtFirstName").value == '') {
-			alert("Please fill out First Name field, if you would...  Thanks!");
-			return false;
-		}
-
-		if (document.getElementById("txtLastName").value == '') {
-			alert("Please fill out the Last Name field, if you would...  Thanks!");
-			return false;
-		}
-
-
-		// Allow either phone or email to be used
-		if ((document.getElementById("txtEmail").value == '') &&
-			(document.getElementById("txtPhone").value == '')) {
-			alert("Please fill out either the Email or Phone Number field, if you would...  Thanks!");
-			return false;
-		}
-
-
-		if (document.getElementById("cboSex").value == '0') {
-			alert("Please fill out the Gender field, if you would...  Thanks!");
-			return false;
-		}
-
-		if (document.getElementById("cboAgeRange").value == '0') {
-			alert("Please fill out Description That Best Fits field, if you would...  Thanks!");
-			return false;
-		}
-
-		if (document.getElementById("cboHousingType").value == '0') {
-			alert("Please fill out the Housing Type field, if you would...  Thanks!");
-			return false;
-		}
-
-		var num = document.getElementById("txtNumInParty").value;
-		if (num == '') {
-			alert("Please fill out Number in Party field, if you would...  Thanks!");
-			return false;
-		}
-
-		if (IsNumeric(num) == false) {
-			alert("Please make sure the Number in Party field is a number.");
-			return false;
-		}
-
-		if (parseInt(num) < 1) {
-			alert("You know that's impossible... Please enter 1 or more for the Number in Party field.");
-			return false;
-		}
-
-		var cboHousing = document.getElementById("cboHousingType");
-		if (cboHousing.options[cboHousing.selectedIndex].value == '10') {
-			if (document.getElementById("txtHousedBy").value == '') {
-				alert("Please fill out the Housed By field.  It greatly helps our housing coordinator... Thanks!");
-				return false;
-			}
-		}
-
-		// Remove any apostrophes because they make PHP and database unhappy. :,(
-		document.getElementById("txtFirstName").value = document.getElementById("txtFirstName").value.replace("\'", "");
-		document.getElementById("txtLastName").value = document.getElementById("txtLastName").value.replace("\'", "");
-
-		document.getElementById("reg-contact").submit();
-	}
-	</script>
-
+	<? include "jqgrid-header.php" ?>
+	<script src="js/jquery.validate.min.js" type="text/javascript"></script>
+	
 </head>
 
-<body onload="OnLoad();">
+<body>
 
 	<!-- Add the header to each page -->
 	<? include ('header.php'); ?>
 
 	<!-- Start of Main Content Area -->
 
-	<div id="main-content">
+	<div class="main-content">
 
 		<h2>Registration</h2>
 
@@ -144,7 +43,7 @@
 		<form id="reg-contact" action="reg-family.php" method="post">
 
 			<fieldset><legend>Name:</legend>
-				<label for="txtFirstName" class="required">First Name:</label>
+				<label for="txtFirstName" class="required select-first">First Name:</label>
 				<input type="text" id="txtFirstName" name="txtFirstName" maxlength="255" size="30" />
 				<label for="txtLastName" class="required">Last Name:</label>
 				<input type="text" id="txtLastName" name="txtLastName" maxlength="255" size="30" />
@@ -178,7 +77,7 @@
 
 			<fieldset><legend>Housing:</legend>
 				<label for="cboHousingType" class="required">Choose a housing option:</legend>
-				<select id="cboHousingType" name="cboHousingType" onchange="CheckHousing();" onkeyup="CheckHousing();">
+				<select id="cboHousingType" name="cboHousingType" >
 					<option value="0" selected>--Please Select--</option>
 <?
 	$SQL = "	SELECT	string_id,
@@ -189,13 +88,17 @@
 	$result = mysql_query( $SQL ) or die("</select><br/>Couldn't execute query.".mysql_error()."");
 
 	while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
-		echo "\t\t\t\t\t<option value='".$row[string_id]."'>".$row[string]."</option>\n";
+		if ($row[string_id] == 10) {
+			echo "\t\t\t\t\t<option class='toggleOnSelected' value='".$row[string_id]."'>".$row[string]."</option>\n";
+		} else {
+			echo "\t\t\t\t\t<option value='".$row[string_id]."'>".$row[string]."</option>\n";
+		}
 	}
 ?>
 				</select>
 
 				<!-- Hide until user selects 'Already housed with brethren' -->
-				<div id="jqToggle">
+				<div class="toggle">
 					<label for="txtHousedBy">
 						If you've already made plans to stay with brethren, would you tell us their name?
 					</label>
@@ -209,7 +112,7 @@
 
 			<p class="required"><em> - Required field</em></p>
 
-			<input type="button" value="Next >" onclick="VerifyAndSubmit();" class="ui-state-default ui-corner-all" />
+			<input type="submit" value="Next >" />
 
 		</form>
 
@@ -221,6 +124,75 @@
 	<!-- Add the header to each page -->
 	<? include ('footer.php'); ?>
 
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".select-first").focus();
+			$(".toggle").hide("");
+			$("input:submit").button();
+		});
+
+		var toggle = function() {
+			//alert("hi!");
+			if ($("option:selected").is(".toggleOnSelected") == true) {
+				if ($(".toggle:hidden").length > 0)
+					$(".toggle").show("drop");
+			} else {
+				if ($(".toggle:visible").length > 0)
+					$(".toggle").hide("puff");
+			}
+		}
+
+		$('select').change(toggle).change();
+		$('select').keyup(toggle);
+		
+		jQuery.validator.addMethod("phoneUS", function(phone_number, element) {
+			phone_number = phone_number.replace(/\s+/g, ""); 
+			return this.optional(element) || phone_number.length > 9 &&
+				phone_number.match(/^(1-?)?(\([2-9]\d{2}\)|[2-9]\d{2})-?[2-9]\d{2}-?\d{4}$/);
+		}, "Please specify a valid phone number");
+
+		$('#reg-contact').validate({
+			rules: {
+				txtFirstName: {
+					required: true
+				},
+				txtLastName: {
+					required: true
+				},
+				txtEmail: {
+					required: function () {
+						return $("#txtPhone").val().length == 0;
+					},
+					email: true
+				},
+				txtPhone: {
+					required:  function () {
+						return $("#txtEmail").val().length == 0;
+					},
+					phoneUS: true
+				},
+				cboAgeRange: {
+					required: true,
+					min: 1
+				},
+				cboHousingType: {
+					required: true,
+					min: 1
+				},
+				txtHousedBy: {
+					required: function () {
+						return $("#cboHousingType").val() == 10;
+					}
+				},
+				txtNumInParty: {
+					required: true,
+					number: true,
+					min: 1,
+					max: 20
+				}
+			}
+		});
+	</script>
 </body>
 </html>
 
