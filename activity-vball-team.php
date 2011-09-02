@@ -204,357 +204,26 @@
 	<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
 
 	<? include "jqgrid-header.php" ?>
-	
-	<script type="text/javascript" src="js/grid-activity-vball-players.js"></script>
+		
 	<script type="text/javascript">
-		function onLoad() {
-			<?=$onLoadMessageBox?>
+		var activity_number = 2;
+		var activity_name = 'Volleyball';
+		var max_teams = 8; // this isn't currently used.
 
+		function onLoad() {
+			<? echo($onLoadMessageBox); ?>
+			
 			//document.getElementById("cboAction").selectedIndex = <?=$action_index?>;
 
 			cboAction_onChange();
 
 			return true;
 		}
-
-		function onSelectRow(id) {
-			var cboAction = document.getElementById("cboAction");
-			var action = cboAction.options[cboAction.selectedIndex].value;
-
-			switch (action) {
-				case "change_captain":
-				case "remove_player":
-					$("#players").setGridParam({url: "db-activity-players.php?activity=2&team_id=" + id});
-					$("#players").trigger("reloadGrid");
-			}
-		}
-
-		// This function handles what the page displays.
-		function cboAction_onChange() {
-			var cboAction = document.getElementById("cboAction");
-			var action = cboAction.options[cboAction.selectedIndex].value;
-
-			switch (action) {
-				case "view_teams":
-					document.getElementById("divTeams").style.display = "";
-					document.getElementById("divSep").style.display = "none";
-					document.getElementById("divPlayers").style.display = "none";
-					document.getElementById("divCreateTeam").style.display = "none";
-					document.getElementById("divAddPlayer").style.display = "none";
-					document.getElementById("divChangeName").style.display = "none";
-					document.getElementById("divChangeCaptain").style.display = "none";
-					document.getElementById("divChangeColor").style.display = "none";
-					document.getElementById("divRemovePlayer").style.display = "none";
-					document.getElementById("divDeleteTeam").style.display = "none";
-
-					$("#players").setGridParam({url: "db-activity-players.php?activity=2&team_id=NULL"});
-					$("#players").trigger("reloadGrid");
-
-					$("#teams").resetSelection();
-					$("#players").resetSelection();
-				break;
-
-				case "create_team":
-					document.getElementById("divTeams").style.display = "none";
-					document.getElementById("divSep").style.display = "none";
-					document.getElementById("divPlayers").style.display = "";
-					document.getElementById("divCreateTeam").style.display = "";
-					document.getElementById("divAddPlayer").style.display = "none";
-					document.getElementById("divChangeName").style.display = "none";
-					document.getElementById("divChangeCaptain").style.display = "none";
-					document.getElementById("divChangeColor").style.display = "none";
-					document.getElementById("divRemovePlayer").style.display = "none";
-					document.getElementById("divDeleteTeam").style.display = "none";
-
-					$("#players").setGridParam({url: "db-activity-players.php?activity=2&team_id=NULL"});
-					$("#players").trigger("reloadGrid");
-
-					$("#teams").resetSelection();
-					$("#players").resetSelection();
-				break;
-
-				case "add_player":
-					document.getElementById("divTeams").style.display = "";
-					document.getElementById("divSep").style.display = "";
-					document.getElementById("divPlayers").style.display = "";
-					document.getElementById("divCreateTeam").style.display = "none";
-					document.getElementById("divAddPlayer").style.display = "";
-					document.getElementById("divChangeName").style.display = "none";
-					document.getElementById("divChangeCaptain").style.display = "none";
-					document.getElementById("divChangeColor").style.display = "none";
-					document.getElementById("divRemovePlayer").style.display = "none";
-					document.getElementById("divDeleteTeam").style.display = "none";
-
-					$("#players").setGridParam({url: "db-activity-players.php?activity=2&team_id=NULL"});
-					$("#players").trigger("reloadGrid");
-
-					$("#teams").resetSelection();
-					$("#players").resetSelection();
-				break;
-
-				case "change_name":
-					document.getElementById("divTeams").style.display = "";
-					document.getElementById("divSep").style.display = "none";
-					document.getElementById("divPlayers").style.display = "none";
-					document.getElementById("divCreateTeam").style.display = "none";
-					document.getElementById("divAddPlayer").style.display = "none";
-					document.getElementById("divChangeName").style.display = "";
-					document.getElementById("divChangeCaptain").style.display = "none";
-					document.getElementById("divChangeColor").style.display = "none";
-					document.getElementById("divRemovePlayer").style.display = "none";
-					document.getElementById("divDeleteTeam").style.display = "none";
-
-					$("#teams").resetSelection();
-					$("#players").resetSelection();
-				break;
-
-				case "change_captain":
-					document.getElementById("divTeams").style.display = "";
-					document.getElementById("divSep").style.display = "";
-					document.getElementById("divPlayers").style.display = "";
-					document.getElementById("divCreateTeam").style.display = "none";
-					document.getElementById("divAddPlayer").style.display = "none";
-					document.getElementById("divChangeName").style.display = "none";
-					document.getElementById("divChangeCaptain").style.display = "";
-					document.getElementById("divChangeColor").style.display = "none";
-					document.getElementById("divRemovePlayer").style.display = "none";
-					document.getElementById("divDeleteTeam").style.display = "none";
-
-					$("#players").setGridParam({url: "db-activity-players.php?activity=2"});
-					$("#players").trigger("reloadGrid");
-
-					$("#teams").resetSelection();
-					$("#players").resetSelection();
-				break;
-
-				case "change_color":
-					document.getElementById("divTeams").style.display = "";
-					document.getElementById("divSep").style.display = "none";
-					document.getElementById("divPlayers").style.display = "none";
-					document.getElementById("divCreateTeam").style.display = "none";
-					document.getElementById("divAddPlayer").style.display = "none";
-					document.getElementById("divChangeName").style.display = "none";
-					document.getElementById("divChangeCaptain").style.display = "none";
-					document.getElementById("divChangeColor").style.display = "";
-					document.getElementById("divRemovePlayer").style.display = "none";
-					document.getElementById("divDeleteTeam").style.display = "none";
-
-					$("#teams").resetSelection();
-					$("#players").resetSelection();
-				break;
-
-				case "remove_player":
-					document.getElementById("divTeams").style.display = "";
-					document.getElementById("divSep").style.display = "";
-					document.getElementById("divPlayers").style.display = "";
-					document.getElementById("divCreateTeam").style.display = "none";
-					document.getElementById("divAddPlayer").style.display = "none";
-					document.getElementById("divChangeName").style.display = "none";
-					document.getElementById("divChangeCaptain").style.display = "none";
-					document.getElementById("divChangeColor").style.display = "none";
-					document.getElementById("divRemovePlayer").style.display = "";
-					document.getElementById("divDeleteTeam").style.display = "none";
-
-					$("#players").setGridParam({url: "db-activity-players.php?activity=2"});
-					$("#players").trigger("reloadGrid");
-
-					$("#teams").resetSelection();
-					$("#players").resetSelection();
-				break;
-
-				case "delete_team":
-					document.getElementById("divTeams").style.display = "";
-					document.getElementById("divSep").style.display = "none";
-					document.getElementById("divPlayers").style.display = "none";
-					document.getElementById("divCreateTeam").style.display = "none";
-					document.getElementById("divAddPlayer").style.display = "none";
-					document.getElementById("divChangeName").style.display = "none";
-					document.getElementById("divChangeCaptain").style.display = "none";
-					document.getElementById("divChangeColor").style.display = "none";
-					document.getElementById("divRemovePlayer").style.display = "none";
-					document.getElementById("divDeleteTeam").style.display = "";
-
-					$("#teams").resetSelection();
-					$("#players").resetSelection();
-				break;
-
-			}
-
-			return true;
-		}
-
-		function getSelectedItems(objGrid) {
-			var strRtnValue = "";
-			var arrData = objGrid.getGridParam('selarrrow');
-			if (arrData.length > 0) {
-				for (var i = 0; i < arrData.length; i++) {
-					strRtnValue += (arrData[i] + ",");
-				}
-
-				// Now strip out the trailing comma
-				if (strRtnValue != "") {
-					strRtnValue = strRtnValue.substr(0, strRtnValue.length - 1);
-				}
-			} else {
-				var selRow = objGrid.getGridParam('selrow');
-				if (selRow == null) {
-					return "";
-				}
-
-				strRtnValue = selRow;
-			}
-
-			return strRtnValue;
-		}
-
-		function VerifyAndSubmit() {
-
-			var cboAction = document.getElementById("cboAction");
-			var action = cboAction.options[cboAction.selectedIndex].value;
-			document.getElementById("hidActionIndex").value = cboAction.selectedIndex;
-
-			switch (action) {
-				case "view_teams":
-					return false;
-				break;
-
-				case "create_team":
-					// Check to see if the max has been reached.
-					//if (<?=$team_count?> == 8) {
-					//	alert("Sorry...  The maximum number of teams have been created. Check with one of the other teams to see if you can join them. Or bug Jake to make room for more teams.");
-					//	return false;
-					//}
-
-					if (document.getElementById("team_name").value == "") {
-						alert("Please enter a team name.");
-						return false;
-					}
-
-					var person_id = getSelectedItems($("#players"));
-					if (person_id == "") {
-						alert("Please select at least one player.");
-						return false;
-					}
-
-					if (person_id.indexOf(',') >= 0) {
-						alert("Please select only one player to be captain. Can't have too many roosters ruling the pen...");
-						return false;
-					}
-
-					document.getElementById("gridPlayer").value = person_id;
-				break;
-
-				case "add_player":
-					var team_id = getSelectedItems($("#teams"));
-					if (team_id == "") {
-						alert("Please select at least one team.");
-						return false;
-					}
-					document.getElementById("gridTeam").value = team_id;
-
-					var person_id = getSelectedItems($("#players"));
-					if (person_id == "") {
-						alert("Please select at least one player.");
-						return false;
-					}
-
-					document.getElementById("gridPlayer").value = person_id;
-				break;
-
-				case "change_name":
-					if (document.getElementById("change_name").value == "") {
-						alert("Please enter a team name.");
-						return false;
-					}
-
-					var team_id = getSelectedItems($("#teams"));
-					if (team_id == "") {
-						alert("Please select at least one team.");
-						return false;
-					}
-					document.getElementById("gridTeam").value = team_id;
-				break;
-
-				case "change_captain":
-					var team_id = getSelectedItems($("#teams"));
-					if (team_id == "") {
-						alert("Please select at least one team.");
-						return false;
-					}
-					document.getElementById("gridTeam").value = team_id;
-
-					var person_id = getSelectedItems($("#players"));
-					if (person_id == "") {
-						alert("Please select at least one player.");
-						return false;
-					}
-
-					if (person_id.indexOf(',') >= 0) {
-						alert("Please select only one player to be captain. Can't have too many roosters ruling the pen...");
-						return false;
-					}
-
-					document.getElementById("gridPlayer").value = person_id;
-				break;
-
-				case "change_color":
-					if (document.getElementById("change_color").value == "") {
-						alert("Please enter a team color.");
-						return false;
-					}
-
-					var team_id = getSelectedItems($("#teams"));
-					if (team_id == "") {
-						alert("Please select at least one team.");
-						return false;
-					}
-					document.getElementById("gridTeam").value = team_id;
-				break;
-
-				case "remove_player":
-					var person_id = getSelectedItems($("#players"));
-					if (person_id == "") {
-						alert("Please select at least one player.");
-						return false;
-					}
-					document.getElementById("gridPlayer").value = person_id;
-
-					if (confirm ("Are you sure you want to remove this player?") == false) {
-						return false;
-					}
-				break;
-
-				case "delete_team":
-					if (confirm ("Are you sure you want to delete this team?") == false) {
-						return false;
-					}
-
-					var team_id = getSelectedItems($("#teams"));
-					if (team_id == "") {
-						alert("Please select at least one team.");
-						return false;
-					}
-					document.getElementById("gridTeam").value = team_id;
-				break;
-			}
-
-			// Replace naughty characters with more pleasing ones.
-			document.getElementById("team_name").value = document.getElementById("team_name").value.replace(new RegExp("\'", "g"), "&#39;");
-			document.getElementById("team_name").value = document.getElementById("team_name").value.replace(new RegExp("&", "g"), "&amp;");
-			document.getElementById("team_name").value = document.getElementById("team_name").value.replace(new RegExp("\"", "g"), "&quot;");
-			document.getElementById("shirt_color").value = document.getElementById("shirt_color").value.replace(new RegExp("\'", "g"), "&#39;");
-			document.getElementById("shirt_color").value = document.getElementById("shirt_color").value.replace(new RegExp("&", "g"), "&amp;");
-			document.getElementById("shirt_color").value = document.getElementById("shirt_color").value.replace(new RegExp("\"", "g"), "&quot;");
-			document.getElementById("change_name").value = document.getElementById("change_name").value.replace(new RegExp("\'", "g"), "&#39;");
-			document.getElementById("change_name").value = document.getElementById("change_name").value.replace(new RegExp("&", "g"), "&amp;");
-			document.getElementById("change_name").value = document.getElementById("change_name").value.replace(new RegExp("\"", "g"), "&quot;");
-			document.getElementById("change_color").value = document.getElementById("change_color").value.replace(new RegExp("\'", "g"), "&#39;");
-			document.getElementById("change_color").value = document.getElementById("change_color").value.replace(new RegExp("&", "g"), "&amp;");
-			document.getElementById("change_color").value = document.getElementById("change_color").value.replace(new RegExp("\"", "g"), "&quot;");
-
-			document.getElementById("activity-vball-team").submit();
-		}
 	</script>
+
+	<script src="js/grid-activity-teams.js" type="text/javascript" ></script>
+	<script src="js/grid-activity-players.js" type="text/javascript"></script>
+	<script src="js/team-building.js" type="text/javascript" ></script>
 
 </head>
 
@@ -562,7 +231,7 @@
 
 	<p><b>What would you like to do?</b></p>
 
-	<form id="activity-vball-team" action="activity-vball-team.php" method="post">
+	<form id="activity-team" action="activity-vball-team.php" method="post">
 
 		<select id="cboAction" name="cboAction" onchange="cboAction_onChange();">
 			<option value="view_teams">View Current Teams</option>
@@ -632,14 +301,12 @@
 		<div style="position:relative;width:760px;height:250px;">
 			<div id="divTeams" style="float:left;display:none;">
 				<table id="teams"></table>
-				<div id="teams-pager"></div>
 				<input type="hidden" id="gridTeam" name="gridTeam" />
 				<br/>
 			</div>
 			<div id="divSep" style="float:left;width:15px">&nbsp;&nbsp;&nbsp;&nbsp;</div>
 			<div id="divPlayers" style="float:left;display:none">
 				<table id="players"></table>
-				<div id="players-pager"></div>
 				<input type="hidden" id="gridPlayer" name="gridPlayer" />
 				<br/>
 			</div>

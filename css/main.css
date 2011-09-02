@@ -1,6 +1,6 @@
 /** Default Styles **/
 body {
-	font-family: Tahoma, Helvetica;
+	font-family: Helvetica, sans-serif;
 	font-size: 1em;
 	margin: 0em auto;
 	width: 60em;
@@ -62,10 +62,6 @@ h3 {
 
 /** Navigation Bar **/
 
-.navbar {
-	margin-bottom: .5em;
-}
-
 .navbar, .navbar ul {
 	line-height: 1.5em;
 	line-style-position: outside;
@@ -85,7 +81,6 @@ h3 {
 }
 
 .navbar a:hover {
-	/*text-decoration: none;*/
 }
 
 .navbar li {

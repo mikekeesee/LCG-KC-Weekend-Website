@@ -20,7 +20,7 @@
 	<script type="text/javascript">
 		$(window).load(function() {
 			$('#picture-slider').nivoSlider({
-				effect: 'slideInLeft',
+				effect: 'slideInRight',
 				pauseTime: 5000
 			});
 		});
@@ -55,8 +55,26 @@
 		<div class="slider-wrapper theme-default">
     		<div class="ribbon"></div>
 			<div id="picture-slider" class="nivoSlider">
+				<img src="images/kcweekend_1.jpg" alt="" />
+				<img src="images/kcweekend_2.jpg" alt="" />
+				<img src="images/kcweekend_3.jpg" alt="" />
+				<img src="images/kcweekend_4.jpg" alt="" />
+				<img src="images/kcweekend_5.jpg" alt="" />
+				<img src="images/kcweekend_7.jpg" alt="" />
+				<img src="images/kcweekend_9.jpg" alt="" />
 				<img src="images/kcweekend_10.jpg" alt="" />
-				<img src="images/kcweekend_11.jpg" alt="" title="#htmlcaption" />
+				<img src="images/kcweekend_12.jpg" alt="" />
+				<img src="images/kcweekend_13.jpg" alt="" />
+				<img src="images/kcweekend_14.jpg" alt="" />
+				<img src="images/kcweekend_15.jpg" alt="" />
+				<img src="images/kcweekend_16.jpg" alt="" />
+				<img src="images/kcweekend_17.jpg" alt="" />
+				<img src="images/kcweekend_18.jpg" alt="" />
+				<img src="images/kcweekend_19.jpg" alt="" />
+				<img src="images/kcweekend_20.jpg" alt="" />
+				<img src="images/kcweekend_21.jpg" alt="" />
+				<img src="images/kcweekend_22.jpg" alt="" />
+				<img src="images/kcweekend_24.jpg" alt="" />
 			</div>
 		</div>
 

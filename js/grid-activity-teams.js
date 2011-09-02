@@ -1,6 +1,9 @@
+// Grid for displaying teams for a specified activity. //
+// Define 'var activity_type' and 'var activity_name' prior to using this on the page consuming it.
+
 jQuery(document).ready(function() {
 	jQuery("#teams").jqGrid({
-		url:'db-activity-teams.php?activity=2',
+		url:'db-activity-teams.php?activity=' + activity_number,
 		datatype: "xml",
 		mtype: "GET",
 		colNames:['Team Name','Captain','Team Color'],
@@ -23,29 +26,6 @@ jQuery(document).ready(function() {
 			 width : [150,150] }
 			],
 		onSelectRow: function(id) {onSelectRow(id);},
-		caption:"Volleyball Teams"
-	});
-});
-
-jQuery(document).ready(function() {
-	jQuery("#players").jqGrid({
-		url:'db-activity-players.php?activity=2',
-		datatype: "xml",
-		mtype: "GET",
-		colNames:['Last Name', 'First Name','Team Name'],
-		colModel:[
-			{name:'last_name', index:'last_name', width:100},
-			{name:'first_name', index:'first_name', width:100},
-			{name:'team_name', index:'team_name', width:125}
-			],
-		width: 330,
-		height: 230,
-		rowNum: 100,
-		sortname: 'last_name,first_name',
-		sortorder: 'asc',
-		viewrecords: true,
-		multiselect: true,
-		hidegrid: false,
-		caption:"Volleyball Players"
+		caption: activity_name + " Teams"
 	});
 });

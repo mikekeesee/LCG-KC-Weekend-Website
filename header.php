@@ -39,4 +39,6 @@
 	<div class="clear-float"></div>
 </div>
 
+<br />
+
 <!-- End of Page Header -->

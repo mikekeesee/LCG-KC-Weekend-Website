@@ -30,15 +30,9 @@
 		var cboHousing = document.getElementById("cboHousingType");
 		if (cboHousing.options[cboHousing.selectedIndex].value == '10') {
 			$("#jqToggle").show("drop");
-//			document.getElementById("txtHousedBy").style.display = "";
-//			document.getElementById("lblHousedBy").style.display = "";
-//			document.getElementById("tdHousedBy").style.display = "";
 		} else {
 			$("#jqToggle").hide("puff");
 
-//			document.getElementById("txtHousedBy").style.display = "none";
-//			document.getElementById("lblHousedBy").style.display = "none";
-//			document.getElementById("tdHousedBy").style.display = "none";
 		}
 	}
 
