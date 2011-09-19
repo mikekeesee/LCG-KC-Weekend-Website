@@ -9,7 +9,7 @@
 	mysql_connect(localhost,$username,$password) or die("Unable to connect to database");
 	mysql_select_db($database) or die("Unable to select database");
 
-	$mc_person_id	= $_COOKIE["mc_person_id"];
+	$mc_person_id = $_COOKIE["mc_person_id"];
 	$num_in_party = $_COOKIE["num_in_party"];
 	$housing_type = $_COOKIE["housing_type"];
 
@@ -47,8 +47,8 @@
 				FROM Housing_Contact
 				WHERE Person_ID = ".$mc_person_id;
 
-		$result = mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute SELECT housing contract count query.".mysql_error());
-		$row = mysql_fetch_array($result,MYSQL_ASSOC);
+		$result = mysql_query( $SQL ) or die($SQL."\n\nCouldn't execute SELECT housing contract count query.".mysql_error()); //"Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //
+		$row = mysql_fetch_array($result, MYSQL_ASSOC);
 		$count = $row['count'];
 
 		if ($count > 0) {
@@ -58,7 +58,7 @@
 					FROM Housing_Contact
 					WHERE Person_ID = ".$mc_person_id;
 
-			$result = mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute SELECT housing contract query.".mysql_error());
+			$result = mysql_query( $SQL ) or die($SQL."\n\nCouldn't execute SELECT housing contract query.".mysql_error()); //"Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute SELECT housing contract query.".mysql_error());
 			$row = mysql_fetch_array($result,MYSQL_ASSOC);
 			$housing_id = $row['housing_id'];
 
@@ -86,7 +86,7 @@
 							Other = '".$housing_other."'
 					WHERE	Housing_ID = ".$housing_id;
 
-			mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute SELECT family person query.".mysql_error());
+			mysql_query( $SQL ) or die($SQL."\n\nCouldn't execute SELECT family person query.".mysql_error());//"Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //
 
 		} else {
 
@@ -138,7 +138,7 @@
 						".$housing_teens_ind.",
 						'".$housing_other."')";
 
-			mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute INSERT Housing_Contact query.".mysql_error());
+			mysql_query( $SQL ) or die($SQL."\n\nCouldn't execute INSERT Housing_Contact query.".mysql_error());//"Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //
 		}
 	}
 ?>
@@ -153,20 +153,20 @@
 
 	<title>Kansas City Regional Family Weekend: Registration</title>
 
-	<link rel="stylesheet" href="page.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
+
+	<? include "jqgrid-header.php" ?>
+	<script src="js/jquery.validate.min.js" type="text/javascript"></script>	
 </head>
 
-<body onload="OnLoad();">
-
-<div id="container">
+<body>
 
 	<!-- Add the header to each page -->
 	<? include ('header.php'); ?>
 
 	<!-- Start of Main Content Area -->
 
-	<div id="maincontent_container">
-	<div id="maincontent">
+	<div class="main-content">
 
 		<h2 class="standout">Registration</h2>
 
@@ -212,16 +212,11 @@
 		<br /><br /><br />
 
 	</div>
-	</div>
-
-	<div class="clearthis">&nbsp;</div>
 
 	<!-- End of Main Content Area -->
 
 	<!-- Add the header to each page -->
 	<? include ('footer.php'); ?>
-
-</div>
 
 </body>
 </html>

@@ -24,6 +24,7 @@
 	$num_in_party = $_POST['txtNumInParty'];
 	setcookie("num_in_party", $num_in_party, $expire);
 
+	$dining_id = $_POST['cboDining'];
 
 	// Verify there is not already an identical person in the system
 	$SQL = "SELECT	COUNT(*) as count
@@ -59,7 +60,7 @@
 						Phone = '".$main_contact_phone."'
 				WHERE	Person_ID = ".$mc_person_id;
 
-		$result = mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute main contact UPDATE person query.".mysql_error());
+		$result = mysql_query( $SQL."\n\nCouldn't execute main contact UPDATE person query.".mysql_error()); //$SQL ) or die("Sorry.  There //was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //
 
 	// If they're a new registrant, enter their information
 	} else {
@@ -81,7 +82,7 @@
 					 '".$main_contact_email."',
 					 '".$main_contact_phone."')";
 
-		mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute Main Contact Person INSERT query.".mysql_error());
+		mysql_query( $SQL."\n\nCouldn't execute Main Contact Person INSERT query.".mysql_error()); //$SQL ) or die("Sorry.  There was a //database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //
 
 		$mc_person_id = mysql_insert_id();
 	}
@@ -110,10 +111,11 @@
 		$SQL = "UPDATE	Registration
 				SET		Housing_Type = ".$housing_type.",
 						Number_In_Party = ".$num_in_party.",
-						Housed_By = '".$housed_by."'
+						Housed_By = '".$housed_by."',
+						Dining_ID = ".$dining_id."
 				WHERE	Registration_ID = ".$reg_id;
 
-		mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute registration UPDATE query.".mysql_error());
+		mysql_query( $SQL."\n\nCouldn't execute registration UPDATE query.".mysql_error()); //$SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he //left a bug in his code."); //$SQL."\n\nCouldn't execute registration UPDATE query.".mysql_error());
 
 	} else {
 		// Insert the Registration table data
@@ -122,15 +124,17 @@
 					 Main_Contact_Person_ID,
 					 Housing_Type,
 					 Number_In_Party,
-					 Housed_By)
+					 Housed_By,
+					 Dining_ID)
 				VALUES
 					(NULL,
 					 ".$mc_person_id.",
 					 ".$housing_type.",
 					 ".$num_in_party.",
-					 '".$housed_by."')";
+					 '".$housed_by."',
+					 ".$dining_id.")";
 
-		mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute Registration INSERT query.".mysql_error());
+		mysql_query( $SQL."\n\nCouldn't execute Registration INSERT query.".mysql_error());//$SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he //left a bug in his code."); //$SQL."\n\nCouldn't execute Registration INSERT query.".mysql_error());
 
 		$reg_id = mysql_insert_id();
 	}
@@ -149,65 +153,22 @@
 
 	<title>Kansas City Regional Family Weekend - Family</title>
 
-	<link rel="stylesheet" href="page.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
 
-	<script type="text/javascript">
-	function OnLoad() {
-	<? if ($num_in_party <= 1) { ?>
-		document.getElementById("reg-family").submit();
-	<? } else { ?>
-		document.getElementById("txtFirstName1").focus();
-		return true;
-	<? } ?>
-	}
-
-	function VerifyAndSubmit() {
-		// Check the fields to see if any are empty
-		for (var i=1; i < <?=$num_in_party?>; i++) {
-			if (document.getElementById("txtFirstName" + i.toString()).value == '') {
-				alert("Please fill out Family Member #" + i + "'s First Name field, if you would... I would hope you'd know them on a first-name basis by now!");
-				return false;
-			}
-
-			if (document.getElementById("txtLastName" + i.toString()).value == '') {
-				alert("Please fill out Family Member #" + i + "'s Last Name field...  I would hope you'd know their names by now!");
-				return false;
-			}
-
-			if (document.getElementById("cboSex" + i.toString()).value == '0') {
-				alert("Please fill out Family Member #" + i + "'s Gender field. I would think that's public knowledge...");
-				return false;
-			}
-
-			if (document.getElementById("cboAgeRange" + i.toString()).value == '0') {
-				alert("Please fill out Family Member #" + i + "'s Description That Best Fits field.");
-				return false;
-			}
-
-			// Remove any apostrophes because they make PHP and database unhappy. :,(
-			document.getElementById("txtFirstName" + i.toString()).value = document.getElementById("txtFirstName" + i.toString()).value.replace("\'", "");
-			document.getElementById("txtLastName" + i.toString()).value = document.getElementById("txtLastName" + i.toString()).value.replace("\'", "");
-		}
-
-		document.getElementById("reg-family").submit();
-	}
-	</script>
-
+	<? include "jqgrid-header.php" ?>
+	<script src="js/jquery.validate.min.js" type="text/javascript"></script>
 </head>
 
-<body onload="OnLoad();">
-
-<div id="container">
+<body>
 
 	<!-- Add the header to each page -->
 	<? include ('header.php'); ?>
 
 	<!-- Start of Main Content Area -->
 
-	<div id="maincontent_container">
-	<div id="maincontent">
+	<div class="main-content">
 
-		<h2 class="standout">Registration</h2>
+		<h2>Registration</h2>
 
 		<p>We are trying to collect more information about who's attending the KC Weekend and what
 		demographics to target in the future. This year, we're trying to add activities that all ages
@@ -224,59 +185,27 @@
 		<br/>
 
 		<form id="reg-family" action="reg-housing.php" method="post">
-		<table border="0">
 
 <?	for ($i = 1; $i < $num_in_party; $i++) { ?>
-			<tr></tr><tr>
-				<td>
-					<h3><u>Family Member #<?=($i + 1)?></u></h3>
-				</td>
-			</tr>
-			<tr>
-				<td class="label">
-					*First Name:
-				</td>
-				<td>
-					<input type="text" id="txtFirstName<?=$i?>" name="txtFirstName<?=$i?>" maxlength="255" size="30" />
-				</td>
-				<td class="label">
-					*Last Name:
-				</td>
-				<td>
-					<input type="text" id="txtLastName<?=$i?>" name="txtLastName<?=$i?>" maxlength="255" size="30" />
-				</td>
-			</tr>
-			<tr>
-				<td class="label">
-					Email (if different):
-				</td>
-				<td>
-					<input type="text" id="txtEmail<?=$i?>" name="txtEmail<?=$i?>" maxlength="255" size="30" />
-				</td>
-				<td class="label">
-					Phone (if different)  [XXX-XXX-XXXX]:
-				</td>
-				<td>
-					<input type="text" id="txtPhone<?=$i?>" name="txtPhone<?=$i?>" maxlength="255" size="30" />
-				</td>
-			</tr>
-			<tr>
-				<td class="label">
-					*Gender:
-				</td>
-				<td>
-					<select id="cboSex<?=$i?>" name="cboSex<?=$i?>">
-						<option value="0" selected>--Please Select--</option>
-						<option value="2">Female</option>
-						<option value="1">Male</option>
-					</select>
-				</td>
-				<td class="label">
-					*Description That Fits Best:
-				</td>
-				<td>
-					<select id="cboAgeRange<?=$i?>" name="cboAgeRange<?=$i?>">
-						<option value="0" selected>--Please Select--</option>
+			<fieldset><legend>Family Member #<?=($i + 1)?></legend>
+				<label for="txtFirstName" class="required">First Name:</label>
+<?		if ($i == 1) { ?>
+				<input type="text" class="select-first" id="txtFirstName<?=$i?>" name="txtFirstName<?=$i?>" maxlength="255" size="30" />
+<?		} else { ?>
+				<input type="text" id="txtFirstName<?=$i?>" name="txtFirstName<?=$i?>" maxlength="255" size="30" />
+<?		} ?>
+				<label for="txtLastName" class="required">Last Name:</label>
+				<input type="text" id="txtLastName<?=$i?>" name="txtLastName<?=$i?>" maxlength="255" size="30" />
+
+				<label for="txtEmail" class="required">Email (if different):</label>
+				<input type="text" id="txtEmail<?=$i?>" name="txtEmail<?=$i?>" maxlength="255" size="30" />
+
+				<label for="txtEmail" class="required">Phone (if different)  [XXX-XXX-XXXX]:</label>
+				<input type="text" id="txtPhone<?=$i?>" name="txtPhone<?=$i?>" maxlength="255" size="30" />
+
+				<label for="txtEmail" class="required">Description That Fits Best:</label>
+				<select id="cboAgeRange<?=$i?>" name="cboAgeRange<?=$i?>">
+					<option value="0" selected>--Please Select--</option>
 <?
 		// Get the database connection information
 		$SQL = "	SELECT	string_id,
@@ -287,36 +216,93 @@
 		$result = mysql_query( $SQL ) or die("</select><br/>Couldn't execute query.".mysql_error());
 
 		while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
-			echo "\t\t\t\t\t\t<option value='".$row[string_id]."'>".$row[string]."</option>\n";
+			echo "\t\t\t\t\t<option value='".$row[string_id]."'>".$row[string]."</option>\n";
 		}
 ?>
-					</select>
-				</td>
-			</tr>
+				</select>
+			</fieldset>
 <?
 	}
 ?>
-		</table>
 
-		<p><em>* - Required field</em></p>
 		<hr />
 		<br />
 		<input type="button" value="< Back" onclick="history.go(-1);" />
-		<input type="button" value="Next >" onclick="VerifyAndSubmit();" />
+		<input type="submit" value="Next >" />
 		</form>
 
 	</div>
-	</div>
-
-	<div class="clearthis">&nbsp;</div>
 
 	<!-- End of Main Content Area -->
 
 	<!-- Add the header to each page -->
 	<? include ('footer.php'); ?>
 
-</div>
+	<script type="text/javascript">
+		$(document).ready(function() {
+		<? if ($num_in_party <= 1) { ?>
+			document.getElementById("reg-family").submit();
+		<? } else { ?>
+			$(".select-first").focus();
+			$("input:button").button();
+			$("input:submit").button();
+		<? } ?>
+		});
 
+		$('#reg-family').validate({
+			rules: {
+<?	for ($i = 1; $i < $num_in_party; $i++) { ?>
+				txtFirstName<?=$i?>: {
+					required: true
+				},
+				txtLastName<?=$i?>: {
+					required: true
+				},
+				cboAgeRange<?=$i?>: {
+					required: true,
+					min: 1
+<?		if ($i < $num_in_party - 1) { ?>
+				},
+<?		} else { ?>
+				}
+<?		}
+	} ?>
+			}
+		});
+		
+	/*$('#reg-family').submit(function() {
+		// Check the fields to see if any are empty
+		for (var i=1; i < <?=$num_in_party?>; i++) {
+			//if (document.getElementById("txtFirstName" + i.toString()).value == '') {
+			//	alert("Please fill out Family Member #" + i + "'s First Name field, if you would... I would hope you'd know them on a first-name basis by now!");
+			//	return false;
+			//}
+
+			//if (document.getElementById("txtLastName" + i.toString()).value == '') {
+			//	alert("Please fill out Family Member #" + i + "'s Last Name field...  I would hope you'd know their names by now!");
+			//	return false;
+			//}
+
+			//if (document.getElementById("cboSex" + i.toString()).value == '0') {
+			//	alert("Please fill out Family Member #" + i + "'s Gender field. I would think that's public knowledge...");
+			//	return false;
+			//}
+
+			//if (document.getElementById("cboAgeRange" + i.toString()).value == '0') {
+			//	alert("Please fill out Family Member #" + i + "'s Description That Best Fits field.");
+			//	return false;
+			//}
+
+			// Remove any apostrophes because they make PHP and database unhappy. :,(
+			document.getElementById("txtFirstName" + i.toString()).value = document.getElementById("txtFirstName" + i.toString()).value.replace("\'", "");
+			document.getElementById("txtLastName" + i.toString()).value = document.getElementById("txtLastName" + i.toString()).value.replace("\'", "");
+		}
+
+		//document.getElementById("reg-family").submit();
+	});*/
+		
+	</script>
+	
 </body>
 </html>
 

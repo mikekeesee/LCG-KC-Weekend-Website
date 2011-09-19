@@ -17,7 +17,6 @@
 		$last[$i]	= $_POST["txtLastName".$i];
 		$email[$i]	= $_POST["txtEmail".$i];
 		$phone[$i]	= $_POST["txtPhone".$i];
-		$sex[$i]	= $_POST["cboSex".$i];
 		$age[$i]	= $_POST["cboAgeRange".$i];
 	}
 
@@ -57,7 +56,6 @@
 			$SQL = "UPDATE	Person
 					SET		First_Name = '".$first[$i]."',
 							Last_Name = '".$last[$i]."',
-							Sex = ".$sex[$i].",
 							Age_Range = ".$age[$i].",
 							Email = '".$email[$i]."',
 							Phone = '".$phone[$i]."'
@@ -72,7 +70,6 @@
 						(Person_ID,
 						 First_Name,
 						 Last_Name,
-						 Sex,
 						 Age_Range,
 						 Email,
 						 Phone)
@@ -80,7 +77,6 @@
 						(NULL,
 						 '".$first[$i]."',
 						 '".$last[$i]."',
-						 ".$sex[$i].",
 						 ".$age[$i].",
 						 '".$email[$i]."',
 						 '".$phone[$i]."')";
@@ -111,86 +107,22 @@
 
 	<title>Kansas City Regional Family Weekend - Housing</title>
 
-	<link rel="stylesheet" href="page.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
 
-	<script type="text/javascript">
-	function OnLoad() {
-	<? if ($housing_type == 8) { ?>
-		document.getElementById("chkHousing").focus();
-		return true;
-	<? } else { ?>
-		document.getElementById("reg-housing").submit();
-	<? } ?>
-	}
-
-	function CheckClick(check) {
-		if (check.checked == true) {
-			document.getElementById("divHousingForm").style.display = "";
-		} else {
-			document.getElementById("divHousingForm").style.display = "none";
-		}
-	}
-
-	function IsNumeric(sText) {
-	   var ValidChars = "0123456789.";
-	   var IsNumber = true;
-	   var Char;
-
-
-	   for (i = 0; i < sText.length && IsNumber == true; i++) {
-		  Char = sText.charAt(i);
-		  if (ValidChars.indexOf(Char) == -1) {
-			 IsNumber = false;
-		  }
-	   }
-
-	   return IsNumber;
-	}
-
-	function VerifyAndSubmit() {
-		// Check the fields to see if any are empty
-		if (document.getElementById("chkHousing").checked == true) {
-			if (document.getElementById("house_more_ind").checked == true) {
-				if (document.getElementById("how_many").value == '' ||
-					IsNumeric(document.getElementById("how_many").value) == false) {
-					alert("Please enter a number into the 'How many more guests could you house?' field.");
-					return false;
-				}
-			} else {
-				if (document.getElementById("guest_names").value == '') {
-					alert("If you're already full, our Housing Coordinator would love to know who's staying with you.");
-					return false;
-				}
-			}
-		}
-
-		// Remove any apostrophes because they make PHP and database unhappy. :,(
-		document.getElementById("address1").value = document.getElementById("address1").value.replace("\'", "");
-		document.getElementById("address2").value = document.getElementById("address2").value.replace("\'", "");
-		document.getElementById("city").value = document.getElementById("city").value.replace("\'", "");
-		document.getElementById("guest_names").value = document.getElementById("guest_names").value.replace("\'", "");
-		document.getElementById("pets_info").value = document.getElementById("pets_info").value.replace("\'", "");
-		document.getElementById("other").value = document.getElementById("other").value.replace("\'", "");
-
-		document.getElementById("reg-housing").submit();
-	}
-	</script>
-
+	<? include "jqgrid-header.php" ?>
+	<script src="js/jquery.validate.min.js" type="text/javascript"></script>
 </head>
 
-<body onload="OnLoad();">
-
-<div id="container">
+<body>
 
 	<!-- Add the header to each page -->
 	<? include ('header.php'); ?>
 
 	<!-- Start of Main Content Area -->
 
-	<div id="maincontent_container">
-	<div id="maincontent">
+	<div class="main-content">
 
-		<h2 class="standout">Registration</h2>
+		<h2>Registration</h2>
 
 		<p>As it has been in years past, many of our guests do stay in a hotel or with family.
 		However, there are many more that do not have family in the area, nor do they have the
@@ -206,164 +138,60 @@
 		<h3>Housing Information:</h3>
 		<br/>
 		<form id="reg-housing" action="reg-submit.php" method="post">
-		<label><b><input type="checkbox" id="chkHousing" name="chkHousing" onclick="CheckClick(this);" />&nbsp;*If you would like to house or are already housing people, check this box.</b></label>
+		<label for="chkHousing"><b><input type="checkbox" class="select-first" id="chkHousing" name="chkHousing" />&nbsp;If you would like to house or are already housing people, check this box.</b></label>
 		<br/>
 		<br/>
 
-		<div id="divHousingForm" style="display:none">
-		<table border="0">
-			<tr>
-				<td>
-					<h3><u>Your Location:</u></h3>
-				</td>
-			</tr>
-		</table>
-		<table border="0">
-			<tr>
-				<td class="label">
-					Address 1:
-				</td>
-				<td>
-					<input type="text" id="address1" name="address1" maxlength="255" size="30" />
-				</td>
-			</tr>
-			<tr>
-				<td class="label">
-					Address 2:
-				</td>
-				<td>
-					<input type="text" id="address2" name="address2" maxlength="255" size="30" />
-				</td>
-			</tr>
-			<tr>
-				<td class="label">
-					City:
-				</td>
-				<td>
-					<input type="text" id="city" name="city" maxlength="255" size="30" />
-				</td>
-			</tr>
-			<tr>
-				<td class="label">
-					State:
-				</td>
-				<td>
-					<input type="text" id="state" name="state" maxlength="255" size="2" />
-				</td>
-			</tr>
-			<tr>
-				<td class="label">
-					Zip Code:
-				</td>
-				<td>
-					<input type="text" id="zip" name="zip" maxlength="255" size="10" />
-				</td>
-			</tr>
-		</table>
-		<table border="0">
-			<tr>
-				<td>
-					<h3><u>Guest Information:</u></h3>
-				</td>
-			</tr>
-			<tr>
-				<td class="label">
-					<label><input type="checkbox" id="house_more_ind" name="house_more_ind" />  *Can you house more guests?</label>
-				</td>
-			</tr>
-			<tr>
-				<td class="label">
-					*How many more guests could you house?:
-				</td>
-				<td>
-					<input type="text" id="how_many" name="how_many" maxlength="255" size="2" />
-				</td>
-			</tr>
-		</table>
-		<table border="0">
-			<tr>
-				<td class="label">
-					*If already housing guests, can you give us their name(s)?
-				</td>
-			</tr>
-		</table>
-		<table border="0">
-			<tr>
-				<td>
-					&nbsp;&nbsp;<input type="text" id="guest_names" name="guest_names" maxlength="255" size="97" />
-				</td>
-			</tr>
-		</table>
-		<table border="0">
-			<tr>
-				<td class="label">
-					<label><input type="checkbox" id="pets_ind" name="pets_ind" />  Pets?</label>
-				</td>
-				<td class="label">
-					How many?  What kind?:
-				</td>
-				<td>
-					<input type="text" id="pets_info" name="pets_info" maxlength="255" size="59" />
-				</td>
-			</tr>
-		</table>
-		<table border="0">
-			<tr>
-				<td>
-					<h3><u>Transportation Needs:</u></h3>
-				</td>
-			</tr>
-			<tr>
-				<td class="label">
-					<label><input type="checkbox" id="air_trans_ind" name="air_trans_ind" />  Can you give a ride to/from the airport?</label>
-				</td>
-			</tr>
-			<tr>
-				<td class="label">
-					<label><input type="checkbox" id="act_trans_ind" name="act_trans_ind" />  Can you give a ride to/from the activities?</label>
-				</td>
-			</tr>
-		</table>
-		<table border="0">
-			<tr>
-				<td>
-					<h3><u>Preferences:</u></h3>
-				</td>
-			</tr>
-			<tr>
-				<td class="label">
-					<label><input type="checkbox" id="couples_ind" name="couples_ind" />&nbsp;Couples&nbsp;&nbsp;</label>
-				</td>
-				<td class="label">
-					<label><input type="checkbox" id="singles_ind" name="singles_ind" />&nbsp;Singles&nbsp;&nbsp;</label>
-				</td>
-				<td class="label">
-					<label><input type="checkbox" id="girls_ind" name="girls_ind" />&nbsp;Girls&nbsp;&nbsp;</label>
-				</td>
-				<td class="label">
-					<label><input type="checkbox" id="boys_ind" name="boys_ind" />&nbsp;Boys&nbsp;&nbsp;</label>
-				</td>
-				<td class="label">
-					<label><input type="checkbox" id="adults_ind" name="adults_ind" />&nbsp;Adults Only&nbsp;&nbsp;</label>
-				</td>
-				<td class="label">
-					<label><input type="checkbox" id="babies_ind" name="babies_ind" />&nbsp;Babies&nbsp;&nbsp;</label>
-				</td>
-				<td class="label">
-					<label><input type="checkbox" id="teens_ind" name="teens_ind" />&nbsp;Teens&nbsp;&nbsp;</label>
-				</td>
-			</tr>
-		</table>
-		<table border="0">
-			<tr>
-				<td class="label">
-					Other:
-				</td>
-				<td>
-					<input type="text" id="other" name="other" maxlength="255" size="66" />
-				</td>
-			</tr>
-		</table>
+		<div class="toggle">
+			<fieldset><legend>Your Location:</legend>
+				<label for="address1">Address 1:</label>
+				<input type="text" id="address1" name="address1" maxlength="255" size="30" />
+
+				<label for="address2">Address 2:</label>
+				<input type="text" id="address2" name="address2" maxlength="255" size="30" />
+
+				<label for="city">City:</label>
+				<input type="text" id="city" name="city" maxlength="255" size="30" />
+
+				<label for="state">State:</label>
+				<input type="text" id="state" name="state" maxlength="255" size="2" />
+
+				<label for="zip">Zip Code:</label>
+				<input type="text" id="zip" name="zip" maxlength="255" size="10" />
+			</fieldset>
+					
+			<fieldset><legend>Guest Information:</legend>
+				<label><input type="checkbox" class="required" id="house_more_ind" name="house_more_ind" />  Can you house more guests?</label>
+
+				<label for="how_many" class="required">How many more guests could you house?:</label>
+				<input type="text" class="required" id="how_many" name="how_many" maxlength="255" size="2" />
+
+				<label for="guest_names" class="required">If already housing guests, can you give us their name(s)?</label>
+				<input type="text" class="required" id="guest_names" name="guest_names" maxlength="255" size="97" />
+
+				<label><input type="checkbox" id="pets_ind" name="pets_ind" />  Pets?</label>
+
+				<label for="pets_info">How many?  What kind?:</label>
+				<input type="text" id="pets_info" name="pets_info" maxlength="255" size="59" />
+			</fieldset>
+					
+			<fieldset><legend>Transportation Needs:</legend>
+				<label><input type="checkbox" id="air_trans_ind" name="air_trans_ind" />  Can you give a ride to/from the airport?</label>
+				<label><input type="checkbox" id="act_trans_ind" name="act_trans_ind" />  Can you give a ride to/from the activities?</label>
+			</fieldset>
+
+			<fieldset><legend>Preferences:</legend>
+				<label><input type="checkbox" id="couples_ind" name="couples_ind" />&nbsp;Couples&nbsp;&nbsp;</label>
+				<label><input type="checkbox" id="singles_ind" name="singles_ind" />&nbsp;Singles&nbsp;&nbsp;</label>
+				<label><input type="checkbox" id="girls_ind" name="girls_ind" />&nbsp;Girls&nbsp;&nbsp;</label>
+				<label><input type="checkbox" id="boys_ind" name="boys_ind" />&nbsp;Boys&nbsp;&nbsp;</label>
+				<label><input type="checkbox" id="adults_ind" name="adults_ind" />&nbsp;Adults Only&nbsp;&nbsp;</label>
+				<label><input type="checkbox" id="babies_ind" name="babies_ind" />&nbsp;Babies&nbsp;&nbsp;</label>
+				<label><input type="checkbox" id="teens_ind" name="teens_ind" />&nbsp;Teens&nbsp;&nbsp;</label>
+
+				<label for="other">Other:</label>
+				<input type="text" id="other" name="other" maxlength="255" size="66" />
+			</fieldset>
 		</div>
 
 		<p><em>* - Required field</em></p>
@@ -374,7 +202,7 @@
 	<? } else { ?>
 		<input type="button" value="< Back" onclick="history.go(-1);" />
 	<? } ?>
-		<input type="button" value="Next >" onclick="VerifyAndSubmit();" />
+		<input type="submit" value="Next >" />
 		</form>
 
 	</div>
@@ -387,7 +215,87 @@
 	<!-- Add the header to each page -->
 	<? include ('footer.php'); ?>
 
-</div>
+	<script type="text/javascript">
+		$(document).ready(function() {
+		<? if ($housing_type == 8) { ?>
+			if ($("#chkHousing:checked").length > 0) {
+				$(".toggle").show("drop");
+			}
+			
+			$(".select-first").focus();
+			$("input:button").button();
+			$("input:submit").button();
+		<? } else { ?>
+			document.getElementById("reg-housing").submit();
+		<? } ?>
+		});
+
+		$('#chkHousing').click(function() {
+			if ($("#chkHousing:checked").length > 0) {
+				$(".toggle").show("drop");
+			} else {
+				$(".toggle").hide("puff");
+			}
+		});
+	
+		$('#reg-housing').validate({
+			rules: {
+				house_more_ind: {
+					required: function(element) {
+						if ($("#chkHousing:checked").length > 0 && $("#how_many").val == "")
+							return true;
+						else
+							return false;
+					},
+				},
+				how_many: {
+					required: function(element) {
+						if ($("#chkHousing:checked").length > 0 && $("#house_more_ind:checked").length > 0)
+							return true;
+						else
+							return false;
+					},
+					number: true
+				},
+				guest_names: {
+					required: function(element) {
+						if ($("#chkHousing:checked").length > 0 && $("#house_more_ind:checked").length == 0)
+							return true;
+						else
+							return false;
+					}
+				}
+			}
+		});
+
+		function VerifyAndSubmit() {
+			// Check the fields to see if any are empty
+			if (document.getElementById("chkHousing").checked == true) {
+				if (document.getElementById("house_more_ind").checked == true) {
+					if (document.getElementById("how_many").value == '' ||
+						IsNumeric(document.getElementById("how_many").value) == false) {
+						alert("Please enter a number into the 'How many more guests could you house?' field.");
+						return false;
+					}
+				} else {
+					if (document.getElementById("guest_names").value == '') {
+						alert("If you're already full, our Housing Coordinator would love to know who's staying with you.");
+						return false;
+					}
+				}
+			}
+
+			// Remove any apostrophes because they make PHP and database unhappy. :,(
+			document.getElementById("address1").value = document.getElementById("address1").value.replace("\'", "");
+			document.getElementById("address2").value = document.getElementById("address2").value.replace("\'", "");
+			document.getElementById("city").value = document.getElementById("city").value.replace("\'", "");
+			document.getElementById("guest_names").value = document.getElementById("guest_names").value.replace("\'", "");
+			document.getElementById("pets_info").value = document.getElementById("pets_info").value.replace("\'", "");
+			document.getElementById("other").value = document.getElementById("other").value.replace("\'", "");
+
+			document.getElementById("reg-housing").submit();
+		}
+	</script>
 
 </body>
 </html>

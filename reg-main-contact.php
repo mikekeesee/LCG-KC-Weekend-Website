@@ -76,7 +76,7 @@
 			</fieldset>
 
 			<fieldset><legend>Housing:</legend>
-				<label for="cboHousingType" class="required">Choose a housing option:</legend>
+				<label for="cboHousingType" class="required">Choose a housing option:</label>
 				<select id="cboHousingType" name="cboHousingType" >
 					<option value="0" selected>--Please Select--</option>
 <?
@@ -109,8 +109,27 @@
 				<label for="txtNumInParty" class="required">Number in Party:</label>
 				<input type="text" id="txtNumInParty" name="txtNumInParty" maxlength="2" size="2" />
 			</fieldset>
+			
+			<fieldset><legend>Dining:</legend>
+				<label for="cboDining" class="required">Dining Preference:</label>
+				<select id="cboDining" name="cboDining">
+					<option value="0" selected>--Please Select--</option>
+<?
+	$SQL = "	SELECT	string_id,
+						string
+				FROM String_Base
+				WHERE string_grouping = 3";
 
-			<p class="required"><em> - Required field</em></p>
+	$result = mysql_query( $SQL ) or die("</select><br/>Couldn't execute query.".mysql_error()."");
+
+	while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+		echo "\t\t\t\t\t<option value='".$row[string_id]."'>".$row[string]."</option>\n";
+	}
+?>
+				</select>
+			</fieldset>
+				
+			<!-- <p class="required"><em> - Required field</em></p> -->
 
 			<input type="submit" value="Next >" />
 
@@ -127,7 +146,6 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$(".select-first").focus();
-			$(".toggle").hide("");
 			$("input:submit").button();
 		});
 
@@ -189,6 +207,10 @@
 					number: true,
 					min: 1,
 					max: 20
+				},
+				cboDining: {
+					required: true,
+					min: 1
 				}
 			}
 		});
