@@ -11,7 +11,6 @@
 
 	$main_contact_first = $_POST['txtFirstName'];
 	$main_contact_last = $_POST['txtLastName'];
-	$main_contact_sex = $_POST['cboSex'];
 	$main_contact_age = $_POST['cboAgeRange'];
 	$main_contact_email = $_POST['txtEmail'];
 	$main_contact_phone = $_POST['txtPhone'];
@@ -37,7 +36,7 @@
 	$result = mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute main contact SELECT count query.".mysql_error());
 	$row = mysql_fetch_array($result,MYSQL_ASSOC);
 	$count = $row['count'];
-
+	
 	// If the person has already registered, update their information
 	if ($count > 0) {
 		$SQL = "SELECT	person_id
@@ -54,13 +53,12 @@
 		$SQL = "UPDATE	Person
 				SET		First_Name = '".$main_contact_first."',
 						Last_Name = '".$main_contact_last."',
-						Sex = ".$main_contact_sex.",
 						Age_Range = ".$main_contact_age.",
 						Email = '".$main_contact_email."',
 						Phone = '".$main_contact_phone."'
 				WHERE	Person_ID = ".$mc_person_id;
 
-		$result = mysql_query( $SQL."\n\nCouldn't execute main contact UPDATE person query.".mysql_error()); //$SQL ) or die("Sorry.  There //was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //
+		$result = mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute main contact UPDATE person query.".mysql_error()); 
 
 	// If they're a new registrant, enter their information
 	} else {
@@ -69,7 +67,6 @@
 					(Person_ID,
 					 First_Name,
 					 Last_Name,
-					 Sex,
 					 Age_Range,
 					 Email,
 					 Phone)
@@ -77,14 +74,13 @@
 					(NULL,
 					 '".$main_contact_first."',
 					 '".$main_contact_last."',
-					 ".$main_contact_sex.",
 					 ".$main_contact_age.",
 					 '".$main_contact_email."',
 					 '".$main_contact_phone."')";
 
-		mysql_query( $SQL."\n\nCouldn't execute Main Contact Person INSERT query.".mysql_error()); //$SQL ) or die("Sorry.  There was a //database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //
+		mysql_query($SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute Main Contact Person INSERT query.".mysql_error());
 
-		$mc_person_id = mysql_insert_id();
+		$mc_person_id = mysql_insert_id();		
 	}
 
 	setcookie("mc_person_id", $mc_person_id, $expire);
@@ -115,7 +111,7 @@
 						Dining_ID = ".$dining_id."
 				WHERE	Registration_ID = ".$reg_id;
 
-		mysql_query( $SQL."\n\nCouldn't execute registration UPDATE query.".mysql_error()); //$SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he //left a bug in his code."); //$SQL."\n\nCouldn't execute registration UPDATE query.".mysql_error());
+		mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he //left a bug in his code."); //$SQL."\n\nCouldn't execute registration UPDATE query.".mysql_error());
 
 	} else {
 		// Insert the Registration table data
@@ -134,7 +130,7 @@
 					 '".$housed_by."',
 					 ".$dining_id.")";
 
-		mysql_query( $SQL."\n\nCouldn't execute Registration INSERT query.".mysql_error());//$SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he //left a bug in his code."); //$SQL."\n\nCouldn't execute Registration INSERT query.".mysql_error());
+		mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he //left a bug in his code."); //$SQL."\n\nCouldn't execute Registration INSERT query.".mysql_error());
 
 		$reg_id = mysql_insert_id();
 	}
