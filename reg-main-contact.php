@@ -43,21 +43,21 @@
 		<form id="reg-contact" action="reg-family.php" method="post">
 
 			<fieldset><legend>Name:</legend>
-				<label for="txtFirstName" class="required select-first">First Name:</label>
-				<input type="text" id="txtFirstName" name="txtFirstName" maxlength="255" size="30" />
-				<label for="txtLastName" class="required">Last Name:</label>
-				<input type="text" id="txtLastName" name="txtLastName" maxlength="255" size="30" />
+				<p><label for="txtFirstName" class="required select-first">First Name:</label>
+				<input type="text" id="txtFirstName" name="txtFirstName" maxlength="255" size="30" /></p>
+				<p><label for="txtLastName" class="required">Last Name:</label>
+				<input type="text" id="txtLastName" name="txtLastName" maxlength="255" size="30" /></p>
 			</fieldset>
 
 			<fieldset><legend>Contact Information:</legend>
-				<label for="txtEmail" class="required">Email:</label>
-				<input type="text" id="txtEmail" name="txtEmail" maxlength="255" size="30" />
-				<label for="txtPhone" class="required">Phone [XXX-XXX-XXXX]:</label>
-				<input type="text" id="txtPhone" name="txtPhone" maxlength="255" size="30" />
+				<p><label for="txtEmail" class="required">Email:</label>
+				<input type="text" id="txtEmail" name="txtEmail" maxlength="255" size="30" /></p>
+				<p><label for="txtPhone" class="required">Phone [XXX-XXX-XXXX]:</label>
+				<input type="text" id="txtPhone" name="txtPhone" maxlength="255" size="30" /></p>
 			</fieldset>
 
 			<fieldset><legend>General Demographics:</legend>
-				<label for="cboAgeRange" class="required">Description That Best Fits:</label>
+				<p><label for="cboAgeRange" class="required">Description That Best Fits:</label>
 				<select id="cboAgeRange" name="cboAgeRange">
 					<option value="0" selected>--Please Select--</option>
 <?
@@ -72,11 +72,11 @@
 		echo "\t\t\t\t\t<option value='".$row[string_id]."'>".$row[string]."</option>\n";
 	}
 ?>
-				</select>
+				</select></p>
 			</fieldset>
 
 			<fieldset><legend>Housing:</legend>
-				<label for="cboHousingType" class="required">Choose a housing option:</label>
+				<p><label for="cboHousingType" class="required">Choose a housing option:</label>
 				<select id="cboHousingType" name="cboHousingType" >
 					<option value="0" selected>--Please Select--</option>
 <?
@@ -95,23 +95,23 @@
 		}
 	}
 ?>
-				</select>
+				</select></p>
 
 				<!-- Hide until user selects 'Already housed with brethren' -->
 				<div class="toggle">
-					<label for="txtHousedBy">
+					<p><label for="txtHousedBy">
 						If you've already made plans to stay with brethren, would you tell us their name?
 					</label>
 					<label for="txtHousedBy" class="required">Housed By:</label>
-					<input type="text" id="txtHousedBy" name="txtHousedBy" maxlength="255" size="30" />
+					<input type="text" id="txtHousedBy" name="txtHousedBy" maxlength="255" size="30" /></p>
 				</div>
 
-				<label for="txtNumInParty" class="required">Number in Party:</label>
-				<input type="text" id="txtNumInParty" name="txtNumInParty" maxlength="2" size="2" />
+				<p><label for="txtNumInParty" class="required">Number in Party:</label>
+				<input type="text" id="txtNumInParty" name="txtNumInParty" maxlength="2" size="2" /></p>
 			</fieldset>
 			
 			<fieldset><legend>Dining:</legend>
-				<label for="cboDining" class="required">Dining Preference:</label>
+				<p><label for="cboDining" class="required">Dining Preference:</label>
 				<select id="cboDining" name="cboDining">
 					<option value="0" selected>--Please Select--</option>
 <?
@@ -126,7 +126,7 @@
 		echo "\t\t\t\t\t<option value='".$row[string_id]."'>".$row[string]."</option>\n";
 	}
 ?>
-				</select>
+				</select></p>
 			</fieldset>
 				
 			<!-- <p class="required"><em> - Required field</em></p> -->
@@ -212,6 +212,11 @@
 					required: true,
 					min: 1
 				}
+			},
+			messages: {
+				cboAgeRange: "Please enter an age range.",
+				cboHousingType: "Please enter a housing type.",
+				cboDining: "Please let us know what you'd like to munch on."
 			}
 		});
 	</script>

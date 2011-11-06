@@ -147,13 +147,12 @@ label.error {
 
 /** What's New **/
 .whats-new {
-	border: 1px dotted #91170B;
 	display: inline;
 	float: left;
-	height: 18em;
+	height: 8em;
 	padding: .5em;
 	margin-right: .75em;
-	width: 25em;
+	width: 52em;
 }
 
 .whats-new h3 {
@@ -180,8 +179,8 @@ label.error {
 
 .nivoSlider {
     position:relative;
-    width:448px; /* Change this to your images width */
-    height:298px; /* Change this to your images height */
+    width:920px; /* Change this to your images width */
+    height:597px; /* Change this to your images height */
     background:url('js/nivo-slider/themes/default/loading.gif') no-repeat 50% 50%;
 }
 .nivoSlider img {
@@ -280,20 +279,35 @@ fieldset {
 	padding: 1em;
 }
 
-label {
-	margin-bottom: 1em;
+fieldset p {
+	margin: 0em 0em 0em 0em;
 }
 
+label {
+  float:left;
+  margin-right:0.5em;
+  padding-top:0.2em;
+  text-align:right;
+  font-weight:bold;
+  }
+
+fieldset .no-float  {
+  float: none;
+  margin-right:0.5em;
+  padding-top:0.2em;
+  font-weight:bold;
+}
+  
 .required {
 	font-weight: bold;
 }
 
 input {
-	margin: 0em 2em 1em 0em;
+	margin: 0em .5em 1em 0em;
 }
 
 select {
-	margin: 0em 2em 1em 0em;
+	margin: 0em .5em 1em 0em;
 }
 
 /** End Forms **/

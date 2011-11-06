@@ -7,7 +7,7 @@
 
 
 	// Get the POST data
-	$expire = time() + (60*60*2);
+	$expire = time() + (60*60*24*7);
 
 	$main_contact_first = $_POST['txtFirstName'];
 	$main_contact_last = $_POST['txtLastName'];
@@ -184,22 +184,22 @@
 
 <?	for ($i = 1; $i < $num_in_party; $i++) { ?>
 			<fieldset><legend>Family Member #<?=($i + 1)?></legend>
-				<label for="txtFirstName" class="required">First Name:</label>
+				<p><label for="txtFirstName" class="required">First Name:</label>
 <?		if ($i == 1) { ?>
-				<input type="text" class="select-first" id="txtFirstName<?=$i?>" name="txtFirstName<?=$i?>" maxlength="255" size="30" />
+				<input type="text" class="select-first" id="txtFirstName<?=$i?>" name="txtFirstName<?=$i?>" maxlength="255" size="30" /></p>
 <?		} else { ?>
-				<input type="text" id="txtFirstName<?=$i?>" name="txtFirstName<?=$i?>" maxlength="255" size="30" />
+				<input type="text" id="txtFirstName<?=$i?>" name="txtFirstName<?=$i?>" maxlength="255" size="30" /></p>
 <?		} ?>
-				<label for="txtLastName" class="required">Last Name:</label>
-				<input type="text" id="txtLastName<?=$i?>" name="txtLastName<?=$i?>" maxlength="255" size="30" />
+				<p><label for="txtLastName" class="required">Last Name:</label>
+				<input type="text" id="txtLastName<?=$i?>" name="txtLastName<?=$i?>" maxlength="255" size="30" /></p>
 
-				<label for="txtEmail" class="required">Email (if different):</label>
-				<input type="text" id="txtEmail<?=$i?>" name="txtEmail<?=$i?>" maxlength="255" size="30" />
+				<p><label for="txtEmail" class="required">Email (if different):</label>
+				<input type="text" id="txtEmail<?=$i?>" name="txtEmail<?=$i?>" maxlength="255" size="30" /></p>
 
-				<label for="txtEmail" class="required">Phone (if different)  [XXX-XXX-XXXX]:</label>
-				<input type="text" id="txtPhone<?=$i?>" name="txtPhone<?=$i?>" maxlength="255" size="30" />
+				<p><label for="txtEmail" class="required">Phone (if different)  [XXX-XXX-XXXX]:</label>
+				<input type="text" id="txtPhone<?=$i?>" name="txtPhone<?=$i?>" maxlength="255" size="30" /></p>
 
-				<label for="txtEmail" class="required">Description That Fits Best:</label>
+				<p><label for="txtEmail" class="required">Description That Fits Best:</label>
 				<select id="cboAgeRange<?=$i?>" name="cboAgeRange<?=$i?>">
 					<option value="0" selected>--Please Select--</option>
 <?
@@ -215,7 +215,7 @@
 			echo "\t\t\t\t\t<option value='".$row[string_id]."'>".$row[string]."</option>\n";
 		}
 ?>
-				</select>
+				</select></p>
 			</fieldset>
 <?
 	}
@@ -261,6 +261,12 @@
 				},
 <?		} else { ?>
 				}
+<?		}
+	} ?>
+			},
+			messages: {
+<?	for ($i = 1; $i < $num_in_party; $i++) { ?>
+				cboAgeRange<?=$i?>: "Please enter an age range."<?		if ($i < $num_in_party - 1) { ?>,
 <?		}
 	} ?>
 			}

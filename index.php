@@ -55,7 +55,6 @@
 		<div class="slider-wrapper theme-default">
     		<div class="ribbon"></div>
 			<div id="picture-slider" class="nivoSlider">
-				<img src="images/kcweekend_1.jpg" alt="" />
 				<img src="images/kcweekend_2.jpg" alt="" />
 				<img src="images/kcweekend_3.jpg" alt="" />
 				<img src="images/kcweekend_4.jpg" alt="" />

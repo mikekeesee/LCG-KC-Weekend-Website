@@ -9,6 +9,7 @@
 	mysql_connect(localhost,$username,$password) or die("Unable to connect to database");
 	mysql_select_db($database) or die("Unable to select database");
 
+	$reg_id		  = $_COOKIE["reg_id"];
 	$mc_person_id = $_COOKIE["mc_person_id"];
 	$num_in_party = $_COOKIE["num_in_party"];
 	$housing_type = $_COOKIE["housing_type"];
@@ -218,6 +219,11 @@
 	<!-- Add the header to each page -->
 	<? include ('footer.php'); ?>
 
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("input:button").button();
+		});
+	</script>	
 </body>
 </html>
 

@@ -9,12 +9,8 @@
 	<title>Kansas City Regional Family Weekend: Add Money</title>
 
 	<link rel="stylesheet" href="page.css" type="text/css" media="screen" />
-	<link rel="stylesheet" type="text/css" media="screen" href="js/css/start/jquery-ui-1.7.2.custom.css" />
-	<link rel="stylesheet" type="text/css" media="screen" href="js/css/ui.jqgrid.css" />
 
-	<script type="text/javascript" src="js/jquery-1.3.2.min.js"></script>
-	<script src="js/i18n/grid.locale-en.js" type="text/javascript"></script>
-	<script type="text/javascript" src="js/jquery.jqGrid.min.js"></script>
+	<? include "jqgrid-header.php" ?>
 
 	<script type="text/javascript">
 	// The grid for the guest list
@@ -97,15 +93,12 @@
 
 <body>
 
-<div id="container">
-
 	<!-- Add the header to each page -->
 	<? include ('header.php'); ?>
 
 	<!-- Start of Main Content Area -->
 
-	<div id="maincontent_container">
-	<div id="maincontent">
+	<div class="main-content">
 
 		<h2>Registration</h2>
 		<p>Use this page to add money each group paid.  Pick a registration entry.
@@ -134,7 +127,6 @@
 		</form>
 
 	</div>
-	</div>
 
 	<div class="clearthis">&nbsp;</div>
 
@@ -143,7 +135,11 @@
 	<!-- Add the header to each page -->
 	<? include ('footer.php'); ?>
 
-</div>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("input:button").button();
+		});
+	</script>
 
 </body>
 </html>
