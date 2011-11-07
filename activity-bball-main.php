@@ -35,8 +35,8 @@
 		<p>Welcome to the basketball page. You can check out the game rules, schedule or the teams that are
 		already signed up. Sign up your team under the Teams tab. <b style="color:red">Teams must be finalized by Dec. 20th!</b></p>
 
-		<p>All basketball-related questions may be directed to Peder Moluf at
-		<a href="mailto:moluf_pt@yahoo.com">moluf_pt@yahoo.com</a>.</p>
+		<p>All basketball-related questions may be directed to Mr. Stroud at
+		<a href="mailto:astroud@lcg.org">astroud@lcg.org</a>.</p>
 
 		<p><b>Important: Minimum age for sports is 13. Those with bad backs or other similar injuries should not
 		participate. Due to the inherent risk of such activities, all participants must sign a liability waiver. Those
@@ -57,9 +57,6 @@
 			<div id="general">
 				<h3>General Information</h3>
 
-					<p>This year, we look forward to having TWO FULL-SIZED courts to play on. That&#39;s right, full-court basketball,
-					so bring your inhalers, boys!</p>
-
 					<p>The Kansas City Weekend provides a rare opportunity for Church members from around the country to get
 					together and play organized sports. Our overall goals for sports this year are to promote teamwork,
 					sportsmanship, camaraderie, playing within the rules of the game, strategy and, most
@@ -68,14 +65,11 @@
 					<p>With these in mind, the following items have been determined:
 
 					<ul class="bullets">
-						<li class="bullets"><b>Sports Bible Study at 9:20 Sunday morning:</b> Attendance is <u>mandatory</u> to play.
-						<li class="bullets"><b>Schedule of Games:</b> Teams will follow a set schedule to allow each team to play at least <u>3
-						games</u>. We will do our best to create a schedule that makes the most even match-ups possible.</li>
-						<li class="bullets"><b>Games Lengths:</b> There will likely be 12 minutes per half. Time will be allotted for warm-ups after the previous game ends
-						and a 3-minute halftime. (All subject to change based on the number of teams that sign up.)</li>
+						<li class="bullets"><b>Sports Bible Study Sunday morning:</b> Attendance is <u>mandatory</u> to play.
+						<li class="bullets"><b>Schedule of Games:</b> Schedule and tournament info to come.</li>
 						<li class="bullets"><b>Rosters:</b> Teams need a minimum of 5 people per team (8 max.). All team members must register
 						to play.</li>
-						<li class="bullets"><b>12:30 Break:</b> All sports will halt for family games, then resume at 2 p.m.</li>
+						<li class="bullets"><b>Lunch Break:</b> All sports will halt for lunch for about an hour. Schedule to come.</li>
 					</ul>
 
 					<p><b>Please register your team by <span style="color:red;">December 20th</span></b>.</p>
@@ -105,7 +99,7 @@
 					If it&#39;s tied after 6 shots, then the 4th player from each team shoots a single free throw, then the 5th player,
 					and so forth until one team makes a free throw and the other misses.</li>
 
-				<p>All basketball-related questions may be directed to Peder Moluf at <a href="mailto:moluf_pt@yahoo.com">moluf_pt@yahoo.com</a>.</p>
+				<p>All basketball-related questions may be directed to Mr. Stroud at <a href="mailto:astroud@lcg.org">astroud@lcg.org</a>.</p>
 
 			</div>
 
@@ -120,9 +114,7 @@
 
 				<h3>Game Schedule</h3>
 
-				<p>Here is the basketball schedule.</p>
-
-				<img src="docs/bball_final_schedule.jpg"/>
+				<p>The schedule will be posted after the team registration deadline passes.</p>
 
 			</div>
 

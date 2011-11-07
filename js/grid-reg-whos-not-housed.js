@@ -20,6 +20,7 @@ jQuery(document).ready(function() {
 		viewrecords: true,
 		width: 775,
 		height: 230,
+		onSelectRow: function(id) {try {GetNumInParty();} catch(err){}},
 		hidegrid: false,
 		caption:"Who's Not Yet Housed"
 	});

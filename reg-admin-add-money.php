@@ -8,85 +8,58 @@
 
 	<title>Kansas City Regional Family Weekend: Add Money</title>
 
-	<link rel="stylesheet" href="page.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
 
 	<? include "jqgrid-header.php" ?>
 
+	<script type="text/javascript" src="js/grid-registration.js"></script>
+
 	<script type="text/javascript">
-	// The grid for the guest list
-	jQuery(document).ready(function() {
-		jQuery("#reg-registration").jqGrid({
-			url:'db-registration.php',
-			datatype: "xml",
-			mtype: "GET",
-			colNames:['First', 'Last', 'Email', 'Phone', 'Housing', '# in Party', 'Housed By', 'Done Housing'],
-			colModel:[
-				{name:'first_name', index:'first_name', width:120},
-				{name:'last_name',index:'last_name', width:150},
-				{name:'email', index:'email', width:250},
-				{name:'phone', index:'phone', width:150},
-				{name:'housing', index:'housing', width:250},
-				{name:'num_in_party', index:'num_in_party', width:110},
-				{name:'housed_by', index:'housed_by', width:150},
-				{name:'done_housing', index:'done_housing', width:150}],
-			pager: '#reg-registration-pager',
-			rowNum: 10,
-			sortname: 'last_name, first_name',
-			sortorder: 'asc',
-			viewrecords: true,
-			width: 850,
-			height: 245,
-			hidegrid: false,
-			caption:"Registration Information"
-		}).navGrid('#reg-registration',{edit:false,add:false,del:false});
-	});
+		function getSelectedId(objGrid) {
+			var selRow = objGrid.getGridParam('selrow');
+			if (selRow == null) {
+				alert("Please select at least one row from each grid.")
+				return false;
+			}
 
-
-	function getSelectedId(objGrid) {
-		var selRow = objGrid.getGridParam('selrow');
-		if (selRow == null) {
-			alert("Please select at least one row from each grid.")
-			return false;
+			return selRow;
 		}
 
-		return selRow;
-	}
-
-	function IsNumeric(sText) {
-	   var ValidChars = "0123456789.";
-	   var IsNumber = true;
-	   var Char;
+		function IsNumeric(sText) {
+		   var ValidChars = "0123456789.";
+		   var IsNumber = true;
+		   var Char;
 
 
-	   for (i = 0; i < sText.length && IsNumber == true; i++) {
-		  Char = sText.charAt(i);
-		  if (ValidChars.indexOf(Char) == -1) {
-			 IsNumber = false;
-		  }
-	   }
+		   for (i = 0; i < sText.length && IsNumber == true; i++) {
+			  Char = sText.charAt(i);
+			  if (ValidChars.indexOf(Char) == -1) {
+				 IsNumber = false;
+			  }
+		   }
 
-	   return IsNumber;
-	}
-
-	function VerifyAndSubmit() {
-
-		var reg_id = getSelectedId($("#reg-registration"));
-		if (reg_id == "") { return false; }
-		document.getElementById("gridReg").value = reg_id;
-
-		// Check the fields to see if any are empty
-		if (document.getElementById("txtHowMuch").value == '') {
-			alert("Please fill out much money they paid.");
-			return false;
+		   return IsNumber;
 		}
 
-		if (IsNumeric(document.getElementById("txtHowMuch").value) == false) {
-			alert("Please enter a number in the 'How much money?' text box.");
-			return false;
-		}
+		function VerifyAndSubmit() {
 
-		document.getElementById("reg-registration").submit();
-	}
+			var reg_id = getSelectedId($("#reg-registration"));
+			if (reg_id == "") { return false; }
+			document.getElementById("gridReg").value = reg_id;
+
+			// Check the fields to see if any are empty
+			if (document.getElementById("txtHowMuch").value == '') {
+				alert("Please fill out much money they paid.");
+				return false;
+			}
+
+			if (IsNumeric(document.getElementById("txtHowMuch").value) == false) {
+				alert("Please enter a number in the 'How much money?' text box.");
+				return false;
+			}
+
+			document.getElementById("reg-admin-add-money").submit();
+		}
 	</script>
 
 </head>
@@ -120,6 +93,8 @@
 			<br/><br/>
 
 			<label class="label">How much money?&nbsp;&nbsp;&nbsp;$<input type="text" id="txtHowMuch" name="txtHowMuch" maxlength=3 size=3 /></label>
+			<br/>
+			&nbsp;&nbsp;&nbsp;<label class="label"><input type="checkbox" id="chkAddPayment" name="chkAddPayment" />  Add this amount to any existing payment (not checking this will cause any existing amounts to be overwritten).</label>
 			<br/><br/>
 			<hr />
 			<br />

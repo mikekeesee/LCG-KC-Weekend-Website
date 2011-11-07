@@ -68,15 +68,12 @@
 		<h3>Add/Change Your Activity:</h3>
 
 		<form id="activity-add-activity" action="activity-add-activity-submit.php" method="post">
-			<div class="column">
+			<div class="grid-inline">
 				<table id="reg-person"></table>
 				<input type="hidden" id="gridPerson" name="gridPerson" />
 			</div>
 			
-			<!-- Clear some area between the tables -->
-			<div class="column">&nbsp;</div>
-			
-			<div class="column">
+			<div class="grid-inline">
 				<table id="activity-list"></table>
 				<input type="hidden" id="gridActivity" name="gridActivity" />
 			</div>
@@ -94,5 +91,8 @@
 	<!-- Add the footer to each page -->
 	<? include ('footer.php'); ?>
 
+	<script type="text/javascript">
+			$("input:button").button();		
+	</script>
 </body>
 </html>

@@ -331,5 +331,9 @@
 
 	<!-- End of Main Content Area -->
 
+	<script type="text/javascript">
+		$("input:button").button();
+	</script>
+
 </body>
 </html>

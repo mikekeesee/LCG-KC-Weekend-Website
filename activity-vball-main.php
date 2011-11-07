@@ -53,19 +53,16 @@
 				<p>With these in mind, the following items have been determined:
 
 				<ul>
-					<li><b>Sports Bible Study at 9:20 Sunday morning:</b> Attendance is <u>mandatory</u> to play.
-					<li><b>Schedule of Games:</b> Teams will follow a set schedule to allow each team to play at least <u>3
-					games</u>. We will do our best to create a schedule that makes the most even match-ups possible.</li>
-					<li>Games schedules are still being determined and will be subject to change based on
-					the number of teams that sign up.</li>
+					<li><b>Sports Bible Study Sunday morning:</b> Attendance is <u>mandatory</u> to play.</li>
+					<li><b>Schedule of Games:</b> To be announced.</li>
 					<li><b>Rosters:</b> Teams need a minimum of 4 people per team (8 max.). All team members must register
 					to play.</li>
-					<li><b>12:30 Break:</b> All sports will halt for family games, then resume at 2 p.m.</li>
+					<li><b>Lunch Break:</b> All sports will halt for lunch for about an hour. Schedule to come.</li>
 				</ul>
 
 				<p>All volleyball-related questions may be directed to Doug Burson at
 				<a href="mailto:dougb@downingandstrickland.com">dougb@downingandstrickland.com</a>
-				or Ann Thomas at <a href="mailto:thomasam98@yahoo.com">thomasam98@yahoo.com</a>.</p>
+				or Mr. Stroud at <a href="mailto:astroud@lcg.org">astroud@lcg.org</a>.</p>
 
 				<p><b>Important: Minimum age for sports is 13. Those with bad backs or other similar injuries should not
 				participate. Due to the inherent risk of such activities, all participants must sign a liability waiver. Those
@@ -144,10 +141,7 @@
 
 				<h3>Game Schedule</h3>
 
-				<p>Team and referee schedules are below. Please note when your team will be playing as well as if you have been assigned to ref or
-				be a line judge.</p>
-
-				<img src="docs/vball_final_schedule.jpg"/>
+				<p>Team and referee schedules to come after the team registration deadline has passed.</p>
 
 			</div>
 

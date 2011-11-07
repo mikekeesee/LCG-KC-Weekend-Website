@@ -1,5 +1,5 @@
 jQuery(document).ready(function() {
-	jQuery("#whos-housed-where").jqGrid({
+	jQuery("#reg-whos-housed-where").jqGrid({
 		url:'db-reg-whos-housed.php',
 		datatype: "xml",
 		mtype: "GET",

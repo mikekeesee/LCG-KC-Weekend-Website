@@ -42,11 +42,8 @@
 			<h3>What&#39;s New</h3>
 
 			<ul>
-				<li><b>Parking on Friday and Saturday</b> - Parking is limited at the facility, so please carpool.</li>
+				<li><b>Registration is OPEN</b> - Come on down!</li>
 
-				<li><b>Food on Sunday</b> - Okun Fieldhouse will have concessions available. Click to view the menu: <a href="docs/Okun-concession-menu.doc">Okun Concession Menu</a></li>
-
-				<li><b>Team Schedules</b/> - <a href="activity-bball-main.php">Basketball</a> and <a href="activity-vball-main.php">Volleyball</a> team schedules are now posted.</li>
 			</ul>
 
 		</div>
@@ -90,7 +87,7 @@
 		<!-- Start of Friday -->
 		<div class="daily-schedule">
 
-			<h3>Friday, Dec. 31</h3>
+			<h3>Friday, Dec. 30</h3>
 
 			<ul>
 				<li><b>6 p.m.</b> - Hall Opens for Fellowship</li>
@@ -105,16 +102,18 @@
 		<!-- Start of Saturday -->
 		<div class="daily-schedule">
 
-			<h3>Saturday, Jan. 1</h3>
+			<h3>Saturday, Dec. 31</h3>
 
 			<ul>
 				<li><b>1 p.m.</b> - <a href="information.php">Church Services</a></li>
 
-				<li><b>4:30 p.m.</b> - Dinner</li>
+				<li><b>4 p.m.</b> - Dinner</li>
 
-				<li><b>7 p.m.</b> - <a href="information.php#funshow">Fun Show</a> and <a href="information.php#dance">Dance</a></li>
+				<li><b>6 p.m.</b> - <a href="information.php#funshow">Fun Show</a> 
+				
+				<li><b>8 p.m.</b> - <a href="information.php#dance">Dance</a></li>
 
-				<li><b>10 p.m.</b> - Clean Up</li>
+				<li><b>10:30 p.m.</b> - Clean Up</li>
 			</ul>
 
 		</div>
@@ -123,28 +122,26 @@
 		<!-- Start of Sunday -->
 		<div class="daily-schedule">
 
-			<h3>Sunday, Jan. 2</h3>
+			<h3>Sunday, Jan. 1</h3>
 
 			<ul>
 				<li><b>9:00 a.m.</b> - <a href="information.php">Okun Fieldhouse</a> Opens</li>
 
-				<li><b>9:20 a.m.</b> - Sports Bible Study</li>
+				<li><b>TBD a.m.</b> - Sports Bible Study</li>
 
-				<li><b>9:30 a.m.</b> - <a href="activity-bootcamp.php">Boot Camp Conditioning</a></li>
+				<li><b>TBD a.m.</b> - <a href="activity-bootcamp.php">Boot Camp Conditioning</a></li>
 
-				<li><b>9:50 a.m.</b> - <a href="activity-bball-main.php">Basketball</a> and <a href="activity-vball-main.php">Volleyball</a></li>
+				<li><b>TBD a.m.</b> - <a href="activity-bball-main.php">Basketball</a> and <a href="activity-vball-main.php">Volleyball</a></li>
 
-				<li><b>10:30 a.m.</b> - <a href="activity-main.php">Children&#39;s Activities</a></li>
+				<li><b>TBD a.m.</b> - <a href="activity-main.php">Family Activities</a></li>
 
-				<li><b>10:30 a.m.</b> - <a href="activity-main.php">Bible Seminar</a></li>
+				<li><b>TBD a.m.</b> - <a href="activity-main.php">Bible Seminar</a></li>
 
-				<li><b>10:30 a.m.</b> - Recreational Volleyball</a></li>
+				<li><b>TBD p.m.</b> - <a href="activity-main.php">Lunch</a></li>
 
-				<li><b>12:30 p.m.</b> - <a href="activity-main.php">Family Games</a></li>
+				<li><b>TBD p.m.</b> - Sports Resume</li>
 
-				<li><b>2 p.m.</b> - Sports Resume</li>
-
-				<li><b>4:30 p.m.</b> - Activities End</li>
+				<li><b>TBD p.m.</b> - Activities End</li>
 			</ul>
 
 		</div>

@@ -220,20 +220,20 @@
 
 	<title>Kansas City Regional Family Weekend: Registration</title>
 
-	<link rel="stylesheet" href="page.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
+	
+	<? include "jqgrid-header.php" ?>
+		
 </head>
 
 <body onload="OnLoad();">
-
-<div id="container">
 
 	<!-- Add the header to each page -->
 	<? include ('header.php'); ?>
 
 	<!-- Start of Main Content Area -->
 
-	<div id="maincontent_container">
-	<div id="maincontent">
+	<div class="main-content">
 
 		<h2>Registration</h2>
 
@@ -250,16 +250,11 @@
 		<br /><br /><br /><br />
 
 	</div>
-	</div>
-
-	<div class="clearthis">&nbsp;</div>
 
 	<!-- End of Main Content Area -->
 
 	<!-- Add the header to each page -->
 	<? include ('footer.php'); ?>
-
-</div>
 
 </body>
 </html>

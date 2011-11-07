@@ -270,39 +270,7 @@
 <?		}
 	} ?>
 			}
-		});
-		
-	/*$('#reg-family').submit(function() {
-		// Check the fields to see if any are empty
-		for (var i=1; i < <?=$num_in_party?>; i++) {
-			//if (document.getElementById("txtFirstName" + i.toString()).value == '') {
-			//	alert("Please fill out Family Member #" + i + "'s First Name field, if you would... I would hope you'd know them on a first-name basis by now!");
-			//	return false;
-			//}
-
-			//if (document.getElementById("txtLastName" + i.toString()).value == '') {
-			//	alert("Please fill out Family Member #" + i + "'s Last Name field...  I would hope you'd know their names by now!");
-			//	return false;
-			//}
-
-			//if (document.getElementById("cboSex" + i.toString()).value == '0') {
-			//	alert("Please fill out Family Member #" + i + "'s Gender field. I would think that's public knowledge...");
-			//	return false;
-			//}
-
-			//if (document.getElementById("cboAgeRange" + i.toString()).value == '0') {
-			//	alert("Please fill out Family Member #" + i + "'s Description That Best Fits field.");
-			//	return false;
-			//}
-
-			// Remove any apostrophes because they make PHP and database unhappy. :,(
-			document.getElementById("txtFirstName" + i.toString()).value = document.getElementById("txtFirstName" + i.toString()).value.replace("\'", "");
-			document.getElementById("txtLastName" + i.toString()).value = document.getElementById("txtLastName" + i.toString()).value.replace("\'", "");
-		}
-
-		//document.getElementById("reg-family").submit();
-	});*/
-		
+		});		
 	</script>
 	
 </body>

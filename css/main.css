@@ -310,6 +310,11 @@ select {
 	margin: 0em .5em 1em 0em;
 }
 
+.grid-inline {
+	float: left;
+	margin: 0em 0em 0em 2em;
+}
+
 /** End Forms **/
 
 /** Page Footer **/

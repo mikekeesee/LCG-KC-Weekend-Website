@@ -32,43 +32,46 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1" />
-<meta http-equiv="Content-Style-Type" content="text/css" />
+	<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1" />
+	<meta http-equiv="Content-Style-Type" content="text/css" />
 
-<title>Kansas City Regional Family Weekend - Registration Administration</title>
+	<title>Kansas City Regional Family Weekend - Registration Administration</title>
 
-<link rel="stylesheet" href="page.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
 
-<script type="text/javascript">
+	<? include "jqgrid-header.php" ?>
 
-function OnCheck(checkbox) {
-	var sDivId = "div-" + checkbox.id.substring(4);
-	var sFrameId = checkbox.id.substring(4);
+	<script type="text/javascript" src="js/grid-reg-person-admin.js"></script>
+	<script type="text/javascript" src="js/grid-registration.js"></script>
+	<script type="text/javascript" src="js/grid-reg-whos-not-housed.js"></script>
+	<script type="text/javascript" src="js/grid-reg-whos-housed-where.js"></script>
+	<script type="text/javascript" src="js/grid-reg-housing.js"></script>
 
-	if (checkbox.checked == true) {
-		document.getElementById(sDivId).style.display = "";
+	<script type="text/javascript">
 
-		var frame = document.getElementById(checkbox.id.substring(4));
-		frame.src = sFrameId + ".php";
-	} else {
-		document.getElementById(sDivId).style.display = "none";
+	function OnCheck(checkbox) {
+		var sDivId = "div-" + checkbox.id.substring(4);
+		var sFrameId = checkbox.id.substring(4);
+
+		if (checkbox.checked == true) {
+			document.getElementById(sDivId).style.display = "";
+
+		} else {
+			document.getElementById(sDivId).style.display = "none";
+		}
 	}
-}
 
-</script>
+	</script>
 
 </head>
 
 <body>
 
-<div id="container">
-
 <?	include "header.php"; ?>
 
 	<!-- Start of Main Content Area -->
 
-	<div id="maincontent_container">
-	<div id="maincontent">
+	<div class="main-content">
 
 		<h2>Registration Administration</h2>
 
@@ -76,18 +79,18 @@ function OnCheck(checkbox) {
 
 		<br/>
 		<ul>
-		<li><b>There are currently <?=$num_not_housed?> families/groups not housed.</b></li>
-		<li><b>The KC Weekend has currently generated $<?=$total_payment?>.00 in donations.</b></li>
+			<li><b>There are currently <?=$num_not_housed?> families/groups not housed.</b></li>
+			<li><b>The KC Weekend has currently generated $<?=$total_payment?>.00 in donations.</b></li>
 		</ul>
 		<br/>
 		<hr/>
 		<p>Please choose from the links or reports below:</p>
 
-		<p><h3>-->&nbsp;<a href="reg-admin-housing.php">Create a Housing Contact</a></h3></p>
-		<p><h3>-->&nbsp;<a href="reg-admin-add-guest-to-housing.php">Add Guests to a Housing Contact</a></h3></p>
-		<p><h3>-->&nbsp;<a href="reg-admin-add-money.php">Record a Payment from a Registered Family/Group</a></h3></p>
-		<p><h3>-->&nbsp;<a href="activity-vball-team.php" target="_blank">Modify Volleyball Teams</a></h3></p>
-		<p><h3>-->&nbsp;<a href="activity-bball-team.php" target="_blank">Modify Basketball Teams</a></h3></p>
+		<p>-->&nbsp;<a href="reg-admin-housing.php">Create a Housing Contact</a></p>
+		<p>-->&nbsp;<a href="reg-admin-add-guest-to-housing.php">Add Guests to a Housing Contact</a></p>
+		<p>-->&nbsp;<a href="reg-admin-add-money.php">Record a Payment from a Registered Family/Group</a></p>
+		<p>-->&nbsp;<a href="activity-vball-team.php" target="_blank">Modify Volleyball Teams</a></p>
+		<p>-->&nbsp;<a href="activity-bball-team.php" target="_blank">Modify Basketball Teams</a></p>
 		<br/>
 		<hr />
 		<br/>
@@ -99,9 +102,7 @@ function OnCheck(checkbox) {
 		<br />
 
 		<div id="div-grid-reg-person-admin" style="display:none">
-			<iframe id="grid-reg-person-admin" width="752" height="421" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" >
-			  <p>Your browser does not support iframes.</p>
-			</iframe>
+			<table id="reg-person-admin"></table>
 		</div>
 		<br />
 
@@ -109,9 +110,7 @@ function OnCheck(checkbox) {
 		<br />
 
 		<div id="div-grid-registration" style="display:none">
-			<iframe id="grid-registration" width="852" height="421" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" >
-			  <p>Your browser does not support iframes.</p>
-			</iframe>
+			<table id="reg-registration"></table>
 		</div>
 		<br />
 
@@ -119,9 +118,7 @@ function OnCheck(checkbox) {
 		<br />
 
 		<div id="div-grid-reg-whos-not-housed" style="display:none">
-			<iframe id="grid-reg-whos-not-housed" width="780" height="425" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" >
-			  <p>Your browser does not support iframes.</p>
-			</iframe>
+			<table id="reg-whos-not-housed"></table>
 		</div>
 		<br />
 
@@ -129,9 +126,7 @@ function OnCheck(checkbox) {
 		<br />
 
 		<div id="div-grid-reg-whos-housed-where" style="display:none">
-			<iframe id="grid-reg-whos-housed-where" width="959" height="425" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" >
-			  <p>Your browser does not support iframes.</p>
-			</iframe>
+			<table id="reg-whos-housed-where"></table>
 		</div>
 		<br />
 
@@ -139,32 +134,16 @@ function OnCheck(checkbox) {
 		<br />
 
 		<div id="div-grid-reg-housing" style="display:none">
-			<iframe id="grid-reg-housing" width="1405" height="425" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" >
-			  <p>Your browser does not support iframes.</p>
-			</iframe>
+			<table id="reg-housing"></table>
 		</div>
 
 	</div>
-	</div>
-	<div class="clearthis">&nbsp;</div>
 
 	<!-- End of Main Content Area -->
 
-
 	<!-- Start of Page Footer -->
 
-	<div id="page_footer">
-
-	Written by the Keesee team.  Template found at <a href="http://www.freewebsitetemplates.com/">Free Website Templates</a>
-
-	</div>
-
-	<!-- End of Page Footer -->
-
-
-	<div class="clearthis">&nbsp;</div>
-
-</div>
+	<? include "footer.php" ?>
 
 </body>
 </html>
