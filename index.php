@@ -39,10 +39,12 @@
 		<!-- Start of General Announcements -->
 		<div class="whats-new">
 
-			<h3>What&#39;s New</h3>
+			<h3>What You Need to Know</h3>
 
 			<ul>
 				<li><b>Registration is OPEN</b> - Come on down!</li>
+				<li><b>Event Dates</b> - Friday, Dec. 30, 2011 through Sunday, Jan. 1, 2012</li>
+				<li><b>Location</b> - Benjamin Ranch on Friday and Saturday. Okun Fieldhouse on Sunday.</li>
 
 			</ul>
 

@@ -51,7 +51,8 @@
 
 			<fieldset><legend>Contact Information:</legend>
 				<p><label for="txtEmail" class="required">Email:</label>
-				<input type="text" id="txtEmail" name="txtEmail" maxlength="255" size="30" /></p>
+				<input type="text" id="txtEmail" name="txtEmail" maxlength="255" size="30" />
+				<em>&nbsp;&nbsp;NOTE: If you plan on donating money through PayPal, please use the same email address here.</em></p>
 				<p><label for="txtPhone" class="required">Phone [XXX-XXX-XXXX]:</label>
 				<input type="text" id="txtPhone" name="txtPhone" maxlength="255" size="30" /></p>
 			</fieldset>
@@ -109,8 +110,25 @@
 				<p><label for="txtNumInParty" class="required">Number in Party:</label>
 				<input type="text" id="txtNumInParty" name="txtNumInParty" maxlength="2" size="2" /></p>
 			</fieldset>
-			
-			<fieldset><legend>Dining:</legend>
+
+			<fieldset><legend>Additional Preferences:</legend>
+				<p><label for="cboActivity">Choose an Activity for yourself:</label>
+				<select id="cboActivity" name="cboActivity">
+						<option value="0" selected>--Please Select--</option>
+<?
+		// Get the database connection information
+		$SQL = "	SELECT	activity_id,
+							activity_name
+					FROM	Activity_Type";
+
+		$result = mysql_query( $SQL ) or die("</select><br/>Couldn't execute query.".mysql_error());
+
+		while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+			echo "\t\t\t\t\t\t<option value='".$row[activity_id]."'>".$row[activity_name]."</option>\n";
+		}
+?>
+				</select><em>&nbsp;&nbsp;(You can fill this out later if you're not sure yet.)</em></p>
+
 				<p><label for="cboDining" class="required">Dining Preference:</label>
 				<select id="cboDining" name="cboDining">
 					<option value="0" selected>--Please Select--</option>

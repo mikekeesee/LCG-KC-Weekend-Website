@@ -23,6 +23,7 @@
 	$num_in_party = $_POST['txtNumInParty'];
 	setcookie("num_in_party", $num_in_party, $expire);
 
+	$activity = $_POST['cboActivity'];
 	$dining_id = $_POST['cboDining'];
 
 	// Verify there is not already an identical person in the system
@@ -135,6 +136,37 @@
 		$reg_id = mysql_insert_id();
 	}
 
+	// Insert the activity data for the primary contact
+	if ($activity > 0) {
+
+		$SQL = "SELECT	COUNT(*) as count
+				FROM	Person_Activity
+				WHERE	person_id = ".$mc_person_id;
+
+		$result = mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute family activity SELECT count query.".mysql_error());
+		$row = mysql_fetch_array($result,MYSQL_ASSOC);
+		$count = $row['count'];
+
+		if ($count > 0) {
+			$SQL = "UPDATE	Person_Activity
+					SET		activity_id = ".$activity."
+					WHERE	person_id = ".$mc_person_id;
+
+			mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute UPDATE family activity query.".mysql_error());
+
+		} else {
+			$SQL = "INSERT INTO	Person_Activity
+							(Person_ID,
+							 Activity_ID)
+					VALUES
+						(".$mc_person_id.",
+						 ".$activity.");";
+
+
+			mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute INSERT family activity query.".mysql_error());
+		}				
+	}
+
 	setcookie("reg_id", $reg_id, $expire);
 
 ?>
@@ -216,6 +248,23 @@
 		}
 ?>
 				</select></p>
+				
+				<p><label for="cboActivity">Choose an Activity:</label>
+				<select id="cboActivity<?=$i?>" name="cboActivity<?=$i?>">
+						<option value="0" selected>--Please Select--</option>
+<?
+		// Get the database connection information
+		$SQL = "	SELECT	activity_id,
+							activity_name
+					FROM	Activity_Type";
+
+		$result = mysql_query( $SQL ) or die("</select><br/>Couldn't execute query.".mysql_error());
+
+		while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+			echo "\t\t\t\t\t\t<option value='".$row[activity_id]."'>".$row[activity_name]."</option>\n";
+		}
+?>
+				</select><em>(You can fill this out later if you're not sure yet.)</em></p>
 			</fieldset>
 <?
 	}
@@ -270,7 +319,39 @@
 <?		}
 	} ?>
 			}
-		});		
+		});
+		
+	/*$('#reg-family').submit(function() {
+		// Check the fields to see if any are empty
+		for (var i=1; i < <?=$num_in_party?>; i++) {
+			//if (document.getElementById("txtFirstName" + i.toString()).value == '') {
+			//	alert("Please fill out Family Member #" + i + "'s First Name field, if you would... I would hope you'd know them on a first-name basis by now!");
+			//	return false;
+			//}
+
+			//if (document.getElementById("txtLastName" + i.toString()).value == '') {
+			//	alert("Please fill out Family Member #" + i + "'s Last Name field...  I would hope you'd know their names by now!");
+			//	return false;
+			//}
+
+			//if (document.getElementById("cboSex" + i.toString()).value == '0') {
+			//	alert("Please fill out Family Member #" + i + "'s Gender field. I would think that's public knowledge...");
+			//	return false;
+			//}
+
+			//if (document.getElementById("cboAgeRange" + i.toString()).value == '0') {
+			//	alert("Please fill out Family Member #" + i + "'s Description That Best Fits field.");
+			//	return false;
+			//}
+
+			// Remove any apostrophes because they make PHP and database unhappy. :,(
+			document.getElementById("txtFirstName" + i.toString()).value = document.getElementById("txtFirstName" + i.toString()).value.replace("\'", "");
+			document.getElementById("txtLastName" + i.toString()).value = document.getElementById("txtLastName" + i.toString()).value.replace("\'", "");
+		}
+
+		//document.getElementById("reg-family").submit();
+	});*/
+		
 	</script>
 	
 </body>

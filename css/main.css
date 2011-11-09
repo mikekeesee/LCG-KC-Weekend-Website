@@ -284,7 +284,7 @@ fieldset p {
 }
 
 label {
-  float:left;
+/*  float:left;*/
   margin-right:0.5em;
   padding-top:0.2em;
   text-align:right;
@@ -296,6 +296,12 @@ fieldset .no-float  {
   margin-right:0.5em;
   padding-top:0.2em;
   font-weight:bold;
+}
+  
+fieldset em {
+	margin: 0em .5em 1em 0em;
+	font-size: .7em;
+	font-style: italic;
 }
   
 .required {

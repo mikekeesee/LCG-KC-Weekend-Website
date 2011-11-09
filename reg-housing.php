@@ -18,6 +18,7 @@
 		$email[$i]	= $_POST["txtEmail".$i];
 		$phone[$i]	= $_POST["txtPhone".$i];
 		$age[$i]	= $_POST["cboAgeRange".$i];
+		$activity[$i]	= $_POST["cboActivity".$i];
 	}
 
 
@@ -63,6 +64,35 @@
 
 			mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute main contact UPDATE person query.".mysql_error());
 
+			if ($activity[$i] > 0) {
+				$SQL = "SELECT	COUNT(*) as count
+						FROM	Person_Activity
+						WHERE	person_id = ".$fam_person_id;
+
+				$result = mysql_query( $SQL ) or die($SQL.mysql_error());//"Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute family activity SELECT count query.".mysql_error());
+				$row = mysql_fetch_array($result,MYSQL_ASSOC);
+				$count = $row['count'];
+
+				if ($count > 0) {
+					$SQL = "UPDATE	Person_Activity
+							SET		activity_id = ".$activity[$i]."
+							WHERE	person_id = ".$fam_person_id;
+
+					mysql_query( $SQL ) or die($SQL.mysql_error());//"Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute UPDATE family activity query.".mysql_error());
+				
+				} else {
+					$SQL = "INSERT INTO	Person_Activity
+									(Person_ID,
+									 Activity_ID)
+							VALUES
+								(".$fam_person_id.",
+								 ".$activity[$i].");";
+
+
+					mysql_query( $SQL ) or die($SQL.mysql_error());//"Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute INSERT family activity query.".mysql_error());
+				}				
+			}			
+			
 		// If they're a new registrant, enter their information
 		} else {
 
@@ -82,6 +112,7 @@
 						 '".$phone[$i]."')";
 
 			mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute INSERT family person query.".mysql_error());
+			$fam_person_id = mysql_insert_id();		
 
 			// Insert the Registration table data
 			$SQL = "INSERT INTO Registration_Person
@@ -92,6 +123,19 @@
 						 ".mysql_insert_id().");";
 
 			mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute INSERT registration person query.".mysql_error());
+			
+			
+			if ($activity[$i] > 0) {
+				$SQL = "INSERT INTO	Person_Activity
+								(Person_ID,
+								 Activity_ID)
+						VALUES
+							(".$fam_person_id.",
+							 ".$activity[$i].");";
+						
+
+				mysql_query( $SQL ) or die($SQL.mysql_error());//"Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute INSERT family activity query.".mysql_error());
+			}			
 		}
 	}
 
