@@ -60,9 +60,12 @@
 				<br/>
 
 				<p><h4>Payment</h4>
-				If you haven&#39;t already done so, we do ask that you would quickly send in the <b>registration fee</b> of
-				<b>$5 per person</b> in your group or <b>$20 per family</b>, whichever is lowest. Please make checks payable to
-				<u>Local Church Activity Fund</u>. Please send all checks to:</p>
+				<p>We do ask that you would quickly send in the <b>registration fee</b> of <b>$10 per person</b> in your
+				group or <b>$40 per family</b>, whichever is lowest. If you cannot afford to pay at this time or cannot afford
+				the full amount, please come anyway. If you would like to give more, that would be greatly appreciated as well.
+				You can either click the PayPal Donate in the upper-right corner of the web page, or send a check. If writing
+				a check, please make checks payable to <u>Local Church Activity Fund</u>.  Please send all checks to:</p>
+				
 				<p style="margin:20px"><b>
 					John Wells<br/>
 					2329 Lake Breeze Ln.<br/>
@@ -71,25 +74,35 @@
 
 				<p>If you do not have the funds to make payment, please come anyway!</p>
 
+				<br />
+				
 				<p><h4>Maps</h4>
-				</p>
-				<p style="margin:20px"><b>
-					6401 E. 87th Street<br/>
-					Kansas City, MO
-				</b></p>
+				<div class="column">
+					<p>All Friday and Saturday activities will be at the Benjamin Ranch near Raytown, MO:</p>
+					<p style="margin:20px"><b>
+						Benjamin Ranch<br/>
+						6401 E. 87th Street<br/>
+						Kansas City, MO
+					</b></p>
+				</div>
+				<div class="clear-float"></div>
 
 				<br/>
 
-				<br/>
-				<p>All Sunday activities will be at the Okun Fieldhouse in Shawnee, KS:</p>
-				<p style="margin:20px"><b>
-					20200 Johnson Dr.<br/>
-					Shawnee, KS 66218
-				</b></p>
-
-				<br/>
-
-				<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?q=39.034258,-94.819633&amp;num=1&amp;sll=39.031053,-94.819908&amp;sspn=0.023361,0.219275&amp;ie=UTF8&amp;source=embed&amp;ll=39.030519,-94.815445&amp;spn=0.046672,0.072956&amp;z=13&amp;output=embed"></iframe><br /><small><a href="http://maps.google.com/maps?q=39.034258,-94.819633&amp;num=1&amp;sll=39.031053,-94.819908&amp;sspn=0.023361,0.219275&amp;ie=UTF8&amp;source=embed&amp;ll=39.030519,-94.815445&amp;spn=0.046672,0.072956&amp;z=13" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+				<div class="column">
+					<p>All Sunday activities will be at the Okun Fieldhouse in Shawnee, KS:</p>
+					<p style="margin:20px"><b>
+						Okun Fieldhouse<br/>
+						20200 Johnson Dr.<br/>
+						Shawnee, KS 66218
+					</b></p>
+				</div>
+					
+				<div class="map-column">
+					<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?q=39.034258,-94.819633&amp;num=1&amp;sll=39.031053,-94.819908&amp;sspn=0.023361,0.219275&amp;ie=UTF8&amp;source=embed&amp;ll=39.030519,-94.815445&amp;spn=0.046672,0.072956&amp;z=13&amp;output=embed"></iframe><br /><small><a href="http://maps.google.com/maps?q=39.034258,-94.819633&amp;num=1&amp;sll=39.031053,-94.819908&amp;sspn=0.023361,0.219275&amp;ie=UTF8&amp;source=embed&amp;ll=39.030519,-94.815445&amp;spn=0.046672,0.072956&amp;z=13" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+				</div>
+				
+				<div class="clear-float"></div>
 			</div>
 
 			<div id="dance">

@@ -171,18 +171,29 @@
 
 		<h2 class="standout">Registration</h2>
 
-		<br/>
-
 		<h3>Submission Confirmed:</h3>
-		<br/>
+		
 		<p>You have successfully registered! You deserve something nice... Perhaps a night on the town,
 		a trip to your favorite store, or even... dare I say, a long weekend break where a ton of people
 		will be gathered together to have a great time eating, dancing, learning and playing together.  We'll
 		see you soon!</p>
 
-		<p>We do ask that you would quickly send in the <b>registration fee</b> of <b>$5 per person</b> in your
-		group or <b>$25 per family</b>, whichever is lowest.  Please make checks payable to <u>Local Church Activity
-		Fund</u>.  Please send all checks to:
+		<p><h3>The suggested donation amount is: <? if ($num_in_party >= 4) print('$40'); else print('$'.($num_in_party * 10)); ?></h3>
+			<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+			<input type="hidden" name="cmd" value="_s-xclick">
+			<input type="hidden" name="hosted_button_id" value="JFMRJ5UHHCZK4">
+			<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+			<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+			</form>
+		</p>
+		
+	
+		<p>We do ask that you would quickly send in the <b>registration fee</b> of <b>$10 per person</b> in your
+		group or <b>$40 per family</b>, whichever is lowest. If you cannot afford to pay at this time or cannot afford
+		the full amount, please come anyway. If you would like to give more, that would be greatly appreciated as well.
+		You can either click the PayPal Donate button to pay by eCheck or a credit or debit card, or send a check. If writing
+		a check, please make checks payable to <u>Local Church Activity Fund</u>.  Please send all checks to:</p>
+		
 		<p style="margin:20px"><b>
 			John Wells<br/>
 			2329 Lake Breeze Ln.<br/>
