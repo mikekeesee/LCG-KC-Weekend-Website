@@ -63,8 +63,8 @@ jQuery(document).ready(function() {
 		subGrid : true,
 		subGridUrl: 'db-sub-reg-housing-guests.php',
 		subGridModel: [
-			{name : ['First','Last','Email','Phone','# in Party'],
-			 width : [100,100,200,100,60] }
+			{name : ['First','Last','Email','Phone','Home City','# in Party'],
+			 width : [100,100,200,100,150,60] }
 			],
 		caption:"Housing Contacts"
 	});

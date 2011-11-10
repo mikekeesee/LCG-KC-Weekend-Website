@@ -3,12 +3,13 @@ jQuery(document).ready(function() {
 		url:'db-reg-whos-housed.php',
 		datatype: "xml",
 		mtype: "GET",
-		colNames:['First', 'Last', 'Email', 'Phone', 'Housing Type', '# in Party'],
+		colNames:['First', 'Last', 'Email', 'Phone', 'Home City', 'Housing Type', '# in Party'],
 		colModel:[
 			{name:'first_name', index:'first_name', width:100},
 			{name:'last_name',index:'last_name', width:100},
-			{name:'email',index:'email', width:200},
+			{name:'email',index:'email', width:175},
 			{name:'phone',index:'phone', width:130},
+			{name:'home_city', index:'home_city', width:150},
 			{name:'housing_type',index:'housing_type', width:200},
 			{name:'num_in_party',index:'num_in_party', width:60}
 			],

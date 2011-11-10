@@ -106,6 +106,9 @@
 					<label for="txtHousedBy" class="required">Housed By:</label>
 					<input type="text" id="txtHousedBy" name="txtHousedBy" maxlength="255" size="30" /></p>
 				</div>
+				
+				<p><label for="txtHomeCity">If from out of town, where are you from? [City, State]:</label>
+				<input type="text" id="txtHomeCity" name="txtHomeCity" maxlength="255" size="30" /></p>
 
 				<p><label for="txtNumInParty" class="required">Number in Party:</label>
 				<input type="text" id="txtNumInParty" name="txtNumInParty" maxlength="2" size="2" /></p>

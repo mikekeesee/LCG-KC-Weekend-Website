@@ -53,6 +53,7 @@ $SQL = "	SELECT	r.registration_id,
 					p.last_name,
 					IFNULL(p.email, 'None') as email,
 					IFNULL(p.phone, 'None') as phone,
+					IFNULL(r.home_city, 'None') as home_city,
 					s.String as housing_type,
 					r.Number_In_Party as num_in_party
 			FROM Person as p, Registration as r, Registration_Housing rh, String_Base s
@@ -78,6 +79,7 @@ while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
 	$s .= "<cell>". $row[last_name]."</cell>";
 	$s .= "<cell>". $row[email]."</cell>";
 	$s .= "<cell>". $row[phone]."</cell>";
+	$s .= "<cell>". $row[home_city]."</cell>";
 	$s .= "<cell>". $row[housing_type]."</cell>";
 	$s .= "<cell>". $row[num_in_party]."</cell>";
 	$s .= "</row>";

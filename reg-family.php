@@ -17,6 +17,8 @@
 
 	$housing_type = $_POST['cboHousingType'];
 	setcookie("housing_type", $housing_type, $expire);
+	
+	$home_city = $_POST['txtHomeCity'];
 
 	$housed_by = $_POST['txtHousedBy'];
 
@@ -109,7 +111,8 @@
 				SET		Housing_Type = ".$housing_type.",
 						Number_In_Party = ".$num_in_party.",
 						Housed_By = '".$housed_by."',
-						Dining_ID = ".$dining_id."
+						Dining_ID = ".$dining_id.",
+						Home_City = '".$home_city."'
 				WHERE	Registration_ID = ".$reg_id;
 
 		mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he //left a bug in his code."); //$SQL."\n\nCouldn't execute registration UPDATE query.".mysql_error());
@@ -122,14 +125,16 @@
 					 Housing_Type,
 					 Number_In_Party,
 					 Housed_By,
-					 Dining_ID)
+					 Dining_ID,
+					 Home_City)
 				VALUES
 					(NULL,
 					 ".$mc_person_id.",
 					 ".$housing_type.",
 					 ".$num_in_party.",
 					 '".$housed_by."',
-					 ".$dining_id.")";
+					 ".$dining_id.",
+					 '".$home_city."')";
 
 		mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he //left a bug in his code."); //$SQL."\n\nCouldn't execute Registration INSERT query.".mysql_error());
 
