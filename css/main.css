@@ -29,6 +29,10 @@ h3 {
 	text-transform: uppercase;
 }
 
+p {
+	margin: .5em 0em 0.5em 0em;
+}
+
 label.error {
 	float: none; 
 	color: red; 
@@ -65,7 +69,11 @@ label.error {
 	color: #000000;
 }
 
-
+.paypalbutton {
+	position: absolute;
+	left: 55em;
+	top: 1em;	
+}
 
 /** Navigation Bar **/
 
@@ -280,7 +288,7 @@ fieldset {
 }
 
 fieldset p {
-	margin: 0em 0em 0em 0em;
+	margin: 0em .5em 1em 0em;
 }
 
 label {

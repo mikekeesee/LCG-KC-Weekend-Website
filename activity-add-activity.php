@@ -54,10 +54,14 @@
 
 		<h2>Activities</h2>
 
-		<p>Use this page to pick the activity you would like to participate in. This year, all of the activities listed below are
+		<p>Use this page to choose or change the activity you would like to participate in. This year, all of the activities are
 		on Sunday, so you can only choose one. That&#39;s not to say that you won&#39;t be able to pop over and play some
-		recreational volleyball after your basketball game, but we&#39;d like you to commit to only one for now. Family games are
+		recreational volleyball after your game or activity are over, but we&#39;d like you to commit to only one for now. Family games are
 		for everyone.</p>
+		
+		<p><b>Important: Minimum age for sports is 13. Those with bad backs or other similar injuries should not
+		participate. Due to the inherent risk of such activities, all participates must sign a liability waiver. Those
+		under 18 will need a parent or legal guardian’s signature before they can participate.</b></p>
 
 		<p>Find your name on the list of registered people (not registered? Click <a href="reg-main.php">here</a>) and
 		click that row to highlight it. Then click the row activity of your choice to highlight it. Finally, click Submit at the

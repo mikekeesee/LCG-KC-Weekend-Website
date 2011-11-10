@@ -54,13 +54,17 @@
 		<div class="slider-wrapper theme-default">
     		<div class="ribbon"></div>
 			<div id="picture-slider" class="nivoSlider">
+				<img src="images/kcweekend_1.jpg" alt="" />
 				<img src="images/kcweekend_2.jpg" alt="" />
 				<img src="images/kcweekend_3.jpg" alt="" />
 				<img src="images/kcweekend_4.jpg" alt="" />
 				<img src="images/kcweekend_5.jpg" alt="" />
+				<img src="images/kcweekend_6.jpg" alt="" />
 				<img src="images/kcweekend_7.jpg" alt="" />
+				<img src="images/kcweekend_8.jpg" alt="" />
 				<img src="images/kcweekend_9.jpg" alt="" />
 				<img src="images/kcweekend_10.jpg" alt="" />
+				<img src="images/kcweekend_11.jpg" alt="" />
 				<img src="images/kcweekend_12.jpg" alt="" />
 				<img src="images/kcweekend_13.jpg" alt="" />
 				<img src="images/kcweekend_14.jpg" alt="" />
@@ -72,7 +76,50 @@
 				<img src="images/kcweekend_20.jpg" alt="" />
 				<img src="images/kcweekend_21.jpg" alt="" />
 				<img src="images/kcweekend_22.jpg" alt="" />
+				<img src="images/kcweekend_23.jpg" alt="" />
 				<img src="images/kcweekend_24.jpg" alt="" />
+				<img src="images/kcweekend_25.jpg" alt="" />
+				<img src="images/kcweekend_26.jpg" alt="" />
+				<img src="images/kcweekend_27.jpg" alt="" />
+				<img src="images/kcweekend_28.jpg" alt="" />
+				<img src="images/kcweekend_29.jpg" alt="" />
+				<img src="images/kcweekend_30.jpg" alt="" />
+				<img src="images/kcweekend_31.jpg" alt="" />
+				<img src="images/kcweekend_32.jpg" alt="" />
+				<img src="images/kcweekend_33.jpg" alt="" />
+				<img src="images/kcweekend_34.jpg" alt="" />
+				<img src="images/kcweekend_35.jpg" alt="" />
+				<img src="images/kcweekend_36.jpg" alt="" />
+				<img src="images/kcweekend_37.jpg" alt="" />
+				<img src="images/kcweekend_38.jpg" alt="" />
+				<img src="images/kcweekend_39.jpg" alt="" />
+				<img src="images/kcweekend_40.jpg" alt="" />
+				<img src="images/kcweekend_41.jpg" alt="" />
+				<img src="images/kcweekend_42.jpg" alt="" />
+				<img src="images/kcweekend_43.jpg" alt="" />
+				<img src="images/kcweekend_44.jpg" alt="" />
+				<img src="images/kcweekend_45.jpg" alt="" />
+				<img src="images/kcweekend_46.jpg" alt="" />
+				<img src="images/kcweekend_47.jpg" alt="" />
+				<img src="images/kcweekend_48.jpg" alt="" />
+				<img src="images/kcweekend_49.jpg" alt="" />
+				<img src="images/kcweekend_50.jpg" alt="" />
+				<img src="images/kcweekend_51.jpg" alt="" />
+				<img src="images/kcweekend_52.jpg" alt="" />
+				<img src="images/kcweekend_53.jpg" alt="" />
+				<img src="images/kcweekend_54.jpg" alt="" />
+				<img src="images/kcweekend_55.jpg" alt="" />
+				<img src="images/kcweekend_56.jpg" alt="" />
+				<img src="images/kcweekend_57.jpg" alt="" />
+				<img src="images/kcweekend_58.jpg" alt="" />
+				<img src="images/kcweekend_59.jpg" alt="" />
+				<img src="images/kcweekend_60.jpg" alt="" />
+				<img src="images/kcweekend_61.jpg" alt="" />
+				<img src="images/kcweekend_62.jpg" alt="" />
+				<img src="images/kcweekend_63.jpg" alt="" />
+				<img src="images/kcweekend_64.jpg" alt="" />
+				<img src="images/kcweekend_65.jpg" alt="" />
+				
 			</div>
 		</div>
 

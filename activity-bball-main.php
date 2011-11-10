@@ -33,7 +33,7 @@
 		<h2>Basketball</h2>
 
 		<p>Welcome to the basketball page. You can check out the game rules, schedule or the teams that are
-		already signed up. Sign up your team under the Teams tab. <b style="color:red">Teams must be finalized by Dec. 20th!</b></p>
+		already signed up. Sign up your team under the Teams tab. <b style="color:red">Teams must be finalized by December 18.</b></p>
 
 		<p>All basketball-related questions may be directed to Mr. Stroud at
 		<a href="mailto:astroud@lcg.org">astroud@lcg.org</a>.</p>
@@ -69,10 +69,10 @@
 						<li class="bullets"><b>Schedule of Games:</b> Schedule and tournament info to come.</li>
 						<li class="bullets"><b>Rosters:</b> Teams need a minimum of 5 people per team (8 max.). All team members must register
 						to play.</li>
-						<li class="bullets"><b>Lunch Break:</b> All sports will halt for lunch for about an hour. Schedule to come.</li>
+						<li class="bullets"><b>Lunch Break:</b> All sports will halt for lunch. Schedule to come.</li>
 					</ul>
 
-					<p><b>Please register your team by <span style="color:red;">December 20th</span></b>.</p>
+					<p><b>Please register your team by <span style="color:red;">Sunday, December 18</span></b>.</p>
 
 			</div>
 

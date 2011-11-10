@@ -31,8 +31,8 @@
 
 		<h2>Volleyball</h2>
 
-		<p>Welcome to the volleyball page. You can check out the  game rules, schedule or the teams that are
-		already signed up. Sign up your team under the Teams tab. <b style="color:red">Teams must be finalized by Dec. 20th!</b></p>
+		<p>Welcome to the volleyball page. You can check out the game rules, schedule or the teams that are
+		already signed up. Sign up your team under the Teams tab. <b style="color:red">Teams must be finalized by Sunday, December 18.</b></p>
 
 		<div id="tabs">
 			<ul>
@@ -57,7 +57,7 @@
 					<li><b>Schedule of Games:</b> To be announced.</li>
 					<li><b>Rosters:</b> Teams need a minimum of 4 people per team (8 max.). All team members must register
 					to play.</li>
-					<li><b>Lunch Break:</b> All sports will halt for lunch for about an hour. Schedule to come.</li>
+					<li><b>Lunch Break:</b> All sports will halt for lunch. Schedule to come.</li>
 				</ul>
 
 				<p>All volleyball-related questions may be directed to Doug Burson at
@@ -68,7 +68,7 @@
 				participate. Due to the inherent risk of such activities, all participants must sign a liability waiver. Those
 				under 18 will need a parent or legal guardian&#39;s signature before they can participate.</b></p>
 
-				<b>Please register your team by December 20</b>.</p>
+				<b>Please register your team by Sunday, December 18</b>.</p>
 			</div>
 
 			<div id="rules">

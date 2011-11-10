@@ -37,21 +37,24 @@
 			<h3>Sunday's Schedule:</h3>
 
 			<ul>
-				<li><b>9:00 a.m.</b> - <a href="information.php">Okun Fieldhouse</a> Opens</li>
+				<li><b>8:30 a.m.</b> - <a href="information.php">Okun Fieldhouse</a> Opens</li>
 
-				<li><b>TBD a.m.</b> - Sports Bible Study</li>
+				<li><b>9:00 a.m.</b> - Sports Bible Study</li>
 
-				<li><b>TBD a.m.</b> - <a href="activity-bootcamp.php">Boot Camp Conditioning</a></li>
+				<li><b>9:30 a.m.</b> - <a href="activity-bootcamp.php">Boot Camp Conditioning</a></li>
 
-				<li><b>TBD a.m.</b> - <a href="activity-bball-main.php">Basketball</a> and <a href="activity-vball-main.php">Volleyball</a></li>
+				<li><b>9:30 a.m.</b> - <a href="activity-bball-main.php">Basketball</a> and <a href="activity-vball-main.php">Volleyball</a></li>
 
-				<li><b>TBD a.m.</b> - <a href="activity-main.php">Family Activities</a></li>
+				<li><b>10:30 a.m.</b> - <a href="activity-main.php">Family Activities</a></li>
 
-				<li><b>TBD p.m.</b> - <a href="activity-main.php">Lunch</a> (organized sports will take a break)</li>
+				<li><b>1:30 p.m.</b> - <a href="activity-main.php">Lunch</a> (organized sports will take a break)</li>
 
-				<li><b>TBD p.m.</b> - Sports Resume</li>
+				<li><b>2:00 p.m.</b> - Sports Resume</li>
 
-				<li><b>TBD p.m.</b> - Activities End</li>
+				<li><b>5:00 p.m.</b> - Games End</li>
+				
+				<li><b>5:30 p.m.</b> - Fieldhouse Closes</li>
+				
 			</ul>
 		
 		</div>
@@ -68,10 +71,10 @@
 		
 		<h3>Food:</h3>
 		
-		<p>We will also provide free bagels and desserts in the foyer.</p>
+		<p>We will provide free bagels in the foyer. We are also working on details to make concessions available. Details to come.</p>
 
 		<p>The closest restaurants are about a mile west, then a mile south. We plan to have maps available at the fieldhouse for those who
-		would like to eat out after the activities end.</p>
+		would like to eat out for lunch or after the activities end.</p>
 
 	</div>
 	<!-- End of Main Content Area -->
