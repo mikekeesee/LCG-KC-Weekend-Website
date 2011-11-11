@@ -51,10 +51,6 @@ if ($admin == 1) {
 	$SQL = "	SELECT	p.person_id,
 						IFNULL(p.first_name, 'Not Specified') as first_name,
 						p.last_name,
-						CASE p.sex
-							WHEN 1 THEN 'Male'
-							WHEN 2 THEN 'Female'
-							END AS sex,
 						IFNULL(s.String, 'Not Entered') AS age_range,
 						IFNULL(p.email, 'None') as email,
 						IFNULL(p.phone, 'None') as phone
@@ -88,7 +84,6 @@ while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
 	$s .= "<cell>". $row[first_name]."</cell>";
 	$s .= "<cell>". $row[last_name]."</cell>";
 	if ($admin == 1) {
-		$s .= "<cell>". $row[sex]."</cell>";
 		$s .= "<cell>". $row[age_range]."</cell>";
 		$s .= "<cell>". $row[email]."</cell>";
 		$s .= "<cell>". $row[phone]."</cell>";

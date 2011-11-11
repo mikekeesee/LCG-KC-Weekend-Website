@@ -321,6 +321,7 @@
 		</div>
 
 		<div style="clear:both">
+			<br /><br />
 			<p>Finally, click Submit.</p>
 			<input type="button" onclick="VerifyAndSubmit();" value="Submit" style="float:none" />
 		</div>

@@ -5,12 +5,12 @@ jQuery(document).ready(function() {
 		mtype: "GET",
 		colNames:['Activity'],
 		colModel:[
-			{name:'activity_name', index:'first_name', width:150}],
+			{name:'activity_name', index:'first_name', width:250}],
 		sortname: 'activity_name',
 		sortorder: 'asc',
 		viewrecords: true,
 		//width: 220,
-		height: 140,
+		height: 200,
 		hidegrid: false,
 		caption:"Activity List"
 	});

@@ -77,21 +77,22 @@
 
 		<p>Welcome to the administration page for registration.</p>
 
-		<br/>
-		<ul>
-			<li><b>There are currently <?=$num_not_housed?> families/groups not housed.</b></li>
-			<li><b>The KC Weekend has currently generated $<?=$total_payment?>.00 in donations.</b></li>
-		</ul>
-		<br/>
+		<p><br/>
+			<b>There are currently <?=$num_not_housed?> families/groups not housed.</b>
+			<br/>
+			<b>The KC Weekend has currently generated $<?=$total_payment?>.00 in donations.</b>
+		</p>
 		<hr/>
 		<p>Please choose from the links or reports below:</p>
 
-		<p>-->&nbsp;<a href="reg-admin-housing.php">Create a Housing Contact</a></p>
-		<p>-->&nbsp;<a href="reg-admin-add-guest-to-housing.php">Add Guests to a Housing Contact</a></p>
-		<p>-->&nbsp;<a href="reg-admin-add-money.php">Record a Payment from a Registered Family/Group</a></p>
-		<p>-->&nbsp;<a href="activity-vball-team.php" target="_blank">Modify Volleyball Teams</a></p>
-		<p>-->&nbsp;<a href="activity-bball-team.php" target="_blank">Modify Basketball Teams</a></p>
-		<br/>
+		<ul>
+			<li><a href="reg-admin-housing.php">Create a Housing Contact</a></li>
+			<li><a href="reg-admin-add-guest-to-housing.php">Add Guests to a Housing Contact</a></li>
+			<li><a href="reg-admin-add-money.php">Record a Payment from a Registered Family/Group</a></li>
+			<li><a href="activity-vball-team.php" target="_blank">Modify Volleyball Teams</a></li>
+			<li><a href="activity-bball-team.php" target="_blank">Modify Basketball Teams</a></li>
+		</ul>
+		
 		<hr />
 		<br/>
 		<p><b>Please check a box to view a report:</b></p>

@@ -37,22 +37,16 @@
 		<div id="tabs">
 			<ul>
 				<li><a href="#general">General</a></li>
-				<li><a href="#dance">Dance</a></li>
 				<li><a href="#funshow">Fun Show</a></li>
+				<li><a href="#dance">Dance</a></li>
 				<li><a href="#food">Food</a></li>
-				<li><a href="#childrenschoir">Children's Choir</a></li>
 			</ul>
 
 			<div id="general">
 				<h3>General Information</h3>
 
-				<br/>
-
-				<p><h4>Location</h4>
-				The Kansas City Weekend will be Friday, December 30 through Sunday, January 1.</p>
-				
-				<p>Activities on Friday and Saturday will be at a new location, Benjamin Ranch, 6401 E. 87th Street in Kansas City, MO.
-				As in years past, we plan to host a Bible study Friday night, then Sabbath services, dinner, fun show and dance
+				<p>The Kansas City Weekend will be Friday, December 30 through Sunday, January 1.As in years past,
+				we plan to host a Bible study Friday night, then Sabbath services, dinner, fun show and dance
 				on Saturday. The ranch is rustic, so bring your boots and your best YEE-HAW!</p>
 				
 				<p>Sunday's sports and family activities will again be at Okun Fieldhouse, 20200 Johnson Drive in Shawnee, KS.</p>
@@ -76,7 +70,7 @@
 
 				<br />
 				
-				<p><h4>Maps</h4>
+				<p><h4>Locations and Maps</h4>
 				<div class="column">
 					<p>All Friday and Saturday activities will be at the Benjamin Ranch near Raytown, MO:</p>
 					<p style="margin:20px"><b>
@@ -85,6 +79,11 @@
 						Kansas City, MO
 					</b></p>
 				</div>
+				
+				<div class="map-column">
+					<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?q=38.963889,-94.515831&amp;num=1&amp;t=h&amp;vpsrc=6&amp;ie=UTF8&amp;ll=38.965782,-94.517698&amp;spn=0.005839,0.00912&amp;z=16&amp;output=embed"></iframe><br /><small><a href="http://maps.google.com/maps?q=38.963889,-94.515831&amp;num=1&amp;t=h&amp;vpsrc=6&amp;ie=UTF8&amp;ll=38.965782,-94.517698&amp;spn=0.005839,0.00912&amp;z=16&amp;source=embed" style="color:#0000FF;text-align:left">View Larger Map</a></small>				
+				</div>
+				
 				<div class="clear-float"></div>
 
 				<br/>
@@ -99,24 +98,15 @@
 				</div>
 					
 				<div class="map-column">
-					<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?q=39.034258,-94.819633&amp;num=1&amp;sll=39.031053,-94.819908&amp;sspn=0.023361,0.219275&amp;ie=UTF8&amp;source=embed&amp;ll=39.030519,-94.815445&amp;spn=0.046672,0.072956&amp;z=13&amp;output=embed"></iframe><br /><small><a href="http://maps.google.com/maps?q=39.034258,-94.819633&amp;num=1&amp;sll=39.031053,-94.819908&amp;sspn=0.023361,0.219275&amp;ie=UTF8&amp;source=embed&amp;ll=39.030519,-94.815445&amp;spn=0.046672,0.072956&amp;z=13" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+					<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?q=39.03427,-94.819672&amp;num=1&amp;t=h&amp;vpsrc=6&amp;ie=UTF8&amp;ll=39.032186,-94.82141&amp;spn=0.011668,0.018239&amp;z=15&amp;output=embed"></iframe><br /><small><a href="http://maps.google.com/maps?q=39.03427,-94.819672&amp;num=1&amp;t=h&amp;vpsrc=6&amp;ie=UTF8&amp;ll=39.032186,-94.82141&amp;spn=0.011668,0.018239&amp;z=15&amp;source=embed" style="color:#0000FF;text-align:left">View Larger Map</a></small>
 				</div>
 				
 				<div class="clear-float"></div>
 			</div>
 
-			<div id="dance">
-				<h2>Dance</h2>
-
-				<p>Swing your partner, do-si-do. Line 'em up and here we go!</p>
-				
-				<p>The theme for this year's dance is country-western, so don your boots and hat and give us a big YEE-HAW! (We thought this would 
-				be appropriate for our ranch location.) This does NOT mean our music will all be country, so city folks, 
-				bring your finest skills to the dance floor. Blue jeans and casual clothes are acceptable.</p>
-	
-			</div>
-
 			<div id="funshow">
+				<h3>Fun Show</h3>
+
 				<p>Last year's show was such a hit that we are again offering a family fun show. Our talent search is on, 
 				and we are now accepting applications. If you can sing, dance, play an instrument, perform in a skit 
 				or wow us all with some other amazing skill, then send in your application now.</p>
@@ -128,13 +118,27 @@
 				will occur in the same building.</p>
 			</div>
 
+			<div id="dance">
+				<h3>Dance</h3>
+
+				<p>Swing your partner, do-si-do. Line 'em up and here we go!</p>
+				
+				<p>The theme for this year's dance is country-western, so don your boots and hat and give us a big YEE-HAW! (We thought this would 
+				be appropriate for our ranch location.) This does NOT mean our music will all be country, so city folks, 
+				bring your finest skills to the dance floor. Blue jeans and casual clothes are acceptable.</p>
+	
+			</div>
+
 			<div id="food">
+				<h3>Tasty Vittles</h3>
 				<p>It wouldn&#39;t be the KC Weekend without some tasty home cookin&#39;. This year&#39;s menu for Saturday night is 
 				still in the works, but you can count on warm and hearty deliciousness.</p>
 
-				<p>Benjamin Ranch is not very close to easily accessible restaurants, so we hope you'll plan
-				to enjoy plenty of fellowship, feasting and festivities! The building is more than big enough
-				to accommodate everyone for dinner.</p>
+				<h3>Eating Out</h3>
+				<p>Benjamin Ranch is a little more than a hop, skip and a jump from most restaurants, but there
+				are a few around for those willing to give their horse a bit more exercise. Here are a few... hundred:</p>
+				
+				<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;q=restaurants&amp;aq=&amp;sll=38.95487,-94.537354&amp;sspn=0.212784,0.242386&amp;vpsrc=6&amp;ie=UTF8&amp;t=h&amp;fll=38.959409,-94.515724&amp;fspn=0.106385,0.121193&amp;st=115968771510351694523&amp;rq=1&amp;ev=zo&amp;split=1&amp;radius=7.82&amp;hq=restaurants&amp;hnear=&amp;ll=38.941787,-94.488602&amp;spn=0.186922,0.291824&amp;z=11&amp;output=embed"></iframe><br /><small><a href="http://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;q=restaurants&amp;aq=&amp;sll=38.95487,-94.537354&amp;sspn=0.212784,0.242386&amp;vpsrc=6&amp;ie=UTF8&amp;t=h&amp;fll=38.959409,-94.515724&amp;fspn=0.106385,0.121193&amp;st=115968771510351694523&amp;rq=1&amp;ev=zo&amp;split=1&amp;radius=7.82&amp;hq=restaurants&amp;hnear=&amp;ll=38.941787,-94.488602&amp;spn=0.186922,0.291824&amp;z=11" style="color:#0000FF;text-align:left">View Larger Map</a></small>
 
 			</div>
 

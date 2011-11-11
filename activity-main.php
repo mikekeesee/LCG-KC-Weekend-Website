@@ -30,7 +30,7 @@
 
 		<p>Doors will open at 8:30 a.m. Sunday, December 2.</p>
 
-		<h2>-->&nbsp;<a href="activity-add-activity.php">Sign Up or Change Your Activity</a>&nbsp;<--</h2>
+		<h2><a href="activity-add-activity.php">Sign Up or Change Your Activity</a></h2>
 		
 		<div class="daily-schedule">
 		

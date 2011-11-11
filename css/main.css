@@ -1,5 +1,6 @@
 /** Default Styles **/
 body {
+	/*background-image: url('../images/background.jpg');*/
 	font-family: Helvetica, sans-serif;
 	font-size: 1em;
 	margin: 0em auto;
@@ -13,6 +14,12 @@ a {
 
 a:hover {
 	color: #777777;
+	text-decoration: underline;
+}
+
+a:visited {
+	color: #000000;
+	text-decoration: underline;
 }
 
 h2 {
@@ -30,14 +37,14 @@ h3 {
 }
 
 p {
-	margin: .5em 0em 0.5em 0em;
+	margin: .5em 0em .5em 0em;
 }
 
 label.error {
 	float: none; 
 	color: red; 
+	margin: 1em 0em 0em 0em;
 	padding-left: .5em; 
-	vertical-align: top; 
 }
 
 /** End Default Styles **/
@@ -71,7 +78,7 @@ label.error {
 
 .paypalbutton {
 	position: absolute;
-	left: 55em;
+	left: 52em;
 	top: 1em;	
 }
 
@@ -87,7 +94,7 @@ label.error {
 	text-transform: uppercase;
 }
 
-.navbar a:link,a:visited {
+.navbar a:link,.navbar a:visited {
 	background: #ffffff;
 	color: #000000;
 	display: block;
@@ -147,12 +154,6 @@ label.error {
 	float: left;
 	margin: 0em .5em 0em .5em;
 	width: 20em;
-}
-
-.map-column {
-	float: left;
-	margin: 0em .5em 0em .5em;
-	width: 450px;
 }
 
 .toggle {
@@ -293,8 +294,14 @@ fieldset {
 	padding: 1em;
 }
 
+legend {
+	color: #000000;
+	font-family: Helvetica, sans-serif;
+	font-size: 1em;
+}
+
 fieldset p {
-	margin: 0em .5em 1em 0em;
+	margin: 0em 0em 0em 0em;
 }
 
 label {
@@ -322,12 +329,12 @@ fieldset em {
 	font-weight: bold;
 }
 
-input {
-	margin: 0em .5em 1em 0em;
+fieldset input {
+	margin: 1em .5em 0em 0em;
 }
 
-select {
-	margin: 0em .5em 1em 0em;
+fieldset select {
+	margin: 1em .5em 0em 0em;
 }
 
 .grid-inline {

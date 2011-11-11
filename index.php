@@ -44,7 +44,8 @@
 			<ul>
 				<li><b>Registration is OPEN</b> - Come on down!</li>
 				<li><b>Event Dates</b> - Friday, Dec. 30, 2011 through Sunday, Jan. 1, 2012</li>
-				<li><b>Location</b> - Benjamin Ranch on Friday and Saturday. Okun Fieldhouse on Sunday.</li>
+				<li><b>Location</b> - Benjamin Ranch on Friday and Saturday.
+				<a href="information.php#general">Okun Fieldhouse</a> on Sunday.</li>
 
 			</ul>
 
@@ -54,29 +55,43 @@
 		<div class="slider-wrapper theme-default">
     		<div class="ribbon"></div>
 			<div id="picture-slider" class="nivoSlider">
-				<img src="images/kcweekend_1.jpg" alt="" />
-				<img src="images/kcweekend_2.jpg" alt="" />
+				<img src="images/benjamin_ranch.jpg" alt="" />
+				<img src="images/okun_fieldhouse.jpg" alt="" />
 				<img src="images/kcweekend_3.jpg" alt="" />
+				<img src="images/kcweekend_9.jpg" alt="" />
+				<img src="images/kcweekend_20.jpg" alt="" />
+				<img src="images/kcweekend_61.jpg" alt="" />
+				<img src="images/kcweekend_44.jpg" alt="" />
+				<img src="images/kcweekend_36.jpg" alt="" />
+				<img src="images/kcweekend_1.jpg" alt="" />
+				<img src="images/kcweekend_37.jpg" alt="" />
+				<img src="images/kcweekend_50.jpg" alt="" />
+				<img src="images/kcweekend_18.jpg" alt="" />
+				<img src="images/kcweekend_51.jpg" alt="" />
+				<img src="images/kcweekend_23.jpg" alt="" />
+				<img src="images/kcweekend_53.jpg" alt="" />
+				<img src="images/kcweekend_35.jpg" alt="" />
+				<img src="images/kcweekend_22.jpg" alt="" />
+				<img src="images/kcweekend_21.jpg" alt="" />
+				<img src="images/kcweekend_48.jpg" alt="" />
+				<img src="images/kcweekend_42.jpg" alt="" />
+				<img src="images/kcweekend_41.jpg" alt="" />
+				<img src="images/kcweekend_34.jpg" alt="" />
+				<img src="images/kcweekend_33.jpg" alt="" />
+				<img src="images/kcweekend_16.jpg" alt="" />
 				<img src="images/kcweekend_4.jpg" alt="" />
 				<img src="images/kcweekend_5.jpg" alt="" />
 				<img src="images/kcweekend_6.jpg" alt="" />
 				<img src="images/kcweekend_7.jpg" alt="" />
 				<img src="images/kcweekend_8.jpg" alt="" />
-				<img src="images/kcweekend_9.jpg" alt="" />
 				<img src="images/kcweekend_10.jpg" alt="" />
 				<img src="images/kcweekend_11.jpg" alt="" />
 				<img src="images/kcweekend_12.jpg" alt="" />
 				<img src="images/kcweekend_13.jpg" alt="" />
 				<img src="images/kcweekend_14.jpg" alt="" />
 				<img src="images/kcweekend_15.jpg" alt="" />
-				<img src="images/kcweekend_16.jpg" alt="" />
 				<img src="images/kcweekend_17.jpg" alt="" />
-				<img src="images/kcweekend_18.jpg" alt="" />
 				<img src="images/kcweekend_19.jpg" alt="" />
-				<img src="images/kcweekend_20.jpg" alt="" />
-				<img src="images/kcweekend_21.jpg" alt="" />
-				<img src="images/kcweekend_22.jpg" alt="" />
-				<img src="images/kcweekend_23.jpg" alt="" />
 				<img src="images/kcweekend_24.jpg" alt="" />
 				<img src="images/kcweekend_25.jpg" alt="" />
 				<img src="images/kcweekend_26.jpg" alt="" />
@@ -86,35 +101,23 @@
 				<img src="images/kcweekend_30.jpg" alt="" />
 				<img src="images/kcweekend_31.jpg" alt="" />
 				<img src="images/kcweekend_32.jpg" alt="" />
-				<img src="images/kcweekend_33.jpg" alt="" />
-				<img src="images/kcweekend_34.jpg" alt="" />
-				<img src="images/kcweekend_35.jpg" alt="" />
-				<img src="images/kcweekend_36.jpg" alt="" />
-				<img src="images/kcweekend_37.jpg" alt="" />
 				<img src="images/kcweekend_38.jpg" alt="" />
 				<img src="images/kcweekend_39.jpg" alt="" />
 				<img src="images/kcweekend_40.jpg" alt="" />
-				<img src="images/kcweekend_41.jpg" alt="" />
-				<img src="images/kcweekend_42.jpg" alt="" />
 				<img src="images/kcweekend_43.jpg" alt="" />
-				<img src="images/kcweekend_44.jpg" alt="" />
 				<img src="images/kcweekend_45.jpg" alt="" />
 				<img src="images/kcweekend_46.jpg" alt="" />
 				<img src="images/kcweekend_47.jpg" alt="" />
-				<img src="images/kcweekend_48.jpg" alt="" />
 				<img src="images/kcweekend_49.jpg" alt="" />
-				<img src="images/kcweekend_50.jpg" alt="" />
-				<img src="images/kcweekend_51.jpg" alt="" />
 				<img src="images/kcweekend_52.jpg" alt="" />
-				<img src="images/kcweekend_53.jpg" alt="" />
 				<img src="images/kcweekend_54.jpg" alt="" />
 				<img src="images/kcweekend_55.jpg" alt="" />
 				<img src="images/kcweekend_56.jpg" alt="" />
 				<img src="images/kcweekend_57.jpg" alt="" />
 				<img src="images/kcweekend_58.jpg" alt="" />
+				<img src="images/kcweekend_2.jpg" alt="" />
 				<img src="images/kcweekend_59.jpg" alt="" />
 				<img src="images/kcweekend_60.jpg" alt="" />
-				<img src="images/kcweekend_61.jpg" alt="" />
 				<img src="images/kcweekend_62.jpg" alt="" />
 				<img src="images/kcweekend_63.jpg" alt="" />
 				<img src="images/kcweekend_64.jpg" alt="" />
@@ -158,7 +161,7 @@
 
 				<li><b>4 p.m.</b> - Dinner</li>
 
-				<li><b>6 p.m.</b> - <a href="information.php#funshow">Fun Show</a> 
+				<li><b>6 p.m.</b> - <a href="information.php#funshow">Fun Show</a></li>
 				
 				<li><b>8 p.m.</b> - <a href="information.php#dance">Dance</a></li>
 
@@ -174,23 +177,24 @@
 			<h3>Sunday, Jan. 1</h3>
 
 			<ul>
-				<li><b>9:00 a.m.</b> - <a href="information.php">Okun Fieldhouse</a> Opens</li>
+				<li><b>8:30 a.m.</b> - Okun Fieldhouse Opens</li>
 
-				<li><b>TBD a.m.</b> - Sports Bible Study</li>
+				<li><b>9:00 a.m.</b> - Sports Bible Study</li>
 
-				<li><b>TBD a.m.</b> - <a href="activity-bootcamp.php">Boot Camp Conditioning</a></li>
+				<li><b>9:30 a.m.</b> - Boot Camp Conditioning</li>
 
-				<li><b>TBD a.m.</b> - <a href="activity-bball-main.php">Basketball</a> and <a href="activity-vball-main.php">Volleyball</a></li>
+				<li><b>9:30 a.m.</b> - Basketball and <a href="activity-vball-main.php">Volleyball</a></li>
 
-				<li><b>TBD a.m.</b> - <a href="activity-main.php">Family Activities</a></li>
+				<li><b>10:30 a.m.</b> - Family Activities</li>
 
-				<li><b>TBD a.m.</b> - <a href="activity-main.php">Bible Seminar</a></li>
+				<li><b>1:30 p.m.</b> - Lunch (organized sports will take a break)</li>
 
-				<li><b>TBD p.m.</b> - <a href="activity-main.php">Lunch</a></li>
+				<li><b>2:00 p.m.</b> - Sports Resume</li>
 
-				<li><b>TBD p.m.</b> - Sports Resume</li>
-
-				<li><b>TBD p.m.</b> - Activities End</li>
+				<li><b>5:00 p.m.</b> - Games End</li>
+				
+				<li><b>5:30 p.m.</b> - Fieldhouse Closes</li>
+				
 			</ul>
 
 		</div>

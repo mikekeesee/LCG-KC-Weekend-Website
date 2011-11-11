@@ -3,11 +3,10 @@ jQuery(document).ready(function() {
 		url:'db-reg-person.php?admin=1',
 		datatype: "xml",
 		mtype: "GET",
-		colNames:['First', 'Last', 'Sex', 'Group', 'Email', 'Phone'],
+		colNames:['First', 'Last', 'Group', 'Email', 'Phone'],
 		colModel:[
 			{name:'first_name', index:'first_name', width:100},
 			{name:'last_name',index:'last_name', width:105},
-			{name:'sex',index:'sex', width:50},
 			{name:'age_range',index:'age_range', width:70},
 			{name:'email',index:'email', width:200},
 			{name:'phone',index:'phone', width:130} ],

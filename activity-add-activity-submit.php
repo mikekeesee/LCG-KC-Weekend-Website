@@ -82,7 +82,7 @@
 
 		<p>You have successfully signed up!</p>
 
-		<p>You have been added to the activity selected.</p>
+		<p>You are now participating in the activity selected.</p>
 
 		<p><a href="activity-add-activity.php">Sign-up someone else for an activity</a></p>
 

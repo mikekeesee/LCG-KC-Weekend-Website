@@ -25,8 +25,8 @@ jQuery(document).ready(function() {
 		subGrid : true,
 		subGridUrl: 'db-sub-reg-person.php',
 		subGridModel: [
-			{name : ['First','Last','Gender','Group','Email','Phone'],
-			 width : [100,120,50,90,200,130] }
+			{name : ['First','Last','Group','Email','Phone'],
+			 width : [100,120,90,200,130] }
 			],
 		caption:"Registration Information"
 	});

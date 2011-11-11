@@ -132,7 +132,7 @@
 			</div>
 
 			<div id="teams">
-				<iframe src="activity-vball-team.php" width="725" height="675" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" >
+				<iframe src="activity-vball-team.php" width="725" height="750" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" >
 			  		<p>Your browser does not support iframes.</p>
 				</iframe>
 			</div>

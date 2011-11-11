@@ -11,10 +11,6 @@
 	$SQL = "SELECT	p.person_id,
 					IFNULL(p.first_name, 'Not Specified') as first_name,
 					p.last_name,
-					CASE p.sex
-						WHEN 1 THEN 'Male'
-						WHEN 2 THEN 'Female'
-						END AS sex,
 					s.String AS age_range,
 					IFNULL(p.email, 'None') as email,
 					IFNULL(p.phone, 'None') as phone
@@ -39,7 +35,6 @@
 		$s .= "<row id='". $row[person_id]."'>";
 		$s .= "<cell>". $row[first_name]."</cell>";
 		$s .= "<cell>". $row[last_name]."</cell>";
-		$s .= "<cell>". $row[sex]."</cell>";
 		$s .= "<cell>". $row[age_range]."</cell>";
 		$s .= "<cell>". $row[email]."</cell>";
 		$s .= "<cell>". $row[phone]."</cell>";

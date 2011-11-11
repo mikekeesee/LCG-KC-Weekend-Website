@@ -34,12 +34,11 @@
 		<p>For those who would like to stay at a hotel, Mrs. Wilson and her housing crew are working hard to 
 		find the right place for the right price. Please check back in a few days to see what we've got.</p>
 
-
+		<!--
 		<div class="column">
 
 			<p>When you call to make reservations, please <b>say you are with the <u>Living Church of God</u>.</b></p>
 
-			<!-- Enter hotel address here when we get it. -->
 			<h3><ul style="list-style-type: none;padding-left: 20px">
 				<li>Hotel Name</li>
 				<li>Hotel Address</li>
@@ -78,7 +77,7 @@
 		</div>
 		
 		<div class="clear-float"></div>
-		
+		-->
 	</div>
 
 	<!-- End of Main Content Area -->

@@ -15,7 +15,7 @@
 	<script src="js/jquery.validate.min.js" type="text/javascript"></script>
 </head>
 
-<body onload="OnLoad();">
+<body>
 
 	<!-- Add the header to each page -->
 	<? include ('header.php'); ?>
@@ -31,7 +31,7 @@
 		<hr />
 
 		<br/>
-		<em><-- <a href="reg-admin.php">Back to Registration Admin</a></em>
+		<a href="reg-admin.php"><-- Back to Registration Admin</a>
 		<br/>
 
 		<br/>
@@ -151,7 +151,7 @@
 							return true;
 						else
 							return false;
-					},
+					}
 				},
 				how_many: {
 					required: function(element) {
