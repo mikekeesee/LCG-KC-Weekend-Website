@@ -94,20 +94,20 @@ $s .= "<records>".$count."</records>";
 
 while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
 	$s .= "<row id='". $row[housing_id]."'>";
-	$s .= "<cell>". $row[first_name]."</cell>";
-	$s .= "<cell>". $row[last_name]."</cell>";
+	$s .= "<cell>". htmlspecialchars($row[first_name])."</cell>";
+	$s .= "<cell>". htmlspecialchars($row[last_name])."</cell>";
 	$s .= "<cell>". $row[house_more]."</cell>";
 	$s .= "<cell>". $row[how_many]."</cell>";
-	$s .= "<cell>". $row[guest_names]."</cell>";
+	$s .= "<cell>". htmlspecialchars($row[guest_names])."</cell>";
 	$s .= "<cell>". $row[email]."</cell>";
 	$s .= "<cell>". $row[phone]."</cell>";
-	$s .= "<cell>". $row[addr1]."</cell>";
-	$s .= "<cell>". $row[addr2]."</cell>";
-	$s .= "<cell>". $row[city]."</cell>";
+	$s .= "<cell>". htmlspecialchars($row[addr1])."</cell>";
+	$s .= "<cell>". htmlspecialchars($row[addr2])."</cell>";
+	$s .= "<cell>". htmlspecialchars($row[city])."</cell>";
 	$s .= "<cell>". $row[state]."</cell>";
 	$s .= "<cell>". $row[zip]."</cell>";
 	$s .= "<cell>". $row[pets]."</cell>";
-	$s .= "<cell>". $row[pets_info]."</cell>";
+	$s .= "<cell>". htmlspecialchars($row[pets_info])."</cell>";
 	$s .= "<cell>". $row[air_trans]."</cell>";
 	$s .= "<cell>". $row[act_trans]."</cell>";
 	$s .= "<cell>". $row[couples]."</cell>";
@@ -117,7 +117,7 @@ while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
 	$s .= "<cell>". $row[adults_only]."</cell>";
 	$s .= "<cell>". $row[babies]."</cell>";
 	$s .= "<cell>". $row[teens]."</cell>";
-	$s .= "<cell>". $row[other]."</cell>";
+	$s .= "<cell>". htmlspecialchars($row[other])."</cell>";
 	$s .= "</row>";
 }
 $s .= "</rows>";

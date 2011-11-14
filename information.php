@@ -57,7 +57,7 @@
 				<p>We do ask that you would quickly send in the <b>registration fee</b> of <b>$10 per person</b> in your
 				group or <b>$40 per family</b>, whichever is lowest. If you cannot afford to pay at this time or cannot afford
 				the full amount, please come anyway. If you would like to give more, that would be greatly appreciated as well.
-				You can either click the PayPal Donate in the upper-right corner of the web page, or send a check. If writing
+				You can either click the PayPal Donate in the upper-right corner of the web page, or send a check. <em>NOTE: Disregard any references to FOT Branson on the PayPal site. This was a dual-use account.</em> If writing
 				a check, please make checks payable to <u>Local Church Activity Fund</u>.  Please send all checks to:</p>
 				
 				<p style="margin:20px"><b>

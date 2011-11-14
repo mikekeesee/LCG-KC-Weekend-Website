@@ -77,9 +77,9 @@ $s .= "<records>".$count."</records>";
 
 while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
 	$s .= "<row id='". $row[team_id]."'>";
-	$s .= "<cell>". $row[team_name]."</cell>";
+	$s .= "<cell>". htmlspecialchars($row[team_name])."</cell>";
 	$s .= "<cell>". $row[captain]."</cell>";
-	$s .= "<cell>". $row[shirt_color]."</cell>";
+	$s .= "<cell>". htmlspecialchars($row[shirt_color])."</cell>";
 	$s .= "</row>";
 }
 $s .= "</rows>";

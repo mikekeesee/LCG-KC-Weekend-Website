@@ -2,13 +2,16 @@
 	// Get the database connection information
 	include("db-connect.php");
 
+	header('P3P:CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"');
+
 	mysql_connect(localhost,$username,$password) or die("Unable to connect to database");
 	mysql_select_db($database) or die("Unable to select database");
 
 	// Get the POST data and write it to a cookie
-	$num_in_party = $_COOKIE["num_in_party"];
-	$housing_type = $_COOKIE["housing_type"];
-	$reg_id	= $_COOKIE["reg_id"];
+	$num_in_party	= $_POST["hid_numInParty"];
+	$housing_type	= $_POST["hid_housingType"];
+	$mc_person_id	= $_POST["hid_MCPersonID"];
+	$reg_id			= $_POST["hid_regID"];
 
 	$expire = time() + (60*60*2);
 
@@ -26,37 +29,23 @@
 	for ($i=1; $i < $num_in_party; $i++) {
 
 		// First, check if the family member already exists on this registration.
-		$SQL = "SELECT	COUNT(*) as count
+		$SQL = "SELECT	p.person_id as person_id
 				FROM	Person p, Registration_Person rp
 				WHERE	p.Person_ID = rp.Person_ID
 						AND rp.Registration_ID = ".$reg_id."
-						AND p.First_Name = '".$first[$i]."'
-						AND p.Last_Name = '".$last[$i]."'
-						AND (p.Email = '".$email[$i]."'
-							OR p.Phone = '".$phone[$i]."')";
+						AND p.First_Name = '".mysql_real_escape_string($first[$i])."'
+						AND p.Last_Name = '".mysql_real_escape_string($last[$i])."'";
 
 		$result = mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute main contact SELECT count query.".mysql_error());
 		$row = mysql_fetch_array($result,MYSQL_ASSOC);
-		$count = $row['count'];
 
 		// If the person has already registered, update their information
-		if ($count > 0) {
-			$SQL = "SELECT	p.person_id as person_id
-					FROM	Person p, Registration_Person rp
-					WHERE	p.Person_ID = rp.Person_ID
-							AND rp.Registration_ID = ".$reg_id."
-							AND p.First_Name = '".$first[$i]."'
-							AND p.Last_Name = '".$last[$i]."'
-							AND (p.Email = '".$email[$i]."'
-								OR p.Phone = '".$phone[$i]."')";
-
-			$result = mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute main contact SELECT person query.".mysql_error());
-			$row = mysql_fetch_array($result,MYSQL_ASSOC);
+		if (!is_null($row['person_id'])) {
 			$fam_person_id = $row['person_id'];
 
 			$SQL = "UPDATE	Person
-					SET		First_Name = '".$first[$i]."',
-							Last_Name = '".$last[$i]."',
+					SET		First_Name = '".mysql_real_escape_string($first[$i])."',
+							Last_Name = '".mysql_real_escape_string($last[$i])."',
 							Age_Range = ".$age[$i].",
 							Email = '".$email[$i]."',
 							Phone = '".$phone[$i]."'
@@ -105,8 +94,8 @@
 						 Phone)
 					VALUES
 						(NULL,
-						 '".$first[$i]."',
-						 '".$last[$i]."',
+						 '".mysql_real_escape_string($first[$i])."',
+						 '".mysql_real_escape_string($last[$i])."',
 						 ".$age[$i].",
 						 '".$email[$i]."',
 						 '".$phone[$i]."')";
@@ -247,6 +236,12 @@
 		<input type="button" value="< Back" onclick="history.go(-1);" />
 	<? } ?>
 		<input type="submit" value="Next >" />
+		
+		<input type="hidden" id="hid_numInParty" name="hid_numInParty" value="<?=$num_in_party?>">
+		<input type="hidden" id="hid_housingType" name="hid_housingType" value="<?=$housing_type?>">
+		<input type="hidden" id="hid_MCPersonID" name="hid_MCPersonID" value="<?=$mc_person_id?>">
+		<input type="hidden" id="hid_regID" name="hid_regID" value="<?=$reg_id?>">
+		
 		</form>
 
 	</div>

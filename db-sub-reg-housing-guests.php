@@ -34,11 +34,11 @@ $s .= "<records>".$count."</records>";
 
 while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
 	$s .= "<row id='". $row[reg_id]."'>";
-	$s .= "<cell>". $row[first_name]."</cell>";
-	$s .= "<cell>". $row[last_name]."</cell>";
+	$s .= "<cell>". htmlspecialchars($row[first_name])."</cell>";
+	$s .= "<cell>". htmlspecialchars($row[last_name])."</cell>";
 	$s .= "<cell>". $row[email]."</cell>";
 	$s .= "<cell>". $row[phone]."</cell>";
-	$s .= "<cell>". $row[home_city]."</cell>";
+	$s .= "<cell>". htmlspecialchars($row[home_city])."</cell>";
 	$s .= "<cell>". $row[num_in_party]."</cell>";
 	$s .= "</row>";
 }

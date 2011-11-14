@@ -81,8 +81,8 @@ $s .= "<records>".$count."</records>";
 
 while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
 	$s .= "<row id='". $row[person_id]."'>";
-	$s .= "<cell>". $row[first_name]."</cell>";
-	$s .= "<cell>". $row[last_name]."</cell>";
+	$s .= "<cell>". htmlspecialchars($row[first_name])."</cell>";
+	$s .= "<cell>". htmlspecialchars($row[last_name])."</cell>";
 	if ($admin == 1) {
 		$s .= "<cell>". $row[age_range]."</cell>";
 		$s .= "<cell>". $row[email]."</cell>";

@@ -50,8 +50,8 @@
 	// Verify there is not already an identical person in the system
 	$SQL = "SELECT	COUNT(*) as count
 			FROM	Person
-			WHERE	First_Name = '".$main_contact_first."'
-					AND Last_Name = '".$main_contact_last."'
+			WHERE	First_Name = '".mysql_real_escape_string($main_contact_first)."'
+					AND Last_Name = '".mysql_real_escape_string($main_contact_last)."'
 					AND (Email = '".$main_contact_email."'
 						OR Phone = '".$main_contact_phone."')";
 
@@ -63,8 +63,8 @@
 	if ($count > 0) {
 		$SQL = "SELECT	person_id
 				FROM	Person
-				WHERE	First_Name = '".$main_contact_first."'
-						AND Last_Name = '".$main_contact_last."'
+				WHERE	First_Name = '".mysql_real_escape_string($main_contact_first)."'
+						AND Last_Name = '".mysql_real_escape_string($main_contact_last)."'
 						AND (Email = '".$main_contact_email."'
 							OR Phone = '".$main_contact_phone."')";
 
@@ -73,8 +73,8 @@
 		$mc_person_id = $row['person_id'];
 
 		$SQL = "UPDATE	Person
-				SET		First_Name = '".$main_contact_first."',
-						Last_Name = '".$main_contact_last."',
+				SET		First_Name = '".mysql_real_escape_string($main_contact_first)."',
+						Last_Name = '".mysql_real_escape_string($main_contact_last)."',
 						Sex = NULL,
 						Age_Range = NULL,
 						Email = '".$main_contact_email."',
@@ -96,8 +96,8 @@
 					 Phone)
 				VALUES
 					(NULL,
-					 '".$main_contact_first."',
-					 '".$main_contact_last."',
+					 '".mysql_real_escape_string($main_contact_first)."',
+					 '".mysql_real_escape_string($main_contact_last)."',
 					 NULL,
 					 NULL,
 					 '".$main_contact_email."',
@@ -132,16 +132,16 @@
 
 		// Update their housing information
 		$SQL = "UPDATE	Housing_Contact
-				SET		Address1 = '".$housing_address1."',
-						Address2 = '".$housing_address2."',
-						City = '".$housing_city."',
+				SET		Address1 = '".mysql_real_escape_string($housing_address1)."',
+						Address2 = '".mysql_real_escape_string($housing_address2)."',
+						City = '".mysql_real_escape_string($housing_city)."',
 						State = '".$housing_state."',
 						Zip = '".$housing_zip."',
 						How_Many = ".$housing_how_many.",
 						Additional_Guests_Num = ".$housing_add_guests.",
-						Guest_Names = '".$guest_names."',
+						Guest_Names = '".mysql_real_escape_string($guest_names)."',
 						Pets_Ind = ".$housing_pets_ind.",
-						Pets_Info = '".$housing_pets_info."',
+						Pets_Info = '".mysql_real_escape_string($housing_pets_info)."',
 						Airport_Transportation_Ind = ".$housing_air_trans.",
 						Activity_Transportation_Ind = ".$housing_act_trans.",
 						Couples_Ind = ".$housing_couples_ind.",
@@ -151,7 +151,7 @@
 						Adults_Only_Ind = ".$housing_adults_ind.",
 						Babies_Ind = ".$housing_babies_ind.",
 						Teens_Ind = ".$housing_teens_ind.",
-						Other = '".$housing_other."'
+						Other = '".mysql_real_escape_string($housing_other)."'
 				WHERE	Housing_ID = ".$housing_id;
 
 		mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute SELECT family person query.".mysql_error());
@@ -185,16 +185,16 @@
 				VALUES (
 					NULL,
 					".$mc_person_id.",
-					'".$housing_address1."',
-					'".$housing_address2."',
-					'".$housing_city."',
+					'".mysql_real_escape_string($housing_address1)."',
+					'".mysql_real_escape_string($housing_address2)."',
+					'".mysql_real_escape_string($housing_city)."',
 					'".$housing_state."',
 					'".$housing_zip."',
 					".$housing_how_many.",
 					".$housing_house_more_ind.",
-					'".$guest_names."',
+					'".mysql_real_escape_string($guest_names)."',
 					".$housing_pets_ind.",
-					'".$housing_pets_info."',
+					'".mysql_real_escape_string($housing_pets_info)."',
 					".$housing_air_trans.",
 					".$housing_act_trans.",
 					".$housing_couples_ind.",
@@ -204,7 +204,7 @@
 					".$housing_adults_ind.",
 					".$housing_babies_ind.",
 					".$housing_teens_ind.",
-					'".$housing_other."')";
+					'".mysql_real_escape_string($housing_other)."')";
 
 		mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute INSERT Housing_Contact query.".mysql_error());
 	}

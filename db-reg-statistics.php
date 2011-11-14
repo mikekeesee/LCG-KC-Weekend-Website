@@ -1,5 +1,8 @@
 <?php
 
+// Get the database connection information
+include("db-connect.php");
+
 // to the url parameter are added 4 parameters as described in colModel
 // we should get these parameters to construct the needed query
 // Since we specify in the options of the grid that we will use a GET method
@@ -22,45 +25,38 @@ $sord = $_GET['sord'];
 
 if(!$sidx) $sidx = 1;
 
-$username="mmoluf_kc";
-$password="kc";
-$database="mmoluf_kcweekend";
-
 mysql_connect(localhost,$username,$password);
 @mysql_select_db($database) or die( "Unable to select database");
 
-$result = mysql_query("SELECT COUNT(*) AS count FROM Person");
+$total_pages = 1;
 
-$row = mysql_fetch_array($result,MYSQL_ASSOC);
-$count = $row['count'];
-
-if( $count > 0 ) {
-	$total_pages = ceil($count / $limit);
-} else {
-	$total_pages = 0;
-}
-
-if ($page > $total_pages)
-	$page=$total_pages;
+$page=$total_pages;
 
 $start = $limit * $page - $limit; // do not put $limit*($page - 1)
 
-$SQL = "	SELECT	r.registration_id,
-					IFNULL(p.first_name, 'Not Specified') as first_name,
-					p.last_name,
-					IFNULL(p.email, 'None') as email,
-					IFNULL(p.phone, 'None') as phone,
-					CASE r.housing_type
-						WHEN 1 THEN 'KC Resident'
-						WHEN 2 THEN 'Hotel'
-						WHEN 3 THEN 'Stay with brethren'
-						WHEN 4 THEN 'Already housed'
-						WHEN 5 THEN 'None of the above'
-						END AS housing_type
-			FROM Person as p, Registration as r
-			WHERE	r.Main_Contact_Person_ID = p.Person_ID
-					AND r.housing_type IN (3,4)
-			ORDER BY $sidx $sord LIMIT $start , $limit";
+$SQL = "	SELECT 'Number of Guests' AS type, `SUM(number_in_party)` AS value
+			
+			FROM Number_Of_Guests
+			
+			UNION
+			
+			SELECT Activity_Name AS type, `COUNT(pa.Person_ID)` AS value
+			FROM `Activity Counts`
+
+			UNION
+			
+			SELECT String AS type, `COUNT(p.Age_Range)` AS value
+			FROM Demographics
+			
+			UNION
+			
+			SELECT 'Dining In', Number AS value
+			FROM `Dining In`
+			
+			UNION
+			
+			SELECT 'Dining Out', Number AS value
+			FROM `Dining Out`";
 
 $result = mysql_query( $SQL ) or die("Couldn't execute query.".mysql_error());
 
@@ -74,12 +70,9 @@ $s .= "<total>".$total_pages."</total>";
 $s .= "<records>".$count."</records>";
 
 while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
-	$s .= "<row id='". $row[registration_id]."'>";
-	$s .= "<cell>". htmlspecialchars($row[first_name])."</cell>";
-	$s .= "<cell>". htmlspecialchars($row[last_name])."</cell>";
-	$s .= "<cell>". $row[email]."</cell>";
-	$s .= "<cell>". $row[phone]."</cell>";
-	$s .= "<cell>". $row[housing_type]."</cell>";
+	$s .= "<row id='". $row[person_id]."'>";
+	$s .= "<cell>". $row[type]."</cell>";
+	$s .= "<cell>". $row[value]."</cell>";
 	$s .= "</row>";
 }
 $s .= "</rows>";

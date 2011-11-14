@@ -30,7 +30,7 @@
 		function GetNumInParty() {
 			var rowid = getSelectedId($("#reg-whos-not-housed"));
 			if (rowid == "") { return false; }
-			num_in_party = $("#reg-whos-not-housed").getCell(rowid, 5);
+			num_in_party = $("#reg-whos-not-housed").getCell(rowid, 6);
 			document.getElementById("txtHowMany").value = num_in_party;
 		}
 

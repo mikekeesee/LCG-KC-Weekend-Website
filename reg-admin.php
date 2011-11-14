@@ -41,6 +41,7 @@
 
 	<? include "jqgrid-header.php" ?>
 
+	<script type="text/javascript" src="js/grid-reg-statistics.js"></script>
 	<script type="text/javascript" src="js/grid-reg-person-admin.js"></script>
 	<script type="text/javascript" src="js/grid-registration.js"></script>
 	<script type="text/javascript" src="js/grid-reg-whos-not-housed.js"></script>
@@ -82,6 +83,15 @@
 			<br/>
 			<b>The KC Weekend has currently generated $<?=$total_payment?>.00 in donations.</b>
 		</p>
+
+		<label><input type="checkbox" id="chk-grid-reg-statistics" onclick="OnCheck(this);" />KC Weekend Statistics</label>
+		<br />
+
+		<div id="div-grid-reg-statistics" style="display:none">
+			<table id="reg-statistics"></table>
+		</div>
+		<br />
+
 		<hr/>
 		<p>Please choose from the links or reports below:</p>
 

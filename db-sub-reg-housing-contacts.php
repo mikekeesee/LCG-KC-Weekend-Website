@@ -37,14 +37,14 @@ $s .= "<records>".$count."</records>";
 
 while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
 	$s .= "<row id='". $row[person_id]."'>";
-	$s .= "<cell>". $row[first_name]."</cell>";
-	$s .= "<cell>". $row[last_name]."</cell>";
-	$s .= "<cell>". $row[email]."</cell>";
+	$s .= "<cell>". htmlspecialchars($row[first_name])."</cell>";
+	$s .= "<cell>". htmlspecialchars($row[last_name])."</cell>";
+	$s .= "<cell>". htmlspecialchars($row[email])."</cell>";
 	$s .= "<cell>". $row[phone]."</cell>";
-	$s .= "<cell>". $row[address1]."</cell>";
-	$s .= "<cell>". $row[address2]."</cell>";
-	$s .= "<cell>". $row[city]."</cell>";
-	$s .= "<cell>". $row[state]."</cell>";
+	$s .= "<cell>". htmlspecialchars($row[address1])."</cell>";
+	$s .= "<cell>". htmlspecialchars($row[address2])."</cell>";
+	$s .= "<cell>". htmlspecialchars($row[city])."</cell>";
+	$s .= "<cell>". htmlspecialchars($row[state])."</cell>";
 	$s .= "<cell>". $row[zip]."</cell>";
 	$s .= "</row>";
 }

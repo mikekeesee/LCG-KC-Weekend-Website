@@ -13,7 +13,7 @@
 			<li><a href="reg-main.php">Registration</a></li>
 			<li><a href="activity-main.php">Sunday Activities</a>
 				<ul>
-					<li><a href="activity-add-activity.php">Add an Activity</a></li>
+					<li><a href="activity-add-activity.php">Select an Activity</a></li>
 					<li><a href="activity-bball-main.php">Basketball</a></li>
 					<li><a href="activity-vball-main.php">Volleyball</a></li>
 					<li><a href="activity-bootcamp.php">Boot Camp</a></li>

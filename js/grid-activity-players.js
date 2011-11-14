@@ -20,6 +20,6 @@ jQuery(document).ready(function() {
 		viewrecords: true,
 		multiselect: true,
 		hidegrid: false,
-		caption: activity_name + " Volleyball Players"
+		caption: activity_name + " Players"
 	});
 });

@@ -8,12 +8,12 @@ jQuery(document).ready(function() {
 		colModel:[
 			{name:'first_name', index:'first_name', width:120},
 			{name:'last_name',index:'last_name', width:150},
-			{name:'activity_name',index:'activity_name', width:150}],
+			{name:'activity_name',index:'activity_name', width:200}],
 		rowNum: 1000,
 		sortname: 'last_name, first_name',
 		sortorder: 'asc',
 		viewrecords: true,
-		width: 400,
+		width: 450,
 		height: 345,
 		hidegrid: false,
 		caption:"People Signed Up For Activities"

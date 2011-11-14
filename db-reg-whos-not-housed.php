@@ -76,14 +76,14 @@ $s .= "<records>".$count."</records>";
 
 while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
 	$s .= "<row id='". $row[registration_id]."'>";
-	$s .= "<cell>". $row[first_name]."</cell>";
-	$s .= "<cell>". $row[last_name]."</cell>";
+	$s .= "<cell>". htmlspecialchars($row[first_name])."</cell>";
+	$s .= "<cell>". htmlspecialchars($row[last_name])."</cell>";
 	$s .= "<cell>". $row[email]."</cell>";
 	$s .= "<cell>". $row[phone]."</cell>";
-	$s .= "<cell>". $row[home_city]."</cell>";
+	$s .= "<cell>". htmlspecialchars($row[home_city])."</cell>";
 	$s .= "<cell>". $row[housing_type]."</cell>";
 	$s .= "<cell>". $row[num_in_party]."</cell>";
-	$s .= "<cell>". $row[housed_by]."</cell>";
+	$s .= "<cell>". htmlspecialchars($row[housed_by])."</cell>";
 	$s .= "</row>";
 }
 $s .= "</rows>";

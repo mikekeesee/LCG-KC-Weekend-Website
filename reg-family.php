@@ -2,6 +2,8 @@
 	// Get the database connection information
 	include("db-connect.php");
 
+	header('P3P:CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"');
+
 	mysql_connect(localhost,$username,$password) or die("Unable to connect to database");
 	mysql_select_db($database) or die("Unable to select database");
 
@@ -31,12 +33,13 @@
 	// Verify there is not already an identical person in the system
 	$SQL = "SELECT	COUNT(*) as count
 			FROM	Person
-			WHERE	First_Name = '".$main_contact_first."'
-					AND Last_Name = '".$main_contact_last."'
+			WHERE	First_Name = '".mysql_real_escape_string($main_contact_first)."'
+					AND Last_Name = '".mysql_real_escape_string($main_contact_last)."'
 					AND (Email = '".$main_contact_email."'
 						OR Phone = '".$main_contact_phone."')";
 
-	$result = mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute main contact SELECT count query.".mysql_error());
+	$result = mysql_query( $SQL ) or die($SQL."\n\nCouldn't execute main contact SELECT count query.".mysql_error());
+	//"Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute main contact SELECT count query.".mysql_error());
 	$row = mysql_fetch_array($result,MYSQL_ASSOC);
 	$count = $row['count'];
 	
@@ -44,8 +47,8 @@
 	if ($count > 0) {
 		$SQL = "SELECT	person_id
 				FROM	Person
-				WHERE	First_Name = '".$main_contact_first."'
-						AND Last_Name = '".$main_contact_last."'
+				WHERE	First_Name = '".mysql_real_escape_string($main_contact_first)."'
+						AND Last_Name = '".mysql_real_escape_string($main_contact_last)."'
 						AND (Email = '".$main_contact_email."'
 							OR Phone = '".$main_contact_phone."')";
 
@@ -54,8 +57,8 @@
 		$mc_person_id = $row['person_id'];
 
 		$SQL = "UPDATE	Person
-				SET		First_Name = '".$main_contact_first."',
-						Last_Name = '".$main_contact_last."',
+				SET		First_Name = '".mysql_real_escape_string($main_contact_first)."',
+						Last_Name = '".mysql_real_escape_string($main_contact_last)."',
 						Age_Range = ".$main_contact_age.",
 						Email = '".$main_contact_email."',
 						Phone = '".$main_contact_phone."'
@@ -75,8 +78,8 @@
 					 Phone)
 				VALUES
 					(NULL,
-					 '".$main_contact_first."',
-					 '".$main_contact_last."',
+					 '".mysql_real_escape_string($main_contact_first)."',
+					 '".mysql_real_escape_string($main_contact_last)."',
 					 ".$main_contact_age.",
 					 '".$main_contact_email."',
 					 '".$main_contact_phone."')";
@@ -110,12 +113,13 @@
 		$SQL = "UPDATE	Registration
 				SET		Housing_Type = ".$housing_type.",
 						Number_In_Party = ".$num_in_party.",
-						Housed_By = '".$housed_by."',
+						Housed_By = '".mysql_real_escape_string($housed_by)."',
 						Dining_ID = ".$dining_id.",
-						Home_City = '".$home_city."'
+						Home_City = '".mysql_real_escape_string($home_city)."'
 				WHERE	Registration_ID = ".$reg_id;
 
-		mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he //left a bug in his code."); //$SQL."\n\nCouldn't execute registration UPDATE query.".mysql_error());
+		mysql_query( $SQL ) or die($SQL."\n\nCouldn't execute registration UPDATE query.".mysql_error());
+		//"Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute registration UPDATE query.".mysql_error());
 
 	} else {
 		// Insert the Registration table data
@@ -132,11 +136,12 @@
 					 ".$mc_person_id.",
 					 ".$housing_type.",
 					 ".$num_in_party.",
-					 '".$housed_by."',
+					 '".mysql_real_escape_string($housed_by)."',
 					 ".$dining_id.",
-					 '".$home_city."')";
+					 '".mysql_real_escape_string($home_city)."')";
 
-		mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he //left a bug in his code."); //$SQL."\n\nCouldn't execute Registration INSERT query.".mysql_error());
+		mysql_query( $SQL ) or die($SQL."\n\nCouldn't execute Registration INSERT query.".mysql_error());
+		//"Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute Registration INSERT query.".mysql_error());
 
 		$reg_id = mysql_insert_id();
 	}
@@ -148,7 +153,7 @@
 				FROM	Person_Activity
 				WHERE	person_id = ".$mc_person_id;
 
-		$result = mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute family activity SELECT count query.".mysql_error());
+		$result = mysql_query( $SQL ) or die($SQL.mysql_error());//"Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute family activity SELECT count query.".mysql_error());
 		$row = mysql_fetch_array($result,MYSQL_ASSOC);
 		$count = $row['count'];
 
@@ -157,7 +162,7 @@
 					SET		activity_id = ".$activity."
 					WHERE	person_id = ".$mc_person_id;
 
-			mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute UPDATE family activity query.".mysql_error());
+			mysql_query( $SQL ) or die($SQL.mysql_error());//"Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute UPDATE family activity query.".mysql_error());
 
 		} else {
 			$SQL = "INSERT INTO	Person_Activity
@@ -168,7 +173,7 @@
 						 ".$activity.");";
 
 
-			mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute INSERT family activity query.".mysql_error());
+			mysql_query( $SQL ) or die($SQL.mysql_error());//"Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute INSERT family activity query.".mysql_error());
 		}				
 	}
 
@@ -279,6 +284,11 @@
 		<br />
 		<input type="button" value="< Back" onclick="history.go(-1);" />
 		<input type="submit" value="Next >" />
+		
+		<input type="hidden" id="hid_numInParty" name="hid_numInParty" value="<?=$num_in_party?>">
+		<input type="hidden" id="hid_housingType" name="hid_housingType" value="<?=$housing_type?>">
+		<input type="hidden" id="hid_MCPersonID" name="hid_MCPersonID" value="<?=$mc_person_id?>">
+		<input type="hidden" id="hid_regID" name="hid_regID" value="<?=$reg_id?>">
 		</form>
 
 	</div>

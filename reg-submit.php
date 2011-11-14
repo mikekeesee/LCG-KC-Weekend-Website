@@ -6,13 +6,15 @@
 	// Get the database connection information
 	include("db-connect.php");
 
+	header('P3P:CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"');
+
 	mysql_connect(localhost,$username,$password) or die("Unable to connect to database");
 	mysql_select_db($database) or die("Unable to select database");
 
-	$reg_id		  = $_COOKIE["reg_id"];
-	$mc_person_id = $_COOKIE["mc_person_id"];
-	$num_in_party = $_COOKIE["num_in_party"];
-	$housing_type = $_COOKIE["housing_type"];
+	$num_in_party	= $_POST["hid_numInParty"];
+	$housing_type	= $_POST["hid_housingType"];
+	$mc_person_id	= $_POST["hid_MCPersonID"];
+	$reg_id			= $_POST["hid_regID"];
 
 
 	// Housing contact info
@@ -48,8 +50,8 @@
 				FROM Housing_Contact
 				WHERE Person_ID = ".$mc_person_id;
 
-		$result = mysql_query( $SQL ) or die($SQL."\n\nCouldn't execute SELECT housing contract count query.".mysql_error()); //"Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //
-		$row = mysql_fetch_array($result, MYSQL_ASSOC);
+		$result = mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute SELECT housing contract count query.".mysql_error());
+		$row = mysql_fetch_array($result,MYSQL_ASSOC);
 		$count = $row['count'];
 
 		if ($count > 0) {
@@ -59,22 +61,22 @@
 					FROM Housing_Contact
 					WHERE Person_ID = ".$mc_person_id;
 
-			$result = mysql_query( $SQL ) or die($SQL."\n\nCouldn't execute SELECT housing contract query.".mysql_error()); //"Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute SELECT housing contract query.".mysql_error());
+			$result = mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute SELECT housing contract query.".mysql_error());
 			$row = mysql_fetch_array($result,MYSQL_ASSOC);
 			$housing_id = $row['housing_id'];
 
 			// Update their housing information
 			$SQL = "UPDATE	Housing_Contact
-					SET		Address1 = '".$housing_address1."',
-							Address2 = '".$housing_address2."',
-							City = '".$housing_city."',
+					SET		Address1 = '".mysql_real_escape_string($housing_address1)."',
+							Address2 = '".mysql_real_escape_string($housing_address2)."',
+							City = '".mysql_real_escape_string($housing_city)."',
 							State = '".$housing_state."',
 							Zip = '".$housing_zip."',
 							How_Many = ".$housing_how_many.",
 							House_More_Ind = ".$housing_house_more_ind.",
-							Guest_Names = '".$guest_names."',
+							Guest_Names = '".mysql_real_escape_string($guest_names)."',
 							Pets_Ind = ".$housing_pets_ind.",
-							Pets_Info = '".$housing_pets_info."',
+							Pets_Info = '".mysql_real_escape_string($housing_pets_info)."',
 							Airport_Transportation_Ind = ".$housing_air_trans.",
 							Activity_Transportation_Ind = ".$housing_act_trans.",
 							Couples_Ind = ".$housing_couples_ind.",
@@ -84,10 +86,10 @@
 							Adults_Only_Ind = ".$housing_adults_ind.",
 							Babies_Ind = ".$housing_babies_ind.",
 							Teens_Ind = ".$housing_teens_ind.",
-							Other = '".$housing_other."'
+							Other = '".mysql_real_escape_string($housing_other)."'
 					WHERE	Housing_ID = ".$housing_id;
 
-			mysql_query( $SQL ) or die($SQL."\n\nCouldn't execute SELECT family person query.".mysql_error());//"Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //
+			mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute SELECT family person query.".mysql_error());
 
 		} else {
 
@@ -118,16 +120,16 @@
 					VALUES (
 						NULL,
 						".$mc_person_id.",
-						'".$housing_address1."',
-						'".$housing_address2."',
-						'".$housing_city."',
+						'".mysql_real_escape_string($housing_address1)."',
+						'".mysql_real_escape_string($housing_address2)."',
+						'".mysql_real_escape_string($housing_city)."',
 						'".$housing_state."',
 						'".$housing_zip."',
 						".$housing_how_many.",
 						".$housing_house_more_ind.",
-						'".$guest_names."',
+						'".mysql_real_escape_string($guest_names)."',
 						".$housing_pets_ind.",
-						'".$housing_pets_info."',
+						'".mysql_real_escape_string($housing_pets_info)."',
 						".$housing_air_trans.",
 						".$housing_act_trans.",
 						".$housing_couples_ind.",
@@ -137,9 +139,9 @@
 						".$housing_adults_ind.",
 						".$housing_babies_ind.",
 						".$housing_teens_ind.",
-						'".$housing_other."')";
+						'".mysql_real_escape_string($housing_other)."')";
 
-			mysql_query( $SQL ) or die($SQL."\n\nCouldn't execute INSERT Housing_Contact query.".mysql_error());//"Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //
+			mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute INSERT Housing_Contact query.".mysql_error());
 		}
 	}
 ?>
@@ -191,7 +193,7 @@
 		<p>We do ask that you would quickly send in the <b>registration fee</b> of <b>$10 per person</b> in your
 		group or <b>$40 per family</b>, whichever is lowest. If you cannot afford to pay at this time or cannot afford
 		the full amount, please come anyway. If you would like to give more, that would be greatly appreciated as well.
-		You can either click the PayPal Donate button to pay by eCheck or a credit or debit card, or send a check. If writing
+		You can either click the PayPal Donate button to pay by eCheck or a credit or debit card, or send a check. <em>NOTE: Disregard any references to FOT Branson on the PayPal site. This was a dual-use account.</em> If writing
 		a check, please make checks payable to <u>Local Church Activity Fund</u>.  Please send all checks to:</p>
 		
 		<p style="margin:20px"><b>
