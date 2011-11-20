@@ -45,9 +45,10 @@
 			<div id="general">
 				<h3>General Information</h3>
 
-				<p>The Kansas City Weekend will be Friday, December 30 through Sunday, January 1.As in years past,
+				<p>The Kansas City Weekend will be Friday, December 30 through Sunday, January 1. As in years past,
 				we plan to host a Bible study Friday night, then Sabbath services, dinner, fun show and dance
-				on Saturday. The ranch is rustic, so bring your boots and your best YEE-HAW!</p>
+				on Saturday. Our facility for this portion of the weekend will be Benjamin Ranch, 6401 E. 87th Street in Kansas City, MO. The ranch is rustic, so bring your boots 
+				and your best YEE-HAW!</p>
 				
 				<p>Sunday's sports and family activities will again be at Okun Fieldhouse, 20200 Johnson Drive in Shawnee, KS.</p>
 

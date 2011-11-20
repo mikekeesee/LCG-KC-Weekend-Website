@@ -42,10 +42,10 @@
 			<h3>What You Need to Know</h3>
 
 			<ul>
-				<li><b>Registration is OPEN</b> - Come on down!</li>
-				<li><b>Event Dates</b> - Friday, Dec. 30, 2011 through Sunday, Jan. 1, 2012</li>
-				<li><b>Location</b> - Benjamin Ranch on Friday and Saturday.
-				<a href="information.php#general">Okun Fieldhouse</a> on Sunday.</li>
+				<li><b>Housing</b> - We have our $54 room rate confirmed at <a href="housing.php">La Quinta Inn</a>.</li>
+				<li><b>Deadlines</b> - Please register for <a href="activity-main.php">team sports</a> and the fun show by <b>December 18</b>.</li>
+				<li><b>Payment</b> - Please remember to send in your <a href="information.php#general">payment</a> or click the donate button on the 
+				upper right corner of this page to pay online (yes, we've fixed our PayPal glitch).</li>
 
 			</ul>
 

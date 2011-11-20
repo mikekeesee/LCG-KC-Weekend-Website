@@ -31,22 +31,25 @@
 		<p>If you have a question about housing, including requests to stay with brethren, please call our ever-helpful Housing Coordinator
 		<a href="mailto:berylwilson@earthlink.net">Beryl Wilson</a> at (816) 537-8133.</p>
 		
-		<p>For those who would like to stay at a hotel, Mrs. Wilson and her housing crew are working hard to 
-		find the right place for the right price. Please check back in a few days to see what we've got.</p>
+		<p>Our hotel this year, La Quinta Inn and Suites, is just 10 miles from Benjamin Ranch and 15 miles from Okun Fieldhouse. It is located
+		off I-435 and Metcalf in Overland Park. The group rate after taxes is $54.12 per room, with a maximum of 4 occupants per room. 
+		This special rate is available for Friday, Dec. 30 and Saturday, Dec. 31. Please call 913-648-5555 to make your reservations 
+		and say you are with the Living Church of God.</p>
+		
+		<p>La Quinta Inn offers a complimentary breakfast, including waffles, cereal, muffins, pastries, fresh fruit, coffee and juice.
+		Each room comes equipped with a refrigerator, microwave, iron, ironing board and hair dryer. The hotel also has free internet access.</p>
 
-		<!--
+		
 		<div class="column">
-
+			<br />
 			<p>When you call to make reservations, please <b>say you are with the <u>Living Church of God</u>.</b></p>
 
-			<h3><ul style="list-style-type: none;padding-left: 20px">
-				<li>Hotel Name</li>
-				<li>Hotel Address</li>
-				<li>City, State Zip</li>
-				<li>Hotel phone number</li>
-			</ul></h3>
-
-			<p>Hotel amenities to be listed when we know 'em.</p>
+			<ul style="list-style-type: none;padding-left: 20px">
+				<li>La Quinta Inn and Suites</li>
+				<li>10610 Marty Street</li>
+				<li>Overland Park, KS 66212</li>
+				<li>913-648-5555</li>
+			</ul>
 
 		</div
 
@@ -54,30 +57,12 @@
 			<div class="map">
 				
 				<br />
-
+				<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=La+Quinta+Inn+%26+Suites+Overland+Park,+Marty+Street,+Overland+Park,+KS&amp;aq=0&amp;sll=37.0625,-95.677068&amp;sspn=36.999937,74.443359&amp;vpsrc=6&amp;ie=UTF8&amp;hq=La+Quinta+Inn+%26+Suites+Overland+Park,+Marty+Street,+Overland+Park,+KS&amp;t=h&amp;ll=38.934026,-94.669704&amp;spn=0.005842,0.00912&amp;z=16&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="http://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=La+Quinta+Inn+%26+Suites+Overland+Park,+Marty+Street,+Overland+Park,+KS&amp;aq=0&amp;sll=37.0625,-95.677068&amp;sspn=36.999937,74.443359&amp;vpsrc=6&amp;ie=UTF8&amp;hq=La+Quinta+Inn+%26+Suites+Overland+Park,+Marty+Street,+Overland+Park,+KS&amp;t=h&amp;ll=38.934026,-94.669704&amp;spn=0.005842,0.00912&amp;z=16&amp;iwloc=A" style="color:#0000FF;text-align:left">View Larger Map</a></small>
 			</div>
 		</div>
 		
 		<div class="clear-float"></div>
 		
-		<br /> <br />
-		
-		<div class="column">
-
-			<p></p>
-
-
-		</div>
-
-		<div class="column">
-			<div class="map">
-				<br />
-
-			</div>
-		</div>
-		
-		<div class="clear-float"></div>
-		-->
 	</div>
 
 	<!-- End of Main Content Area -->
