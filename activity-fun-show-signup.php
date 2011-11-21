@@ -1,11 +1,3 @@
-<?
-	// Get the database connection information
-	include("db-connect.php");
-
-	mysql_connect(localhost,$username,$password);
-	@mysql_select_db($database) or die( "Unable to select database");
-?>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -14,7 +6,7 @@
 	<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1" />
 	<meta http-equiv="Content-Style-Type" content="text/css" />
 
-	<title>Kansas City Regional Family Weekend: Registration</title>
+	<title>Kansas City Regional Family Weekend: Fun-Show Sign-Up</title>
 
 	<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
 	<? include "jqgrid-header.php" ?>
@@ -40,33 +32,59 @@
 		where you can update your performance information or upload a file later, if you so choose.</p>
 
 		<!-- The Registration Form for Main Contact Information -->
-		<form id="fun-show-signup" action="activity-fun-show-list.php" method="post">
+		<form id="fun-show-signup" action="activity-fun-show-list.php" method="post" onsubmit="Verify();">
 
 			<fieldset><legend>Performers:</legend>
 				<script type="text/javascript" src="js/grid-reg-person-multiselect.js"></script>
 				<table id="reg-person-multiselect"></table>
+				<input type="hidden" id="gridPerson" name="gridPerson" />				
 			</fieldset>
 
 			<fieldset><legend>Act Info:</legend>
+				<p><label for="txtActType" class="required">Type of Act (singing, dancing, skit, etc.):</label>
+				<input type="text" id="txtActType" name="txtActType" maxlength="255" size="50" /></p>
+
 				<p><label for="txtActTitle" class="required">Your act's title:</label>
 				<input type="text" id="txtActTitle" name="txtActTitle" maxlength="255" size="50" /></p>
 
-				<p><label for="txtActDescription" class="required">Enter a description of your act:</label></p>
-				<p><textarea id="txtActDescription" name="txtActDescription" rows="3" cols="80"></textarea></p>				
-
-				<p><label for="txtStageNeeds">Enter your stage needs (piano, number of mics, chairs, rodeo clowns, etc.):</label></p>
-				<p><textarea id="txtStageNeeds" name="txtStageNeeds" rows="3" cols="80"></textarea></p>
-
-				<input type="hidden" name="MAX_FILE_SIZE" value="100000000" />
+				<p><label for="txtLength" class="required">Approximate length of the act (please keep them less than 3-4 minutes):</label>
+				<input type="text" id="txtLength" name="txtLength" maxlength="20" size="10" /></p>
 				
-				<form enctype="multipart/form-data" action="file-uploader.php" method="POST">
-					<p><label for="txtActFile">File for your act (accompaniment, lyrics, script, etc.):</label>
-					<input type="file" id="fileActData" name="fileActData" /><em>&nbsp;(If you have multiple files, put them in a ZIP file.)</em></p>
-					<p><input type="submit" value="Upload File" /></p>
-				</form>
+				<br />
+				
+				<p><label for="txtActDescription" class="required">Enter a description of your act:</label></p>
+				<p><textarea id="txtActDescription" name="txtActDescription" rows="3" cols="110"></textarea></p>				
+			</fieldset>
+			
+			<fieldset><legend>Technical Information:</legend>				
+				<p><label for="txtAudioNeeds">Enter your audio needs (number of mics, hook-ups, etc.):</label>
+				<input type="text" id="txtAudioNeeds" name="txtAudioNeeds" maxlength="255" size="50" /></p>
+
+				<p><label for="txtCDTrack">CD and Track Number:</label>
+				<input type="text" id="txtCDTrack" name="txtCDTrack" maxlength="255" size="50" /></p>
+
+				<p><label for="txtProps">Will you be using any props? (tables, chairs, rodeo clowns, etc.):</label>
+				<input type="text" id="txtProps" name="txtProps" maxlength="20" size="10" /></p>
 			</fieldset>			
-					
-			<input type="submit" value="Next >" />
+			
+			<fieldset><legend>Applicant Information:</legend>
+				<p><label for="txtYearsExperience">Years of Experience:</label>
+				<input type="text" id="txtYearsExperience" name="txtYearsExperience" maxlength="2" size="2" /></p>
+
+				<p><label for="txtChurchArea">Your Local Church Area:</label>
+				<input type="text" id="txtChurchArea" name="txtChurchArea" maxlength="255" size="50" /></p>
+
+				<p><label for="txtAnythingElse">Anything else you'd like us to know (age, etc.):</label>
+				<input type="text" id="txtAnythingElse" name="txtAnythingElse" maxlength="255" size="50" /></p>				
+			</fieldset>
+			
+			<fieldset><legend>Upload File:</legend>				
+				<iframe id="upload_target" name="upload_target" src="activity-fun-show-file-retriever.php" style="width:52em;height:8em;border:0px solid #fff;" frameBorder="0"></iframe>
+				
+				<input type="hidden" id="hidFilename" name="hidFilename" />
+			</fieldset>
+			
+			<input type="submit" value="Submit" />
 
 		</form>
 
@@ -80,84 +98,52 @@
 
 	<script type="text/javascript">
 		$(document).ready(function() {
-			$(".select-first").focus();
 			$("input:submit").button();
 		});
 
-		var toggle = function() {
-			//alert("hi!");
-			if ($("option:selected").is(".toggleOnSelected") == true) {
-				if ($(".toggle:hidden").length > 0)
-					$(".toggle").show("drop");
+		function getSelectedItems(objGrid) {
+			var strRtnValue = "";
+			var arrData = objGrid.getGridParam('selarrrow');
+			if (arrData.length > 0) {
+				for (var i = 0; i < arrData.length; i++) {
+					strRtnValue += (arrData[i] + ",");
+				}
+
+				// Now strip out the trailing comma
+				if (strRtnValue != "") {
+					strRtnValue = strRtnValue.substr(0, strRtnValue.length - 1);
+				}
 			} else {
-				if ($(".toggle:visible").length > 0)
-					$(".toggle").hide("puff");
+				var selRow = objGrid.getGridParam('selrow');
+				if (selRow == null) {
+					return "";
+				}
+
+				strRtnValue = selRow;
 			}
+
+			return strRtnValue;
 		}
 
-		$('select').change(toggle).change();
-		$('select').keyup(toggle);
-		
-		jQuery.validator.addMethod("phoneUS", function(phone_number, element) {
-			phone_number = phone_number.replace(/\s+/g, ""); 
-			return this.optional(element) || phone_number.length > 9 &&
-				phone_number.match(/^(1-?)?(\([2-9]\d{2}\)|[2-9]\d{2})-?[2-9]\d{2}-?\d{4}$/);
-		}, "Please specify a valid phone number");
-
-		$('#reg-contact').validate({
-			rules: {
-				txtFirstName: {
-					required: true
-				},
-				txtLastName: {
-					required: true
-				},
-				txtEmail: {
-					required: function () {
-						return $("#txtPhone").val().length == 0;
-					},
-					email: true
-				},
-				txtPhone: {
-					required:  function () {
-						return $("#txtEmail").val().length == 0;
-					},
-					phoneUS: true
-				},
-				cboAgeRange: {
-					required: true,
-					min: 1
-				},
-				cboHousingType: {
-					required: true,
-					min: 1
-				},
-				txtHousedBy: {
-					required: function () {
-						return $("#cboHousingType").val() == 10;
-					}
-				},
-				txtNumInParty: {
-					required: true,
-					number: true,
-					min: 1,
-					max: 20
-				},
-				cboDining: {
-					required: true,
-					min: 1
-				}
-			},
-			messages: {
-				cboAgeRange: "Please enter an age range.",
-				cboHousingType: "Please enter a housing type.",
-				cboDining: "Please let us know what you'd like to munch on."
+		function Verify() {
+			var person_id = getSelectedItems($("#reg-person-multiselect"));
+			if (person_id == "") { 
+				alert("Please choose at least one performer.");
+				return false;
 			}
-		});
+			document.getElementById("gridPerson").value = person_id;
+		}
+		
+		$('#fun-show-signup').validate({
+			rules: {
+				txtActType: {
+					required: true
+				},
+				txtActTitle: {
+					required: true
+				}
+			}
+		});		
 	</script>
 </body>
 </html>
-
-<?
-	mysql_close();
-?>
