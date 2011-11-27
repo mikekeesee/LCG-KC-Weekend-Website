@@ -34,6 +34,14 @@
 		<p>Welcome to the volleyball page. You can check out the game rules, schedule or the teams that are
 		already signed up. Sign up your team under the Teams tab. <b style="color:red">Teams must be finalized by Sunday, December 18.</b></p>
 
+		<p>All volleyball-related questions may be directed to Doug Burson at
+		<a href="mailto:dougb@downingandstrickland.com">dougb@downingandstrickland.com</a>
+		or Mr. Stroud at <a href="mailto:astroud@lcg.org">astroud@lcg.org</a>.</p>
+
+		<p><b>Important: Minimum age for sports is 13. Those with bad backs or other similar injuries should not
+		participate. Due to the inherent risk of such activities, all participants must sign a liability waiver. Those
+		under 18 will need a parent or legal guardian&#39;s signature before they can participate.</b></p>
+
 		<div id="tabs">
 			<ul>
 				<li><a href="#general">General</a></li>
@@ -45,12 +53,26 @@
 			<div id="general">
 				<h3>General Information</h3>
 
-				<p>The Kansas City Weekend provides a rare opportunity for Church members from around the country to get
-				together and play organized sports. Our overall goals for sports this year are to promote teamwork,
-				sportsmanship, camaraderie, playing within the rules of the game, strategy and, most
-				importantly, fun.</p>
-
-				<p>With these in mind, the following items have been determined:
+				<p>Sunday’s activities will again take place at the Okun Fieldhouse, the same facility as last year. Three
+				volleyball courts will be dedicated to the tournament. The procedure for coming and playing volleyball
+				at the KC weekend will be very much the same as past years. You must register for the weekend and organize
+				your team before you come.</p>
+				 
+				<p>Registration is now open for the weekend and volleyball. You do not need a full roster to register a team.
+				It may be filled out as you find players up until the deadline. Registration ends December 18.</p>
+				 
+				<p>The format for play this year will be based on the following. Two games for every team will be scheduled in
+				the morning. Based on the morning’s results, the top teams will advance to a playoff in the afternoon. The
+				rest of the teams will be scheduled another game in the afternoon as well. Every team is guaranteed at least
+				3 games.</p>
+				 
+				<p>As last year, there is a mandatory Sports Bible Study Sunday morning at 9:00 am at the Okun Fieldhouse for
+				all participating in basketball and volleyball. Both tournaments begin at 9:30. Warm-up time is from 8:30
+				to 9:00 am. Games will begin promptly with no exceptions. A penalty will be assessed against your team if
+				it is late or short players for games.</p>
+				 
+				<p>As we get closer to the weekend, more details will become available on the website. After team registration
+				ends on the 18th, full tournament details will be posted.</p>
 
 				<ul>
 					<li><b>Sports Bible Study Sunday morning:</b> Attendance is <u>mandatory</u> to play.</li>
@@ -59,16 +81,7 @@
 					to play.</li>
 					<li><b>Lunch Break:</b> All sports will halt for lunch. Schedule to come.</li>
 				</ul>
-
-				<p>All volleyball-related questions may be directed to Doug Burson at
-				<a href="mailto:dougb@downingandstrickland.com">dougb@downingandstrickland.com</a>
-				or Mr. Stroud at <a href="mailto:astroud@lcg.org">astroud@lcg.org</a>.</p>
-
-				<p><b>Important: Minimum age for sports is 13. Those with bad backs or other similar injuries should not
-				participate. Due to the inherent risk of such activities, all participants must sign a liability waiver. Those
-				under 18 will need a parent or legal guardian&#39;s signature before they can participate.</b></p>
-
-				<b>Please register your team by Sunday, December 18</b>.</p>
+				
 			</div>
 
 			<div id="rules">

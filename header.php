@@ -24,6 +24,10 @@
 		</ul>
 	</div>
 
+	<div class="register-button">
+		<a href="reg-main-contact.php"><img alt="Register Here" border="0" src="images/register.png" />	</a>
+	</div>
+	
 	<div class="paypalbutton">
 		<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
 			<input type="hidden" name="cmd" value="_s-xclick" />

@@ -57,12 +57,35 @@
 			<div id="general">
 				<h3>General Information</h3>
 
-					<p>The Kansas City Weekend provides a rare opportunity for Church members from around the country to get
-					together and play organized sports. Our overall goals for sports this year are to promote teamwork,
-					sportsmanship, camaraderie, playing within the rules of the game, strategy and, most
-					importantly, fun.</p>
+					<p>Registration is now open for the weekend and basketball. It is imperative that you register with
+					your team at the earliest possible time. You do not need a full roster to register a team. It may be 
+					filled out as you find players but register your team quickly.</p>
+ 
+					<p>It is vital that you do this early this year because we are intending to hire referees. All the 
+					cost of the referees will be offset by those playing basketball this. It has not been determined 
+					whether this will be in the form of a per player or per team fee and is in addition to the requested 
+					donation. We anticipate the total cost of the referees to be around $500 for the day. We cannot 
+					assure there will be referees without enough early support for this by having your team register 
+					as soon as possible.</p>
+ 
+					<p>The format for play this year will be as follows. Two games for every team will be scheduled 
+					in the morning. Based on the morning’s results, the top teams will advance to a playoff in the 
+					afternoon. The rest of the teams will be scheduled another game in the afternoon as well. Every 
+					team is guaranteed at least 3 games.</p>
+ 
+					<p>Registration ends December 18 at which time every captain must send a confirmation that they 
+					will be at the Kansas City Weekend and pay shortly their after so we can secure the referees. 
+					There will be no refunds.</p>
+ 
+					<p>As last year, there is a mandatory Sports Bible Study Sunday morning at 9:00 am at the Okun 
+					Fieldhouse for all participating in basketball and volleyball. Both tournaments begin at 9:30. 
+					Warm-up time is from 8:30 to 9:00 am. Games will begin promptly with no exceptions. A penalty 
+					will be assessed against your team if it is late or short players.</p>
+ 
+					<p>Games will be played based on high school rules. The exact format of games will depend on 
+					the number of teams. </p>
 
-					<p>With these in mind, the following items have been determined:
+					<p>With these in mind, the following items have been determined:</p>
 
 					<ul class="bullets">
 						<li class="bullets"><b>Sports Bible Study Sunday morning:</b> Attendance is <u>mandatory</u> to play.

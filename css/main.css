@@ -76,10 +76,16 @@ label.error {
 	color: #000000;
 }
 
+.register-button {
+	position: absolute;
+	left: 50em;
+	top: 0em;	
+}
+
 .paypalbutton {
 	position: absolute;
-	left: 52em;
-	top: 1em;	
+	left: 56em;
+	top: 2em;	
 }
 
 /** Navigation Bar **/
