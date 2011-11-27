@@ -43,10 +43,10 @@
 
 			<ul>
 				<li><b>Housing</b> - We have our $54 room rate confirmed at <a href="housing.php">La Quinta Inn</a>.</li>
-				<li><b>Deadlines</b> - Please register for <a href="activity-main.php">team sports</a> and the fun show by <b>December 18</b>.</li>
+				<li><b>Deadlines</b> - Please register for <a href="activity-main.php">team sports</a> by <b>December 18</b>.</li>
 				<li><b>Payment</b> - Please remember to send in your <a href="information.php#general">payment</a> or click the donate button on the 
 				upper right corner of this page to pay online (yes, we've fixed our PayPal glitch).</li>
-
+				<li><b>Fun Show Sign-up</b> - We now have an online form to <a href="activity-fun-show-signup.php">sign up</a> for the fun show. Deadline is <b>December 18</b>.</li>
 			</ul>
 
 		</div>
