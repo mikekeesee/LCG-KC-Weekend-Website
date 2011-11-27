@@ -28,8 +28,7 @@
 		<p>Please fill out all the fields below. Click the names of those performing from the registry list. 
 		If you don't know exactly what you'll be performing yet, that's fine; fill out what you know so far.
 		If you have accompaniment, lyrics, a script for skits or anything that will better help our organizers
-		with planning, please upload them here. We'll send you a special, <em>secret</em> (not really) link
-		where you can update your performance information or upload a file later, if you so choose.</p>
+		with planning, please upload them here.</p>
 
 		<!-- The Registration Form for Main Contact Information -->
 		<form id="fun-show-signup" action="activity-fun-show-list.php" method="post" onsubmit="Verify();">
@@ -41,7 +40,7 @@
 			</fieldset>
 
 			<fieldset><legend>Act Info:</legend>
-				<p><label for="txtActType" class="required">Type of Act (singing, dancing, skit, etc.):</label>
+				<p><label for="txtActType" class="required">Type of act (singing, dancing, skit, etc.):</label>
 				<input type="text" id="txtActType" name="txtActType" maxlength="255" size="50" /></p>
 
 				<p><label for="txtActTitle" class="required">Your act's title:</label>
@@ -60,26 +59,26 @@
 				<p><label for="txtAudioNeeds">Enter your audio needs (number of mics, hook-ups, etc.):</label>
 				<input type="text" id="txtAudioNeeds" name="txtAudioNeeds" maxlength="255" size="50" /></p>
 
-				<p><label for="txtCDTrack">CD and Track Number:</label>
+				<p><label for="txtCDTrack">CD and track number:</label>
 				<input type="text" id="txtCDTrack" name="txtCDTrack" maxlength="255" size="50" /></p>
 
-				<p><label for="txtProps">Will you be using any props? (tables, chairs, rodeo clowns, etc.):</label>
-				<input type="text" id="txtProps" name="txtProps" maxlength="20" size="10" /></p>
+				<p><label for="txtProps">Will you be using any props (tables, chairs, rodeo clowns, etc.)?:</label>
+				<input type="text" id="txtProps" name="txtProps" maxlength="255" size="50" /></p>
 			</fieldset>			
 			
 			<fieldset><legend>Applicant Information:</legend>
-				<p><label for="txtYearsExperience">Years of Experience:</label>
+				<p><label for="txtYearsExperience">Years of experience:</label>
 				<input type="text" id="txtYearsExperience" name="txtYearsExperience" maxlength="2" size="2" /></p>
 
 				<p><label for="txtChurchArea">Your Local Church Area:</label>
 				<input type="text" id="txtChurchArea" name="txtChurchArea" maxlength="255" size="50" /></p>
 
-				<p><label for="txtAnythingElse">Anything else you'd like us to know (age, etc.):</label>
+				<p><label for="txtAnythingElse">Anything else you'd like us to know (age, etc.)?:</label>
 				<input type="text" id="txtAnythingElse" name="txtAnythingElse" maxlength="255" size="50" /></p>				
 			</fieldset>
 			
 			<fieldset><legend>Upload File:</legend>				
-				<iframe id="upload_target" name="upload_target" src="activity-fun-show-file-retriever.php" style="width:52em;height:8em;border:0px solid #fff;" frameBorder="0"></iframe>
+				<iframe id="upload_target" name="upload_target" src="activity-fun-show-file-retriever.php" style="width:52em;height:6.5em;border:0px solid #fff;" frameBorder="0"></iframe>
 				
 				<input type="hidden" id="hidFilename" name="hidFilename" />
 			</fieldset>
@@ -141,7 +140,25 @@
 				},
 				txtActTitle: {
 					required: true
-				}
+				},
+				txtLength: {
+					required: true
+				},
+				txtActDescription: {
+					required: true
+				},
+				txtAudioNeeds: {
+					required: true
+				},
+				txtProps: {
+					required: true
+				},
+				txtYearsExperience: {
+					required: true
+				},
+				txtChurchArea: {
+					required: true
+				}				
 			}
 		});		
 	</script>

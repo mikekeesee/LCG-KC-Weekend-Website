@@ -110,10 +110,11 @@
 
 				<p>Last year's show was such a hit that we are again offering a family fun show. Our talent search is on, 
 				and we are now accepting applications. If you can sing, dance, play an instrument, perform in a skit 
-				or wow us all with some other amazing skill, then send in your application now.</p>
+				or wow us all with some other amazing skill, then sign up now!</p>
 
-				<p>Space is limited, so we do reserve the right to screen or decline applications. Please email <a href="mailto:davidandsarahmanning@hotmail.com">
-				David and Sarah Manning</a> to request the Fun Show application form.</p>
+				<h3><a href="activity-fun-show-signup.php">--> Click here to sign up for the Fun Show <--</a></h3>
+				
+				<p>Space is limited, so we do reserve the right to screen or decline applications. Please email <a href="mailto:davidandsarahmanning@hotmail.com">David and Sarah Manning</a> with any further questions.</p>
 
 				<p>The same dress code as the dance (casual) applies, since the dance and fun show
 				will occur in the same building.</p>

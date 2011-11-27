@@ -307,7 +307,7 @@ legend {
 }
 
 fieldset p {
-	margin: 0em 0em 0em 0em;
+	margin: 0em .5em 1em 0em;
 }
 
 label {
@@ -336,7 +336,7 @@ fieldset em {
 }
 
 fieldset input {
-	margin: 1em .5em 0em 0em;
+	/*margin: 1em .5em 0em 0em;*/
 }
 
 fieldset select {
@@ -349,6 +349,20 @@ fieldset select {
 }
 
 /** End Forms **/
+
+
+/** Show/Hide Selectors **/
+
+.show , .hide {
+	color: blue;
+	cursor: pointer;
+	font-size: .7em;
+	font-style: italic;
+	margin: 1em 0em 0em .5em;
+}
+
+/** End Show/Hide Selectors **/
+
 
 /** Page Footer **/
 
