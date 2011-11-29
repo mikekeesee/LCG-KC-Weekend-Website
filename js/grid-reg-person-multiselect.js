@@ -15,6 +15,6 @@ jQuery(document).ready(function() {
 		width: 450,
 		height: 345,
 		hidegrid: false,
-		caption:"Who's Registered So Far"
+		caption:"Click All People Who Apply:"
 	}).navGrid('#reg-person',{edit:false,add:false,del:false});
 });

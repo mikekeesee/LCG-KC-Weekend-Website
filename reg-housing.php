@@ -144,6 +144,7 @@
 
 	<? include "jqgrid-header.php" ?>
 	<script src="js/jquery.validate.min.js" type="text/javascript"></script>
+	<script src="js/input-placeholder.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -197,15 +198,15 @@
 				<p><label><input type="checkbox" class="required" id="house_more_ind" name="house_more_ind" />  Can you house more guests?</label></p>
 
 				<p><label for="how_many" class="required">How many more guests could you house?:</label>
-				<input type="text" class="required" id="how_many" name="how_many" maxlength="255" size="2" /></p>
+				<input type="text" id="how_many" name="how_many" maxlength="255" size="2" /></p>
 
 				<p><label for="guest_names" class="required">If already housing guests, can you give us their name(s)?</label>
-				<input type="text" class="required" id="guest_names" name="guest_names" maxlength="255" size="97" /></p>
+				<input type="text" id="guest_names" name="guest_names" maxlength="255" size="97" placeholder="The Merediths, etc." /></p>
 
 				<p><label><input type="checkbox" id="pets_ind" name="pets_ind" />  Pets?</label>
 
 				<label for="pets_info">How many?  What kind?:</label>
-				<input type="text" id="pets_info" name="pets_info" maxlength="255" size="59" /></p>
+				<input type="text" id="pets_info" name="pets_info" maxlength="255" size="59" placeholder="4 Llamas, 2 platypi, etc."/></p>
 			</fieldset>
 					
 			<fieldset><legend>Transportation Needs:</legend>
@@ -223,11 +224,10 @@
 				<label><input type="checkbox" id="teens_ind" name="teens_ind" />&nbsp;Teens&nbsp;&nbsp;</label></p>
 
 				<p><label for="other">Other:</label>
-				<input type="text" id="other" name="other" maxlength="255" size="66" /></p>
+				<input type="text" id="other" name="other" maxlength="255" size="66" placeholder="2 beds, floorspace only, etc." /></p>
 			</fieldset>
 		</div>
 
-		<p><em>* - Required field</em></p>
 		<hr />
 		<br />
 	<? if ($num_in_party == 1) { ?>
@@ -271,7 +271,9 @@
 
 		$('#chkHousing').click(function() {
 			if ($("#chkHousing:checked").length > 0) {
-				$(".toggle").show("drop");
+				$(".toggle").show("drop", function() {
+						this.style.removeAttribute("filter");
+					});
 			} else {
 				$(".toggle").hide("puff");
 			}
@@ -312,34 +314,6 @@
 				
 			}
 		});
-
-		function VerifyAndSubmit() {
-			// Check the fields to see if any are empty
-			if (document.getElementById("chkHousing").checked == true) {
-				if (document.getElementById("house_more_ind").checked == true) {
-					if (document.getElementById("how_many").value == '' ||
-						IsNumeric(document.getElementById("how_many").value) == false) {
-						alert("Please enter a number into the 'How many more guests could you house?' field.");
-						return false;
-					}
-				} else {
-					if (document.getElementById("guest_names").value == '') {
-						alert("If you're already full, our Housing Coordinator would love to know who's staying with you.");
-						return false;
-					}
-				}
-			}
-
-			// Remove any apostrophes because they make PHP and database unhappy. :,(
-			document.getElementById("address1").value = document.getElementById("address1").value.replace("\'", "");
-			document.getElementById("address2").value = document.getElementById("address2").value.replace("\'", "");
-			document.getElementById("city").value = document.getElementById("city").value.replace("\'", "");
-			document.getElementById("guest_names").value = document.getElementById("guest_names").value.replace("\'", "");
-			document.getElementById("pets_info").value = document.getElementById("pets_info").value.replace("\'", "");
-			document.getElementById("other").value = document.getElementById("other").value.replace("\'", "");
-
-			document.getElementById("reg-housing").submit();
-		}
 	</script>
 
 </body>

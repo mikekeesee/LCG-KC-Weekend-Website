@@ -34,28 +34,62 @@ $page=$total_pages;
 
 $start = $limit * $page - $limit; // do not put $limit*($page - 1)
 
-$SQL = "	SELECT 'Number of Guests' AS type, `SUM(number_in_party)` AS value
+$SQL = "	SELECT '<h5>Total Registered</h5>' AS type, '' AS value
+
+			UNION
+			
+			SELECT CONCAT(' - ', 'All') as type, SUM(Number_In_Party)
+			FROM Registration
+			
+			UNION
+
+			SELECT CONCAT(' - ', 'Number of Guests') AS type, `SUM(number_in_party)` AS value
 			
 			FROM Number_Of_Guests
 			
 			UNION
 			
-			SELECT Activity_Name AS type, `COUNT(pa.Person_ID)` AS value
+			SELECT '<b>Housing Counts</b>' AS type, '' AS value
+
+			UNION
+			
+			SELECT CONCAT(' - ', s.String) AS type, SUM(r.Number_In_Party) AS value
+			FROM String_Base s
+				INNER JOIN Registration r
+					ON s.String_ID = Housing_Type
+			WHERE String_Grouping = 2
+			GROUP BY s.String
+			
+			UNION
+			
+			SELECT '<b>Activity Counts</b>' AS type, '' AS value
+
+			UNION
+			
+			SELECT CONCAT(' - ', Activity_Name) AS type, `COUNT(pa.Person_ID)` AS value
 			FROM `Activity Counts`
 
 			UNION
 			
-			SELECT String AS type, `COUNT(p.Age_Range)` AS value
+			SELECT '<b>Demographic Counts</b>' AS type, '' AS value
+
+			UNION
+			
+			SELECT CONCAT(' - ', String) AS type, `COUNT(p.Age_Range)` AS value
 			FROM Demographics
 			
 			UNION
 			
-			SELECT 'Dining In', Number AS value
+			SELECT '<b>Dining Preference</b>' AS type, '' AS value
+
+			UNION
+			
+			SELECT CONCAT(' - ', 'Dining In'), Number AS value
 			FROM `Dining In`
 			
 			UNION
 			
-			SELECT 'Dining Out', Number AS value
+			SELECT CONCAT(' - ', 'Dining Out'), Number AS value
 			FROM `Dining Out`";
 
 $result = mysql_query( $SQL ) or die("Couldn't execute query.".mysql_error());

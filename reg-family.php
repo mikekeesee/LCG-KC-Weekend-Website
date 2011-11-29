@@ -195,6 +195,7 @@
 
 	<? include "jqgrid-header.php" ?>
 	<script src="js/jquery.validate.min.js" type="text/javascript"></script>
+	<script src="js/input-placeholder.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -236,12 +237,12 @@
 				<input type="text" id="txtLastName<?=$i?>" name="txtLastName<?=$i?>" maxlength="255" size="30" /></p>
 
 				<p><label for="txtEmail" class="required">Email (if different):</label>
-				<input type="text" id="txtEmail<?=$i?>" name="txtEmail<?=$i?>" maxlength="255" size="30" /></p>
+				<input type="text" id="txtEmail<?=$i?>" name="txtEmail<?=$i?>" maxlength="255" size="30" placeholder="user@domain.com" /></p>
 
-				<p><label for="txtEmail" class="required">Phone (if different)  [XXX-XXX-XXXX]:</label>
-				<input type="text" id="txtPhone<?=$i?>" name="txtPhone<?=$i?>" maxlength="255" size="30" /></p>
+				<p><label for="txtEmail" class="required">Phone (if different):</label>
+				<input type="text" id="txtPhone<?=$i?>" name="txtPhone<?=$i?>" maxlength="255" size="30" placeholder="XXX-XXX-XXXX" /></p>
 
-				<p><label for="txtEmail" class="required">Description That Fits Best:</label>
+				<p><label for="cboAgeRange<?=$i?>" class="required">Description That Fits Best:</label>
 				<select id="cboAgeRange<?=$i?>" name="cboAgeRange<?=$i?>">
 					<option value="0" selected>--Please Select--</option>
 <?
@@ -259,7 +260,7 @@
 ?>
 				</select></p>
 				
-				<p><label for="cboActivity">Choose an Activity:</label>
+				<p><label for="cboActivity<?=$i?>">Choose an Activity:</label>
 				<select id="cboActivity<?=$i?>" name="cboActivity<?=$i?>">
 						<option value="0" selected>--Please Select--</option>
 <?
@@ -335,38 +336,6 @@
 	} ?>
 			}
 		});
-		
-	/*$('#reg-family').submit(function() {
-		// Check the fields to see if any are empty
-		for (var i=1; i < <?=$num_in_party?>; i++) {
-			//if (document.getElementById("txtFirstName" + i.toString()).value == '') {
-			//	alert("Please fill out Family Member #" + i + "'s First Name field, if you would... I would hope you'd know them on a first-name basis by now!");
-			//	return false;
-			//}
-
-			//if (document.getElementById("txtLastName" + i.toString()).value == '') {
-			//	alert("Please fill out Family Member #" + i + "'s Last Name field...  I would hope you'd know their names by now!");
-			//	return false;
-			//}
-
-			//if (document.getElementById("cboSex" + i.toString()).value == '0') {
-			//	alert("Please fill out Family Member #" + i + "'s Gender field. I would think that's public knowledge...");
-			//	return false;
-			//}
-
-			//if (document.getElementById("cboAgeRange" + i.toString()).value == '0') {
-			//	alert("Please fill out Family Member #" + i + "'s Description That Best Fits field.");
-			//	return false;
-			//}
-
-			// Remove any apostrophes because they make PHP and database unhappy. :,(
-			document.getElementById("txtFirstName" + i.toString()).value = document.getElementById("txtFirstName" + i.toString()).value.replace("\'", "");
-			document.getElementById("txtLastName" + i.toString()).value = document.getElementById("txtLastName" + i.toString()).value.replace("\'", "");
-		}
-
-		//document.getElementById("reg-family").submit();
-	});*/
-		
 	</script>
 	
 </body>

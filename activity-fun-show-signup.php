@@ -11,7 +11,8 @@
 	<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
 	<? include "jqgrid-header.php" ?>
 	<script src="js/jquery.validate.min.js" type="text/javascript"></script>
-	
+	<script src="js/jqgrid-helper.js" type="text/javascript"></script>
+	<script src="js/input-placeholder.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -25,10 +26,9 @@
 
 		<h2>Fun Show Sign-Up</h2>
 
-		<p>Please fill out all the fields below. Click the names of those performing from the registry list. 
-		If you don't know exactly what you'll be performing yet, that's fine; fill out what you know so far.
-		If you have accompaniment, lyrics, a script for skits or anything that will better help our organizers
-		with planning, please upload them here.</p>
+		<p>Please fill out all the fields below. Click <u>ALL</u> of the names of those performing from the 
+		registry list. If you have accompaniment, lyrics, a script for skits or anything that will better 
+		help our organizers with planning, please upload them here.</p>
 
 		<!-- The Registration Form for Main Contact Information -->
 		<form id="fun-show-signup" action="activity-fun-show-list.php" method="post" onsubmit="Verify();">
@@ -40,14 +40,14 @@
 			</fieldset>
 
 			<fieldset><legend>Act Info:</legend>
-				<p><label for="txtActType" class="required">Type of act (singing, dancing, skit, etc.):</label>
-				<input type="text" id="txtActType" name="txtActType" maxlength="255" size="50" /></p>
+				<p><label for="txtActType" class="required">Type of act:</label>
+				<input type="text" id="txtActType" name="txtActType" maxlength="255" size="50" placeholder="Singing, dancing, skit, etc."/></p>
 
 				<p><label for="txtActTitle" class="required">Your act's title:</label>
 				<input type="text" id="txtActTitle" name="txtActTitle" maxlength="255" size="50" /></p>
 
-				<p><label for="txtLength" class="required">Approximate length of the act (please keep them less than 3-4 minutes):</label>
-				<input type="text" id="txtLength" name="txtLength" maxlength="20" size="10" /></p>
+				<p><label for="txtLength" class="required">Approximate length of the act:</label>
+				<input type="text" id="txtLength" name="txtLength" maxlength="20" size="10" placeholder="3-4 mins. max" /></p>
 				
 				<br />
 				
@@ -56,15 +56,15 @@
 			</fieldset>
 			
 			<fieldset><legend>Technical Information:</legend>				
-				<p><label for="txtAudioNeeds">Enter your audio needs (number of mics, hook-ups, etc.):</label>
-				<input type="text" id="txtAudioNeeds" name="txtAudioNeeds" maxlength="255" size="50" /></p>
+				<p><label for="txtAudioNeeds">Enter your audio needs:</label>
+				<input type="text" id="txtAudioNeeds" name="txtAudioNeeds" maxlength="255" size="50" placeholder="Number of mics, hook-ups, etc."/></p>
 
 				<p><label for="txtCDTrack">CD and track number:</label>
 				<input type="text" id="txtCDTrack" name="txtCDTrack" maxlength="255" size="50" /></p>
 
-				<p><label for="txtProps">Will you be using any props (tables, chairs, rodeo clowns, etc.)?:</label>
-				<input type="text" id="txtProps" name="txtProps" maxlength="255" size="50" /></p>
-			</fieldset>			
+				<p><label for="txtProps">Will you be using any props?:</label>
+				<input type="text" id="txtProps" name="txtProps" maxlength="255" size="50" placeholder="Tables, chairs, rodeo clowns, etc."/></p>
+			</fieldset>
 			
 			<fieldset><legend>Applicant Information:</legend>
 				<p><label for="txtYearsExperience">Years of experience:</label>
@@ -73,8 +73,8 @@
 				<p><label for="txtChurchArea">Your Local Church Area:</label>
 				<input type="text" id="txtChurchArea" name="txtChurchArea" maxlength="255" size="50" /></p>
 
-				<p><label for="txtAnythingElse">Anything else you'd like us to know (age, etc.)?:</label>
-				<input type="text" id="txtAnythingElse" name="txtAnythingElse" maxlength="255" size="50" /></p>				
+				<p><label for="txtAnythingElse">Anything else you'd like us to know?:</label>
+				<input type="text" id="txtAnythingElse" name="txtAnythingElse" maxlength="255" size="50" placeholder="Age, etc."/></p>				
 			</fieldset>
 			
 			<fieldset><legend>Upload File:</legend>				
@@ -99,30 +99,6 @@
 		$(document).ready(function() {
 			$("input:submit").button();
 		});
-
-		function getSelectedItems(objGrid) {
-			var strRtnValue = "";
-			var arrData = objGrid.getGridParam('selarrrow');
-			if (arrData.length > 0) {
-				for (var i = 0; i < arrData.length; i++) {
-					strRtnValue += (arrData[i] + ",");
-				}
-
-				// Now strip out the trailing comma
-				if (strRtnValue != "") {
-					strRtnValue = strRtnValue.substr(0, strRtnValue.length - 1);
-				}
-			} else {
-				var selRow = objGrid.getGridParam('selrow');
-				if (selRow == null) {
-					return "";
-				}
-
-				strRtnValue = selRow;
-			}
-
-			return strRtnValue;
-		}
 
 		function Verify() {
 			var person_id = getSelectedItems($("#reg-person-multiselect"));

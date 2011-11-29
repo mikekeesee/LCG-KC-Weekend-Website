@@ -19,7 +19,7 @@
 	<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
 	<? include "jqgrid-header.php" ?>
 	<script src="js/jquery.validate.min.js" type="text/javascript"></script>
-	
+	<script src="js/input-placeholder.js" type="text/javascript"></script>	
 </head>
 
 <body>
@@ -51,10 +51,10 @@
 
 			<fieldset><legend>Contact Information:</legend>
 				<p><label for="txtEmail" class="required">Email:</label>
-				<input type="text" id="txtEmail" name="txtEmail" maxlength="255" size="30" />
+				<input type="text" id="txtEmail" name="txtEmail" maxlength="255" size="30" placeholder="user@domain.com" />
 				<em>&nbsp;&nbsp;NOTE: If you plan on donating money through PayPal, please use the same email address here.</em></p>
-				<p><label for="txtPhone" class="required">Phone [XXX-XXX-XXXX]:</label>
-				<input type="text" id="txtPhone" name="txtPhone" maxlength="255" size="30" /></p>
+				<p><label for="txtPhone" class="required">Phone:</label>
+				<input type="text" id="txtPhone" name="txtPhone" maxlength="255" size="30" placeholder="XXX-XXX-XXXX"/></p>
 			</fieldset>
 
 			<fieldset><legend>General Demographics:</legend>
@@ -107,8 +107,8 @@
 					<input type="text" id="txtHousedBy" name="txtHousedBy" maxlength="255" size="30" /></p>
 				</div>
 				
-				<p><label for="txtHomeCity">If from out of town, where are you from? [City, State]:</label>
-				<input type="text" id="txtHomeCity" name="txtHomeCity" maxlength="255" size="30" /></p>
+				<p><label for="txtHomeCity">If from out of town, where are you from?:</label>
+				<input type="text" id="txtHomeCity" name="txtHomeCity" maxlength="255" size="30" placeholder="City, State" /></p>
 
 				<p><label for="txtNumInParty" class="required">Number in Party:</label>
 				<input type="text" id="txtNumInParty" name="txtNumInParty" maxlength="2" size="2" /></p>
@@ -174,7 +174,11 @@
 			//alert("hi!");
 			if ($("option:selected").is(".toggleOnSelected") == true) {
 				if ($(".toggle:hidden").length > 0)
-					$(".toggle").show("drop");
+					$(".toggle").show("drop", function() {
+						if (navigator.appName == 'Microsoft Internet Explorer') {
+							this.style.removeAttribute("filter");
+						}
+					});
 			} else {
 				if ($(".toggle:visible").length > 0)
 					$(".toggle").hide("puff");

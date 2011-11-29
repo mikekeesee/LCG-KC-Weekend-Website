@@ -352,6 +352,10 @@ fieldset select {
 	margin: 0em 0em 0em 2em;
 }
 
+.placeholder
+{
+  color: #aaa;
+}
 /** End Forms **/
 
 
