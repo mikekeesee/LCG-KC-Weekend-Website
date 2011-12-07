@@ -37,7 +37,6 @@
 		<div id="tabs">
 			<ul>
 				<li><a href="#general">General</a></li>
-				<li><a href="#funshow">Fun Show</a></li>
 				<li><a href="#dance">Dance</a></li>
 				<li><a href="#food">Food</a></li>
 			</ul>
@@ -105,21 +104,6 @@
 				<div class="clear-float"></div>
 			</div>
 
-			<div id="funshow">
-				<h3>Fun Show</h3>
-
-				<p>Last year's show was such a hit that we are again offering a family fun show. Our talent search is on, 
-				and we are now accepting applications. If you can sing, dance, play an instrument, perform in a skit 
-				or wow us all with some other amazing skill, then sign up now!</p>
-
-				<h3><a href="activity-fun-show-signup.php">--> Click here to sign up for the Fun Show <--</a></h3>
-				
-				<p>Space is limited, so we do reserve the right to screen or decline applications. Please email <a href="mailto:davidandsarahmanning@hotmail.com">David and Sarah Manning</a> with any further questions.</p>
-
-				<p>The same dress code as the dance (casual) applies, since the dance and fun show
-				will occur in the same building.</p>
-			</div>
-
 			<div id="dance">
 				<h3>Dance</h3>
 
@@ -133,8 +117,9 @@
 
 			<div id="food">
 				<h3>Tasty Vittles</h3>
-				<p>It wouldn&#39;t be the KC Weekend without some tasty home cookin&#39;. This year&#39;s menu for Saturday night is 
-				still in the works, but you can count on warm and hearty deliciousness.</p>
+				<p>It wouldn&#39;t be the KC Weekend without some tasty home cookin&#39;. This year&#39;s menu for Saturday night will
+				be a hearty <b>beef stroganoff</b> over pasta, in honor of all those Russian cowpokes out there. Side salads and drinks will
+				also be available. Desserts will be served during the dance.</p>
 
 				<h3>Eating Out</h3>
 				<p>Benjamin Ranch is a little more than a hop, skip and a jump from most restaurants, but there

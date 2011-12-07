@@ -272,8 +272,10 @@
 		$('#chkHousing').click(function() {
 			if ($("#chkHousing:checked").length > 0) {
 				$(".toggle").show("drop", function() {
+					if (navigator.appName == 'Microsoft Internet Explorer') {
 						this.style.removeAttribute("filter");
-					});
+					}
+				});
 			} else {
 				$(".toggle").hide("puff");
 			}

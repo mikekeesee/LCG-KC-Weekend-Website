@@ -17,8 +17,9 @@
 					<li><a href="activity-bootcamp.php">Boot Camp</a></li>
 				</ul>
 			</li>
-			<li><a href="information.php">General Information</a></li>
+			<li><a href="activity-fun-show-signup.php">Fun Show</a></li>
 			<li><a href="housing.php">Housing</a></li>
+			<li><a href="information.php">Maps &amp; Info</a></li>
 		</ul>
 	</div>
 

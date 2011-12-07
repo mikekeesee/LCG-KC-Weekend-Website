@@ -24,6 +24,7 @@
 
 		<h2>Housing</h2>
 
+		<h3>Stay with Brethren</h3>
 		<p>For those wanting to stay with brethren, select the option to "Stay with brethren" when
 		you <a href="reg-main.php">register</a>. If you are a Kansas City resident and have room for a few guests, please <a href="reg-main.php">register</a> as a Kansas City resident and
 		click the check box about housing.</p>
@@ -31,6 +32,9 @@
 		<p>If you have a question about housing, including requests to stay with brethren, please call our ever-helpful Housing Coordinator
 		<a href="mailto:berylwilson@earthlink.net">Beryl Wilson</a> at (816) 537-8133.</p>
 		
+		<br/>
+		
+		<h3>Hotel</h3>
 		<p>Our hotel this year, La Quinta Inn and Suites, is just 10 miles from Benjamin Ranch and 15 miles from Okun Fieldhouse. It is located
 		off I-435 and Metcalf in Overland Park. The group rate after taxes is $54.12 per room, with a maximum of 4 occupants per room. 
 		This special rate is available for Friday, Dec. 30 and Saturday, Dec. 31. Please call 913-648-5555 to make your reservations 
