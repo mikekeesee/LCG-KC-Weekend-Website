@@ -59,6 +59,7 @@ $SQL = "	SELECT	r.registration_id as reg_id,
 							THEN 'No'
 							ELSE 'N/A'
 							END as done_housing,
+					s2.string as dining,
 					CONCAT('$', IFNULL(pay.Payment_Amount, 0), '.00') as paid
 			FROM Registration r
 				INNER JOIN Person p
@@ -67,6 +68,9 @@ $SQL = "	SELECT	r.registration_id as reg_id,
 				INNER JOIN String_Base s
 					ON r.housing_type = s.String_ID
 				
+				INNER JOIN String_Base s2
+					ON r.dining_id = s2.String_ID
+					
 				LEFT OUTER JOIN Registration_Payment pay
 					ON r.Registration_ID = pay.Registration_ID
 					
@@ -94,6 +98,7 @@ while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
 	$s .= "<cell>". $row[num_in_party]."</cell>";
 	$s .= "<cell>". htmlspecialchars($row[housed_by])."</cell>";
 	$s .= "<cell>". $row[done_housing]."</cell>";
+	$s .= "<cell>". $row[dining]."</cell>";
 	$s .= "<cell>". $row[paid]."</cell>";
 	$s .= "</row>";
 }

@@ -46,7 +46,7 @@
 				<li><b>Deadlines</b> - Please register for <a href="activity-main.php">team sports</a> and the 
 				<a href="activity-fun-show-signup.php">fun show</a> by <b>December 18</b>.</li>
 				<li><b>Housing</b> - Housing with brethren is first come, first serve and getting tight, so please register soon. 
-				The $54/night price <em>after taxes</em> on our <a href="housing.php">hotel</a> is still available through Dec. 18th.</li>
+				We have a new hotel option--The Pear Tree Inn--at $55/night <em>after taxes</em>. La Quinta is about out of rooms. Please check the <a href="housing.php">housing page</a> for more details.</li>
 				<li><b>Dinner</b> - Beef stroganoff over pasta with a side salad.</li>
 			</ul>
 
