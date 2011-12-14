@@ -29,48 +29,96 @@
 	<!-- Start of Main Content Area -->
 	<div id="main-content">
 
-		<h2>Information</h2>
-
 		<p>Welcome to the information page. We will try to keep this page current and easy to browse for
 		those of you wanting all the latest and greatest information on the Kansas City Regional Family Weekend.</p>
 
+		<h2>Schedule of Events</h2>
+
+		<!-- Start of Friday -->
+		<div class="daily-schedule">
+
+			<h3>Friday, Dec. 30</h3>
+
+			<ul>
+				<li><b>6 p.m.</b> - Hall Opens for Fellowship</li>
+
+				<li><b>7 p.m.</b> - Bible Study - Mr. Wallace Smith</li>
+			</ul>
+
+		</div>
+		<!-- End of Friday -->
+
+
+		<!-- Start of Saturday -->
+		<div class="daily-schedule">
+
+			<h3>Saturday, Dec. 31</h3>
+
+			<ul>
+				<li><b>1 p.m.</b> - <a href="information.php">Church Services</a></li>
+
+				<li><b>4 p.m.</b> - Beef Stroganoff Dinner</li>
+
+				<li><b>6 p.m.</b> - <a href="information.php#funshow">Fun Show</a></li>
+				
+				<li><b>8 p.m.</b> - <a href="information.php#dance">Dance</a></li>
+
+				<li><b>10:30 p.m.</b> - Clean Up</li>
+			</ul>
+
+		</div>
+		<!-- End of Saturday -->
+			
+		<!-- Start of Sunday -->
+		<div class="daily-schedule">
+
+			<h3>Sunday, Jan. 1</h3>
+
+			<ul>
+				<li><b>9:00 a.m.</b> - Okun Fieldhouse Opens</li>
+
+				<li><b>9:30 a.m.</b> - Sports Bible Study</li>
+
+				<li><b>10:00 a.m.</b> - Boot Camp Conditioning</li>
+
+				<li><b>10:00 a.m.</b> - Basketball and <a href="activity-vball-main.php">Volleyball</a></li>
+
+				<li><b>11:00 a.m.</b> - Children Activities</li>
+
+				<li><b>1:00 p.m.</b> - Lunch (organized sports will take a break)</li>
+
+				<li><b>2:00 p.m.</b> - Sports Resume</li>
+
+				<li><b>5:00 p.m.</b> - Games End</li>
+				
+				<li><b>5:30 p.m.</b> - Fieldhouse Closes</li>
+				
+			</ul>
+
+		</div>
+
+		<div class="clear-float" />
+		
+		<br/>
+		
 		<div id="tabs">
 			<ul>
-				<li><a href="#general">General</a></li>
+				<li><a href="#locations">Locations</a></li>
+				<li><a href="#payment">Payment Info</a></li>
 				<li><a href="#dance">Dance</a></li>
 				<li><a href="#food">Food</a></li>
 			</ul>
 
-			<div id="general">
-				<h3>General Information</h3>
+			<div id="locations">
+		
+				<h3>Locations</h3>
 
-				<p>The Kansas City Weekend will be Friday, December 30 through Sunday, January 1. As in years past,
-				we plan to host a Bible study Friday night, then Sabbath services, dinner, fun show and dance
-				on Saturday. Our facility for this portion of the weekend will be Benjamin Ranch, 6401 E. 87th Street in Kansas City, MO. The ranch is rustic, so bring your boots 
-				and your best YEE-HAW!</p>
+				<p>Our facility for Friday night and Saturday will be Benjamin Ranch, 6401 E. 87th Street in Kansas City, MO. The ranch is rustic, so bring your boots and your best YEE-HAW!</p>
 				
 				<p>Sunday's sports and family activities will again be at Okun Fieldhouse, 20200 Johnson Drive in Shawnee, KS.</p>
 
 				<br/>
 
-				<p><h4>Payment</h4>
-				<p>We do ask that you would quickly send in the <b>registration fee</b> of <b>$10 per person</b> in your
-				group or <b>$40 per family</b>, whichever is lowest. If you cannot afford to pay at this time or cannot afford
-				the full amount, please come anyway. If you would like to give more, that would be greatly appreciated as well.
-				You can either click the PayPal Donate in the upper-right corner of the web page, or send a check. <em>NOTE: Disregard any references to FOT Branson on the PayPal site. This was a dual-use account.</em> If writing
-				a check, please make checks payable to <u>Local Church Activity Fund</u>.  Please send all checks to:</p>
-				
-				<p style="margin:20px"><b>
-					John Wells<br/>
-					2329 Lake Breeze Ln.<br/>
-					Lee&#39;s Summit, MO 64086
-				</b></p>
-
-				<p>If you do not have the funds to make payment, please come anyway!</p>
-
-				<br />
-				
-				<p><h4>Locations and Maps</h4>
 				<div class="column">
 					<p>All Friday and Saturday activities will be at the Benjamin Ranch near Raytown, MO:</p>
 					<p style="margin:20px"><b>
@@ -104,6 +152,28 @@
 				<div class="clear-float"></div>
 			</div>
 
+			<div id="payment">
+				
+				<h3>Payment</h3>
+				
+				<p>We do ask that you would quickly send in the <b>registration fee</b> of <b>$10 per person</b> in your
+				group or <b>$40 per family</b>, whichever is lowest. If you cannot afford to pay at this time or cannot afford
+				the full amount, please come anyway. If you would like to give more, that would be greatly appreciated as well.
+				You can either click the PayPal Donate in the upper-right corner of the web page, or send a check. <em>NOTE: Disregard any references to FOT Branson on the PayPal site. This was a dual-use account.</em> If writing
+				a check, please make checks payable to <u>Local Church Activity Fund</u>.  Please send all checks to:</p>
+				
+				<p style="margin:20px"><b>
+					John Wells<br/>
+					2329 Lake Breeze Ln.<br/>
+					Lee&#39;s Summit, MO 64086
+				</b></p>
+
+				<p>If you do not have the funds to make payment, please come anyway!</p>
+
+				<br />
+				
+			</div>
+		
 			<div id="dance">
 				<h3>Dance</h3>
 
@@ -120,6 +190,12 @@
 				<p>It wouldn&#39;t be the KC Weekend without some tasty home cookin&#39;. This year&#39;s menu for Saturday night will
 				be a hearty <b>beef stroganoff</b> over pasta, in honor of all those Russian cowpokes out there. Side salads and drinks will
 				also be available. Desserts will be served during the dance.</p>
+				
+				<h3>Requested Food Items</h3>
+				<p>Our dinner committee has requested that each family and singles bring a bag of salad baby greens or a chopped heart of
+				romaine lettuce Saturday. We would also request a large dessert (9x13-sized pan or similar) for Saturday and a bag of cookies
+				or similar for Friday night's Bible study. For our out-of-town guests wanting to contribute, feel free to bring a dessert
+				if you would like!</p>
 
 				<h3>Eating Out</h3>
 				<p>Benjamin Ranch is a little more than a hop, skip and a jump from most restaurants, but there

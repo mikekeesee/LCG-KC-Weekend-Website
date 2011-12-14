@@ -81,10 +81,10 @@
 		<p><br/>
 			<b>There are currently <?=$num_not_housed?> families/groups not housed.</b>
 			<br/>
-			<b>The KC Weekend has currently generated $<?=$total_payment?>.00 in donations with a goal of $4500.</b>
+			<b>The KC Weekend has currently generated $<?=$total_payment?>.00 in donations with a goal of $3700.</b>
 			<br/>
 			<div class="progress-bar green glow">
-				<span style="width: <?=intval(($total_payment/4500)*100) ?>%"></span>
+				<span style="width: <?=intval(($total_payment/3700)*100) ?>%"></span>
 			</div>
 		</p>
 

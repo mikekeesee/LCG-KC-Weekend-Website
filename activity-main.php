@@ -37,17 +37,17 @@
 			<h3>Sunday's Schedule:</h3>
 
 			<ul>
-				<li><b>8:30 a.m.</b> - <a href="information.php">Okun Fieldhouse</a> Opens</li>
+				<li><b>9:00 a.m.</b> - Okun Fieldhouse Opens</li>
 
-				<li><b>9:00 a.m.</b> - Sports Bible Study</li>
+				<li><b>9:30 a.m.</b> - Sports Bible Study</li>
 
-				<li><b>9:30 a.m.</b> - <a href="activity-bootcamp.php">Boot Camp Conditioning</a></li>
+				<li><b>10:00 a.m.</b> - Boot Camp Conditioning</li>
 
-				<li><b>9:30 a.m.</b> - <a href="activity-bball-main.php">Basketball</a> and <a href="activity-vball-main.php">Volleyball</a></li>
+				<li><b>10:00 a.m.</b> - Basketball and <a href="activity-vball-main.php">Volleyball</a></li>
 
-				<li><b>10:30 a.m.</b> - <a href="activity-main.php">Family Activities</a></li>
+				<li><b>11:00 a.m.</b> - Children Activities</li>
 
-				<li><b>1:30 p.m.</b> - <a href="activity-main.php">Lunch</a> (organized sports will take a break)</li>
+				<li><b>1:00 p.m.</b> - Lunch (organized sports will take a break)</li>
 
 				<li><b>2:00 p.m.</b> - Sports Resume</li>
 
