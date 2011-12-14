@@ -43,7 +43,7 @@
 
 				<li><b>10:00 a.m.</b> - Boot Camp Conditioning</li>
 
-				<li><b>10:00 a.m.</b> - Basketball and <a href="activity-vball-main.php">Volleyball</a></li>
+				<li><b>10:00 a.m.</b> - <a href="activity-bball-main.php">Basketball</a> and <a href="activity-vball-main.php">Volleyball</a></li>
 
 				<li><b>11:00 a.m.</b> - Children Activities</li>
 
