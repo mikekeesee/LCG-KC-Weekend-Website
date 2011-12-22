@@ -114,7 +114,8 @@
 					fsa.Church_Area,
 					fsa.Anything_Else,
 					fsa.Filename,
-					GROUP_CONCAT(CONCAT(p.First_Name, ' ', p.Last_Name) SEPARATOR ', ') AS Performers
+					GROUP_CONCAT(CONCAT(p.First_Name, ' ', p.Last_Name) SEPARATOR ', ') AS Performers,
+					GROUP_CONCAT(DISTINCT p.Email SEPARATOR '; ') AS Email
 								
 			FROM	Fun_Show_Act fsa
 			
@@ -147,6 +148,7 @@
 		echo("\t\t\t<p><b>Type of Act:</b>&nbsp;".$row[Type]."</p>");
 		echo("\t\t\t<p><b>Performers:</b>&nbsp;".$row[Performers]."</p>");
 		echo("\t\t\t<div class='show-hide'>");
+		echo("\t\t\t<p><b>Performer Emails:</b>&nbsp;".$row[Email]."</p>");
 		echo("\t\t\t<p><b>Estimated Length:</b>&nbsp;".$row[Length]."</p>");
 		echo("\t\t\t<p><b>Description:</b>&nbsp;".$row[Description]."</p>");
 		echo("\t\t\t<p><b>Audio Needs:</b>&nbsp;".$row[Audio_Needs]."</p>");

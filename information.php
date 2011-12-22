@@ -57,7 +57,7 @@
 			<ul>
 				<li><b>1 p.m.</b> - <a href="information.php">Church Services</a></li>
 
-				<li><b>4 p.m.</b> - Beef Stroganoff Dinner</li>
+				<li><b>4 p.m.</b> - Beef Brisket Dinner</li>
 
 				<li><b>6 p.m.</b> - <a href="information.php#funshow">Fun Show</a></li>
 				
@@ -188,14 +188,20 @@
 			<div id="food">
 				<h3>Tasty Vittles</h3>
 				<p>It wouldn&#39;t be the KC Weekend without some tasty home cookin&#39;. This year&#39;s menu for Saturday night will
-				be a hearty <b>beef stroganoff</b> over pasta, in honor of all those Russian cowpokes out there. Side salads and drinks will
+				be a Kansas City tradition: <b>beef brisket</b> on bun. Baked beans, side salad and drinks will
 				also be available. Desserts will be served during the dance.</p>
 				
 				<h3>Requested Food Items</h3>
-				<p>Our dinner committee has requested that each family and singles bring a bag of salad baby greens or a chopped heart of
-				romaine lettuce Saturday. We would also request a large dessert (9x13-sized pan or similar) for Saturday and a bag of cookies
-				or similar for Friday night's Bible study. For our out-of-town guests wanting to contribute, feel free to bring a dessert
-				if you would like!</p>
+				<p>Our dinner committee has requested that each family and singles bring:</p>
+
+				<ul>
+					<li>Friday night: A bag of cookies or snack food</li>
+					<li>A bag of salad baby greens or a chopped heart of romaine lettuce</li>
+					<li>A can of baked beans</li>
+					<li>A large dessert (9x13-sized pan or similar)</li>
+				</ul>
+
+				<p>For our out-of-town guests wanting to contribute, feel free to bring a dessert if you would like!</p>
 
 				<h3>Eating Out</h3>
 				<p>Benjamin Ranch is a little more than a hop, skip and a jump from most restaurants, but there

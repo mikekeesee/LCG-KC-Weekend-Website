@@ -42,12 +42,12 @@
 			<h3>What You Need to Know</h3>
 
 			<ul>
-				<li><b>Guest Speakers</b> - We're pleased to announce that Mr. Ames will be our guest speaker from Charlotte!</li>
 				<li><b>Deadlines</b> - Please register for <a href="activity-main.php">team sports</a> and the 
 				<a href="activity-fun-show-signup.php">fun show</a> by <b>December 18</b>.</li>
-				<li><b>Housing</b> - Housing with brethren is first come, first serve and getting tight, so please register soon. 
-				We have a new hotel option--The Pear Tree Inn--at $55/night <em>after taxes</em>. La Quinta is about out of rooms. Please check the <a href="housing.php">housing page</a> for more details.</li>
-				<li><b>Dinner</b> - Beef stroganoff over pasta with a side salad.</li>
+				<li><b>Housing</b> - Housing with brethren is FULL. However, we have a new hotel option--The Pear Tree Inn--at $55/night <em>
+				after taxes</em>. La Quinta is about out of rooms. Please check the <a href="housing.php">housing page</a> for more 
+				details.</li>
+				<li><b>Dinner</b> - Beef brisket on bun with baked beans and a side salad. (KC Brethren: see <a href="http://kcdev.moluf.net/information.php#food">list</a> for items to bring.)</li>
 			</ul>
 
 		</div>
@@ -160,7 +160,7 @@
 			<ul>
 				<li><b>1 p.m.</b> - <a href="information.php">Church Services</a></li>
 
-				<li><b>4 p.m.</b> - Beef Stroganoff Dinner</li>
+				<li><b>4 p.m.</b> - Beef Brisket Dinner</li>
 
 				<li><b>6 p.m.</b> - <a href="information.php#funshow">Fun Show</a></li>
 				

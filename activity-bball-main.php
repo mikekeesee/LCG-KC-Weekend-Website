@@ -50,7 +50,7 @@
 			<ul>
 				<li><a href="#general">General</a></li>
 				<li><a href="#rules">Rules</a></li>
-				<li><a href="#teams">Teams</a></li>
+				<li><a href="#bball-teams">Teams</a></li>
 				<li><a href="#schedule">Game Schedule</a></li>
 			</ul>
 
@@ -126,10 +126,17 @@
 
 			</div>
 
-			<div id="teams">
-				<iframe src="activity-bball-team.php" width="725" height="750" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" >
+			<div id="bball-teams">
+				<!--<iframe src="activity-bball-team.php" width="725" height="750" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" >
 			  		<p>Your browser does not support iframes.</p>
-				</iframe>
+				</iframe> -->
+				
+				<script type="text/javascript">
+					var activity_number = '1';
+					var activity_name = 'Basketball';
+				</script>
+				<script type="text/javascript" src="js/grid-activity-teams.js"></script>
+				<table id="teams"></table>
 			</div>
 
 
