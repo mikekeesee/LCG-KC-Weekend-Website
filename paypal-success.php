@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
 
 	<? include "jqgrid-header.php" ?>
+	<? include ('google-analytics.php'); ?>
 </head>
 
 <body>

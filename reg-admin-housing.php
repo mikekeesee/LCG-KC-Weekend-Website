@@ -13,6 +13,8 @@
 	<? include "jqgrid-header.php" ?>
 
 	<script src="js/jquery.validate.min.js" type="text/javascript"></script>
+
+	<? include ('google-analytics.php'); ?>
 </head>
 
 <body>

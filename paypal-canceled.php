@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
 
 	<? include "jqgrid-header.php" ?>
+	<? include ('google-analytics.php'); ?>
 </head>
 
 <body>
@@ -24,7 +25,7 @@
 
 		<h2 class="standout">Payment Canceled</h2>
 
-		<p>We understand. Putting your personal financial information out on the web is pretty
+		<p>We understand, putting your personal financial information out on the web is pretty
 		scary. We chose PayPal because it is one of the most secure sites out there. However, if
 		you would rather pay in a more secure way, you can send us a check.</p>
 		

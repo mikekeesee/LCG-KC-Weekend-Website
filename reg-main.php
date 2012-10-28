@@ -11,6 +11,8 @@
 	<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
 
 	<? include "jqgrid-header.php" ?>
+	
+	<? include ('google-analytics.php'); ?>
 </head>
 
 <body>
@@ -26,23 +28,28 @@
 		<p>Welcome to the registration page. Click the link to begin registering or scroll
 		down to see who's already coming.</p>
 
-		<h3><a href="reg-main-contact.php">Begin Registration Here</a></h3>
 
-		<hr />
 
-		<div class="list-view">
-			<script type="text/javascript" src="js/grid-reg-person.js"></script>
-			<table id="reg-person"></table>
+		<div class="column">
+			<h3><a href="reg-main-contact.php">Begin Registration Here</a></h3>
+			<div class="list-view">
+				<script type="text/javascript" src="js/grid-reg-person.js"></script>
+				<table id="reg-person"></table>
+			</div>
 		</div>
-		<br />
+		
+		<div class="column">
+			<iframe src="reg-home-city-map.php" style="width:550px;height:500px;border:0px solid #fff;" frameBorder="0" scrolling="no">
+			</iframe>
+		</div>
 
+		<div class="clear-float"></div>
+		
 	</div>
 
 	<!-- End of Main Content Area -->
 
 	<? include "footer.php"; ?>
-
-</div>
 
 </body>
 </html>

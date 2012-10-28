@@ -130,7 +130,7 @@
 
 ?>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -145,6 +145,8 @@
 	<? include "jqgrid-header.php" ?>
 	<script src="js/jquery.validate.min.js" type="text/javascript"></script>
 	<script src="js/input-placeholder.js" type="text/javascript"></script>
+
+	<? include ('google-analytics.php'); ?>
 </head>
 
 <body>

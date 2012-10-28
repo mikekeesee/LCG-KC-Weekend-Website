@@ -7,7 +7,6 @@
 	mysql_connect(localhost,$username,$password) or die("Unable to connect to database");
 	mysql_select_db($database) or die("Unable to select database");
 
-
 	// Get the POST data
 	$expire = time() + (60*60*24*7);
 
@@ -29,6 +28,17 @@
 
 	$activity = $_POST['cboActivity'];
 	$dining_id = $_POST['cboDining'];
+
+	require('GoogleMapAPI.class.php');
+
+	$map = new GoogleMapAPI('map');
+	// enter YOUR Google Map Key
+	//$map->setAPIKey('ABQIAAAAYMNY23sJhxC4LyHvhouDAhT7jkmynjE8OMd-ikFKdpPdtz0ExRS8CQW29gereurYlNrENJbQEdpvYQ');
+	$map->setAPIKey('ABQIAAAAYMNY23sJhxC4LyHvhouDAhTO1sTMmm0paPF-NqNRX-WjGyPHxxQNKDjpAKmhd7DBMSBEWqs826zUrw');
+
+	$geoCode = $map->geoGetCoords($home_city);
+	$geo_lat = $geoCode[lon];
+	$geo_long = $geoCode[lat];
 
 	// Verify there is not already an identical person in the system
 	$SQL = "SELECT	COUNT(*) as count
@@ -115,7 +125,9 @@
 						Number_In_Party = ".$num_in_party.",
 						Housed_By = '".mysql_real_escape_string($housed_by)."',
 						Dining_ID = ".$dining_id.",
-						Home_City = '".mysql_real_escape_string($home_city)."'
+						Home_City = '".mysql_real_escape_string($home_city)."',
+						Geo_Lat = '".mysql_real_escape_string($geo_lat)."',
+						Geo_Long = '".mysql_real_escape_string($geo_long)."'
 				WHERE	Registration_ID = ".$reg_id;
 
 		mysql_query( $SQL ) or die($SQL."\n\nCouldn't execute registration UPDATE query.".mysql_error());
@@ -130,7 +142,9 @@
 					 Number_In_Party,
 					 Housed_By,
 					 Dining_ID,
-					 Home_City)
+					 Home_City,
+					 Geo_Lat,
+					 Geo_Long)
 				VALUES
 					(NULL,
 					 ".$mc_person_id.",
@@ -138,7 +152,9 @@
 					 ".$num_in_party.",
 					 '".mysql_real_escape_string($housed_by)."',
 					 ".$dining_id.",
-					 '".mysql_real_escape_string($home_city)."')";
+					 '".mysql_real_escape_string($home_city)."',
+					 '".mysql_real_escape_string($geo_lat)."',
+					 '".mysql_real_escape_string($geo_long)."')";
 
 		mysql_query( $SQL ) or die($SQL."\n\nCouldn't execute Registration INSERT query.".mysql_error());
 		//"Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute Registration INSERT query.".mysql_error());
@@ -196,6 +212,8 @@
 	<? include "jqgrid-header.php" ?>
 	<script src="js/jquery.validate.min.js" type="text/javascript"></script>
 	<script src="js/input-placeholder.js" type="text/javascript"></script>
+
+	<? include ('google-analytics.php'); ?>
 </head>
 
 <body>
@@ -233,13 +251,13 @@
 <?		} else { ?>
 				<input type="text" id="txtFirstName<?=$i?>" name="txtFirstName<?=$i?>" maxlength="255" size="30" /></p>
 <?		} ?>
-				<p><label for="txtLastName" class="required">Last Name:</label>
+				<p><label for="txtLastName<?=$i?>" class="required">Last Name:</label>
 				<input type="text" id="txtLastName<?=$i?>" name="txtLastName<?=$i?>" maxlength="255" size="30" /></p>
 
-				<p><label for="txtEmail" class="required">Email (if different):</label>
+				<p><label for="txtEmail<?=$i?>" class="required">Email (if different):</label>
 				<input type="text" id="txtEmail<?=$i?>" name="txtEmail<?=$i?>" maxlength="255" size="30" placeholder="user@domain.com" /></p>
 
-				<p><label for="txtEmail" class="required">Phone (if different):</label>
+				<p><label for="txtPhone<?=$i?>" class="required">Phone (if different):</label>
 				<input type="text" id="txtPhone<?=$i?>" name="txtPhone<?=$i?>" maxlength="255" size="30" placeholder="XXX-XXX-XXXX" /></p>
 
 				<p><label for="cboAgeRange<?=$i?>" class="required">Description That Fits Best:</label>
@@ -342,5 +360,6 @@
 </html>
 
 <?
+
 	mysql_close();
 ?>

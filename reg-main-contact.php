@@ -20,6 +20,8 @@
 	<? include "jqgrid-header.php" ?>
 	<script src="js/jquery.validate.min.js" type="text/javascript"></script>
 	<script src="js/input-placeholder.js" type="text/javascript"></script>	
+
+	<? include ('google-analytics.php'); ?>
 </head>
 
 <body>
@@ -171,7 +173,6 @@
 		});
 
 		var toggle = function() {
-			//alert("hi!");
 			if ($("option:selected").is(".toggleOnSelected") == true) {
 				if ($(".toggle:hidden").length > 0)
 					$(".toggle").show("drop", function() {

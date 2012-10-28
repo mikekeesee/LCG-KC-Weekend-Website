@@ -94,6 +94,8 @@
 	<title>Kansas City Regional Family Weekend: Registration</title>
 
 	<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
+
+	<? include ('google-analytics.php'); ?>
 </head>
 
 <body onload="OnLoad();">

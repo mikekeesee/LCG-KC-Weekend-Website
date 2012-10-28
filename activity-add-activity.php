@@ -40,6 +40,7 @@
 	}
 	</script>
 
+	<? include ('google-analytics.php'); ?>
 </head>
 
 <body>

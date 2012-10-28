@@ -27,7 +27,7 @@
 	$num_not_housed = $row['count'];
 ?>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE HTML>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -38,32 +38,13 @@
 	<title>Kansas City Regional Family Weekend - Registration Administration</title>
 
 	<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="js/select2/select2.css" type="text/css" media="screen" />
 
 	<? include "jqgrid-header.php" ?>
-
 	<script type="text/javascript" src="js/grid-reg-statistics.js"></script>
-	<script type="text/javascript" src="js/grid-reg-person-admin.js"></script>
-	<script type="text/javascript" src="js/grid-registration.js"></script>
-	<script type="text/javascript" src="js/grid-reg-whos-not-housed.js"></script>
-	<script type="text/javascript" src="js/grid-reg-whos-housed-where.js"></script>
-	<script type="text/javascript" src="js/grid-reg-housing.js"></script>
-
-	<script type="text/javascript">
-
-	function OnCheck(checkbox) {
-		var sDivId = "div-" + checkbox.id.substring(4);
-		var sFrameId = checkbox.id.substring(4);
-
-		if (checkbox.checked == true) {
-			document.getElementById(sDivId).style.display = "";
-
-		} else {
-			document.getElementById(sDivId).style.display = "none";
-		}
-	}
-
-	</script>
-
+	<script type="text/javascript" src="js/select2/select2.js"></script>
+	
+	<? include ('google-analytics.php'); ?>
 </head>
 
 <body>
@@ -76,82 +57,62 @@
 
 		<h2>Registration Administration</h2>
 
-		<p>Welcome to the administration page for registration.</p>
+		<p><b>Registration Information Search:</b></p>
+		<select id="reg-info-search" multiple>
+			<option></option>
+<?
+	$SQL = "	SELECT	person_id,
+						CONCAT(last_name, ', ', first_name) AS full_name
+				FROM Person
+				ORDER BY last_name, first_name";
 
-		<p><br/>
-			<b>There are currently <?=$num_not_housed?> families/groups not housed.</b>
-			<br/>
+	$result = mysql_query( $SQL ) or die("</select><br/>Couldn't execute query.".mysql_error()."");
+
+	while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+		echo "\t\t\t<option value='".$row[person_id]."'>".htmlspecialchars($row[full_name])."</option>\n";
+	}
+?>
+		</select>
+		<input type="button" id="get-reg-info" value="Go" />
+
+		<br/>
+		<hr/>
+		<br/>
+		
+		<div class="column">
+			<div id="div-grid-reg-statistics">
+				<table id="reg-statistics"></table>
+			</div>		
+		</div>
+			
+		<div>
+			<p><b>There are currently <?=$num_not_housed?> families/groups not housed.</b></p>
+			
+			<p>Please choose from the links or reports below:</p>
+			<ul>
+				<li><a href="reg-admin-housing.php">Create a Housing Contact</a></li>
+				<li><a href="reg-admin-add-guest-to-housing.php">Add Guests to a Housing Contact</a></li>
+				<li><a href="reg-admin-add-money.php">Record a Payment from a Registered Family/Group</a></li>
+				<li><a href="reg-admin-email-lists.php">Generate an Email List</a></li>
+				<li><a href="activity-vball-team.php" target="_blank">Modify Volleyball Teams</a></li>
+				<li><a href="activity-bball-team.php" target="_blank">Modify Basketball Teams</a></li>
+			</ul>
+		</div>
+			
+		<div class="clear-float">
+		</div>
+		
+		<br/>
+		<hr/>
+		<br/>
+
+		<p>
 			<b>The KC Weekend has currently generated $<?=$total_payment?>.00 in donations with a goal of $3700.</b>
 			<br/>
 			<div class="progress-bar green glow">
 				<span style="width: <?=intval(($total_payment/3700)*100) ?>%"></span>
 			</div>
 		</p>
-
-		<label><input type="checkbox" id="chk-grid-reg-statistics" onclick="OnCheck(this);" />KC Weekend Statistics</label>
-		<br />
-
-		<div id="div-grid-reg-statistics" style="display:none">
-			<table id="reg-statistics"></table>
-		</div>
-		<br />
-
-		<hr/>
-		<p>Please choose from the links or reports below:</p>
-
-		<ul>
-			<li><a href="reg-admin-housing.php">Create a Housing Contact</a></li>
-			<li><a href="reg-admin-add-guest-to-housing.php">Add Guests to a Housing Contact</a></li>
-			<li><a href="reg-admin-add-money.php">Record a Payment from a Registered Family/Group</a></li>
-			<li><a href="activity-vball-team.php" target="_blank">Modify Volleyball Teams</a></li>
-			<li><a href="activity-bball-team.php" target="_blank">Modify Basketball Teams</a></li>
-		</ul>
-		
-		<hr />
-		<br/>
-		<p><b>Please check a box to view a report:</b></p>
-
-		<br />
-
-		<label><input type="checkbox" id="chk-grid-reg-person-admin" onclick="OnCheck(this);" />Show all people currently registered</label>
-		<br />
-
-		<div id="div-grid-reg-person-admin" style="display:none">
-			<table id="reg-person-admin"></table>
-		</div>
-		<br />
-
-		<label><input type="checkbox" id="chk-grid-registration" onclick="OnCheck(this);" />Show current regististration information</label>
-		<br />
-
-		<div id="div-grid-registration" style="display:none">
-			<table id="reg-registration"></table>
-		</div>
-		<br />
-
-		<label><input type="checkbox" id="chk-grid-reg-whos-not-housed" onclick="OnCheck(this);" />Show all families not currently housed</label>
-		<br />
-
-		<div id="div-grid-reg-whos-not-housed" style="display:none">
-			<table id="reg-whos-not-housed"></table>
-		</div>
-		<br />
-
-		<label><input type="checkbox" id="chk-grid-reg-whos-housed-where" onclick="OnCheck(this);" />Show all families who are housed (click '+' to see who each guest is housed with)</label>
-		<br />
-
-		<div id="div-grid-reg-whos-housed-where" style="display:none">
-			<table id="reg-whos-housed-where"></table>
-		</div>
-		<br />
-
-		<label><input type="checkbox" id="chk-grid-reg-housing" onclick="OnCheck(this);" />Show all housing contacts (click '+' to see everyone they're housing)</label>
-		<br />
-
-		<div id="div-grid-reg-housing" style="display:none">
-			<table id="reg-housing"></table>
-		</div>
-
 	</div>
 
 	<!-- End of Main Content Area -->
@@ -160,5 +121,26 @@
 
 	<? include "footer.php" ?>
 
+	<script type="text/javascript">		
+		$("#reg-info-search").select2({
+			placeholder: "Search for a person...",
+			width: "40em"
+		});
+		
+		$(document).ready(function() {
+			$("#get-reg-info").button().click(function() {
+				personIds = $("#reg-info-search").val() || [];
+				for (var i = 0; i < personIds.length; i++) {
+					window.open("reg-admin-person.php?id=" + personIds[i], '_blank');
+				}
+				
+				$("#reg-info-search").select2("val", "");
+			});
+		});
+
+	</script>
+	
 </body>
 </html>
+
+<? mysql_close(); ?>

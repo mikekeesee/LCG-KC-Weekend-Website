@@ -19,8 +19,9 @@ jQuery(document).ready(function() {
 		sortname: 'last_name, first_name',
 		sortorder: 'asc',
 		viewrecords: true,
-		width: 900,
+		width: 500,
 		height: 230,
+		shrinkToFit: false,
 		onSelectRow: function(id) {try {GetNumInParty();} catch(err){}},
 		hidegrid: false,
 		caption:"Who's Not Yet Housed"

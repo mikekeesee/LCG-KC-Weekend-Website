@@ -19,6 +19,7 @@
 		});
 	</script>
 
+	<? include ('google-analytics.php'); ?>
 </head>
 
 <body>
@@ -127,16 +128,16 @@
 			</div>
 
 			<div id="bball-teams">
-				<!--<iframe src="activity-bball-team.php" width="725" height="750" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" >
+				<iframe src="activity-bball-team.php" width="725" height="750" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" >
 			  		<p>Your browser does not support iframes.</p>
-				</iframe> -->
+				</iframe>
 				
-				<script type="text/javascript">
+				<!--<script type="text/javascript">
 					var activity_number = '1';
 					var activity_name = 'Basketball';
 				</script>
 				<script type="text/javascript" src="js/grid-activity-teams.js"></script>
-				<table id="teams"></table>
+				<table id="teams"></table>-->
 			</div>
 
 

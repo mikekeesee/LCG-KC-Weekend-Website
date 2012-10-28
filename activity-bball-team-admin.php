@@ -215,6 +215,142 @@
 	<script src="js/i18n/grid.locale-en.js" type="text/javascript"></script>
 	<script type="text/javascript" src="js/jquery.jqGrid.min.js"></script>
 
+	<? include ('google-analytics.php'); ?>
+</head>
+
+<body onload="onLoad();">
+
+	<div id="container">
+
+		<!-- Add the header to each page -->
+		<? include ('header.php'); ?>
+
+		<!-- Start of Main Content Area -->
+
+		<div id="maincontent_container">
+		<div id="maincontent">
+
+			<h2 class="standout">Build/Maintain Basketball Teams</h2>
+			<p>Use this page to build your basketball team.</p>
+
+			<p><i><b>NOTE: In order to build a team, you and your team members must be both <a href="reg-main.php">registered</a>
+			and <a href="activity-add-activity.php">signed up</a> for basketball. If any teammates have not registered yet,
+			just wait until they do and add them later, or have them add themselves.</b></i></p>
+
+			<br/>
+			<em><-- <a href="activity-bball-main.php">Back to the Basketball Main page</a></em>
+			<br/>
+
+			<br/><hr/><br/>
+
+			<p><h3><b>** !! <u>DO NOT EDIT EXISTING TEAMS unless you are the CAPTAIN of that team.</u> !! **</b></h3></p>
+
+			<br/>
+
+			<h3>What would you like to do?</h3>
+
+			<form id="activity-bball-team-admin" action="activity-bball-team-admin.php" method="post">
+
+				<select id="cboAction" name="cboAction" onchange="cboAction_onChange();">
+					<option value="view_teams">View Current Teams</option>
+					<option value="create_team">Create a New Team</option>
+					<option value="add_player">Add a Player</option>
+					<option value="change_name">Change Your Team Name</option>
+					<option value="change_captain">Change Your Team Captain</option>
+					<option value="change_color">Change Your Team Color</option>
+					<option value="remove_player">Remove a Player</option>
+					<option value="delete_team">Delete a Team</option>
+				</select>
+
+				<input type="hidden" name="hidActionIndex" id="hidActionIndex" />
+
+				<br/>
+				<br/>
+
+				<div id="divCreateTeam" style="display:none">
+					<p><b>First, type the name of your new team above. <i>(Max. 8 teams)</i></b></p>
+
+					<input type="text" id="team_name" name="team_name" size="40" maxlength="255" />
+
+					<br/>
+					<p><b>Next, if determined yet, enter your team color (shirt or jersey).</b></p>
+
+					<input type="text" id="shirt_color" name="shirt_color" size="40" maxlength="255" />
+
+					<br/><br/>
+					<p><b>Then click the player below to be team captain (if they don&#39;t already have a team).</b></p>
+				</div>
+
+				<div id="divAddPlayer" style="display:none">
+					<p><b>First, click your team, then highlight the player. <i>(Max. 5 players)</i></b></p>
+				</div>
+
+				<div id="divChangeName" style="display:none">
+					<p><b>Type in the new name of your team.</p>
+
+					<input type="text" id="change_name" name="change_name" size="40" maxlength="255" />
+
+					<br/><br/>
+					<p><b>Click the team below to change.</b></p>
+				</div>
+
+				<div id="divChangeCaptain" style="display:none">
+					<p><b>Click the team below to change, then click on the new team captain (that is
+					already on the team selected).</b></p>
+				</div>
+
+				<div id="divChangeColor" style="display:none">
+					<p><b>Next, if determined yet, enter your team color (shirt or jersey).</b></p>
+
+					<input type="text" id="change_color" name="change_color" size="40" maxlength="255" />
+
+					<br/><br/>
+					<p><b>Then click the team below to change.</b></p>
+				</div>
+
+				<div id="divRemovePlayer" style="display:none">
+					<p><b>Click the player below that is currently on a team to remove.</b></p>
+				</div>
+
+				<div id="divDeleteTeam" style="display:none">
+					<p><b>Click the team below to delete.</b></p>
+				</div>
+
+				<div style="position:relative;width:760px;height:250px;">
+					<div id="divTeams" style="float:left;display:none;">
+						<table id="teams"></table>
+						<div id="teams-pager"></div>
+						<input type="hidden" id="gridTeam" name="gridTeam" />
+						<br/>
+					</div>
+					<div id="divSep" style="float:left;width:20px">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+					<div id="divPlayers" style="float:left;display:none">
+						<table id="players"></table>
+						<div id="players-pager"></div>
+						<input type="hidden" id="gridPlayer" name="gridPlayer" />
+						<br/>
+					</div>
+				</div>
+
+				<div style="clear:both">
+					<p>Finally, click Submit.</p>
+					<input type="button" onclick="VerifyAndSubmit();" value="Submit" style="float:none" />
+				</div>
+
+			</form>
+
+		</div>
+		</div>
+
+		<div class="clearthis">&nbsp;</div>
+
+		<!-- End of Main Content Area -->
+
+		<!-- Add the header to each page -->
+		<? include ('footer.php'); ?>
+
+	</div>
+
 	<script type="text/javascript">
 		jQuery(document).ready(function() {
 			jQuery("#teams").jqGrid({
@@ -616,141 +752,6 @@
 			document.getElementById("activity-bball-team-admin").submit();
 		}
 	</script>
-
-</head>
-
-<body onload="onLoad();">
-
-<div id="container">
-
-	<!-- Add the header to each page -->
-	<? include ('header.php'); ?>
-
-	<!-- Start of Main Content Area -->
-
-	<div id="maincontent_container">
-	<div id="maincontent">
-
-		<h2 class="standout">Build/Maintain Basketball Teams</h2>
-		<p>Use this page to build your basketball team.</p>
-
-		<p><i><b>NOTE: In order to build a team, you and your team members must be both <a href="reg-main.php">registered</a>
-		and <a href="activity-add-activity.php">signed up</a> for basketball. If any teammates have not registered yet,
-		just wait until they do and add them later, or have them add themselves.</b></i></p>
-
-		<br/>
-		<em><-- <a href="activity-bball-main.php">Back to the Basketball Main page</a></em>
-		<br/>
-
-		<br/><hr/><br/>
-
-		<p><h3><b>** !! <u>DO NOT EDIT EXISTING TEAMS unless you are the CAPTAIN of that team.</u> !! **</b></h3></p>
-
-		<br/>
-
-		<h3>What would you like to do?</h3>
-
-		<form id="activity-bball-team-admin" action="activity-bball-team-admin.php" method="post">
-
-			<select id="cboAction" name="cboAction" onchange="cboAction_onChange();">
-				<option value="view_teams">View Current Teams</option>
-				<option value="create_team">Create a New Team</option>
-				<option value="add_player">Add a Player</option>
-				<option value="change_name">Change Your Team Name</option>
-				<option value="change_captain">Change Your Team Captain</option>
-				<option value="change_color">Change Your Team Color</option>
-				<option value="remove_player">Remove a Player</option>
-				<option value="delete_team">Delete a Team</option>
-			</select>
-
-			<input type="hidden" name="hidActionIndex" id="hidActionIndex" />
-
-			<br/>
-			<br/>
-
-			<div id="divCreateTeam" style="display:none">
-				<p><b>First, type the name of your new team above. <i>(Max. 8 teams)</i></b></p>
-
-				<input type="text" id="team_name" name="team_name" size="40" maxlength="255" />
-
-				<br/>
-				<p><b>Next, if determined yet, enter your team color (shirt or jersey).</b></p>
-
-				<input type="text" id="shirt_color" name="shirt_color" size="40" maxlength="255" />
-
-				<br/><br/>
-				<p><b>Then click the player below to be team captain (if they don&#39;t already have a team).</b></p>
-			</div>
-
-			<div id="divAddPlayer" style="display:none">
-				<p><b>First, click your team, then highlight the player. <i>(Max. 5 players)</i></b></p>
-			</div>
-
-			<div id="divChangeName" style="display:none">
-				<p><b>Type in the new name of your team.</p>
-
-				<input type="text" id="change_name" name="change_name" size="40" maxlength="255" />
-
-				<br/><br/>
-				<p><b>Click the team below to change.</b></p>
-			</div>
-
-			<div id="divChangeCaptain" style="display:none">
-				<p><b>Click the team below to change, then click on the new team captain (that is
-				already on the team selected).</b></p>
-			</div>
-
-			<div id="divChangeColor" style="display:none">
-				<p><b>Next, if determined yet, enter your team color (shirt or jersey).</b></p>
-
-				<input type="text" id="change_color" name="change_color" size="40" maxlength="255" />
-
-				<br/><br/>
-				<p><b>Then click the team below to change.</b></p>
-			</div>
-
-			<div id="divRemovePlayer" style="display:none">
-				<p><b>Click the player below that is currently on a team to remove.</b></p>
-			</div>
-
-			<div id="divDeleteTeam" style="display:none">
-				<p><b>Click the team below to delete.</b></p>
-			</div>
-
-			<div style="position:relative;width:760px;height:250px;">
-				<div id="divTeams" style="float:left;display:none;">
-					<table id="teams"></table>
-					<div id="teams-pager"></div>
-					<input type="hidden" id="gridTeam" name="gridTeam" />
-					<br/>
-				</div>
-				<div id="divSep" style="float:left;width:20px">&nbsp;&nbsp;&nbsp;&nbsp;</div>
-				<div id="divPlayers" style="float:left;display:none">
-					<table id="players"></table>
-					<div id="players-pager"></div>
-					<input type="hidden" id="gridPlayer" name="gridPlayer" />
-					<br/>
-				</div>
-			</div>
-
-			<div style="clear:both">
-				<p>Finally, click Submit.</p>
-				<input type="button" onclick="VerifyAndSubmit();" value="Submit" style="float:none" />
-			</div>
-
-		</form>
-
-	</div>
-	</div>
-
-	<div class="clearthis">&nbsp;</div>
-
-	<!-- End of Main Content Area -->
-
-	<!-- Add the header to each page -->
-	<? include ('footer.php'); ?>
-
-</div>
 
 </body>
 </html>

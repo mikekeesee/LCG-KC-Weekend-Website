@@ -160,6 +160,8 @@
 
 	<? include "jqgrid-header.php" ?>
 	<script src="js/jquery.validate.min.js" type="text/javascript"></script>	
+
+	<? include ('google-analytics.php'); ?>
 </head>
 
 <body>
@@ -182,10 +184,10 @@
 
 		<p><h3>The suggested donation amount is: <? if ($num_in_party >= 4) print('$40'); else print('$'.($num_in_party * 10)); ?></h3>
 			<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-			<input type="hidden" name="cmd" value="_s-xclick">
-			<input type="hidden" name="hosted_button_id" value="JFMRJ5UHHCZK4">
-			<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-			<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+				<input type="hidden" name="cmd" value="_s-xclick">
+				<input type="hidden" name="hosted_button_id" value="JFMRJ5UHHCZK4">
+				<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+				<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 			</form>
 		</p>
 		
@@ -193,7 +195,7 @@
 		<p>We do ask that you would quickly send in the <b>registration fee</b> of <b>$10 per person</b> in your
 		group or <b>$40 per family</b>, whichever is lowest. If you cannot afford to pay at this time or cannot afford
 		the full amount, please come anyway. If you would like to give more, that would be greatly appreciated as well.
-		You can either click the PayPal Donate button to pay by eCheck or a credit or debit card, or send a check. <em>NOTE: Disregard any references to FOT Branson on the PayPal site. This was a dual-use account.</em> If writing
+		You can either click the PayPal Donate button to pay by eCheck or a credit or debit card, or send a check. If writing
 		a check, please make checks payable to <u>Local Church Activity Fund</u>.  Please send all checks to:</p>
 		
 		<p style="margin:20px"><b>
@@ -205,10 +207,10 @@
 		<p>Please click on <a href="housing.php">Housing</a> to get more information about our hotel
 		arrangement or the contact number of our wonderful and lovely Housing Coordinator, Beryl Wilson.</p>
 
-		<p>Click on <a href="activity-main.php">Activities</a> to sign up for an activity.</p>
+		<!--<p>Click on <a href="activity-main.php">Activities</a> to sign up for an activity.</p>-->
 
 		<p>Or click on <a href="reg-main.php">Registration</a> to see if your name is now on the list.
-		Go ahead, Mike worked really hard to make this automated...  :)</p>
+		Or you can see what part of the country people are coming from on the map!</p>
 
 
 		<br />

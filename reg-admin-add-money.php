@@ -14,54 +14,7 @@
 
 	<script type="text/javascript" src="js/grid-registration.js"></script>
 
-	<script type="text/javascript">
-		function getSelectedId(objGrid) {
-			var selRow = objGrid.getGridParam('selrow');
-			if (selRow == null) {
-				alert("Please select at least one row from each grid.")
-				return false;
-			}
-
-			return selRow;
-		}
-
-		function IsNumeric(sText) {
-		   var ValidChars = "0123456789.";
-		   var IsNumber = true;
-		   var Char;
-
-
-		   for (i = 0; i < sText.length && IsNumber == true; i++) {
-			  Char = sText.charAt(i);
-			  if (ValidChars.indexOf(Char) == -1) {
-				 IsNumber = false;
-			  }
-		   }
-
-		   return IsNumber;
-		}
-
-		function VerifyAndSubmit() {
-
-			var reg_id = getSelectedId($("#reg-registration"));
-			if (reg_id == "") { return false; }
-			document.getElementById("gridReg").value = reg_id;
-
-			// Check the fields to see if any are empty
-			if (document.getElementById("txtHowMuch").value == '') {
-				alert("Please fill out much money they paid.");
-				return false;
-			}
-
-			if (IsNumeric(document.getElementById("txtHowMuch").value) == false) {
-				alert("Please enter a number in the 'How much money?' text box.");
-				return false;
-			}
-
-			document.getElementById("reg-admin-add-money").submit();
-		}
-	</script>
-
+	<? include ('google-analytics.php'); ?>
 </head>
 
 <body>
@@ -114,6 +67,52 @@
 		$(document).ready(function() {
 			$("input:button").button();
 		});
+
+		function getSelectedId(objGrid) {
+			var selRow = objGrid.getGridParam('selrow');
+			if (selRow == null) {
+				alert("Please select at least one row from each grid.")
+				return false;
+			}
+
+			return selRow;
+		}
+
+		function IsNumeric(sText) {
+		   var ValidChars = "0123456789.";
+		   var IsNumber = true;
+		   var Char;
+
+
+		   for (i = 0; i < sText.length && IsNumber == true; i++) {
+			  Char = sText.charAt(i);
+			  if (ValidChars.indexOf(Char) == -1) {
+				 IsNumber = false;
+			  }
+		   }
+
+		   return IsNumber;
+		}
+
+		function VerifyAndSubmit() {
+
+			var reg_id = getSelectedId($("#reg-registration"));
+			if (reg_id == "") { return false; }
+			document.getElementById("gridReg").value = reg_id;
+
+			// Check the fields to see if any are empty
+			if (document.getElementById("txtHowMuch").value == '') {
+				alert("Please fill out much money they paid.");
+				return false;
+			}
+
+			if (IsNumeric(document.getElementById("txtHowMuch").value) == false) {
+				alert("Please enter a number in the 'How much money?' text box.");
+				return false;
+			}
+
+			document.getElementById("reg-admin-add-money").submit();
+		}
 	</script>
 
 </body>

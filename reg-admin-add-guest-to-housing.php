@@ -15,7 +15,63 @@
 	<script type="text/javascript" src="js/grid-reg-whos-not-housed.js"></script>
 	<script type="text/javascript" src="js/grid-reg-housing.js"></script>
 
+	<? include ('google-analytics.php'); ?>
+</head>
+
+<body>
+
+	<!-- Add the header to each page -->
+	<? include ('header.php'); ?>
+
+	<!-- Start of Main Content Area -->
+
+	<div class="main-content">
+
+		<h2>Registration</h2>
+
+		<p>Use this page to match brethren needing housing with with brethren who are hosting.  Pick a guest and then pick a host.
+		Check the box if they will require additional housing.  Finally, fill out the number in the party being housed with
+		the selected host and then click Submit.</p>
+		<hr />
+
+		<br/>
+		<em><-- <a href="reg-admin.php">Back to Registration Admin</a></em>
+		<br/>
+
+		<br/>
+		<h3>Match Guests to a Host:</h3>
+		<br/>
+		<form id="reg-add-guest-to-housing" action="reg-admin-add-guest-to-housing-submit.php" method="post">
+			<br/>
+
+			<table id="reg-whos-not-housed"></table>
+			<input type="hidden" id="gridGuest" name="gridGuest" />
+
+			<br/><br/>
+
+			<table id="reg-housing"></table>
+			<input type="hidden" id="gridHost" name="gridHost" />
+
+			<br/>
+			<label class="label">How many are being housed here?&nbsp;&nbsp;&nbsp;<input type="text" id="txtHowMany" name="txtHowMany" maxlength=2 size=2 /></label>
+			<br/><br/>
+			<label class="label"><input type="checkbox" id="chkMoreHousing" name="chkMoreHousing" />  Does this group need further housing? (Checking this will leave them in the list.)</label>
+
+			<hr />
+			<br />
+			<input type="button" value="Submit" onclick="VerifyAndSubmit();" />
+		</form>
+
+	</div>
+
+	<!-- End of Main Content Area -->
+
+	<!-- Add the header to each page -->
+	<? include ('footer.php'); ?>
+
 	<script type="text/javascript">
+		$("input:button").button();		
+
 		function getSelectedId(objGrid) {
 			var selRow = objGrid.getGridParam('selrow');
 			if (selRow == null) {
@@ -72,63 +128,6 @@
 
 			document.getElementById("reg-add-guest-to-housing").submit();
 		}
-	</script>
-
-</head>
-
-<body>
-
-	<!-- Add the header to each page -->
-	<? include ('header.php'); ?>
-
-	<!-- Start of Main Content Area -->
-
-	<div class="main-content">
-
-		<h2>Registration</h2>
-
-		<p>Use this page to match brethren needing housing with with brethren who are hosting.  Pick a guest and then pick a host.
-		Check the box if they will require additional housing.  Finally, fill out the number in the party being housed with
-		the selected host and then click Submit.</p>
-		<hr />
-
-		<br/>
-		<em><-- <a href="reg-admin.php">Back to Registration Admin</a></em>
-		<br/>
-
-		<br/>
-		<h3>Match Guests to a Host:</h3>
-		<br/>
-		<form id="reg-add-guest-to-housing" action="reg-admin-add-guest-to-housing-submit.php" method="post">
-			<br/>
-
-			<table id="reg-whos-not-housed"></table>
-			<input type="hidden" id="gridGuest" name="gridGuest" />
-
-			<br/><br/>
-
-			<table id="reg-housing"></table>
-			<input type="hidden" id="gridHost" name="gridHost" />
-
-			<br/>
-			<label class="label">How many are being housed here?&nbsp;&nbsp;&nbsp;<input type="text" id="txtHowMany" name="txtHowMany" maxlength=2 size=2 /></label>
-			<br/><br/>
-			<label class="label"><input type="checkbox" id="chkMoreHousing" name="chkMoreHousing" />  Does this group need further housing? (Checking this will leave them in the list.)</label>
-
-			<hr />
-			<br />
-			<input type="button" value="Submit" onclick="VerifyAndSubmit();" />
-		</form>
-
-	</div>
-
-	<!-- End of Main Content Area -->
-
-	<!-- Add the header to each page -->
-	<? include ('footer.php'); ?>
-
-	<script type="text/javascript">
-			$("input:button").button();		
 	</script>
 
 </body>

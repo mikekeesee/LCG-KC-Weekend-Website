@@ -23,6 +23,7 @@ sleep(1);
 
 	<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
 	
+	<? include ('google-analytics.php'); ?>
 </head>
 
 <body style="width: 50em;">

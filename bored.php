@@ -125,6 +125,7 @@
     
   </style>
 
+	<? include ('google-analytics.php'); ?>
 </head>
 <body>
 

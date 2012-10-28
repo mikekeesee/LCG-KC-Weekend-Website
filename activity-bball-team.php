@@ -231,6 +231,7 @@
 	<script src="js/grid-activity-players.js" type="text/javascript"></script>
 	<script src="js/team-building.js" type="text/javascript"></script>
 	
+	<? include ('google-analytics.php'); ?>
 </head>
 
 <body onload="onLoad();" style="background: #ffffff;">

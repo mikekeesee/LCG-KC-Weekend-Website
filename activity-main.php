@@ -12,6 +12,7 @@
 
 	<? include "jqgrid-header.php" ?>
 
+	<? include ('google-analytics.php'); ?>
 </head>
 
 <body>
