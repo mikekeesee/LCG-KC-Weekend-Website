@@ -6,14 +6,14 @@ jQuery(document).ready(function() {
 		mtype: "GET",
 		colNames:['First', 'Last', 'Activity'],
 		colModel:[
-			{name:'first_name', index:'first_name', width:120},
-			{name:'last_name',index:'last_name', width:150},
+			{name:'first_name', index:'first_name', width:100},
+			{name:'last_name',index:'last_name', width:100},
 			{name:'activity_name',index:'activity_name', width:200}],
 		rowNum: 1000,
 		sortname: 'last_name, first_name',
 		sortorder: 'asc',
 		viewrecords: true,
-		width: 450,
+		width: 420,
 		height: 345,
 		hidegrid: false,
 		caption:"People Signed Up For Activities"

@@ -9,18 +9,17 @@
 		<ul class="navbar">
 			<li><a href="index.php">Home</a></li>
 			<li><a href="reg-main.php">Registration</a></li>
-			<!-- <li><a href="activity-main.php">Sunday Activities</a>
-				<ul>
+			<li><a href="activity-main.php">Sunday Activities</a>
+			<!--	<ul>
 					<li><a href="activity-add-activity.php">Select an Activity</a></li>
 					<li><a href="activity-bball-main.php">Basketball</a></li>
 					<li><a href="activity-vball-main.php">Volleyball</a></li>
 					<li><a href="activity-bootcamp.php">Boot Camp</a></li>
-				</ul>
+				</ul> -->
 			</li>
-			<li><a href="activity-fun-show-signup.php">Fun Show</a></li> -->
+			<li><a href="activity-fun-show-signup.php">Fun Show</a></li>
 			<li><a href="housing.php">Housing</a></li>
 			<li><a href="information.php">Maps &amp; Info</a></li>
-			<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 
 		</ul>
 	</div>

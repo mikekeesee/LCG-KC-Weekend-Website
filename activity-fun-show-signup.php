@@ -24,17 +24,18 @@
 
 	<div class="main-content">
 
-		<h2>Fun Show Sign-Up</h2>
+		<h2>Radio Show Sign-Up</h2>
 
-		<p>See those acts already signed up here: <a href='http://kcdev.moluf.net/activity-fun-show-list.php'>Act List</a>.
-		
-		<p>Last year's show was such a hit that we are again offering a family fun show. Our talent search is on, and we are now accepting applications. If you can sing, dance, play an instrument, perform in a skit or wow us all with some other amazing skill, then sign up now! <em>The same dress code as the dance (casual) applies, since the dance and fun show will occur in the same building.</em></p>
+		<p>This year, we&#39;re trying something a little different... A Radio Show!</p>
+
+		<p>Our talent search is on, and we are now accepting applications. If you know a hit from somewhere in the last 110 years of human existence, or
+		a timeless skit; perhaps you just want to dress up and act like a bunch of goofballs. Do it! Sign up now! <em>The same dress code as the dance (casual) applies, since the dance and fun show will occur in the same building.</em></p>
 		
 		<p>Space is limited, so we do reserve the right to screen or decline applications. Please email <a href="mailto:davidandsarahmanning@hotmail.com">David and Sarah Manning</a> with any further questions.</p>
 
 		<p>Please fill out all the fields below. Click <u>ALL</u> of the names of those performing from the 
-		registry list. If you have accompaniment, lyrics, a script for skits or anything that will better 
-		help our organizers with planning, please upload them here.</p>
+		registry list (if they&#39;re not there, contact them and have them register). If you have accompaniment, lyrics, a script for skits
+		or anything that will better help our organizers with planning, please upload them here.</p>
 
 		<!-- The Registration Form for Main Contact Information -->
 		<form id="fun-show-signup" action="activity-fun-show-list.php" method="post" onsubmit="Verify();">
@@ -46,8 +47,9 @@
 			</fieldset>
 
 			<fieldset><legend>Act Info:</legend>
-				<p><label for="txtActType" class="required">Type of act:</label>
-				<input type="text" id="txtActType" name="txtActType" maxlength="255" size="50" placeholder="Singing, dancing, skit, etc."/></p>
+				<p><label for="txtActType" class="required">Type of act and era:</label>
+				<input type="text" id="txtActType" name="txtActType" maxlength="255" size="50" placeholder="60s Singing, 20s dancing, skit 
+				from the Stone Age, etc."/></p>
 
 				<p><label for="txtActTitle" class="required">Your act's title:</label>
 				<input type="text" id="txtActTitle" name="txtActTitle" maxlength="255" size="50" /></p>

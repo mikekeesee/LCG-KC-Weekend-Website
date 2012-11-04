@@ -76,7 +76,7 @@
 	<script src="js/reveal/jquery.reveal.js" type="text/javascript"></script>
 <? if ($housing_type == 8) { ?>
 	<script type="text/javascript" src="js/grid-reg-whos-not-housed.js"></script>
-<? } else if ($housing_type == 9 || $housing_type == 10) { ?>
+<? } else if ($housing_type == 9) { ?>
 	<script type="text/javascript" src="js/grid-reg-housing.js"></script>
 <? } ?>
  
@@ -176,6 +176,7 @@
 			<br/>
 			<br/>
 
+            <input type="hidden" id="hidNumInParty" value="<?=$num_in_party?>" />
 			<input type="button" id="main-contact-submit" value="Update" />
 		</fieldset>
         </form>
@@ -226,7 +227,6 @@
 
                 <br />				
 		        <br />
-                <input type="hidden" id="hidNumInParty" value="<?=$num_in_party?>" />
 		        <input type="button" id="family-submit" value="Update" />
             </fieldset>
         </form>
@@ -235,7 +235,7 @@
 		<div class="clear-float"></div>
 
 <? if ($housing_type == 8) { ?>
-		<form id="reg-housing">
+		<form id="reg-hosts">
 		<fieldset><legend>Housing Info:</legend>
 			<p><label>Confirmed Guests: </label><label id="confirmed_guests">None</label>
 			<br/><a href="#" data-reveal-id="add-guest-modal">Add Guests</a></p>
@@ -294,23 +294,36 @@
 			<p>Click a row with the guest to house and click Add.</p>
 			
 			<table id="reg-whos-not-housed"></table>
-			<input type="hidden" id="gridGuest" name="gridGuest" />
 
 			<input type="button" id="add-guest-submit" value="Add" />
 			
 			<a class="close-reveal-modal" id="close-add-guests">&#215;</a>
 		</div>
 
-		
-		
+	
 <? } else if ($housing_type == 9 || $housing_type == 10) { ?>
-		<form id="reg-housing">
+		<form id="reg-hosts">
 		<fieldset><legend>Housing Info:</legend>
 			<p><label>Host: </label><label id="confirmed_hosts">None</label>
-			<p><a href="reg-admin-add-guest-to-housing.php">Add Guests to a Housing Contact</a></p>
+<? 		if ($housing_type == 9) { ?>
+			<p><a href="#" id="open-host-modal" data-reveal-id="add-host-modal">Assign Housing</a></p>
+<?		} ?>
 		</fieldset>
         </form>
-<? } ?>
+
+<? 		if ($housing_type == 9) { ?>
+		<div id="add-host-modal" class="reveal-modal">
+			<h2>Pick a Host:</h2>
+			<p>Click the row of the host with the most and click Add.</p>
+			
+			<table id="reg-housing"></table>
+
+			<input type="button" id="add-host-submit" value="Add" />
+			
+			<a class="close-reveal-modal" id="close-add-hosts">&#215;</a>
+		</div>
+<?		}		
+   } ?>
 
 	</div>
 	
@@ -434,11 +447,22 @@
 				$("#babies_ind").attr("checked", data.babies==1?true:false);
 				$("#teens_ind").attr("checked", data.teens==1?true:false);
 				$("#other").val(data.other);
-				$("#confirmed_guests").text(data.confirmedGuests);
+				if (data.confirmedGuests.length > 0) {
+					$("#confirmed_guests").text(data.confirmedGuests);
+				} else {
+					$("#confirmed_guests").text("None");
+				}
 			};
 			
 			var fillOutHosts = function(data) {
-				$("#confirmed_hosts").text(data.confirmedHosts);
+				if (data.confirmedHosts.length > 0) {
+					$("#confirmed_hosts").text(data.confirmedHosts);
+					if (document.getElementById("open-host-modal") != null) {
+						$("#open-host-modal").hide();
+					}
+				} else {
+					$("#confirmed_hosts").text("None");
+				}
 			};
 
 			$.ajax({
@@ -475,16 +499,20 @@
 			
 			updateHousing();
 
-			$.ajax({
-				url:"db-update-guest-housing.php", 
-				async: true, 
-				type: "get", 
-				data: {person_id: <?=$person_id?>,
-					   reg_id: <?=$reg_id?>}, 
-				success: fillOutHosts,
-				error: function(xhr, text, e) {alert("Error filling out Housing data - " + text)}
-			});
-
+			var updateHosts = function() {
+				$.ajax({
+					url:"db-update-guest-housing.php", 
+					async: true, 
+					type: "get", 
+					data: {person_id: <?=$person_id?>,
+						   reg_id: <?=$reg_id?>}, 
+					success: fillOutHosts,
+					error: function(xhr, text, e) {alert("Error filling out Housing data - " + text)}
+				});
+			};
+			
+			updateHosts();
+				
 			$("#main-contact-submit").click(function() {
 		        $('#reg-contact').validate({
 			        rules: {
@@ -580,7 +608,7 @@
 			});
 
 			$("#housing-submit").click(function() {
-		        $('#reg-housing').validate({
+		        $('#reg-hosts').validate({
 			        rules: {
 				        house_more_ind: {
 					        required: function(element) {
@@ -664,7 +692,6 @@
 			$("#add-guest-submit").click(function() {
 				var guest_id = getSelectedId($("#reg-whos-not-housed"));
 				if (guest_id == "") { return false; }
-				document.getElementById("gridGuest").value = guest_id;
 
 				var ajax_response = $.ajax({
 					url:"db-update-guests.php", 
@@ -680,6 +707,26 @@
 				
 				$("#close-add-guests").click();
 				
+			});
+
+			$("#add-host-submit").click(function() {
+				var housing_id = getSelectedId($("#reg-housing"));
+				if (housing_id == "") { return false; }
+
+				var ajax_response = $.ajax({
+					url:"db-update-host.php", 
+					async: true, 
+					type: "get",
+					data: {person_id: <?=$person_id?>,
+						   reg_id: <?=$reg_id?>,
+						   host_housing_id: housing_id,
+						   num_in_party: $("#hidNumInParty").val()},
+					dataType: "json",
+					success: updateHosts,
+					error: function(x,s,e) {alert("Error filling out Family data..." + e)}
+				});
+				
+				$("#close-add-hosts").click();
 			});
 
 			var toggle = function() {

@@ -28,10 +28,11 @@
 		<p>Welcome to the registration page. Click the link to begin registering or scroll
 		down to see who's already coming.</p>
 
-
+		<p>&nbsp;</p>
 
 		<div class="column">
-			<h3><a href="reg-main-contact.php">Begin Registration Here</a></h3>
+			<input type="button" id="register-button" value="Register Here" style="width:250px" />
+			<p>&nbsp;</p>
 			<div class="list-view">
 				<script type="text/javascript" src="js/grid-reg-person.js"></script>
 				<table id="reg-person"></table>
@@ -51,5 +52,16 @@
 
 	<? include "footer.php"; ?>
 
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("input:button").button();
+		});	
+		
+		$("#register-button").click(function() {
+			url = "http://"+window.location.host + "/reg-main-contact.php";
+			document.location.href = url;
+		});
+	</script>
+	
 </body>
 </html>

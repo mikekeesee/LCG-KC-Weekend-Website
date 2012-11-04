@@ -39,8 +39,8 @@
 		<h3>Hotel</h3>
 		<p>Our hotel this year, the Sleep Inn and Suites, is just 5 miles from Liberty Community Center and Theatre. They are located off I-35 and Hwy. 291 in Liberty, Missouri.</p>
 		
-		<p>For the <u>Sleep Inn</u>, the group rate after taxes is $59 per room for one king-sized bed, with a maximum of 4 occupants per room OR
-		$79 per room for two queens or king-sized bed and sleeper sofa. This is a FIRST COME, FIRST SERVE BASIS, so please make your reservations soon!
+		<p>For the <u>Sleep Inn</u>, the group rate after taxes is $59 per room for one king-sized bed, with a maximum of <b>2 occupants</b> per room OR
+		$79 per room for two queens or king-sized bed and sleeper sofa, with a maximum of <b>4 occupants</b> per room. This is a FIRST COME, FIRST SERVE BASIS, so please make your reservations soon!
 		This special rate is available for Friday, Dec. 27th and Saturday, Dec. 28th, with a few extra rooms available for Sunday night. Please call 816-335-4402 to make your reservations and say you are with the Living Church of God.</p>
 		
 		<p>The Sleep Inn offers a complimentary breakfast. The hotel also has free internet access.</p>

@@ -25,39 +25,22 @@
 				
 		<h2>Sunday Activities</h2>
 
-		<p>We are using the same facility as last year, the <a href="information.php">Okun Fieldhouse</a> in Shawnee, Kansas. It has enough room for us to offer
-		two full-court basketball areas, three volleyball courts, a court for Lori's Boot Camp and later children's games,
-		plus a large foyer, a lecture room and tons of bleachers for fellowship.</p>
-
-		<p>Doors will open at 8:30 a.m. Sunday, December 2.</p>
-
-		<h2><a href="activity-add-activity.php">Sign Up or Change Your Activity</a></h2>
+		<div class="column">
+			<input type="button" id="add-activity-button" value="Add or Update Your Activity" style="width:290px;" />
+			<p>&nbsp;</p>
 		
-		<div class="daily-schedule">
-		
-			<h3>Sunday's Schedule:</h3>
-
-			<ul>
-				<li><b>9:00 a.m.</b> - Okun Fieldhouse Opens</li>
-
-				<li><b>9:30 a.m.</b> - Sports Bible Study</li>
-
-				<li><b>10:00 a.m.</b> - Boot Camp Conditioning</li>
-
-				<li><b>10:00 a.m.</b> - <a href="activity-bball-main.php">Basketball</a> and <a href="activity-vball-main.php">Volleyball</a></li>
-
-				<li><b>11:00 a.m.</b> - Children Activities</li>
-
-				<li><b>1:00 p.m.</b> - Lunch (organized sports will take a break)</li>
-
-				<li><b>2:00 p.m.</b> - Sports Resume</li>
-
-				<li><b>5:00 p.m.</b> - Games End</li>
-				
-				<li><b>5:30 p.m.</b> - Fieldhouse Closes</li>
-				
-			</ul>
-		
+			<div class="daily-schedule">
+				<h3>Sunday's Schedule:</h3>
+				<ul>
+					<li><b>TBD</b> - Okun Fieldhouse Opens</li>
+					<li><b>TBD</b> - Sports Bible Study</li>
+					<li><b>TBD</b> - Boot Camp Conditioning</li>
+					<li><b>TBD</b> - Basketball and Volleyball</li>				
+					<!-- <li><b>TBD</b> - <a href="activity-bball-main.php">Basketball</a> and <a href="activity-vball-main.php">Volleyball</a></li> -->
+					<li><b>TBD</b> - Children Activities</li>
+					<li><b>TBD</b> - Lunch</li>				
+				</ul>
+			</div>
 		</div>
 		
 		<div class="column">
@@ -70,17 +53,32 @@
 		<div class="clear-float"></div>
 		
 		
-		<h3>Food:</h3>
+		<h3>Concessions:</h3>
 		
-		<p>We will provide free bagels in the foyer. We are also working on details to make concessions available. Details to come.</p>
+		<p>You're going to play hard, so we are going to feed you well.</p>
+		
+		<p>Like last year, we are going to provide a $5.00 lunch pack. Including: (a 6-inch Subway Sandwich and any two of the following items: Chips, Snack, and Drink)</p>
+		
+		<p>Also we will have snacks galore.  For breakfast, we will have energy bars, fruits, etc.</p>
 
-		<p>The closest restaurants are about a mile west, then a mile south. We plan to have maps available at the fieldhouse for those who
-		would like to eat out for lunch or after the activities end.</p>
+		<p><b>We will be able to take Cash or Credit Card.</b></p>
+
+		<p>P.S. We will provide water and gatorade free of charge.</p>
 
 	</div>
 	<!-- End of Main Content Area -->
 
 	<? include "footer.php"; ?>
 
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("input:button").button();
+		});	
+		
+		$("#add-activity-button").click(function() {
+			url = "http://"+window.location.host + "/activity-add-activity.php";
+			document.location.href = url;
+		});
+	</script>
 </body>
 </html>

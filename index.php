@@ -56,6 +56,7 @@
 			<ul>
 				<li><b>Registration</b> - Please fill out our <a href="reg-main-contact.php">Registration Information</a> so we can begin planning for your arrival!</li>
 				<li><b>Housing</b> - Check out the options for <a href="housing.php">housing</a> whether you're staying with brethren or at our hotel.</li>
+				<li><b>Theme</b> - What does &quot;Through the Ages&quot; mean, anyway? Click <a href="information.php#dance">here</a> for a brief interpretation...</li>
 			</ul>
 
 		</div>
@@ -64,26 +65,26 @@
 		
 		<div class="column">
 			<div id="schedule-friday" class="daily-schedule">
-				<h3>Friday, Dec. 30</h3>
+				<h3>Friday, Dec. 28</h3>
 				<ul>
-					<li><b>6:00 p.m.</b> - Hall Opens for Fellowship</li>
+					<li><b>6:00 p.m.</b> - <a href="information.php">Hall Opens for Fellowship</a></li>
 					<li><b>7:00 p.m.</b> - Bible Study</li>
 				</ul>
 			</div>
 
 			<div id="schedule-saturday" class="daily-schedule">
-				<h3>Saturday, Dec. 31</h3>
+				<h3>Saturday, Dec. 29</h3>
 				<ul>
-					<li><b>1:00 p.m.</b> - Church Services</li> <!-- <a href="information.php">Church Services</a></li> -->
+					<li><b>1:00 p.m.</b> - <a href="information.php">Church Services</a></li>
 					<li><b>4:00 p.m.</b> - Dinner</li>
-					<li><b>6:00 p.m.</b> - &quot;Through the Ages&quot; Radio Show</li> <!--<a href="information.php#funshow">&quot;Through the Ages&quot; Radio Show</a></li> -->				
-					<li><b>8:00 p.m.</b> - Dance</li> <!--<a href="information.php#dance">Dance</a></li> -->
+					<li><b>6:00 p.m.</b> - <a href="activity-fun-show-signup.php">&quot;Through the Ages&quot; Radio Show</a></li>
+					<li><b>8:00 p.m.</b> - <a href="information.php#dance">Dance</a></li>
 					<li><b>10:30 p.m.</b> - Clean Up</li>
 				</ul>
 			</div>
 
 			<div id="schedule-sunday" class="daily-schedule">
-				<h3>Sunday, Jan. 1</h3>
+				<h3>Sunday, Dec. 30</h3>
 				<ul>
 					<li><b>TBD</b> - Okun Fieldhouse Opens</li>
 					<li><b>TBD</b> - Sports Bible Study</li>

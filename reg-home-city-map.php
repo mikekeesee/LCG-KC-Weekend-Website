@@ -25,7 +25,9 @@
 						ON r.Main_Contact_Person_ID = p.Person_ID
 				
 				WHERE r.geo_lat IS NOT NULL
-				  AND r.geo_long IS NOT NULL";
+				  AND TRIM(r.geo_lat) <> ''
+				  AND r.geo_long IS NOT NULL
+  				  AND TRIM(r.geo_long) <> ''";
 
 	$result = mysql_query( $SQL ) or die("Couldn't execute query.".mysql_error());	
 	
