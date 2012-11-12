@@ -25,7 +25,7 @@
 
 		<h2>Registration</h2>
 
-		<p>Welcome to the registration page. Click the link to begin registering or scroll
+		<p>Welcome to the registration page. Click the button below to begin registering or scroll
 		down to see who's already coming.</p>
 
 		<p>&nbsp;</p>
@@ -53,9 +53,9 @@
 	<? include "footer.php"; ?>
 
 	<script type="text/javascript">
-		$(document).ready(function() {
-			$("input:button").button();
-		});	
+		//$(document).ready(function() {
+		//	$("input:button").button();
+		//});	
 		
 		$("#register-button").click(function() {
 			url = "http://"+window.location.host + "/reg-main-contact.php";

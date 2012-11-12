@@ -23,6 +23,8 @@ $sidx = $_GET['sidx'];
 // sorting order - at first time sortorder
 $sord = $_GET['sord'];
 
+$datatype = $_GET['datatype'];
+
 if(!$sidx) $sidx = 1;
 
 mysql_connect(localhost,$username,$password);
@@ -53,9 +55,11 @@ $SQL = "	SELECT	r.registration_id,
 					IFNULL(p.email, 'None') as email,
 					IFNULL(p.phone, 'None') as phone,
 					IFNULL(r.home_city, 'None') as home_city,
-					s.String as housing_type,
+					s.String as housing_type_string,
 					r.Number_In_Party as num_in_party,
-					r.Housed_By as housed_by
+					r.Housed_By as housed_by,
+					p.Person_ID as person_id,
+					r.Housing_Type as housing_type
 			FROM Person as p, Registration as r, String_Base s
 			WHERE	r.Main_Contact_Person_ID = p.Person_ID
 					AND r.Housing_Type = s.String_ID
@@ -65,28 +69,61 @@ $SQL = "	SELECT	r.registration_id,
 
 $result = mysql_query( $SQL ) or die("Couldn't execute query.".mysql_error());
 
-// we should set the appropriate header information. Do not forget this.
-header("Content-type: text/xml;charset=utf-8");
+if ($datatype == "xml") {
+	// we should set the appropriate header information. Do not forget this.
+	header("Content-type: text/xml;charset=utf-8");
 
-$s = "<?xml version='1.0' encoding='utf-8'?>";
-$s .= "<rows>";
-$s .= "<page>".$page."</page>";
-$s .= "<total>".$total_pages."</total>";
-$s .= "<records>".$count."</records>";
+	$s = "<?xml version='1.0' encoding='utf-8'?>";
+	$s .= "<rows>";
+	$s .= "<page>".$page."</page>";
+	$s .= "<total>".$total_pages."</total>";
+	$s .= "<records>".$count."</records>";
 
-while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
-	$s .= "<row id='". $row[registration_id]."'>";
-	$s .= "<cell>". htmlspecialchars($row[first_name])."</cell>";
-	$s .= "<cell>". htmlspecialchars($row[last_name])."</cell>";
-	$s .= "<cell>". $row[email]."</cell>";
-	$s .= "<cell>". $row[phone]."</cell>";
-	$s .= "<cell>". htmlspecialchars($row[home_city])."</cell>";
-	$s .= "<cell>". $row[housing_type]."</cell>";
-	$s .= "<cell>". $row[num_in_party]."</cell>";
-	$s .= "<cell>". htmlspecialchars($row[housed_by])."</cell>";
-	$s .= "</row>";
+	while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+		$s .= "<row id='". $row[registration_id]."'>";
+		$s .= "<cell>". htmlspecialchars($row[first_name])."</cell>";
+		$s .= "<cell>". htmlspecialchars($row[last_name])."</cell>";
+		$s .= "<cell>". $row[email]."</cell>";
+		$s .= "<cell>". $row[phone]."</cell>";
+		$s .= "<cell>". htmlspecialchars($row[home_city])."</cell>";
+		$s .= "<cell>". $row[housing_type_string]."</cell>";
+		$s .= "<cell>". $row[num_in_party]."</cell>";
+		$s .= "<cell>". htmlspecialchars($row[housed_by])."</cell>";
+		$s .= "<cell>". $row[person_id]."</cell>";
+		$s .= "<cell>". $row[housing_type]."</cell>";
+		$s .= "</row>";
+	}
+	$s .= "</rows>";
+} else {
+	// we should set the appropriate header information. Do not forget this.
+	header("Content-type: text/json;charset=utf-8");
+
+	$s = '{
+			"page" : "'.$page.'",
+			"total" : "'.$total_pages.'",
+			"records" : "'.$count.'",
+			"rows" : [';
+	
+	$i = 1;
+	while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+        if ($i != 1) $s.= ',';
+		$s .= '{"id" : "'. $row[registration_id].'",';
+		$s .= '"cell" : [ "'. htmlspecialchars($row[first_name]).'",';
+		$s .= '"'.htmlspecialchars($row[last_name]).'",';
+		$s .= '"'.$row[email].'",';
+		$s .= '"'.$row[phone].'",';
+		$s .= '"'.htmlspecialchars($row[home_city]).'",';
+		$s .= '"'.$row[housing_type_string].'",';
+		$s .= '"'.$row[num_in_party].'",';
+		$s .= '"'.htmlspecialchars($row[housed_by]).'",';
+		$s .= '"'.$row[person_id].'",';
+		$s .= '"'.$row[housing_type].'"]}';
+		$i++;
+	}
+	
+	$s .= ']}';
+
 }
-$s .= "</rows>";
 
 echo $s;
 

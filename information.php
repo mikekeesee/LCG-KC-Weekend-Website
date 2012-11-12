@@ -110,7 +110,7 @@
 				
 				<h3>Payment</h3>
 				
-				<img src="images/donations.jpg" alt="Thanks!" style="float:left;margin:0 1em;" height="240" width="180" />
+				<img src="images/money-lincoln.jpg" alt="Thanks!" style="float:left;margin:0 1em;" height="240" width="240" />
 				<p>We do ask that you would quickly send in the <b>registration fee</b> of <b>$10 per person</b> in your
 				group or <b>$40 per family</b>, whichever is lowest. If you cannot afford to pay at this time or cannot afford
 				the full amount, please come anyway. If you would like to give more, that would be greatly appreciated as well.

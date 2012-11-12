@@ -34,10 +34,10 @@
 		<h2>Basketball</h2>
 
 		<p>Welcome to the basketball page. You can check out the game rules, schedule or the teams that are
-		already signed up. Sign up your team under the Teams tab. <b style="color:red">Teams must be finalized by December 18.</b></p>
+		already signed up. Sign up your team under the Teams tab. <b style="color:red">Teams must be finalized by December 16.</b></p>
 
-		<p>All basketball-related questions may be directed to Mr. Stroud at
-		<a href="mailto:astroud@lcg.org">astroud@lcg.org</a>.</p>
+		<p>All basketball-related questions may be directed to Jake Wilson at
+		<a href="mailto:jakesburg@hotmail.com">jakesburg@hotmail.com</a>.</p>
 
 		<p><b>Important: Minimum age for sports is 13. Those with bad backs or other similar injuries should not
 		participate. Due to the inherent risk of such activities, all participants must sign a liability waiver. Those
@@ -69,10 +69,10 @@
 					assure there will be referees without enough early support for this by having your team register 
 					as soon as possible.</p>
  
-					<p>The format for play this year will be as follows. Two games for every team will be scheduled 
+					<!--<p>The format for play this year will be as follows. Two games for every team will be scheduled 
 					in the morning. Based on the morning’s results, the top teams will advance to a playoff in the 
 					afternoon. The rest of the teams will be scheduled another game in the afternoon as well. Every 
-					team is guaranteed at least 3 games.</p>
+					team is guaranteed at least 3 games.</p> -->
  
 					<p>Registration ends December 18 at which time every captain must send a confirmation that they 
 					will be at the Kansas City Weekend and pay shortly their after so we can secure the referees. 
@@ -93,7 +93,7 @@
 						<li class="bullets"><b>Schedule of Games:</b> Schedule and tournament info to come.</li>
 						<li class="bullets"><b>Rosters:</b> Teams need a minimum of 5 people per team (8 max.). All team members must register
 						to play.</li>
-						<li class="bullets"><b>Lunch Break:</b> All sports will halt for lunch. Schedule to come.</li>
+						<!--<li class="bullets"><b>Lunch Break:</b> All sports will halt for lunch. Schedule to come.</li>-->
 					</ul>
 
 					<p><b>Please register your team by <span style="color:red;">Sunday, December 18</span></b>.</p>
@@ -123,7 +123,7 @@
 					If it&#39;s tied after 6 shots, then the 4th player from each team shoots a single free throw, then the 5th player,
 					and so forth until one team makes a free throw and the other misses.</li>
 
-				<p>All basketball-related questions may be directed to Mr. Stroud at <a href="mailto:astroud@lcg.org">astroud@lcg.org</a>.</p>
+				<p>All basketball-related questions may be directed to Jake Wilson at <a href="mailto:jakesburg@hotmail.com">jakesburg@hotmail.com</a>.</p>
 
 			</div>
 

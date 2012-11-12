@@ -71,9 +71,9 @@
 	<? include "footer.php"; ?>
 
 	<script type="text/javascript">
-		$(document).ready(function() {
-			$("input:button").button();
-		});	
+		//$(document).ready(function() {
+		//	$("input:button").button();
+		//});	
 		
 		$("#add-activity-button").click(function() {
 			url = "http://"+window.location.host + "/activity-add-activity.php";

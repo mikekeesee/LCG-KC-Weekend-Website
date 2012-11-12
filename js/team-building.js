@@ -214,6 +214,16 @@ function VerifyAndSubmit() {
 				return false;
 			}
 
+			var slComp = document.getElementById("skill_level_competitive");
+			var slRec = document.getElementById("skill_level_rec");
+			if (slComp != null && slRec != null) {
+				if (slComp.checked == false &&
+					slRec.checked == false) {
+					alert("Please choose a tournament type.");
+					return false;
+				}
+			}
+
 			var person_id = getSelectedItems($("#players"));
 			if (person_id == "") {
 				alert("Please select at least one player.");

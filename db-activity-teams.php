@@ -49,7 +49,8 @@ $start = $limit * $page - $limit; // do not put $limit*($page - 1)
 $SQL = "	SELECT	t.Team_ID as team_id,
 					t.Team_Name as team_name,
 					CONCAT(p.First_Name, ' ', p.Last_Name) as captain,
-					t.Shirt_Color as shirt_color
+					t.Shirt_Color as shirt_color,
+					IF(t.Skill_Level = 1, 'Comp', 'Rec') as skill_level
 			
 			FROM Team t
 			
@@ -80,6 +81,7 @@ while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
 	$s .= "<cell>". htmlspecialchars($row[team_name])."</cell>";
 	$s .= "<cell>". $row[captain]."</cell>";
 	$s .= "<cell>". htmlspecialchars($row[shirt_color])."</cell>";
+	$s .= "<cell>". htmlspecialchars($row[skill_level])."</cell>";
 	$s .= "</row>";
 }
 $s .= "</rows>";

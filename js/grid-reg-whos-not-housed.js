@@ -1,7 +1,7 @@
 jQuery(document).ready(function() {
 	jQuery("#reg-whos-not-housed").jqGrid({
 		url:'db-reg-whos-not-housed.php',
-		datatype: "xml",
+		datatype: "json",
 		mtype: "GET",
 		colNames:['First', 'Last', 'Email', 'Phone', 'Home City', 'Housing Type', '# in Party', 'Housed By Notes'],
 		colModel:[

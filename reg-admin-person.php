@@ -14,7 +14,8 @@
 	$reg_id = 0;
 	$SQL = "SELECT	registration_id,
                     number_in_party,
-					housing_type
+					housing_type,
+					done_housing_ind
 			FROM	Registration
 			WHERE	Main_Contact_Person_Id = ".$person_id;
 
@@ -23,6 +24,7 @@
 	$reg_id = $row['registration_id'];
     $num_in_party = $row['number_in_party'];
 	$housing_type = $row['housing_type'];
+	$done_housing = $row['done_housing_ind'];
 	
 	if ($reg_id == 0) {
 		$SQL = "SELECT	registration_id
@@ -36,7 +38,8 @@
 
 		$SQL = "SELECT	main_contact_person_id,
                         number_in_party,
-						housing_type
+						housing_type,
+						done_housing_ind
 				FROM	Registration
 				WHERE	Registration_Id = ".$reg_id;
 
@@ -45,6 +48,7 @@
 		$person_id = $row['main_contact_person_id'];
         $num_in_party = $row['number_in_party'];
 		$housing_type = $row['housing_type'];
+		$done_housing = $row['done_housing_ind'];
 	}
 
 	$SQL = "SELECT	First_Name,
@@ -76,7 +80,7 @@
 	<script src="js/reveal/jquery.reveal.js" type="text/javascript"></script>
 <? if ($housing_type == 8) { ?>
 	<script type="text/javascript" src="js/grid-reg-whos-not-housed.js"></script>
-<? } else if ($housing_type == 9) { ?>
+<? } else if ($housing_type == 9 || $housing_type == 10) { ?>
 	<script type="text/javascript" src="js/grid-reg-housing.js"></script>
 <? } ?>
  
@@ -238,7 +242,7 @@
 		<form id="reg-hosts">
 		<fieldset><legend>Housing Info:</legend>
 			<p><label>Confirmed Guests: </label><label id="confirmed_guests">None</label>
-			<br/><a href="#" data-reveal-id="add-guest-modal">Add Guests</a></p>
+			<br/><a href="#" id="add-guests-link" data-reveal-id="add-guest-modal">Add Guests</a></p>
 			
 			<p><label for="address1">Address 1:</label>
 			<input type="text" id="address1" name="address1" maxlength="255" size="30" /></p>
@@ -305,13 +309,13 @@
 		<form id="reg-hosts">
 		<fieldset><legend>Housing Info:</legend>
 			<p><label>Host: </label><label id="confirmed_hosts">None</label>
-<? 		if ($housing_type == 9) { ?>
+<? 		if ($done_housing == 0) { ?>
 			<p><a href="#" id="open-host-modal" data-reveal-id="add-host-modal">Assign Housing</a></p>
 <?		} ?>
 		</fieldset>
         </form>
 
-<? 		if ($housing_type == 9) { ?>
+<? 		if ($housing_type == 9 || $housing_type == 10) { ?>
 		<div id="add-host-modal" class="reveal-modal">
 			<h2>Pick a Host:</h2>
 			<p>Click the row of the host with the most and click Add.</p>
@@ -451,6 +455,12 @@
 					$("#confirmed_guests").text(data.confirmedGuests);
 				} else {
 					$("#confirmed_guests").text("None");
+				}
+				
+				if (data.housing_id > 0) {
+					$("#add-guests-link").show();
+				} else {
+					$("#add-guests-link").hide();
 				}
 			};
 			

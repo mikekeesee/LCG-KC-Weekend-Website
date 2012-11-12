@@ -121,14 +121,10 @@ label.error {
 }
 
 .navbar a:link,.navbar a:visited {
-	background: #ffffff;
 	color: #000000;
 	display: block;
 	padding: 0em 1em 0em 0em;
 	text-decoration: none;
-}
-
-.navbar a:hover {
 }
 
 .navbar li {
@@ -136,14 +132,23 @@ label.error {
 	position: relative;
 }
 
-.navbar ul {
+.navbar ul{
 	position: absolute;
 	width: 12em;
 	top: 1.5em;
 	display: none;
+	border-bottom: 2px solid #cccccc;
+	border-right: 2px solid #cccccc;
+	background: #ffffff;
+	z-index: 100;
 }
 
-.navbar li ul a {
+.navbar-submenu-icon {
+	background: url('../images/down-arrow.png') no-repeat center right;
+	margin-right: 8px;
+}
+
+/*.navbar li ul a {
 	width: 12em;
 	float: left;
 }
@@ -166,7 +171,7 @@ label.error {
 
 .navbar li:hover ul, .navbar li li:hover ul, .navbar li li li:hover ul {
 	display: block;
-}
+}*/
 
 /** End Navigation Bar **/
 

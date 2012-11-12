@@ -9,13 +9,14 @@
 		<ul class="navbar">
 			<li><a href="index.php">Home</a></li>
 			<li><a href="reg-main.php">Registration</a></li>
-			<li><a href="activity-main.php">Sunday Activities</a>
-			<!--	<ul>
-					<li><a href="activity-add-activity.php">Select an Activity</a></li>
-					<li><a href="activity-bball-main.php">Basketball</a></li>
-					<li><a href="activity-vball-main.php">Volleyball</a></li>
-					<li><a href="activity-bootcamp.php">Boot Camp</a></li>
-				</ul> -->
+			<li class="navbar-submenu-icon"><a href="#">Sunday Activities</a>
+				<ul class="child-menu">
+					<li><a href="activity-main.php">&nbsp;&nbsp;Schedule &amp; Food</a></li>
+					<li><a href="activity-add-activity.php">&nbsp;&nbsp;Select an Activity</a></li>
+					<li><a href="activity-bball-main.php">&nbsp;&nbsp;Basketball</a></li>
+					<li><a href="activity-vball-main.php">&nbsp;&nbsp;Volleyball</a></li>
+					<li><a href="activity-bootcamp.php">&nbsp;&nbsp;Boot Camp</a></li>
+				</ul>
 			</li>
 			<li><a href="activity-fun-show-signup.php">Fun Show</a></li>
 			<li><a href="housing.php">Housing</a></li>
@@ -32,7 +33,7 @@
 		<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
 			<input type="hidden" name="cmd" value="_s-xclick">
 			<input type="hidden" name="hosted_button_id" value="JFMRJ5UHHCZK4">
-			<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+			<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_xpressCheckout.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
 			<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 		</form>
 

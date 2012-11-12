@@ -102,12 +102,12 @@
 		<div class="slider-wrapper theme-default">
     		<div class="ribbon"></div>
 			<div id="picture-slider" class="nivoSlider">
-				<img src="images/kcweekend_3.jpg" title="#caption-overview" />
-				<img src="images/okun_fieldhouse.jpg" title="#caption-locations" />
-				<img src="images/kcweekend_5.jpg" title="#caption-fun-show" />
-				<img src="images/kcweekend_61.jpg" title="#caption-dance" />
-				<img src="images/kcweekend_4.jpg" title="#caption-volleyball" />
-				<img src="images/kcweekend_12.jpg" title="#caption-basketball" />
+				<a href="information.php"><img src="images/kcweekend_3.jpg" title="#caption-overview" /></a>
+				<a href="information.php"><img src="images/okun_fieldhouse.jpg" title="#caption-locations" /></a>
+				<a href="activity-fun-show-signup.php"><img src="images/kcweekend_5.jpg" title="#caption-fun-show" /></a>
+				<a href="information.php#dance"><img src="images/kcweekend_61.jpg" title="#caption-dance" /></a>
+				<a href="activity-vball-main.php"><img src="images/kcweekend_4.jpg" title="#caption-volleyball" /></a>
+				<a href="activity-bball-main.php"><img src="images/kcweekend_12.jpg" title="#caption-basketball" /></a>
 			</div>
 
 			<div id="caption-overview" class="nivo-html-caption">

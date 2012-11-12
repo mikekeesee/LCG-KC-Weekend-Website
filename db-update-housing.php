@@ -205,6 +205,7 @@
 	    $s .= ' "babies": '.$row['Babies_Ind'].',';
 	    $s .= ' "teens": '.$row['Teens_Ind'].',';
 	    $s .= ' "other": "'.htmlspecialchars($row['Other']).'",';
+	    $s .= ' "housing_id": "'.$housing_id.'",';
 		$s .= ' "confirmedGuests": "'.$guests.'"}';
     } else {
 	    $s  = '{"address1": "",';

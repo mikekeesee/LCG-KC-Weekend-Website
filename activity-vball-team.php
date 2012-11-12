@@ -18,6 +18,7 @@
 	$person_id		= $_POST["gridPlayer"];
 	$shirt_color	= $_POST["shirt_color"];
 	$change_color	= $_POST["change_color"];
+	$skill_level	= $_POST["skill_level"];
 
 	if ($action_index == "") {
 		$action_index = 0;
@@ -42,13 +43,15 @@
 					Team_ID,
 					Activity_ID,
 					Team_Name,
-					Shirt_Color)
+					Shirt_Color,
+					Skill_Level)
 
 				VALUES (
 					NULL,
 					2,
 					'$team_name',
-					'$shirt_color')";
+					'$shirt_color',
+					'$skill_level')";
 
 		mysql_query( $SQL ) or die($SQL."\n\nCouldn't execute INSERT Team query.".mysql_error());
 		$team_id = mysql_insert_id();
@@ -259,6 +262,12 @@
 			<p><b>Next, if determined yet, enter your team color (shirt or jersey).</b></p>
 
 			<input type="text" id="shirt_color" name="shirt_color" size="40" maxlength="255" />
+
+			<br/>
+			<p><b>Which tournament would you like to play in?</b></p>
+
+			<input type="radio" id="skill_level_competitive" name="skill_level" value="1" /><label for="skill_level_competitive">Competitive</label>
+			<input type="radio" id="skill_level_rec" name="skill_level" value="2" /><label for="skill_level_rec">Recreational</label>
 
 			<br/><br/>
 			<p><b>Then click the player below to be team captain (if they don&#39;t already have a team).</b></p>

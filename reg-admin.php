@@ -20,7 +20,7 @@
 	$SQL = "SELECT	COUNT(*) as count
 			FROM 	Registration
 			WHERE	done_housing_ind = 0
-					AND Housing_Type IN (9,10)";
+					AND Housing_Type IN (9)";
 
 	$result = mysql_query( $SQL ) or die($SQL."\n\nCouldn't execute Registration SELECT count query.".mysql_error());
 	$row = mysql_fetch_array($result,MYSQL_ASSOC);
@@ -39,10 +39,12 @@
 
 	<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="js/select2/select2.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="js/reveal/reveal.css" type="text/css" media="screen" />
 
 	<? include "jqgrid-header.php" ?>
 	<script type="text/javascript" src="js/grid-reg-statistics.js"></script>
 	<script type="text/javascript" src="js/select2/select2.js"></script>
+	<script src="js/reveal/jquery.reveal.js" type="text/javascript"></script>
 	
 	<? include ('google-analytics.php'); ?>
 </head>
@@ -59,7 +61,6 @@
 
 		<p><b>Registration Information Search:</b></p>
 		<select id="reg-info-search" multiple>
-			<option></option>
 <?
 	$SQL = "	SELECT	person_id,
 						CONCAT(last_name, ', ', first_name) AS full_name
@@ -86,7 +87,7 @@
 		</div>
 			
 		<div>
-			<p><b>There are currently <?=$num_not_housed?> families/groups not housed.</b></p>
+			<p><a href="#" id="not-housed-link" data-reveal-id="not-housed-modal"><b>There are currently <?=$num_not_housed?> families/groups not housed.</b></a></p>
 			
 			<p>Please choose from the links or reports below:</p>
 			<ul>
@@ -98,7 +99,16 @@
 				<li><a href="activity-bball-team.php" target="_blank">Modify Basketball Teams</a></li>
 			</ul>
 		</div>
+		
+		<div id="not-housed-modal" class="reveal-modal">
+			<h2>Families Not Housed</h2>
+			<p id="not-housed-label">Click a family below to show their registration details.</p>
 			
+			
+			
+			<a class="close-reveal-modal" id="close-add-guests">&#215;</a>
+		</div>
+		
 		<div class="clear-float">
 		</div>
 		
@@ -129,15 +139,43 @@
 		
 		$(document).ready(function() {
 			$("#get-reg-info").button().click(function() {
-				personIds = $("#reg-info-search").val() || [];
+				personIds = $("#reg-info-search").select2("val") || [];
 				for (var i = 0; i < personIds.length; i++) {
 					window.open("reg-admin-person.php?id=" + personIds[i], '_blank');
 				}
 				
 				$("#reg-info-search").select2("val", "");
 			});
-		});
 
+			function ShowWhosNotHoused(data) {
+				$(".guest-name").remove();
+				
+				if (data.records > 0) {
+					for (var i = 0; i < data.records; i++) {
+						var row = data.rows[i];
+						if (row.cell[9] == 9) {
+							$("#not-housed-label").after("<h3 class='guest-name'><a href='reg-admin-person.php?id=" + row.cell[8] + "' target='_blank'>" + row.cell[0] + " " + row.cell[1] + "</a></h3>");
+						}
+					}
+				} else {
+					$("#not-housed-label").after("<h3 class='guest-name'>Good job! No one needs our services today...</h3>");
+				}
+			}
+			
+			$("#not-housed-link").bind("click", function() {
+				$.ajax({
+					url:"db-reg-whos-not-housed.php", 
+					async: true, 
+					type: "get", 
+					data: {page: 1,
+						   rows: 100,
+						   sidx: 1,
+						   sord: "asc"},
+					success: ShowWhosNotHoused,
+					error: function(xhr, text, e) {alert("Error getting data - " + text); return;}
+				});						
+			});
+		});
 	</script>
 	
 </body>

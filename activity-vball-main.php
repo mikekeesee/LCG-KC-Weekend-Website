@@ -20,7 +20,7 @@
 	</script>
 
 	<? include ('google-analytics.php'); ?>
-head>
+</head>
 
 <body>
 
@@ -36,8 +36,7 @@ head>
 		already signed up. Sign up your team under the Teams tab. <b style="color:red">Teams must be finalized by Sunday, December 18.</b></p>
 
 		<p>All volleyball-related questions may be directed to Doug Burson at
-		<a href="mailto:dougb@downingandstrickland.com">dougb@downingandstrickland.com</a>
-		or Mr. Stroud at <a href="mailto:astroud@lcg.org">astroud@lcg.org</a>.</p>
+		<a href="mailto:dougb@downingandstrickland.com">dougb@downingandstrickland.com</a>.</p>
 
 		<p><b>Important: Minimum age for sports is 13. Those with bad backs or other similar injuries should not
 		participate. Due to the inherent risk of such activities, all participants must sign a liability waiver. Those
@@ -61,11 +60,15 @@ head>
 				 
 				<p>Registration is now open for the weekend and volleyball. You do not need a full roster to register a team.
 				It may be filled out as you find players up until the deadline. Registration ends December 18.</p>
-				 
-				<p>The format for play this year will be based on the following. Two games for every team will be scheduled in
+				
+				<p>As you sign up your team, please choose which tournament you wish to participate in -- either <b>Competitive</b>
+				or <b>Recreational</b>. On both tournaments, you will be able to play on the team of your choice. However, you
+				will only play teams within that tournament.</p>
+				
+				<!--<p>The format for play this year will be based on the following. Two games for every team will be scheduled in
 				the morning. Based on the morning’s results, the top teams will advance to a playoff in the afternoon. The
 				rest of the teams will be scheduled another game in the afternoon as well. Every team is guaranteed at least
-				3 games.</p>
+				3 games.</p>-->
 				 
 				<p>As last year, there is a mandatory Sports Bible Study Sunday morning at 9:00 am at the Okun Fieldhouse for
 				all participating in basketball and volleyball. Both tournaments begin at 9:30. Warm-up time is from 8:30
