@@ -28,8 +28,7 @@
 
 		<h3>Stay with Brethren</h3>
 		<p>For those wanting to stay with brethren, select the option to "Stay with brethren" when
-		you <a href="reg-main.php">register</a>. If you are a Kansas City resident and have room for a few guests, please <a href="reg-main.php">register</a> as a Kansas City resident and
-		click the check box about housing.</p>
+		you <a href="reg-main.php">register</a>. If you are a Kansas City resident and have room for a few guests, please <a href="reg-main.php">register</a> as a Kansas City resident and click the check box about housing.</p>
 
 		<p>If you have a question about housing, including requests to stay with brethren, please call our ever-helpful Housing Coordinator
 		<a href="mailto:berylwilson@earthlink.net">Beryl Wilson</a> at (816) 537-8133.</p>
@@ -41,7 +40,7 @@
 		
 		<p>For the <u>Sleep Inn</u>, the group rate after taxes is $59 per room for one king-sized bed, with a maximum of <b>2 occupants</b> per room OR
 		$79 per room for two queens or king-sized bed and sleeper sofa, with a maximum of <b>4 occupants</b> per room. This is a FIRST COME, FIRST SERVE BASIS, so please make your reservations soon!
-		This special rate is available for Friday, Dec. 27th and Saturday, Dec. 28th, with a few extra rooms available for Sunday night. Please call 816-335-4402 to make your reservations and say you are with the Living Church of God.</p>
+		This special rate is available for Friday, Dec. 28th and Saturday, Dec. 29th, with a few extra rooms available for Sunday night. Please call 816-335-4402 to make your reservations and say you are with the Living Church of God.</p>
 		
 		<p>The Sleep Inn offers a complimentary breakfast. The hotel also has free internet access.</p>
 

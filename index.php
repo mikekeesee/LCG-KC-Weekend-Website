@@ -88,7 +88,7 @@
 				<ul>
 					<li><b>TBD</b> - Okun Fieldhouse Opens</li>
 					<li><b>TBD</b> - Sports Bible Study</li>
-					<li><b>TBD</b> - Boot Camp Conditioning</li>
+					<li><b>TBD</b> - Fitness Conditioning Class</li>
 					<li><b>TBD</b> - Basketball and Volleyball</li>				
 					<!-- <li><b>TBD</b> - <a href="activity-bball-main.php">Basketball</a> and <a href="activity-vball-main.php">Volleyball</a></li> -->
 					<li><b>TBD</b> - Children Activities</li>

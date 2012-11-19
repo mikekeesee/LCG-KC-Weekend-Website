@@ -33,15 +33,15 @@
 
 		<h2>Basketball</h2>
 
-		<p>Welcome to the basketball page. You can check out the game rules, schedule or the teams that are
-		already signed up. Sign up your team under the Teams tab. <b style="color:red">Teams must be finalized by December 16.</b></p>
+		<p>To play basketball, you must organize your team before the weekend. The tabs below have more details about how basketball will run this year. You can check out the	basic information, rules, and see the teams that have already registered. <b style="color:red">Teams must be finalized by December 17.</b></p>
 
-		<p>All basketball-related questions may be directed to Jake Wilson at
+		<p>If you do not have a team but would still like to play, please go ahead and register to play basketball and we will do our best to accomodate you.</p>
+		<p>Direct all basketball related questions to Jake Wilson at
 		<a href="mailto:jakesburg@hotmail.com">jakesburg@hotmail.com</a>.</p>
 
 		<p><b>Important: Minimum age for sports is 13. Those with bad backs or other similar injuries should not
 		participate. Due to the inherent risk of such activities, all participants must sign a liability waiver. Those
-		under 18 will need a parent or legal guardian’s signature before they can participate.</b></p>
+		under 18 will need a parent or legal guardian's signature before they can participate.</b></p>
 
 		<hr />
 
@@ -49,54 +49,29 @@
 		<br/>
 		<div id="tabs">
 			<ul>
-				<li><a href="#general">General</a></li>
+				<li><a href="#basic">Basic Info</a></li>
 				<li><a href="#rules">Rules</a></li>
 				<li><a href="#bball-teams">Teams</a></li>
 				<li><a href="#schedule">Game Schedule</a></li>
 			</ul>
 
-			<div id="general">
-				<h3>General Information</h3>
+			<div id="basic">
+				<h3>Basic Information</h3>
 
-					<p>Registration is now open for the weekend and basketball. It is imperative that you register with
-					your team at the earliest possible time. You do not need a full roster to register a team. It may be 
-					filled out as you find players but register your team quickly.</p>
+					<p>There will be tournament style play again this year. Depending on the number of teams, it will be like last year where we had a pool play in the morning and the top 4 teams went on to a single elimination tournament the second half of the day. Every 
+					team is guaranteed at least 3 games even if you do not make the single elimination tournament.</p>
  
-					<p>It is vital that you do this early this year because we are intending to hire referees. All the 
-					cost of the referees will be offset by those playing basketball this. It has not been determined 
-					whether this will be in the form of a per player or per team fee and is in addition to the requested 
-					donation. We anticipate the total cost of the referees to be around $500 for the day. We cannot 
-					assure there will be referees without enough early support for this by having your team register 
-					as soon as possible.</p>
+					<p>Referees will be hired again and paid for with team fees. Last year the team fee was $65 and, depending on the number of teams, we expect it to be about the same this year. There will no refunds if your team withdraws after Dec. 21.</p>
  
-					<!--<p>The format for play this year will be as follows. Two games for every team will be scheduled 
-					in the morning. Based on the morning’s results, the top teams will advance to a playoff in the 
-					afternoon. The rest of the teams will be scheduled another game in the afternoon as well. Every 
-					team is guaranteed at least 3 games.</p> -->
+					<p>Registration for your basketball team is a two-step process. You may begin your registration even all of your team members are not yet registered. <b>To register your team, click on the"Teams" tab above.</b> We request only captains register teams and change the roster.</p>
  
-					<p>Registration ends December 18 at which time every captain must send a confirmation that they 
-					will be at the Kansas City Weekend and pay shortly their after so we can secure the referees. 
-					There will be no refunds.</p>
+					<p><b style="color:red">You must register and finalize your team by noon on Monday, Dec. 17.</b> After that date, we will send the captains an email notifying them of the amount of the team fee. <b style="color:red">To complete your team registration, you must send payment to us via Paypal by Thursday, Dec. 21.</b></p>
  
-					<p>As last year, there is a mandatory Sports Bible Study Sunday morning at 9:00 am at the Okun 
-					Fieldhouse for all participating in basketball and volleyball. Both tournaments begin at 9:30. 
-					Warm-up time is from 8:30 to 9:00 am. Games will begin promptly with no exceptions. A penalty 
-					will be assessed against your team if it is late or short players.</p>
- 
-					<p>Games will be played based on high school rules. The exact format of games will depend on 
-					the number of teams. </p>
+					<p>Teams must have a minimum of 5 players to be included in the tournament. Maximum number of players on a team is 8. <b>All the team members must be registered and listed on the roster by Dec. 17.</b></p>
 
-					<p>With these in mind, the following items have been determined:</p>
+					<p>Games will be played based on high school rules. Games will begin promptly with no exceptions. A penalty will be assessed against your team if it is late or short players.</p>
 
-					<ul class="bullets">
-						<li class="bullets"><b>Sports Bible Study Sunday morning:</b> Attendance is <u>mandatory</u> to play.
-						<li class="bullets"><b>Schedule of Games:</b> Schedule and tournament info to come.</li>
-						<li class="bullets"><b>Rosters:</b> Teams need a minimum of 5 people per team (8 max.). All team members must register
-						to play.</li>
-						<!--<li class="bullets"><b>Lunch Break:</b> All sports will halt for lunch. Schedule to come.</li>-->
-					</ul>
-
-					<p><b>Please register your team by <span style="color:red;">Sunday, December 18</span></b>.</p>
+					<p><b>All participants are required to attend the Sports Bible Study Sunday morning. Attendance is mandatory to play.</b></p>
 
 			</div>
 
@@ -108,7 +83,7 @@
 
 				<ul class="bullets">
 					<li class="bullets"><u>Start of Game:</u> Each game will begin with a jump ball.</li>
-					<li class="bullets"><u>Personal Fouls:</u> Each player has four (4) personal fouls to give before fouling out.</li>
+					<li class="bullets"><u>Personal Fouls:</u> Each player has four (5) personal fouls to give before fouling out.</li>
 					<li class="bullets"><u>Team Fouls:</u> One-and-one situations will occur starting with the seventh (7th) team foul (no 2-shot bonus
 					beyond this point).</li>
 					<li class="bullets"><u>Free Throws:</u> The ball is live after the shot leaves the player&#39;s hands, not
@@ -123,7 +98,7 @@
 					If it&#39;s tied after 6 shots, then the 4th player from each team shoots a single free throw, then the 5th player,
 					and so forth until one team makes a free throw and the other misses.</li>
 
-				<p>All basketball-related questions may be directed to Jake Wilson at <a href="mailto:jakesburg@hotmail.com">jakesburg@hotmail.com</a>.</p>
+				<p>Direct all basketball related questions to Jake Wilson at <a href="mailto:jakesburg@hotmail.com">jakesburg@hotmail.com</a>.</p>
 
 			</div>
 

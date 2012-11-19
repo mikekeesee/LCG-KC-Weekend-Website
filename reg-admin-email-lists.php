@@ -28,20 +28,57 @@
 
 		<h2>Email Lists</h2>
 
-		<input type="radio" name="emailListType" id="emailListTypeAll" value="all" />
-		<label for="emailListTypeAll">&nbsp;All</label>
-		<br />
-		<input type="radio" name="emailListType" id="emailListTypeBball" value="basketball" />
-		<label for="emailListTypeBball">&nbsp;Basketball Players</label>
-		<br />
-		<input type="radio" name="emailListType" id="emailListTypeBBallNoTeam" value="basketball_no_team" />
-		<label for="emailListTypeBBallNoTeam">&nbsp;Basketball Players w/ No Team</label>
-		<br />
-		<input type="radio" name="emailListType" id="emailListTypeVBall" value="volleyball" />
-		<label for="emailListTypeVBall">&nbsp;Volleyball Players</label>
-		<br />
-		<input type="radio" name="emailListType" id="emailListTypeVBallNoTeam" value="volleyball_no_team" />
-		<label for="emailListTypeVBallNoTeam">&nbsp;Volleyball Players w/ No Team</label>
+		<fieldset><legend>What Year?</legend>
+			<span class="radio-btn-column">
+				<input type="radio" name="database" id="databaseCurrent" value="mmoluf_kcweekend" />
+				<label for="databaseCurrent">&nbsp;This Year&#39;s Data</label>
+			</span>
+			
+			<span class="radio-btn-column">
+				<input type="radio" name="database" id="database2011" value="mmoluf_kcweekend_2011" />
+				<label for="database2011">&nbsp;2011 Data</label>
+			</span>
+		</fieldset>
+
+		<fieldset><legend>Which People?</legend>
+			<span class="radio-btn-column">
+				<input type="radio" name="emailListType" id="emailListTypeAll" value="all" />
+				<label for="emailListTypeAll">&nbsp;All</label>
+			</span>
+			
+			<br />
+			
+			<span class="radio-btn-column">
+				<input type="radio" name="emailListType" id="emailListTypeKCBrethren" value="kc_brethren" />
+				<label for="emailListTypeKCBrethren">&nbsp;Kansas City Brethren</label>
+			</span>
+
+			<span class="radio-btn-column">
+				<input type="radio" name="emailListType" id="emailListTypeGuests" value="guests" />
+				<label for="emailListTypeGuests">&nbsp;Guests</label>
+			</span>
+
+			<span class="radio-btn-column">
+				<input type="radio" name="emailListType" id="emailListTypeBball" value="basketball" />
+				<label for="emailListTypeBball">&nbsp;Basketball Players</label>
+			</span>
+
+			<span class="radio-btn-column">
+				<input type="radio" name="emailListType" id="emailListTypeBBallNoTeam" value="basketball_no_team" />
+				<label for="emailListTypeBBallNoTeam">&nbsp;Basketball Players w/ No Team</label>
+			</span>
+
+			<span class="radio-btn-column">
+				<input type="radio" name="emailListType" id="emailListTypeVBall" value="volleyball" />
+				<label for="emailListTypeVBall">&nbsp;Volleyball Players</label>
+			</span>
+
+			<span class="radio-btn-column">
+				<input type="radio" name="emailListType" id="emailListTypeVBallNoTeam" value="volleyball_no_team" />
+				<label for="emailListTypeVBallNoTeam">&nbsp;Volleyball Players w/ No Team</label>
+			</span>
+		</fieldset>
+		
 		<br />
 		<br />
 		<input type="button" id="get-emails" value="Get Emails" />
@@ -60,7 +97,8 @@
 	<script type="text/javascript">
 		$(document).ready(function() {
 			$("#get-emails").button().click(function() {
-				sUrl = "db-email-lists.php?emailListType=" + $("input[@name=emailListType]:checked").val();
+				sUrl = "db-email-lists.php?emailListType=" + $('input[name="emailListType"]:checked').val() + "&database=" + 
+					$('input[name="database"]:checked').val();
 				var ajax_response = $.ajax({url:sUrl, async:false, type:"post"});
 				$("#email_results").val(ajax_response.responseText);
 			});

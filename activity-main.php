@@ -6,7 +6,7 @@
 	<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1" />
 	<meta http-equiv="Content-Style-Type" content="text/css" />
 
-	<title>Kansas City Regional Family Weekend - Housing</title>
+	<title>Kansas City Regional Family Weekend - Sunday Activities</title>
 
 	<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
 
@@ -26,7 +26,7 @@
 		<h2>Sunday Activities</h2>
 
 		<div class="column">
-			<input type="button" id="add-activity-button" value="Add or Update Your Activity" style="width:290px;" />
+			<input type="button" id="add-activity-button" value="Select or Update Your Activity" style="width:290px;" />
 			<p>&nbsp;</p>
 		
 			<div class="daily-schedule">
@@ -34,7 +34,7 @@
 				<ul>
 					<li><b>TBD</b> - Okun Fieldhouse Opens</li>
 					<li><b>TBD</b> - Sports Bible Study</li>
-					<li><b>TBD</b> - Boot Camp Conditioning</li>
+					<li><b>TBD</b> - Fitness Conditioning Class</li>
 					<li><b>TBD</b> - Basketball and Volleyball</li>				
 					<!-- <li><b>TBD</b> - <a href="activity-bball-main.php">Basketball</a> and <a href="activity-vball-main.php">Volleyball</a></li> -->
 					<li><b>TBD</b> - Children Activities</li>

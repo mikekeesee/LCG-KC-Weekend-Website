@@ -382,6 +382,12 @@ fieldset select {
 	width: 25em;
 }
 
+.radio-btn-column {
+	display: inline-block;
+	height: 24px;
+	width: 350px;
+}
+
 /** End Forms **/
 
 

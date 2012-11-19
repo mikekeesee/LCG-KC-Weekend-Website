@@ -15,7 +15,7 @@
 					<li><a href="activity-add-activity.php">&nbsp;&nbsp;Select an Activity</a></li>
 					<li><a href="activity-bball-main.php">&nbsp;&nbsp;Basketball</a></li>
 					<li><a href="activity-vball-main.php">&nbsp;&nbsp;Volleyball</a></li>
-					<li><a href="activity-bootcamp.php">&nbsp;&nbsp;Boot Camp</a></li>
+					<li><a href="activity-fitness.php">&nbsp;&nbsp;Fitness Class</a></li>
 				</ul>
 			</li>
 			<li><a href="activity-fun-show-signup.php">Fun Show</a></li>

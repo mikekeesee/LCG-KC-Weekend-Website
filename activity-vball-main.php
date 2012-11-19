@@ -32,10 +32,9 @@
 
 		<h2>Volleyball</h2>
 
-		<p>Welcome to the volleyball page. You can check out the game rules, schedule or the teams that are
-		already signed up. Sign up your team under the Teams tab. <b style="color:red">Teams must be finalized by Sunday, December 18.</b></p>
+		<p>To play volleyball, you must organize your team before the weekend. The tabs below have more details about how volleyball will run this year. You can check out the basic information, rules, and see the teams that have already registered. <b style="color:red">Teams must be finalized by noon on Monday, December 17.</b></p>
 
-		<p>All volleyball-related questions may be directed to Doug Burson at
+		<p>Direct all volleyball related questions to Doug Burson at
 		<a href="mailto:dougb@downingandstrickland.com">dougb@downingandstrickland.com</a>.</p>
 
 		<p><b>Important: Minimum age for sports is 13. Those with bad backs or other similar injuries should not
@@ -44,47 +43,32 @@
 
 		<div id="tabs">
 			<ul>
-				<li><a href="#general">General</a></li>
+				<li><a href="#basic">Basic Info</a></li>
 				<li><a href="#rules">Rules</a></li>
 				<li><a href="#vball-teams">Teams</a></li>
 				<li><a href="#schedule">Game Schedule</a></li>
 			</ul>
 
-			<div id="general">
-				<h3>General Information</h3>
+			<div id="basic">
+				<h3>Basic Information</h3>
 
-				<p>Sunday’s activities will again take place at the Okun Fieldhouse, the same facility as last year. Three
-				volleyball courts will be dedicated to the tournament. The procedure for coming and playing volleyball
-				at the KC weekend will be very much the same as past years. You must register for the weekend and organize
-				your team before you come.</p>
+				<p>There will be tournament style play again this year. This year we are breaking up the tournament based on the level of play. When you register your team, you will be asked to select either the <i>"Competitive"</i> or <i>"Recreational"</i> tournament.</p>
 				 
-				<p>Registration is now open for the weekend and volleyball. You do not need a full roster to register a team.
-				It may be filled out as you find players up until the deadline. Registration ends December 18.</p>
+				<p>If you regularly play in a league or just know the game, choose the "Competitive" tournament. If you're just here for the fun of
+				playing with friends, choose the "Recreational" tournament.  Teams will only play other teams that chose the same tournament.</p>
 				
-				<p>As you sign up your team, please choose which tournament you wish to participate in -- either <b>Competitive</b>
-				or <b>Recreational</b>. On both tournaments, you will be able to play on the team of your choice. However, you
-				will only play teams within that tournament.</p>
+				<p>The type of tournament for each category will be based on how many teams are in each respective category. Every team is guaranteed to play at least 3 matches.</p>
 				
 				<!--<p>The format for play this year will be based on the following. Two games for every team will be scheduled in
-				the morning. Based on the morning’s results, the top teams will advance to a playoff in the afternoon. The
+				the morning. Based on the morning's results, the top teams will advance to a playoff in the afternoon. The
 				rest of the teams will be scheduled another game in the afternoon as well. Every team is guaranteed at least
 				3 games.</p>-->
 				 
-				<p>As last year, there is a mandatory Sports Bible Study Sunday morning at 9:00 am at the Okun Fieldhouse for
-				all participating in basketball and volleyball. Both tournaments begin at 9:30. Warm-up time is from 8:30
-				to 9:00 am. Games will begin promptly with no exceptions. A penalty will be assessed against your team if
-				it is late or short players for games.</p>
+				<p><b>To register your team, click on the "Teams" tab above.</b> You may begin team registration even if all of your team members are not yet registered. We request only captains register teams and change the roster. <b style="color:red">You must register and finalize your team by noon on Monday, Dec. 17.</b></p>
 				 
-				<p>As we get closer to the weekend, more details will become available on the website. After team registration
-				ends on the 18th, full tournament details will be posted.</p>
+				<p>Teams must have a minimum of 4 players to be included in the tournament.  Maximum number of players on a team is 8. Games will begin promptly with no exceptions. A penalty will be assessed against your team if it is late or short players.</p>
 
-				<ul>
-					<li><b>Sports Bible Study Sunday morning:</b> Attendance is <u>mandatory</u> to play.</li>
-					<li><b>Schedule of Games:</b> To be announced.</li>
-					<li><b>Rosters:</b> Teams need a minimum of 4 people per team (8 max.). All team members must register
-					to play.</li>
-					<li><b>Lunch Break:</b> All sports will halt for lunch. Schedule to come.</li>
-				</ul>
+				<p><b>All participants are required to attend the Sports Bible Study Sunday morning. Attendance is mandatory to play.</b>
 				
 			</div>
 

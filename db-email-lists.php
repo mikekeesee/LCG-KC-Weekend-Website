@@ -6,11 +6,32 @@
 	// Get the database connection information
 	include("db-connect.php");
 
+	$email_list_type = $_GET["emailListType"];
+	$database = $_GET["database"];
+	
 	mysql_connect(localhost,$username,$password) or die("Unable to connect to database");
 	mysql_select_db($database) or die("Unable to select database");
 
 	$email_list_type = $_GET["emailListType"];
 	switch($email_list_type) {
+		case "kc_brethren":
+			$SQL = "SELECT distinct email 
+					FROM `Person` p
+					inner join Registration r on r.main_contact_person_id = p.person_id
+					WHERE p.email is not null
+					and p.email != ''
+					and r.housing_type = 8";
+			break;
+
+		case "guests":
+			$SQL = "SELECT distinct email 
+					FROM `Person` p
+					inner join Registration r on r.main_contact_person_id = p.person_id
+					WHERE p.email is not null
+					and p.email != ''
+					and r.housing_type IN (9, 10, 11, 12)";
+			break;
+
 		case "basketball":
 			$SQL = "SELECT distinct email 
 					FROM `Person` p
