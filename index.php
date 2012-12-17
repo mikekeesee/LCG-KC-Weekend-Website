@@ -54,9 +54,10 @@
 			<h3>What You Need to Know</h3>
 
 			<ul>
-				<li><b>Registration</b> - Please fill out our <a href="reg-main-contact.php">Registration Information</a> so we can begin planning for your arrival!</li>
-				<li><b>Housing</b> - Check out the options for <a href="housing.php">housing</a> whether you're staying with brethren or at our hotel.</li>
-				<li><b>Theme</b> - What does &quot;Through the Ages&quot; mean, anyway? Click <a href="information.php#dance">here</a> for a brief interpretation...</li>
+				<li><b>PayPal</b> - The issue with PayPal should now be fixed!</li>
+				<li><b>Housing</b> - The deadline for reservations with the Sleep Inn is Dec. 15th. Check out housing options in our <a href="housing.php">housing</a> section.</li>
+				<li><b>Sunday Sports</b> - The deadline for signing up for a sports team is Dec. 17th. Click <a href="activity-main.php">here</a> to sign up for an activity, <a href="activity-bball-main.php">here</a> to see basketball info, or <a href="activity-vball-main.php">here</a> for volleyball.</li>
+				<li><b>Food</b> - Two words: TACO and SALAD. Awesome. For KC brethren, check your list of items to bring <a href="information.php#food">here</a></li>
 			</ul>
 
 		</div>
@@ -86,13 +87,13 @@
 			<div id="schedule-sunday" class="daily-schedule">
 				<h3>Sunday, Dec. 30</h3>
 				<ul>
-					<li><b>TBD</b> - Okun Fieldhouse Opens</li>
+					<li><b>8:00am</b> - Okun Fieldhouse Opens</li>
 					<li><b>TBD</b> - Sports Bible Study</li>
 					<li><b>TBD</b> - Fitness Conditioning Class</li>
-					<li><b>TBD</b> - Basketball and Volleyball</li>				
-					<!-- <li><b>TBD</b> - <a href="activity-bball-main.php">Basketball</a> and <a href="activity-vball-main.php">Volleyball</a></li> -->
+					<li><b>TBD</b> - <a href="activity-bball-main.php">Basketball</a> and <a href="activity-vball-main.php">Volleyball</a></li>
 					<li><b>TBD</b> - Children Activities</li>
-					<li><b>TBD</b> - Lunch</li>				
+					<li><b>TBD</b> - Lunch</li>
+					<li><b>5:00pm</b> - Doors Close			
 				</ul>
 			</div>
 		</div>

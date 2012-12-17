@@ -71,8 +71,8 @@
 
 	<title>Kansas City Regional Family Weekend - Registration Administration</title>
 
-	<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
-	<link rel="stylesheet" href="js/reveal/reveal.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="css/main.css" type="text/css" media="screen,print" />
+	<link rel="stylesheet" href="js/reveal/reveal.css" type="text/css" media="screen,print" />
 	
 	<? include "jqgrid-header.php" ?>
 	<script src="js/show-hide.js" type="text/javascript"></script>

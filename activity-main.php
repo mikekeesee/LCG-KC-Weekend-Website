@@ -32,13 +32,13 @@
 			<div class="daily-schedule">
 				<h3>Sunday's Schedule:</h3>
 				<ul>
-					<li><b>TBD</b> - Okun Fieldhouse Opens</li>
+					<li><b>8:00am</b> - Okun Fieldhouse Opens</li>
 					<li><b>TBD</b> - Sports Bible Study</li>
 					<li><b>TBD</b> - Fitness Conditioning Class</li>
-					<li><b>TBD</b> - Basketball and Volleyball</li>				
-					<!-- <li><b>TBD</b> - <a href="activity-bball-main.php">Basketball</a> and <a href="activity-vball-main.php">Volleyball</a></li> -->
+					<li><b>TBD</b> - <a href="activity-bball-main.php">Basketball</a> and <a href="activity-vball-main.php">Volleyball</a></li>
 					<li><b>TBD</b> - Children Activities</li>
-					<li><b>TBD</b> - Lunch</li>				
+					<li><b>TBD</b> - Lunch</li>
+					<li><b>5:00pm</b> - Doors Close
 				</ul>
 			</div>
 		</div>

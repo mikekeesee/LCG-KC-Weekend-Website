@@ -25,6 +25,55 @@
 	$result = mysql_query( $SQL ) or die($SQL."\n\nCouldn't execute Registration SELECT count query.".mysql_error());
 	$row = mysql_fetch_array($result,MYSQL_ASSOC);
 	$num_not_housed = $row['count'];
+
+	// *** Get the visitor's graph information ***/
+	$total = 0;
+	// Get the current year's data
+	$SQL = "SELECT	WEEK( registration_date ) AS week,
+					SUM( number_in_party ) AS total				   
+			FROM	Registration
+			WHERE	housing_type IN ( 9, 10, 11, 12 ) 
+			GROUP BY week
+			ORDER BY week ASC";
+
+	$result = mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute registration SELECT query.".mysql_error());
+	$graphData = "var dataCurrent = [";
+	while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+		if ($total == 0) {
+			$graphData .= "[".($row[week] - 1).",0],";
+		}
+		$graphData .= "[".$row[week].",";
+		$total += $row[total];
+		$graphData .= $total."],";
+	}
+	$graphData = substr($graphData, 0, strlen($graphData) - 1);
+	$graphData .= "];";
+	
+	// Get the 2011 data
+	mysql_select_db("mmoluf_kcweekend_2011") or die("Unable to select database");
+
+	$total = 0;
+	$graphDataQL = "SELECT	IFNULL(WEEK( registration_date ),47) AS week,
+					SUM( number_in_party ) AS total				   
+			FROM	Registration
+			WHERE	housing_type IN ( 9, 10, 11, 12 ) 
+			GROUP BY week
+			ORDER BY week ASC";
+
+	$result = mysql_query( $graphDataQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$graphDataQL."\n\nCouldn't execute registration SELECT query.".mysql_error());
+	$graphData .= "\n\nvar data2011 = [";
+	while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+		if ($total == 0) {
+			$graphData .= "[".($row[week] - 1).",0],";
+		}
+		$graphData .= "[".$row[week].",";
+		$total += $row[total];
+		$graphData .= $total."],";
+	}
+	$graphData = substr($graphData, 0, strlen($graphData) - 1);
+	$graphData .= "];";	
+	
+	mysql_select_db($database) or die("Unable to select database");	
 ?>
 
 <!DOCTYPE HTML>
@@ -45,6 +94,9 @@
 	<script type="text/javascript" src="js/grid-reg-statistics.js"></script>
 	<script type="text/javascript" src="js/select2/select2.js"></script>
 	<script src="js/reveal/jquery.reveal.js" type="text/javascript"></script>
+	
+    <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot/excanvas.min.js"></script><![endif]-->
+    <script language="javascript" type="text/javascript" src="js/flot/jquery.flot.js"></script>
 	
 	<? include ('google-analytics.php'); ?>
 </head>
@@ -103,9 +155,6 @@
 		<div id="not-housed-modal" class="reveal-modal">
 			<h2>Families Not Housed</h2>
 			<p id="not-housed-label">Click a family below to show their registration details.</p>
-			
-			
-			
 			<a class="close-reveal-modal" id="close-add-guests">&#215;</a>
 		</div>
 		
@@ -116,15 +165,23 @@
 		<hr/>
 		<br/>
 
-		<p>
-			<b>The KC Weekend has currently generated $<?=$total_payment?>.00 in donations with a goal of $3700.</b>
-			<br/>
-			<div class="progress-bar green glow">
-				<span style="width: <?=intval(($total_payment/3700)*100) ?>%"></span>
-			</div>
-		</p>
+		<div class="column">
+			<b>Visitor's Registration Graph</b>
+			<br/><br/>
+			<div id="regGraph" style="width:300px;height:400px;"></div>
+		</div>
+		<div class="column">
+			<p>
+				<b>The KC Weekend has currently generated $<?=$total_payment?>.00 in donations with a goal of $3700.</b>
+				<br/>
+				<div class="progress-bar green glow">
+					<span style="width: <?=intval(($total_payment/3700)*100) ?>%"></span>
+				</div>
+			</p>
+		</div>
 	</div>
-
+	<div class="clear-float"></div>
+	
 	<!-- End of Main Content Area -->
 
 	<!-- Start of Page Footer -->
@@ -136,13 +193,13 @@
 			placeholder: "Search for a person...",
 			width: "40em"
 		});
-		
+
 		$(document).ready(function() {
 			$("#get-reg-info").button().click(function() {
 				personIds = $("#reg-info-search").select2("val") || [];
 				for (var i = 0; i < personIds.length; i++) {
 					window.open("reg-admin-person.php?id=" + personIds[i], '_blank');
-				}
+				}				
 				
 				$("#reg-info-search").select2("val", "");
 			});
@@ -174,6 +231,32 @@
 					success: ShowWhosNotHoused,
 					error: function(xhr, text, e) {alert("Error getting data - " + text); return;}
 				});						
+			});
+
+			<?=$graphData ?>		
+
+			var p = $.plot($("#regGraph"), [
+					{label: "2012", data: dataCurrent}, 
+					{label: "2011", data: data2011}
+				], {legend: {position: "nw"}}, {
+				series: {
+					lines: { show: true },
+					points: { show: true }
+				}
+			});
+
+			$.each(p.getData(), function(idx, el){
+				$.each(p.getData()[idx].data, function(i, el){
+				  var o = p.pointOffset({x: el[0], y: el[1]});
+				  $('<div class="data-point-label">' + el[1] + '</div>').css( {
+					left: o.left + 4,
+					top: o.top + 4,
+					display: 'none',
+					font: '9px arial',
+					color: '#ABABAB',
+					position: 'absolute'
+				  }).appendTo(p.getPlaceholder()).fadeIn("slow");
+				});
 			});
 		});
 	</script>

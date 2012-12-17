@@ -46,7 +46,8 @@
 
 			<fieldset><legend>Name:</legend>
 				<p><label for="txtFirstName" class="required select-first">First Name:</label>
-				<input type="text" id="txtFirstName" name="txtFirstName" maxlength="255" size="30" /></p>
+				<input type="text" id="txtFirstName" name="txtFirstName" maxlength="255" size="30"/>
+				<em>&nbsp;&nbsp;Just ONE name, please. The rest of your family's/party's names will be added on the next screen.</em></p>
 				<p><label for="txtLastName" class="required">Last Name:</label>
 				<input type="text" id="txtLastName" name="txtLastName" maxlength="255" size="30" /></p>
 			</fieldset>

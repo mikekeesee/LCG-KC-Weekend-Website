@@ -72,13 +72,13 @@
 					<div id="schedule-sunday" class="daily-schedule">
 						<h3>Sunday, Dec. 30</h3>
 						<ul>
-							<li><b>TBD</b> - Okun Fieldhouse Opens</li>
+							<li><b>8:00am</b> - Okun Fieldhouse Opens</li>
 							<li><b>TBD</b> - Sports Bible Study</li>
 							<li><b>TBD</b> - Fitness Conditioning Class</li>
-							<li><b>TBD</b> - Basketball and Volleyball</li>				
-							<!-- <li><b>TBD</b> - <a href="activity-bball-main.php">Basketball</a> and <a href="activity-vball-main.php">Volleyball</a></li> -->
+							<li><b>TBD</b> - <a href="activity-bball-main.php">Basketball</a> and <a href="activity-vball-main.php">Volleyball</a></li>
 							<li><b>TBD</b> - Children Activities</li>
-							<li><b>TBD</b> - Lunch</li>				
+							<li><b>TBD</b> - Lunch</li>
+							<li><b>5:00pm</b> - Doors Close			
 						</ul>
 					</div>
 					
@@ -151,16 +151,24 @@
 
 			<div id="food">
 				<h3>F&uuml;d</h3>
-				<img src="images/turkey_dinner.jpg" alt="A Delicious Dinner Awaits..." style="float:right;margin:0 1em;" height="200" width="300" />
-				<p>It wouldn&#39;t be the KC Weekend without some home cookin&#39;. Details are forthcoming from our
-				Tasty Vittles Engineers who specially formulate the perfect blend of ingredients and spices that
-				amplify your body's naturally-occuring bio-motivators for having a ball. (These statements have not
-				been subject to thorough FDA study or regulation. However, some guy named &quot;Hal&quot; said it was cool.</p>
+				<img src="images/taco-salad.jpg" alt="A Delicious Dinner Awaits..." style="float:right;margin:0 1em;" height="250" width="300" />
+				<p>It wouldn&#39;t be the KC Weekend without some home cookin&#39;. This year&#39;s meal will be Taco Salad with all the trimmings.
+				We&#39;re even using gluten-free and MSG-free seasonings and beans for the more sensitive amongst us. However, I can&#39;t speak for the tortilla
+				chips being gluten-free. Nor can I say that the meal will be <em>glutton</em>-free since it will all taste ridiculously delicious!</p>
 				
 				<h3>Requested F&uuml;d Items</h3>
-				<p>The Tasty Vittles Engineer's job is a challenging -- and occasionally lonely -- one. That said, they are
-				hard at work determining where you should spend your money, should you choose to do so. Thanks for your
-				generous spirit!</p>
+				<p>For local brethren, please bring the following:</p>
+				
+				<ul>
+					<li>Prior to the weekend: Bush&#39;s Best Chili Magic Chili Starter beans (it&#39;s specifically gluten- and MSG-free)</li>
+					<li>Friday night: bag of cookies or Chex Mix</li>
+					<li>Items for Saturday:</li>
+						<ul>
+							<li>One 1-lb. pack of colby jack cheese</li>
+							<li>Dessert: enough to feed 2 families</li>
+							<li>SINGLES: The largest container of Daisy sour cream you find</li>
+						</ul>
+				</ul>
 
 				<!-- <h3>Eating Out</h3>
 				<p>Liberty is home to billions of culinary establishments ready to leap at your every whim. Here are three... hundred:</p>-->
