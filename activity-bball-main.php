@@ -33,11 +33,11 @@
 
 		<h2>Basketball</h2>
 
-		<p>To play basketball, you must organize your team before the weekend. The tabs below have more details about how basketball will run this year. You can check out the	basic information, rules, and see the teams that have already registered. <b style="color:red">Teams must be finalized by December 17.</b></p>
+		<p>To play basketball, you must organize your team before the weekend. The tabs below have more details about how basketball will run this year. You can check out the	basic information, rules, and see the teams that have already registered. <b style="color:red">Teams must be finalized by December 15.</b></p>
 
 		<p>If you do not have a team but would still like to play, please go ahead and register to play basketball and we will do our best to accomodate you.</p>
-		<p>Direct all basketball related questions to Jake Wilson at
-		<a href="mailto:jakesburg@hotmail.com">jakesburg@hotmail.com</a>.</p>
+		<!--<p>Direct all basketball related questions to Jake Wilson at
+		<a href="mailto:jakesburg@hotmail.com">jakesburg@hotmail.com</a>.</p>-->
 
 		<p><b>Important: Minimum age for sports is 13. Those with bad backs or other similar injuries should not
 		participate. Due to the inherent risk of such activities, all participants must sign a liability waiver. Those
@@ -52,22 +52,22 @@
 				<li><a href="#basic">Basic Info</a></li>
 				<li><a href="#rules">Rules</a></li>
 				<li><a href="#bball-teams">Teams</a></li>
-				<li><a href="#schedule">Game Schedule</a></li>
 			</ul>
 
 			<div id="basic">
 				<h3>Basic Information</h3>
 
-					<p>There will be tournament style play again this year. Depending on the number of teams, it will be like last year where we had a pool play in the morning and the top 4 teams went on to a single elimination tournament the second half of the day. Every 
-					team is guaranteed at least 3 games even if you do not make the single elimination tournament.</p>
+					<p>More information to come, but here are the basics... You and your teammates must register for the weekend, first. Then you can build a team using the Teams tab above.</p>
+					
+					<!--<p>There will be tournament style play again this year. Depending on the number of teams, it will be like last year where we had a pool play in the morning and the top 4 teams went on to a single elimination tournament the second half of the day. Every team is guaranteed at least 3 games even if you do not make the single elimination tournament.</p>
  
 					<p>Referees will be hired again and paid for with team fees. Last year the team fee was $65 and, depending on the number of teams, we expect it to be about the same this year. There will no refunds if your team withdraws after Dec. 21.</p>
  
 					<p>Registration for your basketball team is a two-step process. You may begin your registration even all of your team members are not yet registered. <b>To register your team, click on the"Teams" tab above.</b> We request only captains register teams and change the roster.</p>
  
-					<p><b style="color:red">You must register and finalize your team by noon on Monday, Dec. 17.</b> After that date, we will send the captains an email notifying them of the amount of the team fee. <b style="color:red">To complete your team registration, you must send payment to us via Paypal by Thursday, Dec. 21.</b></p>
- 
-					<p>Teams must have a minimum of 5 players to be included in the tournament. Maximum number of players on a team is 8. <b>All the team members must be registered and listed on the roster by Dec. 17.</b></p>
+					<p><b style="color:red">You must register and finalize your team by noon on Monday, Dec. 17.</b> After that date, we will send the captains an email notifying them of the amount of the team fee. <b style="color:red">To complete your team registration, you must send payment to us via Paypal by Thursday, Dec. 21.</b></p>-->
+					
+					<p>Teams must have a minimum of 5 players to be included in the tournament. Maximum number of players on a team is 8. <b>All the team members must be registered and listed on the roster by Dec. 15.</b></p>
 
 					<p>Games will be played based on high school rules. Games will begin promptly with no exceptions. A penalty will be assessed against your team if it is late or short players.</p>
 
@@ -83,7 +83,7 @@
 
 				<ul class="bullets">
 					<li class="bullets"><u>Start of Game:</u> Each game will begin with a jump ball.</li>
-					<li class="bullets"><u>Personal Fouls:</u> Each player has four (5) personal fouls to give before fouling out.</li>
+					<li class="bullets"><u>Personal Fouls:</u> Each player has five (5) personal fouls to give before fouling out.</li>
 					<li class="bullets"><u>Team Fouls:</u> One-and-one situations will occur starting with the seventh (7th) team foul (no 2-shot bonus
 					beyond this point).</li>
 					<li class="bullets"><u>Free Throws:</u> The ball is live after the shot leaves the player&#39;s hands, not
@@ -98,7 +98,7 @@
 					If it&#39;s tied after 6 shots, then the 4th player from each team shoots a single free throw, then the 5th player,
 					and so forth until one team makes a free throw and the other misses.</li>
 
-				<p>Direct all basketball related questions to Jake Wilson at <a href="mailto:jakesburg@hotmail.com">jakesburg@hotmail.com</a>.</p>
+				<!--<p>Direct all basketball related questions to Jake Wilson at <a href="mailto:jakesburg@hotmail.com">jakesburg@hotmail.com</a>.</p>-->
 
 			</div>
 
@@ -113,15 +113,6 @@
 				</script>
 				<script type="text/javascript" src="js/grid-activity-teams.js"></script>
 				<table id="teams"></table>-->
-			</div>
-
-
-			<div id="schedule">
-
-				<h3>Game Schedule</h3>
-
-				<p>The schedule will be posted after the team registration deadline passes.</p>
-
 			</div>
 
 		</div>

@@ -54,10 +54,10 @@
 			<h3>What You Need to Know</h3>
 
 			<ul>
-				<li><b>PayPal</b> - The issue with PayPal should now be fixed!</li>
-				<li><b>Housing</b> - The deadline for reservations with the Sleep Inn is Dec. 15th. Check out housing options in our <a href="housing.php">housing</a> section.</li>
-				<li><b>Sunday Sports</b> - The deadline for signing up for a sports team is Dec. 17th. Click <a href="activity-main.php">here</a> to sign up for an activity, <a href="activity-bball-main.php">here</a> to see basketball info, or <a href="activity-vball-main.php">here</a> for volleyball.</li>
-				<li><b>Food</b> - Two words: TACO and SALAD. Awesome. For KC brethren, check your list of items to bring <a href="information.php#food">here</a></li>
+				<li><a href="reg-main.php"><b>Registration</b></a> - Your path to the KC Weekend starts here!</li>
+				<li><a href="housing.php"><b>Housing</b></a> - Holiday Inn and CoCo Key Water Resort or stay with brethren? Deadline for reservations on our special rate of $79/night is <b>Nov. 27th</b>.</li>
+				<li><a href="information.php#food"><b>Food</b></a> - The Holiday Inn is catering an Italian feast for us for a ridiculously low price! See our Food section for what&#39;s included in the meal and payment details.</li>
+				<li><b>Sunday Sports</b> - Click <a href="activity-main.php">here</a> to sign up for an activity, <a href="activity-bball-main.php">here</a> to see basketball info, or <a href="activity-vball-main.php">here</a> for volleyball.</li>
 			</ul>
 
 		</div>
@@ -65,37 +65,9 @@
 		<br/><br/>
 		
 		<div class="column">
-			<div id="schedule-friday" class="daily-schedule">
-				<h3>Friday, Dec. 28</h3>
-				<ul>
-					<li><b>6:00 p.m.</b> - <a href="information.php">Hall Opens for Fellowship</a></li>
-					<li><b>7:00 p.m.</b> - Bible Study</li>
-				</ul>
-			</div>
-
-			<div id="schedule-saturday" class="daily-schedule">
-				<h3>Saturday, Dec. 29</h3>
-				<ul>
-					<li><b>1:00 p.m.</b> - <a href="information.php">Church Services</a></li>
-					<li><b>4:00 p.m.</b> - Dinner</li>
-					<li><b>6:00 p.m.</b> - <a href="activity-fun-show-signup.php">&quot;Through the Ages&quot; Radio Show</a></li>
-					<li><b>8:00 p.m.</b> - <a href="information.php#dance">Dance</a></li>
-					<li><b>10:30 p.m.</b> - Clean Up</li>
-				</ul>
-			</div>
-
-			<div id="schedule-sunday" class="daily-schedule">
-				<h3>Sunday, Dec. 30</h3>
-				<ul>
-					<li><b>8:00am</b> - Okun Fieldhouse Opens</li>
-					<li><b>TBD</b> - Sports Bible Study</li>
-					<li><b>TBD</b> - Fitness Conditioning Class</li>
-					<li><b>TBD</b> - <a href="activity-bball-main.php">Basketball</a> and <a href="activity-vball-main.php">Volleyball</a></li>
-					<li><b>TBD</b> - Children Activities</li>
-					<li><b>TBD</b> - Lunch</li>
-					<li><b>5:00pm</b> - Doors Close			
-				</ul>
-			</div>
+		
+	<? include "calendar.php" ?>	
+		
 		</div>
 		
 		<!-- Picture sliders, picture sliders, time to set up picture sliders... -->
@@ -104,8 +76,7 @@
     		<div class="ribbon"></div>
 			<div id="picture-slider" class="nivoSlider">
 				<a href="information.php"><img src="images/kcweekend_3.jpg" title="#caption-overview" /></a>
-				<a href="information.php"><img src="images/okun_fieldhouse.jpg" title="#caption-locations" /></a>
-				<a href="activity-fun-show-signup.php"><img src="images/kcweekend_5.jpg" title="#caption-fun-show" /></a>
+				<a href="housing.php"><img src="images/coco_key.jpg" title="#caption-hotel" /></a>
 				<a href="information.php#dance"><img src="images/kcweekend_61.jpg" title="#caption-dance" /></a>
 				<a href="activity-vball-main.php"><img src="images/kcweekend_4.jpg" title="#caption-volleyball" /></a>
 				<a href="activity-bball-main.php"><img src="images/kcweekend_12.jpg" title="#caption-basketball" /></a>
@@ -114,11 +85,8 @@
 			<div id="caption-overview" class="nivo-html-caption">
 				Come to the KC Family Weekend - December 27th-29th
 			</div>
-			<div id="caption-locations" class="nivo-html-caption">
-				Held at the Liberty Community Center and Theatre and at the Okun Fieldhouse
-			</div>
-			<div id="caption-fun-show" class="nivo-html-caption">
-				Through the Ages Radio Show
+			<div id="caption-hotel" class="nivo-html-caption">
+				Holiday Inn and CoCo Key Water Resort -- Come play!
 			</div>
 			<div id="caption-dance" class="nivo-html-caption">
 				Get your groove on... Or your swing... Or mambo... Or...

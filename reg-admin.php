@@ -38,7 +38,9 @@
 
 	$result = mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute registration SELECT query.".mysql_error());
 	$graphData = "var dataCurrent = [";
+	$bIsData = false;
 	while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+		$bIsData = true;
 		if ($total == 0) {
 			$graphData .= "[".($row[week] - 1).",0],";
 		}
@@ -46,7 +48,11 @@
 		$total += $row[total];
 		$graphData .= $total."],";
 	}
-	$graphData = substr($graphData, 0, strlen($graphData) - 1);
+	
+	// Defensive code: If there's nothing to graph, this will cut off the [ of $graphData
+	if ($bIsData == true) {
+		$graphData = substr($graphData, 0, strlen($graphData) - 1);
+	}
 	$graphData .= "];";
 	
 	// Get the 2011 data
@@ -62,6 +68,30 @@
 
 	$result = mysql_query( $graphDataQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$graphDataQL."\n\nCouldn't execute registration SELECT query.".mysql_error());
 	$graphData .= "\n\nvar data2011 = [";
+	while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+		if ($total == 0) {
+			$graphData .= "[".($row[week] - 1).",0],";
+		}
+		$graphData .= "[".$row[week].",";
+		$total += $row[total];
+		$graphData .= $total."],";
+	}
+	$graphData = substr($graphData, 0, strlen($graphData) - 1);
+	$graphData .= "];";	
+	
+	// Get the 2012 data
+	mysql_select_db("mmoluf_kcweekend_2012") or die("Unable to select database");
+
+	$total = 0;
+	$graphDataQL = "SELECT	IFNULL(WEEK( registration_date ),47) AS week,
+					SUM( number_in_party ) AS total				   
+			FROM	Registration
+			WHERE	housing_type IN ( 9, 10, 11, 12 ) 
+			GROUP BY week
+			ORDER BY week ASC";
+
+	$result = mysql_query( $graphDataQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$graphDataQL."\n\nCouldn't execute registration SELECT query.".mysql_error());
+	$graphData .= "\n\nvar data2012 = [";
 	while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
 		if ($total == 0) {
 			$graphData .= "[".($row[week] - 1).",0],";
@@ -236,7 +266,8 @@
 			<?=$graphData ?>		
 
 			var p = $.plot($("#regGraph"), [
-					{label: "2012", data: dataCurrent}, 
+					{label: "2013", data: dataCurrent}, 
+					{label: "2012", data: data2012}, 
 					{label: "2011", data: data2011}
 				], {legend: {position: "nw"}}, {
 				series: {

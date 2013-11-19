@@ -35,6 +35,11 @@
 			</span>
 			
 			<span class="radio-btn-column">
+				<input type="radio" name="database" id="database2012" value="mmoluf_kcweekend_2012" />
+				<label for="database2012">&nbsp;2012 Data</label>
+			</span>
+
+			<span class="radio-btn-column">
 				<input type="radio" name="database" id="database2011" value="mmoluf_kcweekend_2011" />
 				<label for="database2011">&nbsp;2011 Data</label>
 			</span>

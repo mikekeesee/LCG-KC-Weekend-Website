@@ -63,7 +63,6 @@ $SQL = "	SELECT	pa.Person_ID as person_id,
 			
 				LEFT OUTER JOIN Team t
 					ON tm.Team_ID = t.Team_ID
-					   AND t.Activity_ID = $activity
 	
 			WHERE pa.Activity_ID = $activity";
 			

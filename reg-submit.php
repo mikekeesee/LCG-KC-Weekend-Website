@@ -144,6 +144,16 @@
 			mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute INSERT Housing_Contact query.".mysql_error());
 		}
 	}
+	
+	// Get the housing ID for the person
+	$SQL = "SELECT dining_id
+			FROM Registration
+			WHERE Registration_ID = ".$reg_id;
+
+	$result = mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute SELECT housing contract query.".mysql_error());
+	$row = mysql_fetch_array($result,MYSQL_ASSOC);
+	$dining_id = $row['dining_id'];
+	
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -177,33 +187,29 @@
 
 		<h3>Submission Confirmed:</h3>
 		
-		<p>You have successfully registered! You deserve something nice... Perhaps a night on the town,
-		a trip to your favorite store, or even... dare I say, a long weekend break where a ton of people
-		will be gathered together to have a great time eating, dancing, learning and playing together.  We'll
-		see you soon!</p>
+		<p>You have successfully registered! Has anyone mentioned how wise and industrious you look lately? It&#39;s certainly apparent from our vantage point! Thank you for registering... We'll see you soon!</p>
 
-		<p><h3>The suggested donation amount is: <? if ($num_in_party >= 4) print('$40'); else print('$'.($num_in_party * 10)); ?></h3>
-			<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-				<input type="hidden" name="cmd" value="_s-xclick">
-				<input type="hidden" name="hosted_button_id" value="JFMRJ5UHHCZK4">
-				<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_xpressCheckout.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-				<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-			</form>
-		</p>
+		<? if ($dining_id == 13) { ?>
+			<p><h3>The amount owed for the catered meal: <? print('$'.($num_in_party * 10)); ?> <i>(<? print('$'.($num_in_party * 11)); ?> if using PayPal for added processing charges.)</i></h3>
+				<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+					<input type="hidden" name="cmd" value="_s-xclick">
+					<input type="hidden" name="hosted_button_id" value="JFMRJ5UHHCZK4">
+					<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_xpressCheckout.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+					<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+				</form>
+			</p>
+			
+			<p>Please send in the catered meal charges as quickly as possible so we can reserve a place for you. <b>If we do not receive payment by December 13th, we cannot guarantee a place for dinner as there is a limit of 400 for dinner.</b>  
+			
+			<p>You can either click the PayPal Donate button to pay by eCheck or a credit or debit card, or send a check. If writing a check, please make checks payable to <u>Local Church Activity Fund</u> and send it to:</p>
+			
+			<p style="margin:20px"><b>
+				John Wells<br/>
+				2329 Lake Breeze Ln.<br/>
+				Lee's Summit, MO 64086
+			</b></p>
+		<? } ?>
 		
-	
-		<p>We do ask that you would quickly send in the <b>registration fee</b> of <b>$10 per person</b> in your
-		group or <b>$40 per family</b>, whichever is lowest. If you cannot afford to pay at this time or cannot afford
-		the full amount, please come anyway. If you would like to give more, that would be greatly appreciated as well.
-		You can either click the PayPal Donate button to pay by eCheck or a credit or debit card, or send a check. If writing
-		a check, please make checks payable to <u>Local Church Activity Fund</u>.  Please send all checks to:</p>
-		
-		<p style="margin:20px"><b>
-			John Wells<br/>
-			2329 Lake Breeze Ln.<br/>
-			Lee's Summit, MO 64086
-		</b></p>
-
 		<p>Please click on <a href="housing.php">Housing</a> to get more information about our hotel
 		arrangement or the contact number of our wonderful and lovely Housing Coordinator, Beryl Wilson.</p>
 

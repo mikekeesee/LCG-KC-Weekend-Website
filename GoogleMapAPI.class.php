@@ -240,7 +240,7 @@ class GoogleMapAPI {
      * @var string service name
      */
     var $lookup_service = 'GOOGLE';
-	var $lookup_server = array('GOOGLE' => 'maps.google.com', 'YAHOO' => 'api.local.yahoo.com');
+	var $lookup_server = array('GOOGLE' => 'maps.googleapis.com', 'YAHOO' => 'api.local.yahoo.com');
     
     var $driving_dir_text = array(
             'dir_to' => 'Start address: (include addr, city st/region)',
@@ -1293,17 +1293,16 @@ class GoogleMapAPI {
                         
             case 'GOOGLE':
                 
-                $_url = sprintf('http://%s/maps/geo?&q=%s&output=csv&key=%s',$this->lookup_server['GOOGLE'],rawurlencode($address),$this->api_key);
+                $_url = sprintf('http://%s/maps/api/geocode/json?address=%s&sensor=false',$this->lookup_server['GOOGLE'],rawurlencode($address));
 
                 $_result = false;
                 
                 if($_result = $this->fetchURL($_url)) {
+                    //$_result_parts = explode(',',$_result);
+					$obj = json_decode($_result, true);
 
-                    $_result_parts = explode(',',$_result);
-                    if($_result_parts[0] != 200)
-                        return false;
-                    $_coords['lat'] = $_result_parts[2];
-                    $_coords['lon'] = $_result_parts[3];
+                    $_coords['lat'] = $obj['results'][0]['geometry']['location']['lat'];
+                    $_coords['lon'] = $obj['results'][0]['geometry']['location']['lng'];
                 }
                 
                 break;
@@ -1340,7 +1339,17 @@ class GoogleMapAPI {
      */
     function fetchURL($url) {
 
-        return file_get_contents($url);
+        //return file_get_contents($url);
+		$ch = curl_init();
+ 
+		curl_setopt($ch, CURLOPT_HEADER, 0);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); //Set curl to return the data instead of printing it to the browser.
+		curl_setopt($ch, CURLOPT_URL, $url);
+	 
+		$data = curl_exec($ch);
+		curl_close($ch);
+	 
+		return $data;
 
     }
 

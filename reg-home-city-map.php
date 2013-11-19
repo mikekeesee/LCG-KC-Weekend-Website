@@ -8,7 +8,7 @@
 	// enter YOUR Google Map Key
 	//$map->setAPIKey('ABQIAAAAYMNY23sJhxC4LyHvhouDAhT7jkmynjE8OMd-ikFKdpPdtz0ExRS8CQW29gereurYlNrENJbQEdpvYQ');
 	$map->setAPIKey('ABQIAAAAYMNY23sJhxC4LyHvhouDAhTO1sTMmm0paPF-NqNRX-WjGyPHxxQNKDjpAKmhd7DBMSBEWqs826zUrw');
-
+	$map->disableSidebar();
 	
 	mysql_connect(localhost,$username,$password);
 	@mysql_select_db($database) or die( "Unable to select database");

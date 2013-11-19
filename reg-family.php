@@ -39,7 +39,6 @@
 	$geoCode = $map->geoGetCoords($home_city);
 	$geo_lat = $geoCode[lon];
 	$geo_long = $geoCode[lat];
-
 	// Verify there is not already an identical person in the system
 	$SQL = "SELECT	COUNT(*) as count
 			FROM	Person

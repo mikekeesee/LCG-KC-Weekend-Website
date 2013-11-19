@@ -32,10 +32,10 @@
 
 		<h2>Volleyball</h2>
 
-		<p>To play volleyball, you must organize your team before the weekend. The tabs below have more details about how volleyball will run this year. You can check out the basic information, rules, and see the teams that have already registered. <b style="color:red">Teams must be finalized by noon on Monday, December 17.</b></p>
+		<p>To play volleyball, you must organize your team before the weekend. The tabs below have more details about how volleyball will run this year. You can check out the basic information, rules, and see the teams that have already registered. <b style="color:red">Teams must be finalized by noon on Sunday, December 15.</b></p>
 
-		<p>Direct all volleyball related questions to Doug Burson at
-		<a href="mailto:dougb@downingandstrickland.com">dougb@downingandstrickland.com</a>.</p>
+		<!--<p>Direct all volleyball related questions to Doug Burson at
+		<a href="mailto:dougb@downingandstrickland.com">dougb@downingandstrickland.com</a>.</p> -->
 
 		<p><b>Important: Minimum age for sports is 13. Those with bad backs or other similar injuries should not
 		participate. Due to the inherent risk of such activities, all participants must sign a liability waiver. Those
@@ -46,7 +46,6 @@
 				<li><a href="#basic">Basic Info</a></li>
 				<li><a href="#rules">Rules</a></li>
 				<li><a href="#vball-teams">Teams</a></li>
-				<li><a href="#schedule">Game Schedule</a></li>
 			</ul>
 
 			<div id="basic">
@@ -54,8 +53,7 @@
 
 				<p>There will be tournament style play again this year. This year we are breaking up the tournament based on the level of play. When you register your team, you will be asked to select either the <i>"Competitive"</i> or <i>"Recreational"</i> tournament.</p>
 				 
-				<p>If you regularly play in a league or just know the game, choose the "Competitive" tournament. If you're just here for the fun of
-				playing with friends, choose the "Recreational" tournament.  Teams will only play other teams that chose the same tournament.</p>
+				<p>If you regularly play in a league or just know the game, choose the "Competitive" tournament. If you're just here for the fun of playing with friends, choose the "Recreational" tournament.  Teams will only play other teams that chose the same tournament.</p>
 				
 				<p>The type of tournament for each category will be based on how many teams are in each respective category. Every team is guaranteed to play at least 3 matches.</p>
 				
@@ -64,7 +62,7 @@
 				rest of the teams will be scheduled another game in the afternoon as well. Every team is guaranteed at least
 				3 games.</p>-->
 				 
-				<p><b>To register your team, click on the "Teams" tab above.</b> You may begin team registration even if all of your team members are not yet registered. We request only captains register teams and change the roster. <b style="color:red">You must register and finalize your team by noon on Monday, Dec. 17.</b></p>
+				<p><b>To register your team, click on the "Teams" tab above.</b> You may begin team registration even if all of your team members are not yet registered. We request only captains register teams and change the roster. <b style="color:red">You must register and finalize your team by noon on Monday, Dec. 15.</b></p>
 				 
 				<p>Teams must have a minimum of 4 players to be included in the tournament.  Maximum number of players on a team is 8. Games will begin promptly with no exceptions. A penalty will be assessed against your team if it is late or short players.</p>
 
@@ -137,20 +135,12 @@
 			  		<p>Your browser does not support iframes.</p>
 				</iframe>
 				
-				<!-- <script type="text/javascript">
+				<!--<script type="text/javascript">
 					var activity_number = '2';
 					var activity_name = 'Volleyball';
 				</script>
 				<script type="text/javascript" src="js/grid-activity-teams.js"></script>
-				<table id="teams"></table>	 -->			
-			</div>
-
-			<div id="schedule">
-
-				<h3>Game Schedule</h3>
-
-				<p>Team and referee schedules to come after the team registration deadline has passed.</p>
-
+				<table id="teams"></table>-->
 			</div>
 
 		</div>
