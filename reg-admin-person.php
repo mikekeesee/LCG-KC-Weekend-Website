@@ -6,58 +6,37 @@
 	// Get the database connection information
 	include("db-connect.php");
 
-	mysql_connect(localhost,$username,$password) or die("Unable to connect to database");
-	mysql_select_db($database) or die("Unable to select database");
+	$link = mysqli_connect(localhost, $username, $password, $database);
 
 	$person_id = $_GET["id"];
 	
 	$reg_id = 0;
-	$SQL = "SELECT	registration_id,
-                    number_in_party,
-					housing_type,
-					done_housing_ind
-			FROM	Registration
-			WHERE	Main_Contact_Person_Id = ".$person_id;
+	$SQL = "SELECT	r.registration_id,
+                    r.number_in_party,
+					r.housing_type,
+					r.done_housing_ind
+			FROM	Registration r, Registration_Person rp
+			WHERE	rp.Person_Id = $person_id
+              AND   rp.Registration_ID = r.Registration_ID";
 
-	$result = mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute registration SELECT query.".mysql_error());
-	$row = mysql_fetch_array($result,MYSQL_ASSOC);
+	$result = mysqli_query($link, $SQL) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute registration SELECT query.".mysqli_error($link));
+	$row = mysqli_fetch_array($result);
 	$reg_id = $row['registration_id'];
     $num_in_party = $row['number_in_party'];
 	$housing_type = $row['housing_type'];
 	$done_housing = $row['done_housing_ind'];
+
+	$SQL = "SELECT	p.Person_Id,
+                    p.First_Name,
+					p.Last_Name
+			FROM	Registration_Person rp, Person p
+			WHERE	rp.Registration_ID = $reg_id
+              AND   rp.Main_Contact_Ind = 1
+              AND   rp.Person_Id = p.Person_Id";
 	
-	if ($reg_id == 0) {
-		$SQL = "SELECT	registration_id
-				FROM	Registration_Person
-				WHERE	Person_Id = ".$person_id;
-
-		$result = mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute registration SELECT query.".mysql_error());
-		$row = mysql_fetch_array($result,MYSQL_ASSOC);
-		$reg_id = $row['registration_id'];
-		$person_id = $row['main_contact_person_id'];
-
-		$SQL = "SELECT	main_contact_person_id,
-                        number_in_party,
-						housing_type,
-						done_housing_ind
-				FROM	Registration
-				WHERE	Registration_Id = ".$reg_id;
-
-		$result = mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute registration SELECT query.".mysql_error());
-		$row = mysql_fetch_array($result,MYSQL_ASSOC);
-		$person_id = $row['main_contact_person_id'];
-        $num_in_party = $row['number_in_party'];
-		$housing_type = $row['housing_type'];
-		$done_housing = $row['done_housing_ind'];
-	}
-
-	$SQL = "SELECT	First_Name,
-					Last_Name
-			FROM	Person
-			WHERE	Person_ID = ".$person_id;
-	
-	$result = mysql_query( $SQL ) or die($SQL."\n\nCouldn't execute Registration SELECT count query.".mysql_error());
-	$row = mysql_fetch_array($result,MYSQL_ASSOC);
+	$result = mysqli_query($link, $SQL) or die($SQL."\n\nCouldn't execute Registration SELECT count query.".mysqli_error($link));
+	$row = mysqli_fetch_array($result);
+    $person_id = $row["Person_Id"];
 	$person_name = $row["First_Name"]." ".$row["Last_Name"];
 ?>
 
@@ -122,9 +101,9 @@
 				FROM String_Base
 				WHERE string_grouping = 1";
 
-	$result = mysql_query( $SQL ) or die("</select><br/>Couldn't execute query.".mysql_error()."");
+	$result = mysqli_query($link, $SQL) or die("</select><br/>Couldn't execute query.".mysqli_error($link)."");
 
-	while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+	while($row = mysqli_fetch_array($result)) {
 		echo "\t\t\t\t\t<option value='".$row[string_id]."'>".$row[string]."</option>\n";
 	}
 ?>
@@ -139,9 +118,9 @@
 				FROM String_Base
 				WHERE string_grouping = 2";
 
-	$result = mysql_query( $SQL ) or die("</select><br/>Couldn't execute query.".mysql_error()."");
+	$result = mysqli_query($link, $SQL) or die("</select><br/>Couldn't execute query.".mysqli_error($link)."");
 
-	while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+	while($row = mysqli_fetch_array($result)) {
 		if ($row[string_id] == 10) {
 			echo "\t\t\t\t\t<option class='toggleOnSelected' value='".$row[string_id]."'>".$row[string]."</option>\n";
 		} else {
@@ -169,13 +148,31 @@
 				FROM String_Base
 				WHERE string_grouping = 3";
 
-	$result = mysql_query( $SQL ) or die("</select><br/>Couldn't execute query.".mysql_error()."");
+	$result = mysqli_query($link, $SQL) or die("</select><br/>Couldn't execute query.".mysqli_error($link)."");
 
-	while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+	while($row = mysqli_fetch_array($result)) {
 		echo "\t\t\t\t\t<option value='".$row[string_id]."'>".$row[string]."</option>\n";
 	}
 ?>
 					</select></p>
+                    
+<?
+	$SQL = "	SELECT	string_id,
+						string
+				FROM String_Base
+				WHERE string_grouping = 4
+                ORDER BY string_id";
+
+	$result = mysqli_query($link, $SQL) or die("</select><br/>Couldn't execute query.".mysqli_error($link)."");
+	
+	$dining_idx = 0;
+	while($row = mysqli_fetch_array($result)) {
+		$dining_idx++;
+		echo "\t\t\t\t\t<p><label for='txtDiningPref$dining_idx'>".$row[string].":</label><input type='text' id='txtDiningPref$dining_idx' name='txtDiningPref$dining_idx' maxlength='2' size='2' /></p>\n";
+		echo "\t\t\t\t\t<input type='hidden' id='hidDining$dining_idx' name='hidDining$dining_idx' value='".$row[string_id]."' />\n";
+	}
+	echo "\t\t\t\t\t<input type='hidden' id='hidDiningCount' name='hidDiningCount' value='".$dining_idx."' />\n";
+?>                    
 			</div>
 			<br/>
 			<br/>
@@ -216,9 +213,9 @@
 					FROM String_Base
 					WHERE string_grouping = 1";
 
-		$result = mysql_query( $SQL ) or die("</select><br/>Couldn't execute query.".mysql_error());
+		$result = mysqli_query($link, $SQL) or die("</select><br/>Couldn't execute query.".mysqli_error($link));
 
-		    while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+		    while($row = mysqli_fetch_array($result)) {
 			    echo "\t\t\t\t\t<option value='".$row[string_id]."'>".$row[string]."</option>\n";
 		    }
 ?>
@@ -353,6 +350,21 @@
 				$("#txtHomeCity").val(data.homeCity);
 				$("#cboDining").val(data.dining);				
 			};
+
+			var fillOutDiningNumbers = function(data) {
+                var numDiningOptions = $("#hidDiningCount").val(),
+                    i = 0,
+                    j = 0,
+                    dataCnt = data.length;
+                
+                for (var i = 0; i < data.length; i++) {
+                    for (var j = 1; j <= numDiningOptions; j++) {
+                        if ($("#hidDining" + (j)).val() == data[i].diningType) {
+                            $("#txtDiningPref" + (j)).val(data[i].diningNum);
+                        }
+                    }
+                }
+			};
 			
 			var fillOutFamily = function(data) {
                 var numInParty = $("#hidNumInParty").val();
@@ -376,8 +388,8 @@
 			$("#delete-registration").click(function() {
 				if (confirm("Are you sure you want to delete the entire registration?")) {
 					var numInParty = $("#hidNumInParty").val();
-					for (var i = 0; i < (numInParty - 1); i++) {
-						var pid = $("#hidPersonId" + (i+1)).val();
+					for (var i = 1; i < numInParty; i++) {
+						var pid = $("#hidPersonId" + i).val();
 
 						$.ajax({
 							url:"db-delete-person.php", 
@@ -398,7 +410,7 @@
 							   reg_id: <?=$reg_id?>},
 						success: function() {},
 						error: function(xhr, text, e) {alert("Error deleting person - " + text); return;}
-					});						
+					});
 
 					$.ajax({
 				        url:"db-delete-registration.php", 
@@ -483,6 +495,15 @@
 					   reg_id: <?=$reg_id?>}, 
 				success: fillOutMainContact,
 				error: function(xhr, text, e) {alert("Error filling out Main Contact data - " + text)}
+			});
+
+			$.ajax({
+				url:"db-update-dining-options.php",
+				async: true,
+				type: "get",
+				data: {reg_id: <?=$reg_id?>}, 
+				success: fillOutDiningNumbers,
+				error: function(xhr, text, e) {alert("Error filling out Dining Option data - " + text)}
 			});
 
 			$.ajax({
@@ -587,7 +608,7 @@
 				reqMC.txtHousedBy = $("#txtHousedBy").val();
 				reqMC.txtHomeCity = $("#txtHomeCity").val();
 				reqMC.cboDining = $("#cboDining").val();
-				
+                
 				var ajax_response = $.ajax({
 					url:"db-update-main-contact.php", 
 					async: true, 
@@ -597,6 +618,20 @@
 					success: fillOutMainContact,
 					error: function() {alert("Error filling out Main Contact data...")}
 				});
+                
+                // Get dining information
+                var formData = "reg_id=<?=$reg_id?>";
+                formData += "&dining_count=" + $("#hidDiningCount").val();
+                formData += "&" + $("#reg-contact").serialize();
+				
+                var ajax_response = $.ajax({
+                    url:"db-update-dining-options.php",
+                    async: true,
+                    type: "get",
+                    data: formData, 
+                    success: fillOutDiningNumbers,
+                    error: function(xhr, text, e) {alert("Error filling out Dining Option data - " + text)}
+                });
 			});
 
 			$("#family-submit").click(function() {        
@@ -769,4 +804,4 @@
 </body>
 </html>
 
-<? mysql_close(); ?>
+<? mysqli_close($link); ?>

@@ -3,19 +3,18 @@ jQuery(document).ready(function() {
 		url:'db-registration.php',
 		datatype: "xml",
 		mtype: "GET",
-		colNames:['First', 'Last', 'Email', 'Phone', 'Home City', 'Housing', '# in Party', 'Housed By', 'Done Housing', 'Dining', 'Paid'],
+		colNames:['First', 'Last', 'Email', 'Phone', 'Home City', '# Party', '# Dining', 'Dining', 'Due', 'Paid'],
 		colModel:[
-			{name:'first_name', index:'first_name', width:120},
-			{name:'last_name',index:'last_name', width:150},
-			{name:'email', index:'email', width:200},
-			{name:'phone', index:'phone', width:150},
-			{name:'home_city', index:'home_city', width:150},
-			{name:'housing', index:'housing', width:250},
-			{name:'num_in_party', index:'num_in_party', width:110},
-			{name:'housed_by', index:'housed_by', width:150},
-			{name:'done_housing', index:'done_housing', width:150},
-			{name:'dining', index:'dining', width:150},
-			{name:'paid', index:'paid', width:70}],
+			{name:'first_name', index:'first_name', width:55},
+			{name:'last_name',index:'last_name', width:55},
+			{name:'email', index:'email', width:100},
+			{name:'phone', index:'phone', width:60},
+			{name:'home_city', index:'home_city', width:80},
+			{name:'num_in_party', index:'num_in_party', width:10},
+            {name:'num_dining', index:'num_dining', width:100},
+			{name:'dining', index:'dining', width:60},
+			{name:'due', index:'due', width:60},
+			{name:'paid', index:'paid', width:60}],
 		rowNum: 1000,
 		sortname: 'last_name, first_name',
 		sortorder: 'asc',
@@ -27,7 +26,7 @@ jQuery(document).ready(function() {
 		subGridUrl: 'db-sub-reg-person.php',
 		subGridModel: [
 			{name : ['First','Last','Group','Email','Phone'],
-			 width : [100,120,90,200,130] }
+			 width : [60,60,120,160,75] }
 			],
 		caption:"Registration Information"
 	});

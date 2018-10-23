@@ -6,21 +6,19 @@
 	// Get the database connection information
 	include("db-connect.php");
 
-	mysql_connect(localhost,$username,$password) or die("Unable to connect to database");
-	mysql_select_db($database) or die("Unable to select database");
-
+	$link = mysqli_connect(localhost, $username, $password, $database);
 
 	// Main contact info
 	$reg_id			= $_POST['gridReg'];
-	$amount			= (int)$_POST['txtHowMuch'];
+	$amount			= (float)$_POST['txtHowMuch'];
 	$add_payment	= $_POST['chkAddPayment']=="on"?true:false;
-	$reset			= (int)$_GET['reset'];
+	$reset			= (float)$_GET['reset'];
 
 	if ($reset == 1) {
 		$batch_amount = 0;
 	} else {
 		$reset = 0;
-		$batch_amount = (int)$_COOKIE["batch_amount"];
+		$batch_amount = (float)$_COOKIE["batch_amount"];
 		$batch_amount += $amount;
 	}
 	
@@ -29,12 +27,19 @@
 
 	if ($reset == 0) {
 		$SQL = "SELECT	CONCAT(p.First_Name, ' ', p.Last_Name) as name
-				FROM	Registration r, Person p
-				WHERE	r.Main_Contact_Person_ID = p.Person_ID
-						AND r.Registration_ID = $reg_id";
+				FROM	Registration r
+                    
+                    INNER JOIN Registration_Person rp
+                            ON r.Registration_ID = rp.Registration_ID
+                            AND rp.Main_Contact_Ind = 1
+                    
+                    INNER JOIN Person p
+                            ON rp.Person_ID = p.Person_ID
+				
+                WHERE	r.Registration_ID = $reg_id";
 
-		$result = mysql_query( $SQL ) or die($SQL."\n\nCouldn't execute Registration SELECT count query.".mysql_error());
-		$row = mysql_fetch_array($result,MYSQL_ASSOC);
+		$result = mysqli_query($link,  $SQL ) or die($SQL."\n\nCouldn't execute Registration SELECT count query.".mysqli_error($link));
+		$row = mysqli_fetch_array($result);
 		$name = $row['name'];
 
 
@@ -43,8 +48,8 @@
 				FROM	Registration_Payment
 				WHERE	Registration_ID = $reg_id";
 
-		$result = mysql_query( $SQL ) or die($SQL."\n\nCouldn't execute Registration SELECT count query.".mysql_error());
-		$row = mysql_fetch_array($result,MYSQL_ASSOC);
+		$result = mysqli_query($link,  $SQL ) or die($SQL."\n\nCouldn't execute Registration SELECT count query.".mysqli_error($link));
+		$row = mysqli_fetch_array($result);
 		$count = $row['count'];
 
 		// Somehow, this registration was already housed here...  Do not calculate the remainder left in the host household.
@@ -54,8 +59,8 @@
 						FROM	Registration_Payment
 						WHERE	Registration_ID = $reg_id";
 
-				$result = mysql_query($SQL) or die($SQL."\n\nCouldn't execute Registration SELECT count query.".mysql_error());
-				$row = mysql_fetch_array($result,MYSQL_ASSOC);
+				$result = mysqli_query($link, $SQL) or die($SQL."\n\nCouldn't execute Registration SELECT count query.".mysqli_error($link));
+				$row = mysqli_fetch_array($result);
 				$prev_amount = (int)$row['payment_amount'];
 
 				// Add the previous amount to the amount entered here.
@@ -66,7 +71,7 @@
 					SET		Payment_Amount = $amount
 					WHERE	Registration_ID = $reg_id";
 
-			mysql_query($SQL) or die($SQL."\n\nCouldn't execute Registration SELECT count query.".mysql_error());
+			mysqli_query($link, $SQL) or die($SQL."\n\nCouldn't execute Registration SELECT count query.".mysqli_error($link));
 
 		// If they're a new registrant, enter their information
 		} else {
@@ -78,7 +83,7 @@
 						($reg_id,
 						 $amount)";
 
-			mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute Registration_Housing INSERT query.".mysql_error());
+			mysqli_query($link,  $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute Registration_Housing INSERT query.".mysqli_error($link));
 		}
 	}
 ?>
@@ -113,9 +118,9 @@
 <? if ($reset == 0) { ?>
 		<h3>Payment Successfully Recorded!</h3>
 		<br/>
-		<p><?=$name?> has currently paid <b>$<?=$amount?>.00</b>. Money, money, money, money...  MONEY!</p>
+		<p><?=$name?> has currently paid <b>$<?=number_format($amount, 2)?></b>. Money, money, money, money...  MONEY!</p>
 <? } ?>		
-		<p>The batch total for this session is: <b>$<?=$batch_amount?>.00</b> <em>(This will reset after two more hours...)</em></p>
+		<p>The batch total for this session is: <b>$<?=number_format($batch_amount, 2)?></b> <em>(This will reset after two more hours...)</em></p>
 
 		<p><a href="reg-admin-add-money.php">Add another payment</a></p>
 
@@ -136,5 +141,5 @@
 </html>
 
 <?
-	mysql_close();
+	mysqli_close($link);
 ?>

@@ -45,7 +45,7 @@
 
 			<br/><br/>
 
-			<label class="label">How much money?&nbsp;&nbsp;&nbsp;$<input type="text" id="txtHowMuch" name="txtHowMuch" maxlength=3 size=3 /></label>
+			<label class="label">How much money?&nbsp;&nbsp;&nbsp;$<input type="text" id="txtHowMuch" name="txtHowMuch" maxlength=6 size=6 /></label>
 			<br/>
 			&nbsp;&nbsp;&nbsp;<label class="label"><input type="checkbox" id="chkAddPayment" name="chkAddPayment" />  Add this amount to any existing payment (not checking this will cause any existing amounts to be overwritten).</label>
 			<br/><br/>

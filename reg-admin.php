@@ -1,4 +1,9 @@
 <?
+$password = "Mr. Millich";
+$nonsense = "hithertoIhavedeclaredthewondersthouhastwrought";
+
+if (isset($_COOKIE['KCWeekendRegAdminPageLogin'])) {
+   if ($_COOKIE['KCWeekendRegAdminPageLogin'] == md5($password.$nonsense)) {
 	// **********************************************
 	// *     Registration Admin Submission Page     *
 	// **********************************************
@@ -6,24 +11,25 @@
 	// Get the database connection information
 	include("db-connect.php");
 
-	mysql_connect(localhost,$username,$password) or die("Unable to connect to database");
-	mysql_select_db($database) or die("Unable to select database");
+	$link = mysqli_connect(localhost, $username, $password, $database);
 
 
-	$SQL = "SELECT	SUM(Payment_Amount) as total
+	$SQL = "SELECT	SUM(Payment_Amount) as total,
+                    SUM(Amount_Due) as due
 			FROM	Registration_Payment";
 	
-	$result = mysql_query( $SQL ) or die($SQL."\n\nCouldn't execute Registration SELECT count query.".mysql_error());
-	$row = mysql_fetch_array($result,MYSQL_ASSOC);
+	$result = mysqli_query($link, $SQL) or die($SQL."\n\nCouldn't execute Registration SELECT count query.".mysqli_error($link));
+	$row = mysqli_fetch_array($result);
 	$total_payment = $row['total'];
+    $total_due = $row['due'];
 	
 	$SQL = "SELECT	COUNT(*) as count
 			FROM 	Registration
 			WHERE	done_housing_ind = 0
 					AND Housing_Type IN (9)";
 
-	$result = mysql_query( $SQL ) or die($SQL."\n\nCouldn't execute Registration SELECT count query.".mysql_error());
-	$row = mysql_fetch_array($result,MYSQL_ASSOC);
+	$result = mysqli_query($link, $SQL) or die($SQL."\n\nCouldn't execute Registration SELECT count query.".mysqli_error($link));
+	$row = mysqli_fetch_array($result);
 	$num_not_housed = $row['count'];
 
 	// *** Get the visitor's graph information ***/
@@ -36,10 +42,10 @@
 			GROUP BY week
 			ORDER BY week ASC";
 
-	$result = mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute registration SELECT query.".mysql_error());
+	$result = mysqli_query($link, $SQL) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute registration SELECT query.".mysqli_error($link));
 	$graphData = "var dataCurrent = [";
 	$bIsData = false;
-	while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+	while($row = mysqli_fetch_array($result)) {
 		$bIsData = true;
 		if ($total == 0) {
 			$graphData .= "[".($row[week] - 1).",0],";
@@ -55,8 +61,8 @@
 	}
 	$graphData .= "];";
 	
-	// Get the 2011 data
-	mysql_select_db("mmoluf_kcweekend_2011") or die("Unable to select database");
+	// Get the 2014 data
+	mysqli_select_db($link, "awesom72_kcweekend_2014") or die("Unable to select database - 2014");
 
 	$total = 0;
 	$graphDataQL = "SELECT	IFNULL(WEEK( registration_date ),47) AS week,
@@ -66,9 +72,9 @@
 			GROUP BY week
 			ORDER BY week ASC";
 
-	$result = mysql_query( $graphDataQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$graphDataQL."\n\nCouldn't execute registration SELECT query.".mysql_error());
-	$graphData .= "\n\nvar data2011 = [";
-	while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+	$result = mysqli_query($link, $graphDataQL) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$graphDataQL."\n\nCouldn't execute registration SELECT query.".mysqli_error($link));
+	$graphData .= "\n\nvar data2014 = [";
+	while($row = mysqli_fetch_array($result)) {
 		if ($total == 0) {
 			$graphData .= "[".($row[week] - 1).",0],";
 		}
@@ -79,8 +85,9 @@
 	$graphData = substr($graphData, 0, strlen($graphData) - 1);
 	$graphData .= "];";	
 	
-	// Get the 2012 data
-	mysql_select_db("mmoluf_kcweekend_2012") or die("Unable to select database");
+
+	// Get the 2015 data
+	mysqli_select_db($link, "awesom72_kcweekend_2015") or die("Unable to select database - 2015");
 
 	$total = 0;
 	$graphDataQL = "SELECT	IFNULL(WEEK( registration_date ),47) AS week,
@@ -90,9 +97,9 @@
 			GROUP BY week
 			ORDER BY week ASC";
 
-	$result = mysql_query( $graphDataQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$graphDataQL."\n\nCouldn't execute registration SELECT query.".mysql_error());
-	$graphData .= "\n\nvar data2012 = [";
-	while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+	$result = mysqli_query($link, $graphDataQL) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$graphDataQL."\n\nCouldn't execute registration SELECT query.".mysqli_error($link));
+	$graphData .= "\n\nvar data2015 = [";
+	while($row = mysqli_fetch_array($result)) {
 		if ($total == 0) {
 			$graphData .= "[".($row[week] - 1).",0],";
 		}
@@ -102,8 +109,64 @@
 	}
 	$graphData = substr($graphData, 0, strlen($graphData) - 1);
 	$graphData .= "];";	
-	
-	mysql_select_db($database) or die("Unable to select database");	
+
+    // This line resets back to the LIVE database set up for this domain...
+	mysqli_select_db($link, $database) or die("Unable to select database - 2015");	
+
+	// Get the 2016 data
+	mysqli_select_db($link, "awesom72_kcweekend_2016") or die("Unable to select database - 2016");
+
+	$total = 0;
+	$graphDataQL = "SELECT	IFNULL(WEEK( registration_date ),47) AS week,
+					SUM( number_in_party ) AS total				   
+			FROM	Registration
+			WHERE	housing_type IN ( 9, 10, 11, 12 ) 
+			GROUP BY week
+			ORDER BY week ASC";
+
+	$result = mysqli_query($link, $graphDataQL) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$graphDataQL."\n\nCouldn't execute registration SELECT query.".mysqli_error($link));
+	$graphData .= "\n\nvar data2016 = [";
+	while($row = mysqli_fetch_array($result)) {
+		if ($total == 0) {
+			$graphData .= "[".($row[week] - 1).",0],";
+		}
+		$graphData .= "[".$row[week].",";
+		$total += $row[total];
+		$graphData .= $total."],";
+	}
+	$graphData = substr($graphData, 0, strlen($graphData) - 1);
+	$graphData .= "];";	
+
+	// Get the 2017 data
+	mysqli_select_db($link, "awesom72_kcweekend_2017") or die("Unable to select database - 2017");
+
+	$total = 0;
+	$graphDataQL = "SELECT	IFNULL(WEEK( registration_date ),47) AS week,
+					SUM( number_in_party ) AS total				   
+			FROM	Registration
+			WHERE	housing_type IN ( 9, 10, 11, 12 ) 
+			GROUP BY week
+			ORDER BY week ASC";
+
+	$result = mysqli_query($link, $graphDataQL) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$graphDataQL."\n\nCouldn't execute registration SELECT query.".mysqli_error($link));
+	$graphData .= "\n\nvar data2017 = [";
+	while($row = mysqli_fetch_array($result)) {
+		if ($total == 0) {
+			$graphData .= "[".($row[week] - 1).",0],";
+		}
+		$graphData .= "[".$row[week].",";
+		$total += $row[total];
+		$graphData .= $total."],";
+	}
+	$graphData = substr($graphData, 0, strlen($graphData) - 1);
+	$graphData .= "];";	
+
+    // This line resets back to the LIVE database set up for this domain...
+	mysqli_select_db($link, $database) or die("Unable to select database - 2016");	
+
+    // This line resets back to the LIVE database set up for this domain...
+	mysqli_select_db($link, $database) or die("Unable to select database - 2016");	
+
 ?>
 
 <!DOCTYPE HTML>
@@ -121,12 +184,6 @@
 	<link rel="stylesheet" href="js/reveal/reveal.css" type="text/css" media="screen" />
 
 	<? include "jqgrid-header.php" ?>
-	<script type="text/javascript" src="js/grid-reg-statistics.js"></script>
-	<script type="text/javascript" src="js/select2/select2.js"></script>
-	<script src="js/reveal/jquery.reveal.js" type="text/javascript"></script>
-	
-    <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot/excanvas.min.js"></script><![endif]-->
-    <script language="javascript" type="text/javascript" src="js/flot/jquery.flot.js"></script>
 	
 	<? include ('google-analytics.php'); ?>
 </head>
@@ -149,9 +206,9 @@
 				FROM Person
 				ORDER BY last_name, first_name";
 
-	$result = mysql_query( $SQL ) or die("</select><br/>Couldn't execute query.".mysql_error()."");
+	$result = mysqli_query($link, $SQL) or die("</select><br/>Couldn't execute query.".mysqli_error($link)."");
 
-	while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+	while($row = mysqli_fetch_array($result)) {
 		echo "\t\t\t<option value='".$row[person_id]."'>".htmlspecialchars($row[full_name])."</option>\n";
 	}
 ?>
@@ -179,6 +236,7 @@
 				<li><a href="reg-admin-email-lists.php">Generate an Email List</a></li>
 				<li><a href="activity-vball-team.php" target="_blank">Modify Volleyball Teams</a></li>
 				<li><a href="activity-bball-team.php" target="_blank">Modify Basketball Teams</a></li>
+				<li><a href="activity-add-activity.php" target="_blank">Add/Modify Individual Activities</a></li>
 			</ul>
 		</div>
 		
@@ -202,10 +260,10 @@
 		</div>
 		<div class="column">
 			<p>
-				<b>The KC Weekend has currently generated $<?=$total_payment?>.00 in donations with a goal of $3700.</b>
+				<b>The KC Weekend has currently generated $<?=$total_payment?> in donations with the amount owed of $<?=intval($total_due + 300) ?>.00.</b>
 				<br/>
 				<div class="progress-bar green glow">
-					<span style="width: <?=intval(($total_payment/3700)*100) ?>%"></span>
+					<span style="width: <?=intval(($total_payment/intval($total_due + 300))*100) ?>%"></span>
 				</div>
 			</p>
 		</div>
@@ -218,6 +276,12 @@
 
 	<? include "footer.php" ?>
 
+	<script type="text/javascript" src="js/grid-reg-statistics.js"></script>
+	<script type="text/javascript" src="js/select2/select2.js"></script>
+	<script src="js/reveal/jquery.reveal.js" type="text/javascript"></script>
+	
+    <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot/excanvas.min.js"></script><![endif]-->
+    <script language="javascript" type="text/javascript" src="js/flot/jquery.flot.js"></script>
 	<script type="text/javascript">		
 		$("#reg-info-search").select2({
 			placeholder: "Search for a person...",
@@ -266,9 +330,14 @@
 			<?=$graphData ?>		
 
 			var p = $.plot($("#regGraph"), [
-					{label: "2013", data: dataCurrent}, 
-					{label: "2012", data: data2012}, 
-					{label: "2011", data: data2011}
+					{label: "2018", data: dataCurrent}, 
+					{label: "2017", data: data2017}, 
+					{label: "2016", data: data2016}, 
+					{label: "2015", data: data2015}, 
+					{label: "2014", data: data2014}
+					//{label: "2013", data: data2013}, 
+					//{label: "2012", data: data2012}, 
+					//{label: "2011", data: data2011}
 				], {legend: {position: "nw"}}, {
 				series: {
 					lines: { show: true },
@@ -295,4 +364,26 @@
 </body>
 </html>
 
-<? mysql_close(); ?>
+<? 			mysqli_close($link);
+		exit;
+   } else { // The cookie is bad, so expire it and reload the page. It will delete the cookie on most browsers (I hope).
+		setcookie("KCWeekendRegAdminPageLogin", "", time()-3600);
+		header("Location: $_SERVER[PHP_SELF]");
+   }
+}
+
+if (isset($_GET['p']) && $_GET['p'] == "login") {
+	if ($_POST['keypass'] != $password) {
+      echo "Sorry, that password does not match. Press Back to try again...";
+      exit;
+   } else if ($_POST['keypass'] == $password) {
+      setcookie('KCWeekendRegAdminPageLogin', md5($_POST['keypass'].$nonsense), time() + 60*60*24*30);
+      header("Location: $_SERVER[PHP_SELF]");
+   } else {
+      echo "Sorry, something is not working correctly. Perhaps you don't have cookies enabled, or it's time to buy that new computer you want. :) Press Back to try again...";
+   }
+}
+
+include('secure.php');
+?>
+

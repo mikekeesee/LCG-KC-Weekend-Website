@@ -2,19 +2,36 @@
 	// Get the database connection information
 	include("db-connect.php");
 
-	mysql_connect(localhost,$username,$password) or die("Unable to connect to database");
-	mysql_select_db($database) or die("Unable to select database");
-
+	$link = mysqli_connect(localhost, $username, $password, $database);
 
 	// Get the POST data
-	$mc_person_id = $_GET['person_id'];
+	$person_id = $_GET['person_id'];
 	$reg_id = $_GET['reg_id'];
 	$main_contact_first = $_GET['txtFirstName'];
 	$main_contact_last = $_GET['txtLastName'];
 
+    // Now get the data to return via JSON
+    $SQL = "SELECT	p.Person_ID
+            
+            FROM	Person p
+                
+                INNER JOIN Registration_Person rp
+                    ON p.Person_ID = rp.Person_ID
+                    AND rp.Main_Contact_Ind = 1
+                    
+                INNER JOIN Registration r
+                    ON rp.Registration_ID = r.Registration_ID
+            
+            WHERE	r.Registration_ID = ".$reg_id;
+            
+    $result = mysqli_query($link,  $SQL ) or die($SQL."\n\nCouldn't execute registration SELECT query.".mysqli_error($link));
+    //"Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute registration SELECT query.".mysqli_error($link));
+    $row = mysqli_fetch_array($result);
+    $mc_person_id = $row['Person_ID'];
+    
 	if ($main_contact_first != "" || $main_contact_last != "") {
 
-		$main_contact_age = $_GET['cboAgeRange'];
+        $main_contact_age = $_GET['cboAgeRange'];
 		$main_contact_email = $_GET['txtEmail'];
 		$main_contact_phone = $_GET['txtPhone'];
 
@@ -27,24 +44,24 @@
 		$dining_id = $_GET['cboDining'];
 
 		$SQL = "UPDATE	Person
-				SET		First_Name = '".mysql_real_escape_string($main_contact_first)."',
-						Last_Name = '".mysql_real_escape_string($main_contact_last)."',
+				SET		First_Name = '".mysqli_real_escape_string($link, $main_contact_first)."',
+						Last_Name = '".mysqli_real_escape_string($link, $main_contact_last)."',
 						Age_Range = ".$main_contact_age.",
 						Email = '".$main_contact_email."',
 						Phone = '".$main_contact_phone."'
 				WHERE	Person_ID = ".$mc_person_id;
 
-		$result = mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute main contact UPDATE person query.".mysql_error()); 
+		$result = mysqli_query($link,  $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute main contact UPDATE person query.".mysqli_error($link)); 
 
 		$SQL = "UPDATE	Registration
 				SET		Housing_Type = ".$housing_type.",
-						Housed_By = '".mysql_real_escape_string($housed_by)."',
+						Housed_By = '".mysqli_real_escape_string($link, $housed_by)."',
 						Dining_ID = ".$dining_id.",
-						Home_City = '".mysql_real_escape_string($home_city)."'
+						Home_City = '".mysqli_real_escape_string($link, $home_city)."'
 				WHERE	Registration_ID = ".$reg_id;
 
-		mysql_query( $SQL ) or die($SQL."\n\nCouldn't execute registration UPDATE query.".mysql_error());
-		//"Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute registration UPDATE query.".mysql_error());
+		mysqli_query($link,  $SQL ) or die($SQL."\n\nCouldn't execute registration UPDATE query.".mysqli_error($link));
+		//"Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute registration UPDATE query.".mysqli_error($link));
 	}
 	
 	// Now get the data to return via JSON
@@ -60,14 +77,17 @@
 			
 			FROM	Person p
 				
-				INNER JOIN Registration r
-					ON p.Person_ID = r.Main_Contact_Person_ID
+				INNER JOIN Registration_Person rp
+					ON p.Person_ID = rp.Person_ID
+                    
+                INNER JOIN Registration r
+                    ON rp.Registration_ID = r.Registration_ID
 			
 			WHERE	p.Person_Id = ".$mc_person_id;
-
-	$result = mysql_query( $SQL ) or die($SQL."\n\nCouldn't execute registration SELECT query.".mysql_error());
-	//"Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute registration SELECT query.".mysql_error());
-	$row = mysql_fetch_array($result,MYSQL_ASSOC);
+//die ($SQL);
+	$result = mysqli_query($link,  $SQL ) or die($SQL."\n\nCouldn't execute registration SELECT query.".mysqli_error($link));
+	//"Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute registration SELECT query.".mysqli_error($link));
+	$row = mysqli_fetch_array($result);
 
 	// Set up the return type header
 	header("Content-type: application/json;charset=utf-8");
@@ -82,5 +102,5 @@
 	$s .= ' "dining": '.$row['Dining_ID'].'}';
 	echo $s;
 	
-	mysql_close();
+	mysqli_close($link);
 ?>

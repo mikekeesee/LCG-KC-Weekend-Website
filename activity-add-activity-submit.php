@@ -1,10 +1,4 @@
 <?
-	// Get the database connection information
-	include("db-connect.php");
-
-	mysql_connect(localhost,$username,$password) or die("Unable to connect to database");
-	mysql_select_db($database) or die("Unable to select database");
-
 	// **********************************************
 	// *       Admin Housing Submission Page        *
 	// **********************************************
@@ -12,46 +6,48 @@
 	// Get the database connection information
 	include("db-connect.php");
 
-	mysql_connect(localhost,$username,$password) or die("Unable to connect to database");
-	mysql_select_db($database) or die("Unable to select database");
-
+	$link = mysqli_connect(localhost, $username, $password, $database);
 
 	// Main contact info
-	$person_id		= $_POST['gridPerson'];
-	$activity_id	= $_POST['gridActivity'];
+	$person_id			= $_POST['gridPerson'];
+	$activity_id_str	= $_POST['gridActivity'];
+	
+	$activity_ids		= explode(",", $activity_id_str);
+	
+	for ($i = 0; $i < count($activity_ids); $i++) {
+		$activity_insert_str .= "(".$person_id.",".$activity_ids[$i]."),";
+	}
+	
+	// Get rid of the trailing comma
+	$activity_insert_str = rtrim($activity_insert_str, ",");	
 
-	// Verify that this person is not already signed up for an activity
-	$SQL = "SELECT	COUNT(*) as count
-			FROM	Person_Activity
-			WHERE	Person_ID = $person_id";
+	// If the activity's already registered
+	if ($person_id > 0) {
+		if ($activity_insert_str > "") {
+			$SQL = "SELECT	COUNT(*) as count
+					FROM	Person_Activity
+					WHERE	person_id = ".$person_id;
 
-	$result = mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute Person_Activity SELECT count query.".mysql_error());
-	$row = mysql_fetch_array($result,MYSQL_ASSOC);
-	$count = $row['count'];
+			$result = mysqli_query($link, $SQL) or die($SQL.mysqli_error($link));//"Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute family activity SELECT count query.".mysqli_error($link));
+			$row = mysqli_fetch_array($result);
+			$count = $row['count'];
 
-	// If a row already exists, update their existing activity with their newly selected activity.
-	if ($count > 0) {
+			// If there's any existing activities, clear them and re-insert
+			if ($count > 0) {
+				$SQL = "DELETE FROM	Person_Activity
+						WHERE		person_id = ".$person_id;
 
-		$SQL = "UPDATE	Person_Activity
-				SET		Activity_ID = $activity_id
-				WHERE	Person_ID = $person_id";
+				mysqli_query($link, $SQL) or die($SQL.mysqli_error($link));//"Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute UPDATE family activity query.".mysqli_error($link));
+			
+			}
 
-		mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute Registration UPDATE query.".mysql_error());
+			$SQL = "INSERT INTO	Person_Activity
+							(Person_ID,
+							 Activity_ID)
+					VALUES ".$activity_insert_str;
 
-
-	// This is their first time picking an activity.
-	} else {
-
-		$SQL = "INSERT INTO Person_Activity
-					(Person_ID,
-					 Activity_ID)
-				VALUES
-					($person_id,
-					 $activity_id)";
-
-		mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute Registration_Housing INSERT query.".mysql_error());
-
-		$dont_calc = 0;
+			mysqli_query($link, $SQL) or die($SQL.mysqli_error($link));//"Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute INSERT family activity query.".mysqli_error($link));
+		}			
 	}
 
 ?>
@@ -68,6 +64,8 @@
 
 	<link rel="stylesheet" href="css/main.css" type="text/css" media="screen" />
 
+	<? include ("jqgrid-header.php") ?>
+
 	<? include ('google-analytics.php'); ?>
 </head>
 
@@ -82,10 +80,10 @@
 
 		<h2>Activities</h2>
 
-		<p>You have successfully signed up!</p>
+		<p>Excellent work! You are now participating in the activities selected.</p>
 
-		<p>You are now participating in the activity selected.</p>
-
+		<br/>
+		
 		<p><a href="activity-add-activity.php">Sign-up someone else for an activity</a></p>
 
 		<p><a href="activity-main.php">Back to the Activities Main Page</a></p>
@@ -100,5 +98,5 @@
 </html>
 
 <?
-	mysql_close();
+	mysqli_close($link);
 ?>

@@ -1,3 +1,11 @@
+<?php
+$password = "security";
+$nonsense = "hithertoIhavedeclaredthewondersthouhastwrought";
+
+if (isset($_COOKIE['KCWeekendPageLogin'])) {
+   if ($_COOKIE['KCWeekendPageLogin'] == md5($password.$nonsense)) {
+?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -30,19 +38,21 @@
 	<!-- Start of Main Content Area -->
 	<div id="main-content">
 
+		<h2>Maps and Information</h2>
+	
 		<div class="clear-float"></div>
 		<div id="tabs">
 			<ul>
 				<li><a href="#locations">Locations</a></li>
-				<li><a href="#food">Food</a></li>
-				<li><a href="#dance">Dance or Water Park?</a></li>
+				<li><a href="#sat-night">Saturday Night</a></li>
+				<li><a href="#food">Dinner</a></li>
 			</ul>
 
 			<div id="locations">
 		
 				<h3>Locations and Schedule</h3>
 
-				<p>Our facility for Friday night and Saturday will be the Holiday Inn and CoCo Key Water Resort, 9103 E. 39th St. in Kansas City, MO.</p>
+				<p>Our facility for Friday night and Saturday will be the Embassy Suites at KCI, 7640 Tiffany Springs Parkway in Kansas City, MO.</p>
 				
 				<p>Sunday's sports and family activities will again be at Okun Fieldhouse, 20200 Johnson Drive in Shawnee, KS.</p>
 
@@ -52,11 +62,11 @@
 
 	<? include "calendar.php" ?>					
 	
-					<p>All Friday and Saturday activities will be at the Holiday Inn and CoCo Key Water Resort in Kansas City, MO:</p>
+					<p>All Friday and Saturday activities will be at the Embassy Suites in Kansas City, MO:</p>
 					<p style="margin:20px"><b>
-						<b><a href='http://cocokeykansascity.com'>Holiday Inn and CoCo Key Water Resort</a></b><br />
-						9103 E. 39th St.<br />
-						Kansas City, MO 64133
+						<b>Embassy Suites at KCI</b><br />
+						7640 Tiffany Springs Parkway<br />
+						Kansas City, MO 64153
 					</b></p>
 					<br />
 					<p>All Sunday activities will be at the Okun Fieldhouse in Shawnee, KS:</p>
@@ -68,7 +78,7 @@
 				</div>
 				
 				<div class="map-column">
-					<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=CoCo+Key+Water+Resort,+East+39th+Street,+Kansas+City,+MO&amp;aq=0&amp;oq=coco+&amp;sll=39.049186,-94.476757&amp;sspn=0.026496,0.038795&amp;t=h&amp;g=39.051618,-94.470498&amp;ie=UTF8&amp;hq=CoCo+Key+Water+Resort,&amp;hnear=E+39th+St,+Kansas+City,+Missouri&amp;ll=39.056984,-94.479504&amp;spn=0.023327,0.036478&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe><br />	
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6177.30420166625!2d-94.67247246756402!3d39.27345956620335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x3017c2d2c8e21b1b!2sEmbassy+Suites+by+Hilton+Kansas+City+International+Airport!5e0!3m2!1sen!2sus!4v1474219246493" width="425" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>
 
 					<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?q=39.03427,-94.819672&amp;num=1&amp;t=h&amp;vpsrc=6&amp;ie=UTF8&amp;ll=39.032186,-94.82141&amp;spn=0.011668,0.018239&amp;z=15&amp;output=embed"></iframe><br />
 				</div>
@@ -79,11 +89,16 @@
 			<div id="food">
 				<h3>Meal Options</h3>
 				
-				<img src="images/dinner_noodles.jpg" alt="Pasta" style="float:left;margin:0 1em 0 0;" height="180" width="270"/>
+				<img src="images/beef-brisket.jpg" alt="Beef Brisket" style="float:left;margin:0 1em 0 0;" height="180" width="270"/>
 				
-				<p>We have arranged a catered meal of <b>salad with dressing and croutons, buttered cavatappi noodles with meat marinara, garlic breadsticks and bread pudding with caramel sauce</b>. Hungry yet? However, it is first-come, first-serve, and we only have 400 seats to this tasty dinner.</p>
+				<p>We have arranged a catered meal of <b>beef brisket</b>, salad, roll, potato side, vegetable side and dessert.</p>
 				
-				<p>In order to sign up for the dinner, please <a href="reg-main-contact.php">register</a> and choose Catered Meal under Dining Preference. Then quickly send in your payment of <b>$10 per person</b> in your group. <b>NOTE: If you&#39;re using PayPal, please pay $11 per person for the additional processing charges.</b> You can either click the PayPal Donate in the upper-right corner of the web page, or send a check.</p>
+				<p>In order to sign up for the dinner, please <a href="reg-main-contact.php">register</a> and choose Catered Meal 
+				under Dining Preference. Then quickly send in your payment of <b>$24.50 per adult meal, $13 for children 9-12 or $10 for children 3-8</b>
+				in your group. We cut you a break in price if bringing over 4 children. <b>NOTE: If you&#39;re using PayPal, please pay $1 per party for 
+				the additional processing charges.</b> If this seems waaaaay too confusing, don&#39;t worry, we calculate it for
+				you when you register. You can either click the PayPal Pay Now button in the upper-right corner of the web page, or 
+				send a check.</p>
 				
 				<p>If writing a check, please make checks payable to <u>Local Church Activity Fund</u>.  Please send all checks to:</p>
 				
@@ -94,29 +109,56 @@
 				</b></p>
 				
 				<h3>Eating Out</h3>
-				<p>There are a couple of eating options inside the Holiday Inn, including the Wet Rooster Bar, Gator&#39;s Grab &amp; Go and Casey&#39;s Sports Bar &amp; Grill. There is also a Denny&#39;s across the street.</p>
-				
-				<p>Further down I-70 to the east is a large number of restaurants in Independence. Further to the west is downtown Kansas City and the incredible (and ritzy) Plaza.</p>
+				<p>There are several eating options around the Embassy Suites, including the Zona Rosa shopping district. Some restuarants are
+                Cracker Barrel, Smokehouse BBQ, Abuelo's Mexican Restaurant, Granite City Brewery, The Hereford House, BRAVO Cucina, Outback Steakhouse,
+                and many more! There are also plenty of fast food restaurants, too.</p>
 
 			</div>
 
-			<div id="dance">
-				<h3>Dance or Water Park? You Decide!</h3>
+			<div id="sat-night">
+				<h3>Saturday Night Activities</h3>
 
-				<img src="images/coco_key.jpg" alt="Water Park" style="float:left;margin:0 1em 0 0;" height="300" width="450"/>
+				<img src="images/red-carpet.jpg" alt="Roll Out the Red Carpet" style="float:left;margin:0 1em 0 0;" height="300" width="450"/>
 				
-				<h4>Dance</h4>
+                <h4>Costume Theme</h4>
+                
+                <p>This information is top secret. That is, we still don&#39;t know what it is. Details are coming soon!</p>
+                
+                
+				<h4>The Show</h4>
 				
-				<p>There will be a dance this year for those who have canned heat in their heels (in other words, you like to dance). So get ready to get jiggy, have a swingin&#39; good time and salsa your way to the chip bowl, whatever that means. As of this writing, there is no theme for the dance. Dress code to come...</p>
+				<p>The show will begin at 7:00 p.m. Brisket is for dinner, but entertainment is for dessert. That is all we can say.</p>
 				
 				<br />
 				
-				<h4>Water Park</h4>
+				<h4>Dance</h4>
 				
-				<p>If you would prefer to soak your feet, or perhaps have a 500-gallon bucket of water dumped on your head, then you&#39;re looking to play at the incredible CoCo Key Water Park.</p>
+				<p>The dance will be its usual, wonderful self. Please dress formal or Sabbath wear.</p>
 				
-				<p>Tickets are $10 per person and will be available at the park. <b>NOTE: You do NOT need to stay at the hotel to get this rate. Just say you are with the Living Church of God.</b> Get more information about the water park <a href='http://www.cocokeykansascity.com/attractions/water-activities.aspx'>here</a>.</p>
-	
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				
+				<!--<h4>Photography</h4>
+				
+				<p>The Photo Area was so popular last year, we are bringing it back! There will be two sessions:</p>
+				<ul>
+					<li>5:30p - 6:15p - Before dinner, there will be two photo booths open, each with a photographer.</li>
+					<li>8:30p - 9:00p - After the fun show and during the dance. One photo booth with a photographer.</li>
+				</ul>
+				<p><i>NOTE: One session per family, please.</i></p>
+				
+				<p>There will also be an open photo area available during the dance, complete with props, so you can make your own memories! 
+				<i>Please, no selfies... Okay, who are we kidding?? :) Take all you want!</p> -->
 			</div>
 
 		</div>
@@ -137,6 +179,7 @@
 		});
 
 		var divCnt = 0;
+		var timer;
 		
 		function showDiv() {				
 			$('.daily-schedule').each(function(index) {
@@ -150,8 +193,37 @@
 			divCnt = (divCnt + 1) % 3;
 			
 			// And wait one second before fading in the next one
-			setTimeout(showDiv, 5000);
+			timer = setTimeout(showDiv, 4000);
 		}
+
+		$('.daily-schedule').hover(
+			function() { clearTimeout(timer); },
+			function() { timer = setTimeout(showDiv, 4000); }
+		);
 	</script>	
 </body>
 </html>
+
+<?
+      exit;
+   } else {
+		setcookie("KCWeekendPageLogin", "", time()-3600);
+		header("Location: $_SERVER[PHP_SELF]");
+   }
+}
+
+if (isset($_GET['p']) && $_GET['p'] == "login") {
+	if ($_POST['keypass'] != $password) {
+      echo "Sorry, that password does not match. Press Back to try again...";
+      exit;
+   } else if ($_POST['keypass'] == $password) {
+      setcookie('KCWeekendPageLogin', md5($_POST['keypass'].$nonsense), time() + 60*60*24*30);
+      header("Location: $_SERVER[PHP_SELF]");
+   } else {
+      echo "Sorry, something is not working correctly. Perhaps you don't have cookies enabled, or it's time to buy that new computer you want. :) Press Back to try again...";
+   }
+}
+
+include('secure.php');
+
+?>

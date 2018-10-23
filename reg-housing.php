@@ -4,8 +4,7 @@
 
 	header('P3P:CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"');
 
-	mysql_connect(localhost,$username,$password) or die("Unable to connect to database");
-	mysql_select_db($database) or die("Unable to select database");
+	$link = mysqli_connect(localhost, $username, $password, $database);
 
 	// Get the POST data and write it to a cookie
 	$num_in_party	= $_POST["hid_numInParty"];
@@ -15,119 +14,54 @@
 
 	$expire = time() + (60*60*2);
 
-	for ($i=1; $i < $num_in_party; $i++) {
-		$first[$i]	= $_POST["txtFirstName".$i];
-		$last[$i]	= $_POST["txtLastName".$i];
-		$email[$i]	= $_POST["txtEmail".$i];
-		$phone[$i]	= $_POST["txtPhone".$i];
-		$age[$i]	= $_POST["cboAgeRange".$i];
-		$activity[$i]	= $_POST["cboActivity".$i];
-	}
-
-
-	// Insert the Person table data for each family member
-	for ($i=1; $i < $num_in_party; $i++) {
-
-		// First, check if the family member already exists on this registration.
-		$SQL = "SELECT	p.person_id as person_id
-				FROM	Person p, Registration_Person rp
-				WHERE	p.Person_ID = rp.Person_ID
-						AND rp.Registration_ID = ".$reg_id."
-						AND p.First_Name = '".mysql_real_escape_string($first[$i])."'
-						AND p.Last_Name = '".mysql_real_escape_string($last[$i])."'";
-
-		$result = mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute main contact SELECT count query.".mysql_error());
-		$row = mysql_fetch_array($result,MYSQL_ASSOC);
-
-		// If the person has already registered, update their information
-		if (!is_null($row['person_id'])) {
-			$fam_person_id = $row['person_id'];
-
-			$SQL = "UPDATE	Person
-					SET		First_Name = '".mysql_real_escape_string($first[$i])."',
-							Last_Name = '".mysql_real_escape_string($last[$i])."',
-							Age_Range = ".$age[$i].",
-							Email = '".$email[$i]."',
-							Phone = '".$phone[$i]."'
-					WHERE	Person_ID = ".$fam_person_id;
-
-			mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute main contact UPDATE person query.".mysql_error());
-
-			if ($activity[$i] > 0) {
+	// Get each person's activities
+	for ($i=0; $i < $num_in_party; $i++) {
+		$fam_person_id[$i]		= $_POST["hid_personid".$i];
+		
+		// Re-Initialize the string for each time through the loop
+		$activity_insert_str	 = "";
+		
+		// Build an insert string for each person's activity list
+		$activity_insert_str	 = $_POST["chkFamilyGames".$i]=="on" ? "(".$fam_person_id[$i].",1)," : "";
+		$activity_insert_str	.= $_POST["chkChildBball".$i]=="on" ? "(".$fam_person_id[$i].",2)," : "";
+		$activity_insert_str	.= $_POST["chkTeenBball".$i]=="on" ? "(".$fam_person_id[$i].",3)," : "";
+		$activity_insert_str	.= $_POST["chkVballClinic".$i]=="on" ? "(".$fam_person_id[$i].",4)," : "";
+		$activity_insert_str	.= $_POST["chkBball".$i]=="on" ? "(".$fam_person_id[$i].",5)," : "";
+		$activity_insert_str	.= $_POST["chkVball".$i]=="on" ? "(".$fam_person_id[$i].",6)," : "";
+		$activity_insert_str	.= $_POST["chkGagaBall".$i]=="on" ? "(".$fam_person_id[$i].",7)," : "";
+		
+		// Get rid of the trailing comma
+		$activity_insert_str = rtrim($activity_insert_str, ",");
+				
+		// If the activity's already registered
+		if ($fam_person_id[$i] > 0) {
+			if ($activity_insert_str > "") {
 				$SQL = "SELECT	COUNT(*) as count
 						FROM	Person_Activity
-						WHERE	person_id = ".$fam_person_id;
+						WHERE	person_id = ".$fam_person_id[$i];
 
-				$result = mysql_query( $SQL ) or die($SQL.mysql_error());//"Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute family activity SELECT count query.".mysql_error());
-				$row = mysql_fetch_array($result,MYSQL_ASSOC);
+				$result = mysqli_query($link, $SQL) or die($SQL.mysqli_error($link));//"Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute family activity SELECT count query.".mysqli_error($link));
+				$row = mysqli_fetch_array($result);
 				$count = $row['count'];
 
+				// If there's any existing activities, clear them and re-insert
 				if ($count > 0) {
-					$SQL = "UPDATE	Person_Activity
-							SET		activity_id = ".$activity[$i]."
-							WHERE	person_id = ".$fam_person_id;
+					$SQL = "DELETE FROM	Person_Activity
+							WHERE		person_id = ".$fam_person_id[$i];
 
-					mysql_query( $SQL ) or die($SQL.mysql_error());//"Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute UPDATE family activity query.".mysql_error());
+					mysqli_query($link, $SQL) or die($SQL.mysqli_error($link));//"Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute UPDATE family activity query.".mysqli_error($link));
 				
-				} else {
-					$SQL = "INSERT INTO	Person_Activity
-									(Person_ID,
-									 Activity_ID)
-							VALUES
-								(".$fam_person_id.",
-								 ".$activity[$i].");";
+				}
 
-
-					mysql_query( $SQL ) or die($SQL.mysql_error());//"Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute INSERT family activity query.".mysql_error());
-				}				
-			}			
-			
-		// If they're a new registrant, enter their information
-		} else {
-
-			$SQL = "INSERT INTO Person
-						(Person_ID,
-						 First_Name,
-						 Last_Name,
-						 Age_Range,
-						 Email,
-						 Phone)
-					VALUES
-						(NULL,
-						 '".mysql_real_escape_string($first[$i])."',
-						 '".mysql_real_escape_string($last[$i])."',
-						 ".$age[$i].",
-						 '".$email[$i]."',
-						 '".$phone[$i]."')";
-
-			mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute INSERT family person query.".mysql_error());
-			$fam_person_id = mysql_insert_id();		
-
-			// Insert the Registration table data
-			$SQL = "INSERT INTO Registration_Person
-						(Registration_ID,
-						 Person_ID)
-					VALUES
-						(".$reg_id.",
-						 ".mysql_insert_id().");";
-
-			mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute INSERT registration person query.".mysql_error());
-			
-			
-			if ($activity[$i] > 0) {
 				$SQL = "INSERT INTO	Person_Activity
 								(Person_ID,
 								 Activity_ID)
-						VALUES
-							(".$fam_person_id.",
-							 ".$activity[$i].");";
-						
+						VALUES ".$activity_insert_str;
 
-				mysql_query( $SQL ) or die($SQL.mysql_error());//"Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute INSERT family activity query.".mysql_error());
+				mysqli_query($link, $SQL) or die($SQL.mysqli_error($link));//"Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute INSERT family activity query.".mysqli_error($link));
 			}			
 		}
 	}
-
 ?>
 
 <!DOCTYPE html>
@@ -232,12 +166,10 @@
 
 		<hr />
 		<br />
-	<? if ($num_in_party == 1) { ?>
-		<input type="button" value="< Back" onclick="history.go(-2);" />
-	<? } else { ?>
+
 		<input type="button" value="< Back" onclick="history.go(-1);" />
-	<? } ?>
 		<input type="submit" value="Next >" />
+
 		
 		<input type="hidden" id="hid_numInParty" name="hid_numInParty" value="<?=$num_in_party?>">
 		<input type="hidden" id="hid_housingType" name="hid_housingType" value="<?=$housing_type?>">
@@ -324,5 +256,5 @@
 </html>
 
 <?
-	mysql_close();
+	mysqli_close($link);
 ?>

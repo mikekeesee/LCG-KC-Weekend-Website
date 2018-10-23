@@ -2,9 +2,8 @@
 	// Get the database connection information
 	include("db-connect.php");
 
-	mysql_connect(localhost,$username,$password) or die("Unable to connect to database");
-	mysql_select_db($database) or die("Unable to select database");
-
+	$link = mysqli_connect(localhost, $username, $password, $database);
+    
 	$reg_id			= $_GET["reg_id"];
 	$num_in_party	= $_GET["num_in_party"];
 
@@ -25,14 +24,14 @@
 		if ($person_id[$i] > 0) {
 
 			$SQL = "UPDATE	Person
-					SET		First_Name = '".mysql_real_escape_string($first[$i])."',
-							Last_Name = '".mysql_real_escape_string($last[$i])."',
+					SET		First_Name = '".mysqli_real_escape_string($link, $first[$i])."',
+							Last_Name = '".mysqli_real_escape_string($link, $last[$i])."',
 							Age_Range = ".$age[$i].",
 							Email = '".$email[$i]."',
 							Phone = '".$phone[$i]."'
 					WHERE	Person_ID = ".$person_id[$i];
 
-			mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute main contact UPDATE person query.".mysql_error());
+			mysqli_query($link,  $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute main contact UPDATE person query.".mysqli_error($link));
 			
 		// If they're a new registrant, enter their information
 		} else {
@@ -46,14 +45,14 @@
 						        Phone)
 					    VALUES
 						    (NULL,
-						        '".mysql_real_escape_string($first[$i])."',
-						        '".mysql_real_escape_string($last[$i])."',
+						        '".mysqli_real_escape_string($link, $first[$i])."',
+						        '".mysqli_real_escape_string($link, $last[$i])."',
 						        ".$age[$i].",
 						        '".$email[$i]."',
 						        '".$phone[$i]."')";
 
-			    mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute INSERT family person query.".mysql_error());
-			    $fam_person_id = mysql_insert_id();		
+			    mysqli_query($link,  $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute INSERT family person query.".mysqli_error($link));
+			    $fam_person_id = mysqli_insert_id($link);		
 
 			    // Insert the Registration table data
 			    $SQL = "INSERT INTO Registration_Person
@@ -61,9 +60,9 @@
 						        Person_ID)
 					    VALUES
 						    (".$reg_id.",
-						        ".mysql_insert_id().");";
+						        ".mysqli_insert_id($link).");";
 
-			    mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute INSERT registration person query.".mysql_error());
+			    mysqli_query($link,  $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute INSERT registration person query.".mysqli_error($link));
             }
 		}
 	}
@@ -80,18 +79,19 @@
 				
 				INNER JOIN Registration_Person rp
 					ON p.Person_ID = rp.Person_ID
+                    AND rp.Main_Contact_Ind = 0
 			
 			WHERE	rp.Registration_Id = ".$reg_id;
 
-	$result = mysql_query( $SQL ) or die($SQL."\n\nCouldn't execute registration SELECT query.".mysql_error());
-	//"Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute registration SELECT query.".mysql_error());
+	$result = mysqli_query($link,  $SQL ) or die($SQL."\n\nCouldn't execute registration SELECT query.".mysqli_error($link));
+	//"Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute registration SELECT query.".mysqli_error($link));
 
     // Set up the return type header
     header("Content-type: application/json;charset=utf-8");
 
     $i = 1;
     $s = "[";
-	while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+	while($row = mysqli_fetch_array($result)) {
         if ($i != 1) $s.= ',';
 	    $s .= '{"personId": "'.$row['Person_ID'].'",';
         $s .= ' "firstName": "'.htmlspecialchars($row['First_Name']).'",';
@@ -105,5 +105,5 @@
     $s .= ']';
     echo $s;
 	
-	mysql_close();
+	mysqli_close($link);
 ?>

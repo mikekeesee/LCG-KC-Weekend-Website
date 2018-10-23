@@ -2,8 +2,6 @@
 	// **********************************************
 	// *       PayPal Payment Submission Page       *
 	// **********************************************
-
-
 	
 	// read the post from PayPal system and add 'cmd'
 	$req = 'cmd=_notify-validate';
@@ -23,12 +21,12 @@
 	$item_name = $_POST['item_name'];
 	$item_number = $_POST['item_number'];
 	$payment_status = $_POST['payment_status'];
-	$payment_amount = $_POST['mc_gross'];
-	$fee = $_POST['mc_fee'];
+	$payment_amount = (float)$_POST['mc_gross'];
+	$fee = (float)$_POST['mc_fee'];
 	$payment_currency = $_POST['mc_currency'];
 	$txn_id = $_POST['txn_id'];
 	$receiver_email = $_POST['receiver_email'];
-	$payer_email = $_POST['payer_email'];
+	$payer_email = trim($_POST['payer_email']);
 	
 	// Subtract the fee
 	$payment_amount = $payment_amount - $mc_fee;
@@ -48,8 +46,7 @@
 	// Get the database connection information
 	include("db-connect.php");
 
-	mysql_connect(localhost,$username,$password) or die("Unable to connect to database");
-	mysql_select_db($database) or die("Unable to select database");
+	$link = mysqli_connect(localhost, $username, $password, $database);
 	
 	//if (!$fp) {
 		// HTTP ERROR
@@ -65,27 +62,14 @@
 				// process payment
 				if (strcmp($payment_status, "Completed") == 0) {
 				
-					$SQL = "SELECT	r.Registration_ID AS reg_id
-							FROM 	Person AS p
-								INNER JOIN Registration AS r
-									ON r.Main_Contact_Person_ID = p.Person_ID
-							WHERE	p.Email = '$payer_email'";
+                    $SQL = "SELECT	rp.Registration_ID AS reg_id
+                            FROM 	Person p
+                                INNER JOIN Registration_Person rp
+                                    ON rp.Person_ID = p.Person_ID
+                            WHERE	p.Email = '$payer_email'";
 
-					$result = mysql_query( $SQL ) or die($SQL."\n\nCouldn't execute SELECT payment amount query.".mysql_error());
-
-					$row = mysql_fetch_array($result, MYSQL_ASSOC);
-						
-					// If it's not the main contact's email, let's check the other people in the party
-					if (is_null($row['reg_id'])) {
-						$SQL = "SELECT	rp.Registration_ID AS reg_id
-								FROM 	Person p
-									INNER JOIN Registration_Person rp
-										ON rp.Person_ID = p.Person_ID
-								WHERE	p.Email = '$payer_email'";
-
-						$result = mysql_query( $SQL ) or die($SQL."\n\nCouldn't execute SELECT payment amount query.".mysql_error());
-						$row = mysql_fetch_array($result, MYSQL_ASSOC);
-					}
+                    $result = mysqli_query($link, $SQL) or die($SQL."\n\nCouldn't execute SELECT payment amount query.".mysqli_error($link));
+                    $row = mysqli_fetch_array($result);
 					
 					if (is_null($row['reg_id'])) {
 						// Update the UNKNOWN payment field
@@ -93,17 +77,17 @@
 								FROM Registration_Payment
 								WHERE	Registration_ID = 0";
 
-						$result = mysql_query( $SQL ) or die($SQL."\n\nCouldn't execute SELECT payment amount query.".mysql_error());
-						$row = mysql_fetch_array($result, MYSQL_ASSOC);
+						$result = mysqli_query($link, $SQL) or die($SQL."\n\nCouldn't execute SELECT payment amount query.".mysqli_error($link));
+						$row = mysqli_fetch_array($result);
 						
-						if(!is_null(intval($row['amount'])))
-							$payment_amount = $payment_amount + intval($row['amount']);
+						if(!is_null(floatval($row['amount'])))
+							$payment_amount = $payment_amount + floatval($row['amount']);
 						
 						$SQL = "UPDATE	Registration_Payment
 								SET		Payment_Amount = $payment_amount
 								WHERE	Registration_ID = 0";
 
-						mysql_query($SQL) or die($SQL."\n\nCouldn't execute Registration SELECT count query.".mysql_error());		
+						mysqli_query($link, $SQL) or die($SQL."\n\nCouldn't execute Registration SELECT count query.".mysqli_error($link));		
 
 					} else { // The email address was found
 						$reg_id = $row['reg_id'];
@@ -112,8 +96,8 @@
 								FROM Registration_Payment
 								WHERE	Registration_ID = $reg_id";
 
-						$result = mysql_query( $SQL ) or die($SQL."\n\nCouldn't execute SELECT payment amount query.".mysql_error());
-						$row = mysql_fetch_array($result, MYSQL_ASSOC);
+						$result = mysqli_query($link, $SQL) or die($SQL."\n\nCouldn't execute SELECT payment amount query.".mysqli_error($link));
+						$row = mysqli_fetch_array($result);
 					}
 					
 					// They've never paid in the past
@@ -127,16 +111,16 @@
 									($reg_id,
 									 $payment_amount)";
 
-						mysql_query( $SQL ) or die($SQL."\n\nCouldn't execute Registration_Housing INSERT query.".mysql_error());
+						mysqli_query($link, $SQL) or die($SQL."\n\nCouldn't execute Registration_Housing INSERT query.".mysqli_error($link));
 
 					} else {				
-						$payment_amount = $payment_amount + intval($row['amount']);
+						$payment_amount = $payment_amount + floatval($row['amount']);
 						
 						$SQL = "UPDATE	Registration_Payment
 								SET		Payment_Amount = $payment_amount
 								WHERE	Registration_ID = $reg_id";
 
-						mysql_query($SQL) or die($SQL."\n\nCouldn't execute Registration SELECT count query.".mysql_error());		
+						mysqli_query($link, $SQL) or die($SQL."\n\nCouldn't execute Registration SELECT count query.".mysqli_error($link));		
 					}
 				}
 			//}
@@ -146,4 +130,6 @@
 	//	}
 	//	fclose ($fp);
 	//}
+    
+    mysqli_close($link);
 ?>

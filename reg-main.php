@@ -58,7 +58,7 @@
 		//});	
 		
 		$("#register-button").click(function() {
-			url = "http://"+window.location.host + "/reg-main-contact.php";
+			url = "reg-main-contact-page.php";
 			document.location.href = url;
 		});
 	</script>

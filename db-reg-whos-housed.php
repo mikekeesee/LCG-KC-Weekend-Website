@@ -25,16 +25,15 @@ $sord = $_GET['sord'];
 
 if(!$sidx) $sidx = 1;
 
-mysql_connect(localhost,$username,$password);
-@mysql_select_db($database) or die( "Unable to select database");
+$link = mysqli_connect(localhost, $username, $password, $database);
 
-$result = mysql_query("	SELECT	COUNT(*) as count
+$result = mysqli_query($link, "	SELECT	COUNT(*) as count
 			FROM Person as p, Registration as r, Registration_Housing rh, String_Base s
 			WHERE	r.Main_Contact_Person_ID = p.Person_ID
 					AND r.Registration_ID = rh.Registration_ID
 					AND r.Housing_Type = s.String_ID");
 
-$row = mysql_fetch_array($result,MYSQL_ASSOC);
+$row = mysqli_fetch_array($result);
 $count = $row['count'];
 
 if( $count > 0 ) {
@@ -62,7 +61,7 @@ $SQL = "	SELECT	r.registration_id,
 					AND r.Housing_Type = s.String_ID
 			ORDER BY $sidx $sord LIMIT $start , $limit";
 
-$result = mysql_query( $SQL ) or die("Couldn't execute query.".mysql_error());
+$result = mysqli_query($link,  $SQL ) or die("Couldn't execute query.".mysql_error());
 
 // we should set the appropriate header information. Do not forget this.
 header("Content-type: text/xml;charset=utf-8");
@@ -73,7 +72,7 @@ $s .= "<page>".$page."</page>";
 $s .= "<total>".$total_pages."</total>";
 $s .= "<records>".$count."</records>";
 
-while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+while($row = mysqli_fetch_array($result)) {
 	$s .= "<row id='". $row[registration_id]."'>";
 	$s .= "<cell>". htmlspecialchars($row[first_name])."</cell>";
 	$s .= "<cell>". htmlspecialchars($row[last_name])."</cell>";
@@ -88,6 +87,6 @@ $s .= "</rows>";
 
 echo $s;
 
-mysql_close();
+mysqli_close($link);
 
 ?>

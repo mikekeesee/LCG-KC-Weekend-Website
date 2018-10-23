@@ -16,25 +16,40 @@
 	<script type="text/javascript" src="js/grid-activity-list.js"></script>
 	
 	<script type="text/javascript">	
-	function getSelectedId(objGrid) {
-		var selRow = objGrid.getGridParam('selrow');
-		if (selRow == null) {
-			alert("Please select at least one row from each grid.")
-			return false;
+	function getSelectedItems(objGrid) {
+		var strRtnValue = "";
+		var arrData = objGrid.getGridParam('selarrrow');
+		if (arrData.length > 0) {
+			for (var i = 0; i < arrData.length; i++) {
+				strRtnValue += (arrData[i] + ",");
+			}
+
+			// Now strip out the trailing comma
+			if (strRtnValue != "") {
+				strRtnValue = strRtnValue.substr(0, strRtnValue.length - 1);
+			}
+		} else {
+			var selRow = objGrid.getGridParam('selrow');
+			if (selRow == null) {
+				return "";
+			}
+
+			strRtnValue = selRow;
 		}
 
-		return selRow;
+		return strRtnValue;
 	}
-
+	
 	function VerifyAndSubmit() {
 
-		var person_id = getSelectedId($("#reg-person"));
+		var person_id = getSelectedItems($("#reg-person"));
 		if (person_id == "") { return false; }
 		document.getElementById("gridPerson").value = person_id;
 
-		var activity_id = getSelectedId($("#activity-list"));
-		if (activity_id == "") { return false; }
-		document.getElementById("gridActivity").value = activity_id;
+		var activity_ids = getSelectedItems($("#activity-list"));
+
+		if (activity_ids == "") { return false; }
+		document.getElementById("gridActivity").value = activity_ids;
 
 		document.getElementById("activity-add-activity").submit();
 	}
@@ -51,26 +66,24 @@
 	<!-- Start of Main Content Area -->
 	<div class="main-content">
 
-		<-- <a href="activity-main.php">Back to Activities Main page</a>
-
 		<h2>Activities</h2>
 
-		<p>Use this page to choose or change the activity you would like to participate in. This year, all of the activities are
-		on Sunday, so you can only choose one. That&#39;s not to say that you won&#39;t be able to pop over and play some
-		recreational volleyball after your game or activity are over, but we&#39;d like you to commit to only one for now. Family games are
-		for everyone.</p>
+		<p>Sign up here for your activities.</p>
 		
-		<p><b>Important: Minimum age for sports is 13. Those with bad backs or other similar injuries should not
+		<p><b>Important: Minimum age for sports tournaments is 13. Those with bad backs or other similar injuries should not
 		participate. Due to the inherent risk of such activities, all participates must sign a liability waiver. Those
-		under 18 will need a parent or legal guardian’s signature before they can participate.</b></p>
+		under 18 will need a parent or legal guardian&#39;s signature before they can participate.</b></p>
 
 		<p>Find your name on the list of registered people (not registered? Click <a href="reg-main.php">here</a>) and
-		click that row to highlight it. Then click the row activity of your choice to highlight it. Finally, click Submit at the
+		click that row to highlight it. Then click <u>ALL</u> the activities you want to participate in. Finally, click Submit at the
 		bottom of the page.</p>
 
 		<hr />
 
-		<h3>Add/Change Your Activity:</h3>
+		<h3>Add/Change Your Activity:</h3> 
+		
+		<p><i>(Note: When changing an activity, please choose all the activities you wish to participate in, not just the one
+		you&#39;re changing.)</i></p>
 
 		<form id="activity-add-activity" action="activity-add-activity-submit.php" method="post">
 			<div class="grid-inline">

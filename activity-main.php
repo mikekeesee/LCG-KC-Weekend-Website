@@ -26,19 +26,19 @@
 		<h2>Sunday Activities</h2>
 
 		<div class="column">
-			<input type="button" id="add-activity-button" value="Select or Update Your Activity" style="width:290px;" />
+			<input type="button" id="add-activity-button" value="Select or Update Your Activities" style="width:290px;" />
 			<p>&nbsp;</p>
 		
-			<div class="daily-schedule">
-				<h3>Sunday's Schedule:</h3>
+			<div id="schedule-sunday" class="daily-schedule">
+				<h3>Sunday, Dec. 30th <em>(tentative)</em></h3>
 				<ul>
-					<li><b>8:00am</b> - Okun Fieldhouse Opens</li>
-					<li><b>TBD</b> - Sports Bible Study</li>
-					<li><b>TBD</b> - Fitness Conditioning Class</li>
-					<li><b>TBD</b> - <a href="activity-bball-main.php">Basketball</a> and <a href="activity-vball-main.php">Volleyball</a></li>
-					<li><b>TBD</b> - Children Activities</li>
-					<li><b>TBD</b> - Lunch</li>
-					<li><b>5:00pm</b> - Doors Close
+                    <li><b>8:30 a.m.</b> - Sports Bible Study</li>
+                    <li><b>9:00 a.m.</b> - Volleyball Tournament Begins</li>
+                    <li><b>10:00 a.m.</b> - <a href="activity-family-games-main.php">Family Games</a> - Pt. 1</li>
+                    <li><b>11:00 a.m.</b> - V-ball Tournament, B-ball Clinics, Small Children&#39;s Games</li>
+                    <li><b>12:30 p.m.</b> - <a href="activity-family-games-main.php">Family Games</a> - Pt. 2</li>
+                    <li><b>1:30 p.m.</b> - <a href="activity-vball-main.php">Volleyball</a>, <a href="activity-bball-main.php">Basketball</a> games (11 and up), Gaga Ball!</li>
+                    <p><i>** Gaga Ball, Card Tournament available after Family Games</i></p>
 				</ul>
 			</div>
 		</div>
@@ -53,17 +53,17 @@
 		<div class="clear-float"></div>
 		
 		
-		<h3>Concessions:</h3>
+		<!--<h3>Concessions:</h3>
 		
-		<p>You're going to play hard, so we are going to feed you well.</p>
+		<p>Breakfast burritos (turkey sausage, eggs, and cheese) will be available in the morning as well as granola bars, fruit, and juice.</p>
 		
-		<p>Like last year, we are going to provide a $5.00 lunch pack. Including: (a 6-inch Subway Sandwich and any two of the following items: Chips, Snack, and Drink)</p>
+		<p>Once again we will offer a $6 lunch deal including a 6 in. Subway sandwich and 2 sides. (Chips, snack, or soda).</p>
 		
-		<p>Also we will have snacks galore.  For breakfast, we will have energy bars, fruits, etc.</p>
+		<p>If you want something hot you will definitely enjoy Vi’s famous chili. Or a hot dog. Or combine them for the best chili dog in Kansas City!</p>
 
-		<p><b>We will be able to take Cash or Credit Card.</b></p>
+		<p><b>Cash or credit cards are accepted. </b></p>
 
-		<p>P.S. We will provide water and gatorade free of charge.</p>
+		<p>Complementary water and Gatorade will be available	</p>-->
 
 	</div>
 	<!-- End of Main Content Area -->
@@ -76,7 +76,7 @@
 		//});	
 		
 		$("#add-activity-button").click(function() {
-			url = "http://"+window.location.host + "/activity-add-activity.php";
+			url = "activity-add-activity.php";
 			document.location.href = url;
 		});
 	</script>

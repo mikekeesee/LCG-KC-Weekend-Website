@@ -12,6 +12,7 @@ include("db-connect.php");
 // contain both the GET and POST variables. For more information refer to php documentation.
 // Get the requested page. By default grid sets this to 1.
 $page = $_GET['page'];
+$page = ($page > 0) || 1;
 
 // get how many rows we want to have into the grid - rowNum parameter in the grid
 $limit = $_GET['rows'];
@@ -27,13 +28,12 @@ $admin = $_GET['admin'];
 
 if(!$sidx) $sidx = 1;
 
-mysql_connect(localhost,$username,$password);
-@mysql_select_db($database) or die( "Unable to select database");
+$link = mysqli_connect(localhost, $username, $password, $database);
 
-$result = mysql_query("	SELECT COUNT(*) AS count
-						FROM Person p");
+$result = mysqli_query($link, "SELECT COUNT(*) AS count
+                               FROM Person p");
 
-$row = mysql_fetch_array($result,MYSQL_ASSOC);
+$row = mysqli_fetch_array($result);
 $count = $row['count'];
 
 if( $count > 0 ) {
@@ -45,7 +45,7 @@ if( $count > 0 ) {
 if ($page > $total_pages)
 	$page=$total_pages;
 
-$start = $limit * $page - $limit; // do not put $limit*($page - 1)
+$start = ($limit * $page) - $limit; // do not put $limit*($page - 1)
 
 if ($admin == 1) {
 	$SQL = "	SELECT	p.person_id,
@@ -68,7 +68,7 @@ if ($admin == 1) {
 				FROM Person p
 				ORDER BY $sidx $sord LIMIT $start , $limit";
 }
-$result = mysql_query( $SQL ) or die("Couldn't execute query.".mysql_error());
+$result = mysqli_query($link, $SQL) or die("Couldn't execute query.".mysqli_error($link));
 
 // we should set the appropriate header information. Do not forget this.
 header("Content-type: text/xml;charset=utf-8");
@@ -79,7 +79,7 @@ $s .= "<page>".$page."</page>";
 $s .= "<total>".$total_pages."</total>";
 $s .= "<records>".$count."</records>";
 
-while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+while($row = mysqli_fetch_array($result)) {
 	$s .= "<row id='". $row[person_id]."'>";
 	$s .= "<cell>". htmlspecialchars($row[first_name])."</cell>";
 	$s .= "<cell>". htmlspecialchars($row[last_name])."</cell>";
@@ -94,6 +94,6 @@ $s .= "</rows>";
 
 echo $s;
 
-mysql_close();
+mysqli_close($link);
 
 ?>

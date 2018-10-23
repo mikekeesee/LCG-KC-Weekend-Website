@@ -27,27 +27,26 @@ $datatype = $_GET['datatype'];
 
 if(!$sidx) $sidx = 1;
 
-mysql_connect(localhost,$username,$password);
-@mysql_select_db($database) or die( "Unable to select database");
+$link = mysqli_connect(localhost, $username, $password, $database);
 
-$result = mysql_query("	SELECT	COUNT(*) as count
+$result = mysqli_query($link, "	SELECT	COUNT(*) as count
 						FROM 	Registration
 						WHERE	done_housing_ind = 0
 								AND Housing_Type IN (9,10)");
 
-$row = mysql_fetch_array($result,MYSQL_ASSOC);
+$row = mysqli_fetch_array($result);
 $count = $row['count'];
 
 if( $count > 0 ) {
 	$total_pages = ceil($count / $limit);
 } else {
-	$total_pages = 0;
+	$total_pages = 1;
 }
 
 if ($page > $total_pages)
 	$page=$total_pages;
 
-$start = $limit * $page - $limit; // do not put $limit*($page - 1)
+$start = ($limit * $page) - $limit; // do not put $limit*($page - 1)
 
 $SQL = "	SELECT	r.registration_id,
 					IFNULL(p.first_name, 'Not Specified') as first_name,
@@ -60,14 +59,16 @@ $SQL = "	SELECT	r.registration_id,
 					r.Housed_By as housed_by,
 					p.Person_ID as person_id,
 					r.Housing_Type as housing_type
-			FROM Person as p, Registration as r, String_Base s
-			WHERE	r.Main_Contact_Person_ID = p.Person_ID
+			FROM Person as p, Registration_Person rp, Registration as r, String_Base s
+			WHERE	r.Registration_ID = rp.Registration_ID
+                    AND rp.Person_ID = p.Person_ID
+                    AND rp.Main_Contact_Ind = 1
 					AND r.Housing_Type = s.String_ID
 					AND r.done_housing_ind = 0
 					AND r.Housing_Type IN (9,10)
 			ORDER BY $sidx $sord LIMIT $start , $limit";
 
-$result = mysql_query( $SQL ) or die("Couldn't execute query.".mysql_error());
+$result = mysqli_query($link,  $SQL ) or die("Couldn't execute query.".$SQL.mysqli_error($link));
 
 if ($datatype == "xml") {
 	// we should set the appropriate header information. Do not forget this.
@@ -79,7 +80,7 @@ if ($datatype == "xml") {
 	$s .= "<total>".$total_pages."</total>";
 	$s .= "<records>".$count."</records>";
 
-	while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+	while($row = mysqli_fetch_array($result)) {
 		$s .= "<row id='". $row[registration_id]."'>";
 		$s .= "<cell>". htmlspecialchars($row[first_name])."</cell>";
 		$s .= "<cell>". htmlspecialchars($row[last_name])."</cell>";
@@ -105,7 +106,7 @@ if ($datatype == "xml") {
 			"rows" : [';
 	
 	$i = 1;
-	while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+	while($row = mysqli_fetch_array($result)) {
         if ($i != 1) $s.= ',';
 		$s .= '{"id" : "'. $row[registration_id].'",';
 		$s .= '"cell" : [ "'. htmlspecialchars($row[first_name]).'",';
@@ -127,6 +128,6 @@ if ($datatype == "xml") {
 
 echo $s;
 
-mysql_close();
+mysqli_close($link);
 
 ?>

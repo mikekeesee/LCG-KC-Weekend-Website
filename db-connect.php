@@ -1,6 +1,6 @@
 <?
-$username="mmoluf_kc";
-$password="kc";
-$database="mmoluf_kcweekend_dev";
-//$database="mmoluf_kcweekend";
+$username="awesom72_kcwkend";
+$password="kcweekend";
+//$database="awesom72_kctest";
+$database="awesom72_kcweekend";
 ?>

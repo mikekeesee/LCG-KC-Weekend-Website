@@ -6,8 +6,7 @@
 	// Get the database connection information
 	include("db-connect.php");
 
-	mysql_connect(localhost,$username,$password) or die("Unable to connect to database");
-	mysql_select_db($database) or die("Unable to select database");
+	$link = mysqli_connect(localhost, $username, $password, $database);
 
 	$mc_person_id	= $_GET["person_id"];
 	$reg_id			= $_GET["reg_id"];
@@ -37,10 +36,10 @@
 	// Get the housing ID for the person
 	$SQL = "SELECT housing_id
 			FROM Housing_Contact
-			WHERE Person_ID = ".$mc_person_id;
+			WHERE Registration_ID = ".$reg_id;
 
-	$result = mysql_query( $SQL ) or die(mysql_error()); //"Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute SELECT housing contract query.".mysql_error());
-	$row = mysql_fetch_array($result,MYSQL_ASSOC);
+	$result = mysqli_query($link,  $SQL ) or die(mysqli_error($link)); //"Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute SELECT housing contract query.".mysqli_error($link));
+	$row = mysqli_fetch_array($result);
 	$housing_id = $row['housing_id'];
 
 	if ($housing_city != '' || $housing_how_many != 0 || $housing_house_more_ind != 0 || $guest_names != '') {
@@ -51,24 +50,24 @@
 			// Get the housing ID for the person
 			$SQL = "SELECT housing_id
 					FROM Housing_Contact
-					WHERE Person_ID = ".$mc_person_id;
+					WHERE Registration_ID = ".$reg_id;
 
-			$result = mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute SELECT housing contract query.".mysql_error());
-			$row = mysql_fetch_array($result,MYSQL_ASSOC);
+			$result = mysqli_query($link,  $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute SELECT housing contract query.".mysqli_error($link));
+			$row = mysqli_fetch_array($result);
 			$housing_id = $row['housing_id'];
 
 			// Update their housing information
 			$SQL = "UPDATE	Housing_Contact
-					SET		Address1 = '".mysql_real_escape_string($housing_address1)."',
-							Address2 = '".mysql_real_escape_string($housing_address2)."',
-							City = '".mysql_real_escape_string($housing_city)."',
+					SET		Address1 = '".mysqli_real_escape_string($link, $housing_address1)."',
+							Address2 = '".mysqli_real_escape_string($link, $housing_address2)."',
+							City = '".mysqli_real_escape_string($link, $housing_city)."',
 							State = '".$housing_state."',
 							Zip = '".$housing_zip."',
 							How_Many = ".$housing_how_many.",
 							House_More_Ind = ".$housing_house_more_ind.",
-							Guest_Names = '".mysql_real_escape_string($guest_names)."',
+							Guest_Names = '".mysqli_real_escape_string($link, $guest_names)."',
 							Pets_Ind = ".$housing_pets_ind.",
-							Pets_Info = '".mysql_real_escape_string($housing_pets_info)."',
+							Pets_Info = '".mysqli_real_escape_string($link, $housing_pets_info)."',
 							Airport_Transportation_Ind = ".$housing_air_trans.",
 							Activity_Transportation_Ind = ".$housing_act_trans.",
 							Couples_Ind = ".$housing_couples_ind.",
@@ -78,17 +77,17 @@
 							Adults_Only_Ind = ".$housing_adults_ind.",
 							Babies_Ind = ".$housing_babies_ind.",
 							Teens_Ind = ".$housing_teens_ind.",
-							Other = '".mysql_real_escape_string($housing_other)."'
+							Other = '".mysqli_real_escape_string($link, $housing_other)."'
 					WHERE	Housing_ID = ".$housing_id;
 
-			mysql_query( $SQL ) or die("UPDATE ".mysql_error()); //"Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute SELECT family person query.".mysql_error());
+			mysqli_query($link,  $SQL ) or die("UPDATE ".mysqli_error($link)); //"Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute SELECT family person query.".mysqli_error($link));
 
 		} else {
 
 			// Insert the new housing information
 			$SQL = "INSERT INTO Housing_Contact (
 						Housing_ID,
-						Person_ID,
+						Registration_ID,
 						Address1,
 						Address2,
 						City,
@@ -111,17 +110,17 @@
 						Other)
 					VALUES (
 						NULL,
-						".$mc_person_id.",
-						'".mysql_real_escape_string($housing_address1)."',
-						'".mysql_real_escape_string($housing_address2)."',
-						'".mysql_real_escape_string($housing_city)."',
+						".$reg_id.",
+						'".mysqli_real_escape_string($link, $housing_address1)."',
+						'".mysqli_real_escape_string($link, $housing_address2)."',
+						'".mysqli_real_escape_string($link, $housing_city)."',
 						'".$housing_state."',
 						'".$housing_zip."',
 						".$housing_how_many.",
 						".$housing_house_more_ind.",
-						'".mysql_real_escape_string($guest_names)."',
+						'".mysqli_real_escape_string($link, $guest_names)."',
 						".$housing_pets_ind.",
-						'".mysql_real_escape_string($housing_pets_info)."',
+						'".mysqli_real_escape_string($link, $housing_pets_info)."',
 						".$housing_air_trans.",
 						".$housing_act_trans.",
 						".$housing_couples_ind.",
@@ -131,9 +130,9 @@
 						".$housing_adults_ind.",
 						".$housing_babies_ind.",
 						".$housing_teens_ind.",
-						'".mysql_real_escape_string($housing_other)."')";
+						'".mysqli_real_escape_string($link, $housing_other)."')";
 
-			mysql_query( $SQL ) or die("INSERT".mysql_error()); //"Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute INSERT Housing_Contact query.".mysql_error());
+			mysqli_query($link,  $SQL ) or die("INSERT".mysqli_error($link)); //"Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute INSERT Housing_Contact query.".mysqli_error($link));
 		}
 	}
 	
@@ -146,12 +145,17 @@
 					INNER JOIN Registration r
 						ON rh.Registration_ID = r.Registration_ID
 					
+					INNER JOIN Registration_Person rp
+						ON r.Registration_ID = rp.Registration_ID
+				
 					INNER JOIN Person p
-						ON r.Main_Contact_Person_ID = p.Person_ID
+						ON rp.Person_ID = p.Person_ID
+                        AND rp.Main_Contact_Ind = 1
 				
 			    WHERE	rh.Housing_ID = ".$housing_id;
-	    $result = mysql_query( $SQL ) or die("GUESTS ".mysql_error()); //"Sorry.  There was a database error - Contact <a 
-		while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+                
+	    $result = mysqli_query($link,  $SQL ) or die("GUESTS ".mysqli_error($link)); //"Sorry.  There was a database error - Contact <a 
+		while($row = mysqli_fetch_array($result)) {
 			$guests .= htmlspecialchars($row['First_Name']).' '.htmlspecialchars($row['Last_Name']).', ';
 		}
 		// Strip the last comma off
@@ -181,8 +185,8 @@
 				FROM	Housing_Contact
 				
 			    WHERE	Housing_ID = ".$housing_id;
-	    $result = mysql_query( $SQL ) or die(mysql_error()); //"Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute INSERT Housing_Contact query.".mysql_error());
-	    $row = mysql_fetch_array($result,MYSQL_ASSOC);
+	    $result = mysqli_query($link,  $SQL ) or die(mysqli_error($link)); //"Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute INSERT Housing_Contact query.".mysqli_error($link));
+	    $row = mysqli_fetch_array($result);
 	
 	    // Set up the return type header
 	    $s  = '{"address1": "'.htmlspecialchars($row['Address1']).'",';
@@ -234,5 +238,5 @@
     header("Content-type: application/json;charset=utf-8");
 	echo $s;
 	
-	mysql_close();	
+	mysqli_close($link);	
 ?>

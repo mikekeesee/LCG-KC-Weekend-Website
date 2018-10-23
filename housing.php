@@ -1,6 +1,14 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<?
+$password = "security";
+$nonsense = "hithertoIhavedeclaredthewondersthouhastwrought";
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+if (isset($_COOKIE['KCWeekendPageLogin'])) {
+   if ($_COOKIE['KCWeekendPageLogin'] == md5($password.$nonsense)) {
+?>
+
+<!DOCTYPE html>
+
+<html>
 
 <head>
 	<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1" />
@@ -16,7 +24,6 @@
 </head>
 
 <body>
-
 	<!-- Add the header to each page -->
 	<? include ('header.php'); ?>
 
@@ -28,50 +35,77 @@
 
 		<h3>Stay with Brethren</h3>
 		<p>For those wanting to stay with brethren, select the option to "Stay with brethren" when
-		you <a href="reg-main.php">register</a>. If you are a Kansas City resident and have room for a few guests, please <a href="reg-main.php">register</a> as a Kansas City resident and click the check box about housing.</p>
+		you <a href="reg-main.php">register</a>. If you are a Kansas City resident 
+        and have room for a few guests, please <a href="reg-main.php">register</a> as a Kansas City resident and 
+        click the check box about housing.</p>
 
-		<p>If you have a question about housing, including requests to stay with brethren, please call our ever-helpful Housing Coordinator
-		<a href="mailto:berylwilson@earthlink.net">Beryl Wilson</a> at (816) 537-8133.</p>
+		<p>If you have a question about housing, including requests to stay with brethren, please call our ever-helpful Assistant Housing Coordinator
+		<a href="mailto:ldbode@hotmail.com">Linda Bode</a> at (816) 785-9283.</p>
 		
 		<br/>
 		
 		<h3>Hotel</h3>
 
-		<p><b>Online Reservations</b>: <a href='http://www.holidayinn.com/kansascitymo'>www.holidayinn.com/kansascitymo</a>. Group Code: <i>LCG</i></p>
-		<p><b>Deadline: <i style="color:red;">November 27th</i></b></p>
-		<br />
+		<p>Our hotel this year, the Embassy Suites, will be the site for many of the weekend activities. It is 
+		located near the Kansas City International Airport in Kansas City, Missouri.</p>
 		
-		<p>Our hotel this year, the Holiday Inn and CoCo Key Water Resort, will be the site for all Friday and Saturday activities. It is located at the intersection of I-70 and Blue Ridge Cutoff across from the Kansas City Chiefs and Royals stadium complex in Kansas City, Missouri.</p>
+		<p>The <a href='https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fsecure3.hilton.com%2Fen_US%2Fes%2Freservation%2Fbook.htm%3FinputModule%3DHOTEL%26ctyhocn%3DMKCPDES%26spec_plan%3DCESLC1%26arrival%3D20181225%26departure%3D20190112%26cid%3DOM%2CWW%2CHILTONLINK%2CEN%2CDirectLink%26fromId%3DHILTONLINKDIRECT&data=02%7C01%7Cmkeesee%40cerner.com%7Ce04893ae54854b18a07f08d6352d8074%7Cfbc493a80d244454a815f4ca58e8c09d%7C0%7C0%7C636754866896180267&sdata=ZjJ3mK3RLT7G%2FzUtPjJVXDbxUOSLbDg7oIujfboPH4o%3D&reserved=0'>Embassy Suites</a>
+		has given us a group rate of $110/night per room + tax. This rate is for single- or double-occupancy, meaning 1 to 2 adults and 
+        the remainder children, up to a total of six people per room. Again, here are the detailed room rates:
+        <ul>
+            <li>Single- or double-occupancy (1-2 adults, with the rest teens or children): <b>$110/night</b></li>
+            <li>Triple-occupancy (3 adults, with the rest teens or children): <b>$120/night</b></li>
+            <li>Quadruple-occupancy (4 adults, with the rest teens or children): <b>$130/night</b></li>
+            <!--<li><i>NOTE: If you have AAA or AARP, try selecting those for additional discounts.</i></li>-->
+        </ul>
+        We have a block of 50 rooms and it is FIRST COME, FIRST SERVED, so please make your reservations soon!
+		This special rate is available the nights of Friday, Dec. 28th through Saturday, Dec. 29th.</p>
+        
+        <p><i>NOTE: Some rooms are available 
+        at the $110/night rate for Thursday and Sunday night, as well.</i>
+		Please click the hotel name above for online reservations or call 1-816-891-7788 to make your reservations and say you are 
+        with the Living Church of God.</p>
+        
+		<p><b>Free Evening Reception:</b> The Embassy Suites offer free evening cocktails and appetizers for hotel guests from 5-7pm.</p>
 		
-		<p>The <a href='http://www.holidayinn.com/kansascitymo'>Holiday Inn and CoCo Key Water Resort</a> has given us a group rate of $79 per room. <!--We have a block of 50 rooms and it is FIRST COME, FIRST SERVE, so please make your reservations soon!-->
-		This special rate is available ONLY for Friday, Dec. 27th and Saturday, Dec. 28th. <b>NOTE: Days prior to and after the weekend may incur a larger room rate.</b> Please call 1-800-238-9938 to make your reservations and say you are with the Living Church of God.</p>
+		<p><b>Free Breakfast:</b> The Embassy Suites will offer our group a complimentary gourmet breakfast.</p>
+		
+		<p><b>Room Details:</b> Each room is a two-room suite with coffee makers, a mini-fridge and microwave in each room. One room is the
+        bedroom (king or two queen rooms available), the others is the living room, complete with fold-out couch. Suites can accommodate up to 6 people.</p>
 
-		<p><b>Another NOTE: The deadline for making reservations for this rate is <u>November 27th</u>. Please don&#39;t wait to make reservations or you may find yourself paying regular rates.</b></p>
+        <p><b>Free Shuttle Service:</b> Flying in? Get a free ride to the hotel! (You may want to rent a car or arrange a ride for Sunday activities.)</p>
+        
+        <p><i>NOTE: The Embassy Suites site shows a $10/day charge for parking. This will NOT be charged to our group.</i></p>
+        
+        <p><i>NOTE: Wi-fi is NOT free at the Embassy Suites unless you sign up for <a href="http://hhonors3.hilton.com/">Hilton HHonors</a>. Otherwise, the charge is $8.95/day.</i></p>
+        
+		<p><b>Deadline: <i style="color:red;">Friday, December 14th</i></b></p>
 		
-		<p>The Holiday Inn will offer our group a complimentary continental breakfast, i.e. danish, muffins, coffee, juices. If you prefer more breakfast options, a breakfast buffet is available each morning for $13.95/person. There is also a Denny&#39;s across the street.</p>
+		<p><b>Additional Questions: <a href="mailto:ldbode@hotmail.com">Linda Bode</a> - (816) 785-9283</b></p>
 		
-		<p>The hotel offers free wi-fi internet.</p>
-
 		<div class="column">
 			<br />
-			<!--<p> <b>NOTE:</b> The <b>DEADLINE</b> for reservations is <b>December 15th</b>.</p>-->
 			
 			<p>When you call to make reservations, please <b>say you are with the <u>Living Church of God</u>.</b></p>
 
 			<ul style="list-style-type: none;padding-left: 20px">
-				<li><b><a href='http://www.holidayinn.com/kansascitymo'>Holiday Inn and CoCo Key Water Resort</a></b></li>
-				<li>9103 E. 39th St.</li>
-				<li>Kansas City, MO 64133</li>
-				<li>1-800-238-9938</li>
+				<li><b><a href='https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fsecure3.hilton.com%2Fen_US%2Fes%2Freservation%2Fbook.htm%3FinputModule%3DHOTEL%26ctyhocn%3DMKCPDES%26spec_plan%3DCESLC1%26arrival%3D20181225%26departure%3D20190112%26cid%3DOM%2CWW%2CHILTONLINK%2CEN%2CDirectLink%26fromId%3DHILTONLINKDIRECT&data=02%7C01%7Cmkeesee%40cerner.com%7Ce04893ae54854b18a07f08d6352d8074%7Cfbc493a80d244454a815f4ca58e8c09d%7C0%7C0%7C636754866896180267&sdata=ZjJ3mK3RLT7G%2FzUtPjJVXDbxUOSLbDg7oIujfboPH4o%3D&reserved=0'>Embassy Suites at KCI</a></b></li>
+				<li>7640 Tiffany Springs Parkway</li>
+				<li>Kansas City, MO, 64153</li>
+				<li>1-816-891-7788</li>
 			</ul>
-
+            
+            <!--<p><b>** <a href='https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fsecure3.hilton.com%2Fen_US%2Fes%2Freservation%2Fbook.htm%3FinputModule%3DHOTEL%26ctyhocn%3DMKCPDES%26spec_plan%3DCESLC1%26arrival%3D20181225%26departure%3D20190112%26cid%3DOM%2CWW%2CHILTONLINK%2CEN%2CDirectLink%26fromId%3DHILTONLINKDIRECT&data=02%7C01%7Cmkeesee%40cerner.com%7Ce04893ae54854b18a07f08d6352d8074%7Cfbc493a80d244454a815f4ca58e8c09d%7C0%7C0%7C636754866896180267&sdata=ZjJ3mK3RLT7G%2FzUtPjJVXDbxUOSLbDg7oIujfboPH4o%3D&reserved=0'>Click here to reserve online!</a> **</b> 
+            <span style="color:red;">Only rooms with a king-sized bed are left. These can still accommodate up to 6 people, but you will need to bring sleeping bags
+            for the 1-2 who won't fit on the fold-out couch in the front room. (The hotel is out of cots.) In order to see these rooms on
+            the above link, you must enter 4 or less people.</span></p>-->
 		</div>
 
 		<div class="column">
 			<div class="map">
 				
 				<br />
-				<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=CoCo+Key+Water+Resort,+East+39th+Street,+Kansas+City,+MO&amp;aq=0&amp;oq=coco+&amp;sll=39.049186,-94.476757&amp;sspn=0.026496,0.038795&amp;t=h&amp;g=39.051618,-94.470498&amp;ie=UTF8&amp;hq=CoCo+Key+Water+Resort,&amp;hnear=E+39th+St,+Kansas+City,+Missouri&amp;ll=39.056984,-94.479504&amp;spn=0.023327,0.036478&amp;z=14&amp;iwloc=A&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q=CoCo+Key+Water+Resort,+East+39th+Street,+Kansas+City,+MO&amp;aq=0&amp;oq=coco+&amp;sll=39.049186,-94.476757&amp;sspn=0.026496,0.038795&amp;t=h&amp;g=39.051618,-94.470498&amp;ie=UTF8&amp;hq=CoCo+Key+Water+Resort,&amp;hnear=E+39th+St,+Kansas+City,+Missouri&amp;ll=39.056984,-94.479504&amp;spn=0.023327,0.036478&amp;z=14&amp;iwloc=A" style="color:#0000FF;text-align:left">View Larger Map</a></small>
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6177.30420166625!2d-94.67247246756402!3d39.27345956620335!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x3017c2d2c8e21b1b!2sEmbassy+Suites+by+Hilton+Kansas+City+International+Airport!5e0!3m2!1sen!2sus!4v1474219246493" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
 			</div>
 		</div>
 				
@@ -81,9 +115,33 @@
 
 	<!-- End of Main Content Area -->
 
-
 	<!-- Add the header to each page -->
 	<? include ('footer.php'); ?>
 
+
 </body>
 </html>
+
+<?
+		exit;
+   } else { // The cookie is bad, so expire it and reload the page. It will delete the cookie on most browsers (I hope).
+		setcookie("KCWeekendPageLogin", "", time()-3600);
+		header("Location: $_SERVER[PHP_SELF]");
+   }
+}
+
+if (isset($_GET['p']) && $_GET['p'] == "login") {
+	if ($_POST['keypass'] != $password) {
+      echo "Sorry, that password does not match. Press Back to try again...";
+      exit;
+   } else if ($_POST['keypass'] == $password) {
+      setcookie('KCWeekendPageLogin', md5($_POST['keypass'].$nonsense), time() + 60*60*24*30);
+      header("Location: $_SERVER[PHP_SELF]");
+   } else {
+      echo "Sorry, something is not working correctly. Perhaps you don't have cookies enabled, or it's time to buy that new computer you want. :) Press Back to try again...";
+   }
+}
+
+include('secure.php');
+?>
+

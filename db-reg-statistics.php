@@ -25,8 +25,7 @@ $sord = $_GET['sord'];
 
 if(!$sidx) $sidx = 1;
 
-mysql_connect(localhost,$username,$password);
-@mysql_select_db($database) or die( "Unable to select database");
+$link = mysqli_connect(localhost, $username, $password, $database);
 
 $total_pages = 1;
 
@@ -90,9 +89,14 @@ $SQL = "	SELECT '<h5>Total Registered</h5>' AS type, '' AS value
 			UNION
 			
 			SELECT CONCAT(' - ', 'Dining Out'), Number AS value
-			FROM `Dining Out`";
+			FROM `Dining Out`
+			
+			UNION
+			
+			SELECT CONCAT(' - ', Dinner_Choice), Count AS value
+			FROM `Dinner Choices`";
 
-$result = mysql_query( $SQL ) or die("Couldn't execute query.".mysql_error());
+$result = mysqli_query($link, $SQL) or die("Couldn't execute query.".mysqli_error($link));
 
 // we should set the appropriate header information. Do not forget this.
 header("Content-type: text/xml;charset=utf-8");
@@ -103,7 +107,7 @@ $s .= "<page>".$page."</page>";
 $s .= "<total>".$total_pages."</total>";
 $s .= "<records>".$count."</records>";
 
-while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+while($row = mysqli_fetch_array($result)) {
 	$s .= "<row id='". $row[person_id]."'>";
 	$s .= "<cell>". $row[type]."</cell>";
 	$s .= "<cell>". $row[value]."</cell>";
@@ -113,6 +117,6 @@ $s .= "</rows>";
 
 echo $s;
 
-mysql_close();
+mysqli_close($link);
 
 ?>

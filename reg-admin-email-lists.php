@@ -30,18 +30,18 @@
 
 		<fieldset><legend>What Year?</legend>
 			<span class="radio-btn-column">
-				<input type="radio" name="database" id="databaseCurrent" value="mmoluf_kcweekend" />
+				<input type="radio" name="database" id="databaseCurrent" value="awesom72_kcweekend" />
 				<label for="databaseCurrent">&nbsp;This Year&#39;s Data</label>
 			</span>
 			
 			<span class="radio-btn-column">
-				<input type="radio" name="database" id="database2012" value="mmoluf_kcweekend_2012" />
-				<label for="database2012">&nbsp;2012 Data</label>
+				<input type="radio" name="database" id="database2017" value="awesom72_kcweekend_2017" />
+				<label for="database2017">&nbsp;2017 Data</label>
 			</span>
 
 			<span class="radio-btn-column">
-				<input type="radio" name="database" id="database2011" value="mmoluf_kcweekend_2011" />
-				<label for="database2011">&nbsp;2011 Data</label>
+				<input type="radio" name="database" id="database2016" value="awesom72_kcweekend_2016" />
+				<label for="database2016">&nbsp;2016 Data</label>
 			</span>
 		</fieldset>
 
@@ -82,7 +82,17 @@
 				<input type="radio" name="emailListType" id="emailListTypeVBallNoTeam" value="volleyball_no_team" />
 				<label for="emailListTypeVBallNoTeam">&nbsp;Volleyball Players w/ No Team</label>
 			</span>
-		</fieldset>
+
+			<span class="radio-btn-column">
+				<input type="radio" name="emailListType" id="emailListTypeFamilyGames" value="family_games" />
+				<label for="emailListTypeFamilyGames">&nbsp;Family Games Players</label>
+			</span>
+
+			<span class="radio-btn-column">
+				<input type="radio" name="emailListType" id="emailListTypeFamilyGamesNoTeam" value="family_games_no_team" />
+				<label for="emailListTypeFamilyGamesNoTeam">&nbsp;Family Games Players w/ No Team</label>
+			</span>
+        </fieldset>
 		
 		<br />
 		<br />

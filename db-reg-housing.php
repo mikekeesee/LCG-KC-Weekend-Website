@@ -27,12 +27,11 @@ $with_room = $_GET['with_room'];
 
 if(!$sidx) $sidx = 1;
 
-mysql_connect(localhost,$username,$password);
-@mysql_select_db($database) or die( "Unable to select database");
+$link = mysqli_connect(localhost, $username, $password, $database);
 
-$result = mysql_query("SELECT COUNT(*) AS count FROM Housing_Contact");
+$result = mysqli_query($link, "SELECT COUNT(*) AS count FROM Housing_Contact");
 
-$row = mysql_fetch_array($result,MYSQL_ASSOC);
+$row = mysqli_fetch_array($result);
 $count = $row['count'];
 
 if( $count > 0 ) {
@@ -71,8 +70,14 @@ $SQL = "	SELECT	h.housing_id as housing_id,
 					IF(h.babies_ind=1,'Y','N') as babies,
 					IF(h.teens_ind=1,'Y','N') as teens,
 					IFNULL(h.other, '') as other
-			FROM	Person p, Housing_Contact h
-			WHERE	p.person_id = h.person_id";
+			FROM	Housing_Contact h
+			
+                INNER JOIN Registration_Person rp 
+                        ON h.Registration_ID = rp.Registration_ID
+                        AND rp.Main_Contact_Ind = 1
+                        
+                INNER JOIN Person p
+                        ON rp.Person_ID = p.Person_ID";
 
 //if ($with_room == 1) {
 //	$SQL .= "	AND h.House_More_Ind = 1";
@@ -81,7 +86,7 @@ $SQL = "	SELECT	h.housing_id as housing_id,
 $SQL .= "	ORDER BY $sidx $sord LIMIT $start , $limit";
 
 
-$result = mysql_query( $SQL ) or die("Couldn't execute query.".mysql_error());
+$result = mysqli_query($link, $SQL) or die("Couldn't execute query.".mysqli_error($link));
 
 // we should set the appropriate header information. Do not forget this.
 header("Content-type: text/xml;charset=utf-8");
@@ -92,7 +97,7 @@ $s .= "<page>".$page."</page>";
 $s .= "<total>".$total_pages."</total>";
 $s .= "<records>".$count."</records>";
 
-while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+while($row = mysqli_fetch_array($result)) {
 	$s .= "<row id='". $row[housing_id]."'>";
 	$s .= "<cell>". htmlspecialchars($row[first_name])."</cell>";
 	$s .= "<cell>". htmlspecialchars($row[last_name])."</cell>";
@@ -124,6 +129,6 @@ $s .= "</rows>";
 
 echo $s;
 
-mysql_close();
+mysqli_close($link);
 
 ?>

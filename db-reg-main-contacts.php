@@ -1,5 +1,7 @@
 <?php
 
+include("db-connect.php");
+
 // to the url parameter are added 4 parameters as described in colModel
 // we should get these parameters to construct the needed query
 // Since we specify in the options of the grid that we will use a GET method
@@ -22,16 +24,11 @@ $sord = $_GET['sord'];
 
 if(!$sidx) $sidx = 1;
 
-$username="mmoluf_kc";
-$password="kc";
-$database="mmoluf_kcweekend";
+$link = mysqli_connect(localhost, $username, $password, $database);
 
-mysql_connect(localhost,$username,$password);
-@mysql_select_db($database) or die( "Unable to select database");
+$result = mysqli_query($link, "SELECT COUNT(*) AS count FROM Person");
 
-$result = mysql_query("SELECT COUNT(*) AS count FROM Person");
-
-$row = mysql_fetch_array($result,MYSQL_ASSOC);
+$row = mysqli_fetch_array($result);
 $count = $row['count'];
 
 if( $count > 0 ) {
@@ -62,7 +59,7 @@ $SQL = "	SELECT	r.registration_id,
 					AND r.housing_type IN (3,4)
 			ORDER BY $sidx $sord LIMIT $start , $limit";
 
-$result = mysql_query( $SQL ) or die("Couldn't execute query.".mysql_error());
+$result = mysqli_query($link, $SQL) or die("Couldn't execute query.".mysqli_error($link));
 
 // we should set the appropriate header information. Do not forget this.
 header("Content-type: text/xml;charset=utf-8");
@@ -73,7 +70,7 @@ $s .= "<page>".$page."</page>";
 $s .= "<total>".$total_pages."</total>";
 $s .= "<records>".$count."</records>";
 
-while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+while($row = mysqli_fetch_array($result)) {
 	$s .= "<row id='". $row[registration_id]."'>";
 	$s .= "<cell>". htmlspecialchars($row[first_name])."</cell>";
 	$s .= "<cell>". htmlspecialchars($row[last_name])."</cell>";
@@ -86,6 +83,6 @@ $s .= "</rows>";
 
 echo $s;
 
-mysql_close();
+mysqli_close($link);
 
 ?>

@@ -14,7 +14,7 @@ jQuery(document).ready(function() {
 			],
 		width: 330,
 		height: 230,
-		rowNum: 100,
+		rowNum: 200,
 		sortname: 'last_name,first_name',
 		sortorder: 'asc',
 		viewrecords: true,

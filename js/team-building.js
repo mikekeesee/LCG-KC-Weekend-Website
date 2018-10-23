@@ -312,6 +312,13 @@ function VerifyAndSubmit() {
 				return false;
 			}
 			document.getElementById("gridPlayer").value = person_id;
+            
+            var team_id = getSelectedItems($("#teams"));
+			if (team_id == "") {
+				alert("Please select at least one team.");
+				return false;
+			}
+			document.getElementById("gridTeam").value = team_id;
 
 			if (confirm ("Are you sure you want to remove this player?") == false) {
 				return false;

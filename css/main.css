@@ -84,28 +84,38 @@ label.error {
 	color: #000000;
 }
 
+.social-media-content {
+	position: relative;
+}
+
 .register-button {
-	position: absolute;
-	right: 10em;
+	position: absolute !important;
+	right: 7.5em;
 	top: 0em;	
 }
 
+/*.register-img {
+	height: 80px;
+	width: 87px;
+}*/
+
 .paypalbutton {
-	position: absolute;
-	right: 0em;
-	top: 1em;	
+	position: absolute !important;
+	right: -22px;
+	top: 10px;	
 }
 
-.fb-like {
-	position: relative;
-	left: 52px;
-	top: 10px;
+.facebook-content {
+	position: absolute !important;
+	right: 2px;
+	top: 60px;
 }
 
 .twitter-follow-button {
-	position: relative;
-	left: 63px;
-	top: 13px
+	position: absolute !important;
+	right: 0px;
+	margin-top: 4px;
+	/*margin-left: 55px;*/
 }
 
 /** Navigation Bar **/
@@ -134,7 +144,7 @@ label.error {
 
 .navbar ul{
 	position: absolute;
-	width: 12em;
+	width: 15em;
 	top: 1.5em;
 	display: none;
 	border-bottom: 2px solid #cccccc;
@@ -175,6 +185,18 @@ label.error {
 
 /** End Navigation Bar **/
 
+.dev-site-warning-hide {
+    display: none;
+}
+
+.dev-site-warning {
+    border: 1px solid red;
+    margin: 10px 0px;
+    padding: 15px;
+    color: red;
+    text-align: center;
+    font-size: 20px;
+}
 
 /** End Page Header **/
 
@@ -243,7 +265,7 @@ label.error {
 /** Daily Schedule **/
 .daily-schedule {
 	border: 1px solid #534741;
-	height: 20em;
+	height: 22em;
 	margin: 0em 1.75em 0em 0em;
 	width: 18em;
 }
@@ -364,6 +386,11 @@ fieldset select {
 	margin: 1em .5em 0em 0em;
 }
 
+ol > li {
+	margin-bottom: .75em; 
+	line-height: 1.25em;
+}
+
 .grid-inline {
 	float: left;
 	margin: 0em 0em 0em 2em;
@@ -388,6 +415,23 @@ fieldset select {
 	width: 300px;
 }
 
+.reg-activity-cell {
+	width: 400px;
+	float: left;
+	margin: 0 24px 24px 0;
+}
+
+.info-link {
+	position: relative;
+}
+
+.info-icon {
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	top: -2px;
+	left: -4px;
+}
 /** End Forms **/
 
 

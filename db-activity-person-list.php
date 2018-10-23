@@ -3,8 +3,7 @@
 // Get the database connection information
 include("db-connect.php");
 
-mysql_connect(localhost,$username,$password);
-@mysql_select_db($database) or die( "Unable to select database");
+$link = mysqli_connect(localhost, $username, $password, $database);
 
 // to the url parameter are added 4 parameters as described in colModel
 // we should get these parameters to construct the needed query
@@ -28,9 +27,9 @@ $sord = $_GET['sord'];
 
 if(!$sidx) $sidx = 1;
 
-$result = mysql_query("SELECT COUNT(*) AS count FROM Person p, Person_Activity pa WHERE p.Person_ID = pa.Person_ID");
+$result = mysqli_query($link, "SELECT COUNT(*) AS count FROM Person p, Person_Activity pa WHERE p.Person_ID = pa.Person_ID");
 
-$row = mysql_fetch_array($result,MYSQL_ASSOC);
+$row = mysqli_fetch_array($result);
 $count = $row['count'];
 
 if( $count > 0 ) {
@@ -53,7 +52,7 @@ $SQL = "SELECT	p.Person_Id as person_id,
 				AND ap.Person_ID = p.Person_ID
 		ORDER BY $sidx $sord LIMIT $start , $limit";
 
-$result = mysql_query( $SQL ) or die("Couldn't execute query.".mysql_error());
+$result = mysqli_query($link,  $SQL ) or die("Couldn't execute query.".mysqli_error($link));
 
 // we should set the appropriate header information. Do not forget this.
 header("Content-type: text/xml;charset=utf-8");
@@ -63,7 +62,7 @@ $s .= "<rows>";
 $s .= "<page>".$page."</page>";
 $s .= "<total>".$total_pages."</total>";
 $s .= "<records>".$count."</records>";
-while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+while($row = mysqli_fetch_array($result)) {
 	$s .= "<row id='". $row[person_id]."'>";
 	$s .= "<cell>". htmlspecialchars($row[first_name])."</cell>";
 	$s .= "<cell>". htmlspecialchars($row[last_name])."</cell>";
@@ -74,6 +73,6 @@ $s .= "</rows>";
 
 echo $s;
 
-mysql_close();
+mysqli_close($link);
 
 ?>

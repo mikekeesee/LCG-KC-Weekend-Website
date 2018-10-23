@@ -6,8 +6,7 @@
 	// Get the database connection information
 	include("db-connect.php");
 
-	mysql_connect(localhost,$username,$password) or die("Unable to connect to database");
-	mysql_select_db($database) or die("Unable to select database");
+	$link = mysqli_connect(localhost, $username, $password, $database);
 
 	$mc_person_id	= $_GET["person_id"];
 	$reg_id			= $_GET["reg_id"];
@@ -19,13 +18,18 @@
 				
 				INNER JOIN Housing_Contact hc
 					ON rh.Housing_ID = hc.Housing_ID
-				
+								
+                INNER JOIN Registration_Person rp
+                    ON hc.Registration_ID = rp.Registration_ID
+                    AND rp.Main_Contact_Ind = 1
+                    
 				INNER JOIN Person p
-					ON hc.Person_ID = p.Person_ID
+					ON rp.Person_ID = p.Person_ID
 			
 			WHERE	rh.Registration_ID = ".$reg_id;
-	$result = mysql_query( $SQL ) or die(mysql_error()); //"Sorry.  There was a database error - Contact <a 
-	while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+
+    $result = mysqli_query($link,  $SQL ) or die(mysqli_error($link)); //"Sorry.  There was a database error - Contact <a 
+	while($row = mysqli_fetch_array($result)) {
 		$hosts .= htmlspecialchars($row['First_Name']).' '.htmlspecialchars($row['Last_Name']).', ';
 	}
 	// Strip the last comma off
@@ -37,5 +41,5 @@
     header("Content-type: application/json;charset=utf-8");
 	echo $s;
 	
-	mysql_close();	
+	mysqli_close($link);	
 ?>

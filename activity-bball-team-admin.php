@@ -6,8 +6,7 @@
 	// Get the database connection information
 	include("db-connect.php");
 
-	mysql_connect(localhost,$username,$password) or die("Unable to connect to database");
-	mysql_select_db($database) or die("Unable to select database");
+	$link = mysqli_connect(localhost, $username, $password, $database);
 
 	// Get the stuff from the previous submit.
 	$action			= $_POST["cboAction"];
@@ -31,8 +30,8 @@
 			FROM Team
 			WHERE Activity_ID = 1";
 
-	$result = mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute SELECT team count query.".mysql_error());
-	$row = mysql_fetch_array($result,MYSQL_ASSOC);
+	$result = mysqli_query($link, $SQL) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute SELECT team count query.".mysqli_error($link));
+	$row = mysqli_fetch_array($result);
 	$team_count = $row['count'];
 
 	// Creating a New Team
@@ -55,8 +54,8 @@
 						'$team_name',
 						'$shirt_color')";
 
-			mysql_query( $SQL ) or die($SQL."\n\nCouldn't execute INSERT Team query.".mysql_error());
-			$team_id = mysql_insert_id();
+			mysqli_query($link, $SQL) or die($SQL."\n\nCouldn't execute INSERT Team query.".mysqli_error($link));
+			$team_id = mysqli_insert_id($link);
 
 			$SQL = "INSERT INTO Team_Member (
 						Team_ID,
@@ -68,7 +67,7 @@
 						$person_id,
 						1)";
 
-			mysql_query( $SQL ) or die($SQL."\n\nCouldn't execute INSERT Team_Member query.".mysql_error());
+			mysqli_query($link, $SQL) or die($SQL."\n\nCouldn't execute INSERT Team_Member query.".mysqli_error($link));
 		}
 	}
 
@@ -78,8 +77,8 @@
 				FROM Team_Member
 				WHERE Team_ID = $team_id";
 
-		$result = mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute SELECT team_member count query.".mysql_error());
-		$row = mysql_fetch_array($result,MYSQL_ASSOC);
+		$result = mysqli_query($link, $SQL) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute SELECT team_member count query.".mysqli_error($link));
+		$row = mysqli_fetch_array($result);
 		$team_member_count = $row['count'];
 
 		if ($team_member_count >= 5) {
@@ -101,7 +100,7 @@
 									$pid,
 									0)";
 
-						mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute INSERT Team_Member query.".mysql_error());
+						mysqli_query($link, $SQL) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute INSERT Team_Member query.".mysqli_error($link));
 					}
 				} else {
 					$onLoadMessageBox = "alert('This action would take you over the maximum number of 5 players.');";
@@ -117,7 +116,7 @@
 				SET Team_Name = '$change_name'
 				WHERE Team_ID = $team_id";
 
-		mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute UPDATE Team query.".mysql_error());
+		mysqli_query($link, $SQL) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute UPDATE Team query.".mysqli_error($link));
 	}
 
 	// Changing the Team Captain
@@ -127,8 +126,8 @@
 				WHERE	Person_ID = $person_id
 						AND Team_ID = $team_id";
 
-		$result = mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute SELECT team_member count query.".mysql_error());
-		$row = mysql_fetch_array($result,MYSQL_ASSOC);
+		$result = mysqli_query($link, $SQL) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute SELECT team_member count query.".mysqli_error($link));
+		$row = mysqli_fetch_array($result);
 		$team_member_count = $row['count'];
 
 		if ($team_member_count == 0) {
@@ -139,14 +138,14 @@
 					SET		Team_Captain_Ind = 0
 					WHERE	Team_ID = $team_id";
 
-			mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute INSERT Team_Member query.".mysql_error());
+			mysqli_query($link, $SQL) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute INSERT Team_Member query.".mysqli_error($link));
 
 			$SQL = "UPDATE	Team_Member
 					SET		Team_Captain_Ind = 1
 					WHERE	Team_ID = $team_id
 							AND Person_Id = $person_id";
 
-			mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute INSERT Team_Member query.".mysql_error());
+			mysqli_query($link, $SQL) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute INSERT Team_Member query.".mysqli_error($link));
 		}
 	}
 
@@ -156,7 +155,7 @@
 				SET Shirt_Color = '$change_color'
 				WHERE Team_ID = $team_id";
 
-		mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute UPDATE Team query.".mysql_error());
+		mysqli_query($link, $SQL) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute UPDATE Team query.".mysqli_error($link));
 	}
 
 	// Removing a Player
@@ -164,10 +163,11 @@
 		$SQL = "SELECT	COUNT(*) as count
 				FROM	Team_Member
 				WHERE	Person_ID IN ($person_id)
-						AND Team_Captain_Ind = 1";
+						AND Team_ID = $team_id
+                        AND Team_Captain_Ind = 1";
 
-		$result = mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute SELECT team_member count query.".mysql_error());
-		$row = mysql_fetch_array($result,MYSQL_ASSOC);
+		$result = mysqli_query($link, $SQL) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute SELECT team_member count query.".mysqli_error($link));
+		$row = mysqli_fetch_array($result);
 		$team_captain_count = $row['count'];
 
 		if ($team_captain_count == 1) {
@@ -175,9 +175,10 @@
 
 		} else {
 			$SQL = "DELETE FROM Team_Member
-					WHERE Person_Id IN ($person_id)";
+					WHERE Person_Id IN ($person_id)
+                    AND Team_ID = $team_id";
 
-			mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute INSERT Team_Member query.".mysql_error());
+			mysqli_query($link, $SQL) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute INSERT Team_Member query.".mysqli_error($link));
 		}
 	}
 
@@ -186,12 +187,12 @@
 		$SQL = "DELETE FROM Team
 				WHERE Team_ID = $team_id";
 
-		mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute DELETE Team query.".mysql_error());
+		mysqli_query($link, $SQL) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute DELETE Team query.".mysqli_error($link));
 
 		$SQL = "DELETE FROM Team_Member
 				WHERE Team_ID = $team_id";
 
-		mysql_query( $SQL ) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute DELETE Team_Member query.".mysql_error());
+		mysqli_query($link, $SQL) or die("Sorry.  There was a database error - Contact <a href='mailto:mkeesee@gmail.com'>Mike</a> to report that he left a bug in his code."); //$SQL."\n\nCouldn't execute DELETE Team_Member query.".mysqli_error($link));
 	}
 
 ?>
@@ -755,3 +756,7 @@
 
 </body>
 </html>
+
+<?
+	mysqli_close($link);
+?>

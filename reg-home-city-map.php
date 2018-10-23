@@ -7,11 +7,13 @@
 	$map = new GoogleMapAPI('map');
 	// enter YOUR Google Map Key
 	//$map->setAPIKey('ABQIAAAAYMNY23sJhxC4LyHvhouDAhT7jkmynjE8OMd-ikFKdpPdtz0ExRS8CQW29gereurYlNrENJbQEdpvYQ');
-	$map->setAPIKey('ABQIAAAAYMNY23sJhxC4LyHvhouDAhTO1sTMmm0paPF-NqNRX-WjGyPHxxQNKDjpAKmhd7DBMSBEWqs826zUrw');
+	//$map->setAPIKey('ABQIAAAAYMNY23sJhxC4LyHvhouDAhTO1sTMmm0paPF-NqNRX-WjGyPHxxQNKDjpAKmhd7DBMSBEWqs826zUrw');
+    //$map->setAPIKey('AIzaSyCay9f5poJilMsp4vzmXEEM-dMM1PwSll8');
+    $map->setAPIKey('AIzaSyAKzpDaa0hmqDyz3hcFgLctLxAB6Vm-LrQ');
 	$map->disableSidebar();
 	
-	mysql_connect(localhost,$username,$password);
-	@mysql_select_db($database) or die( "Unable to select database");
+	$link = mysqli_connect(localhost, $username, $password, $database);
+	//$connection = @mysql_select_db($database) or die( "Unable to select database");
 
 	$SQL = "	SELECT DISTINCT p.first_name,
 								p.last_name,
@@ -20,18 +22,21 @@
 								r.geo_long
 						
 				FROM Registration r
-					
+					INNER JOIN Registration_Person rp
+                        ON r.Registration_ID = rp.Registration_ID AND
+                           rp.Main_Contact_Ind = 1
+                        
 					INNER JOIN Person p
-						ON r.Main_Contact_Person_ID = p.Person_ID
+						ON rp.Person_ID = p.Person_ID
 				
 				WHERE r.geo_lat IS NOT NULL
 				  AND TRIM(r.geo_lat) <> ''
 				  AND r.geo_long IS NOT NULL
   				  AND TRIM(r.geo_long) <> ''";
 
-	$result = mysql_query( $SQL ) or die("Couldn't execute query.".mysql_error());	
+	$result = mysqli_query($link, $SQL) or die("Couldn't execute query.".mysql_error());	
 	
-	while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {	
+	while($row = mysqli_fetch_assoc($result)) {	
 		// create some map markers
 		$map->addMarkerByCoords($row[geo_lat],$row[geo_long],'<b>'.$row[first_name].' '.$row[last_name].'<br/>'.$row[home_city].'</b>');
 	}

@@ -9,6 +9,7 @@ jQuery(document).ready(function() {
 		sortname: 'activity_name',
 		sortorder: 'asc',
 		viewrecords: true,
+		multiselect: true,
 		//width: 220,
 		height: 200,
 		hidegrid: false,

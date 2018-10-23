@@ -27,14 +27,12 @@ $activity = $_GET['activity'];
 
 if(!$sidx) $sidx = 1;
 
-mysql_connect(localhost,$username,$password);
-@mysql_select_db($database) or die( "Unable to select database");
+$link = mysqli_connect(localhost, $username, $password, $database);
 
-$result = mysql_query("SELECT COUNT(*) AS count FROM Team WHERE Activity_ID = $activity");
+$result = mysqli_query($link, "SELECT COUNT(*) AS count FROM Team WHERE Activity_ID = $activity");
 
-$row = mysql_fetch_array($result,MYSQL_ASSOC);
+$row = mysqli_fetch_array($result);
 $count = $row['count'];
-
 if( $count > 0 ) {
 	$total_pages = ceil($count / $limit);
 } else {
@@ -65,7 +63,7 @@ $SQL = "	SELECT	t.Team_ID as team_id,
 					
 			ORDER BY $sidx $sord LIMIT $start , $limit";
 
-$result = mysql_query( $SQL ) or die("Couldn't execute query.".mysql_error());
+$result = mysqli_query($link,  $SQL ) or die("Couldn't execute query.".mysqli_error($link));
 
 // we should set the appropriate header information. Do not forget this.
 header("Content-type: text/xml;charset=utf-8");
@@ -76,7 +74,7 @@ $s .= "<page>".$page."</page>";
 $s .= "<total>".$total_pages."</total>";
 $s .= "<records>".$count."</records>";
 
-while($row = mysql_fetch_array($result, MYSQL_ASSOC)) {
+while($row = mysqli_fetch_array($result)) {
 	$s .= "<row id='". $row[team_id]."'>";
 	$s .= "<cell>". htmlspecialchars($row[team_name])."</cell>";
 	$s .= "<cell>". $row[captain]."</cell>";
@@ -88,6 +86,6 @@ $s .= "</rows>";
 
 echo $s;
 
-mysql_close();
+mysqli_close($link);
 
 ?>
